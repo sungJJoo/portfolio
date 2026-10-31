@@ -185,6 +185,24 @@
           <details>
             <summary>
               <span class="m-year">2024</span>
+              <span class="m-title">영상 속 특정 인물 제거 프로그램</span>
+              <span class="m-kind">Team Project</span>
+              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
+            </summary>
+            <div class="m-body">
+              <p>영상에 나오는 사람 중 사용자가 고른 한 명만 지우고 배경을 채워 넣는 웹 프로그램입니다. 2024년 6월부터 9월까지 6명이 만들었고, 저는 얼굴 인식과 YOLOv8 모델을 맡았습니다.</p>
+              <ul>
+                <li>InsightFace로 프레임마다 얼굴을 찾고, 얼굴 벡터의 코사인 유사도로 같은 사람끼리 묶어 인물 ID를 만듦</li>
+                <li>인물마다 대표 벡터를 이동 평균으로 갱신해 각도나 표정이 바뀌어도 같은 ID로 유지하고, 가장 잘 인식된 얼굴을 골라 선택 화면에 표시</li>
+                <li>고른 인물은 팀원들이 맡은 분리, 추적, 인페인팅 단계로 넘어가 배경까지 복원</li>
+              </ul>
+              <p class="m-stack">Python, Flask, InsightFace, YOLOv8, Detectron2, OpenCV</p>
+              <p class="m-link"><a class="ext" href="https://github.com/zunobk/Haaaaaaaao" target="_blank" rel="noopener">github.com/zunobk/Haaaaaaaao<svg class="ico ico-out" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></a></p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="m-year">2024</span>
               <span class="m-title">Plantify 스마트 화분</span>
               <span class="m-kind">Team Project</span>
               <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
@@ -232,7 +250,7 @@
           <li><span class="s-logos"><img src="assets/icons/javascript.svg" alt="" width="28" height="28"></span><b>JavaScript</b><span>업무 담당표, 연구소 사이트</span></li>
           <li><span class="s-logos"><img src="assets/icons/typescript.svg" alt="" width="28" height="28"><img src="assets/icons/nextjs.svg" alt="" width="28" height="28"></span><b>TypeScript, Next.js</b><span>누리집 프로토타입 20개 경로</span></li>
           <li><span class="s-logos"><img src="assets/icons/nodejs.svg" alt="" width="28" height="28"><img src="assets/icons/express.svg" alt="" width="28" height="28"><img src="assets/icons/sqlite.svg" alt="" width="28" height="28"></span><b>Node.js, Express, SQLite</b><span>누리집 서버와 DB 설계, 로그인과 파일 업로드</span></li>
-          <li><span class="s-logos"><img src="assets/icons/python.svg" alt="" width="28" height="28"></span><b>Python</b><span>SmartVision 객체 인식과 음성 명령, PPT 자동화</span></li>
+          <li><span class="s-logos"><img src="assets/icons/python.svg" alt="" width="28" height="28"></span><b>Python</b><span>SmartVision 객체 인식, 인물 제거 프로그램 얼굴 인식, PPT 자동화</span></li>
           <li><span class="s-logos"><img src="assets/icons/c.svg" alt="" width="28" height="28"><img src="assets/icons/arduino.svg" alt="" width="28" height="28"></span><b>C, Arduino</b><span>은행 관리 프로그램 1,286줄, Plantify 센서 제어</span></li>
           <li><span class="s-logos"><img src="assets/icons/git.svg" alt="" width="28" height="28"><img src="assets/icons/github.svg" alt="" width="28" height="28"></span><b>Git, GitHub</b><span>GitHub Pages 배포와 운영</span></li>
           <li><span class="s-logos"><img src="assets/icons/java.svg" alt="" width="28" height="28"><img src="assets/icons/spring.svg" alt="" width="28" height="28"></span><b>Java, Spring</b><span>게임 서버 플러그인, 지금은 Spring 공부 중</span></li>
@@ -305,7 +323,6 @@
             <ul class="alist">
               <li><span class="a-year">2024</span><span class="a-name">우송대학교 비트교육센터 Windows Developer 고급과정 39기 수료</span></li>
               <li><span class="a-year">2024</span><span class="a-name">이노베이션 아카데미 Codyssey C언어 PBL 수료</span></li>
-              <li><span class="a-year">2024</span><span class="a-name">AI 영상 분석 특정 인물 제거 프로그램<small>팀원. 얼굴 인식 모델(YOLOv8) 담당</small></span></li>
               <li><span class="a-year">2023</span><span class="a-name">SW창업 아이디어 경진대회 참가<small>팀장</small></span></li>
               <li><span class="a-year">2023</span><span class="a-name">Minecraft 사설 서버 밸런싱과 QA</span></li>
             </ul>
