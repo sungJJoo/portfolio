@@ -1,0 +1,158 @@
+<!-- 프로젝트 상세: FOX AI 연구소 공식 사이트와 관리자 CMS -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FOX AI 연구소 사이트와 관리자 CMS | 박성주 포트폴리오</title>
+  <meta name="description" content="연구소 공식 사이트와 직원이 직접 내용을 고치는 관리자 CMS를 기획부터 운영까지 맡은 프로젝트입니다.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="../index.html">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#solving">Problem Solving</a>
+        <a href="../index.html#projects" aria-current="page">Projects</a>
+        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a class="hide-m" href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="d-head">
+      <div class="wrap">
+        <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
+        <h1>FOX AI 연구소 공식 사이트와 관리자 CMS</h1>
+        <p class="p-meta"><span class="chip chip-accent">In-house</span>2026.06 ~ 운영 중</p>
+        <p class="d-summary">폭스러닝센터 AI 연구소의 프로그램을 학부모에게 소개하는 공식 사이트입니다. 기획, 디자인, 개발, 운영을 맡았고, 직원이 코드 없이 내용을 고칠 수 있도록 관리자 CMS를 함께 만들었습니다.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>기획, 디자인, 개발, 운영</dd></div>
+          <div><dt>Team</dt><dd>1명</dd></div>
+          <div><dt>Scale</dt><dd>페이지 7개와 관리자 CMS<br>코드 약 6,400줄, 커밋 152개</dd></div>
+          <div><dt>Links</dt><dd><a href="https://ai.foxconnect.kr" target="_blank" rel="noopener">ai.foxconnect.kr</a><br><a href="https://github.com/sungJJoo/fox-ai-lab" target="_blank" rel="noopener">GitHub 저장소</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="d-visual">
+      <div class="wrap">
+        <div class="shots-2">
+          <figure class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>ai.foxconnect.kr</span></div><img src="../assets/img/fox-site.webp" alt="연구소 사이트 첫 화면" width="1200" height="605"></figure>
+          <figure class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>관리자 CMS</span></div><img src="../assets/img/fox-cms.webp" alt="관리자 CMS의 활동 프로그램 관리 화면" width="1200" height="750"></figure>
+        </div>
+        <figure class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>연구소 소개, 프로그램, 배우는 방법, 대회 활동</span></div><img src="../assets/img/fox-pages.webp" alt="사이트의 네 페이지를 나란히 놓은 화면" width="1440" height="1150" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="d-body">
+      <div class="wrap">
+        <div class="d-section">
+          <h2>Overview</h2>
+          <div>
+            <p>연구소는 초등학생 대상 AI·코딩 프로그램을 운영합니다. 학부모가 프로그램과 수업 방식을 확인하고 상담을 신청할 공식 사이트가 필요했고, 2026년 6월에 만들기 시작해 본사 사이트들과 메뉴를 묶어 통합했습니다.</p>
+            <p>사이트를 연 뒤에는 공지, 프로그램, 대회 사진이 자주 바뀌었습니다. 처음에는 바뀔 때마다 제가 코드를 고치고 본사에 서버 업로드를 요청해야 해서, 화면과 내용을 나누고 내용을 고치는 관리자 CMS를 만들었습니다.</p>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Architecture</h2>
+          <div>
+            <div class="c-fig" role="img" aria-label="CMS에서 저장하면 Apps Script를 거쳐 GitHub에 저장되고, 본사 서버의 페이지가 GitHub Pages의 내용을 읽는 구조">
+              <p class="fig-label">내용을 고치는 길</p>
+              <div class="flow">
+                <span class="node">관리자 CMS<small>이름과 비밀번호 로그인</small></span><span class="arr">→</span>
+                <span class="node me">저장 대행<small>Apps Script, GitHub 토큰 보관</small></span><span class="arr">→</span>
+                <span class="node">GitHub<small>data/*.json과 사진, 한 번의 커밋</small></span>
+              </div>
+              <p class="fig-label">내용을 보여 주는 길</p>
+              <div class="flow">
+                <span class="node">GitHub Pages<small>1~2분 안에 배포</small></span><span class="arr">→</span>
+                <span class="node">본사 서버 페이지 (ai.foxconnect.kr)<small>화면 틀만 두고, 열 때마다 최신 내용을 읽음</small></span>
+              </div>
+              <p class="fig-note">내용을 바꿀 때는 본사 업로드가 필요 없고, 화면 코드를 바꿀 때만 업로드를 요청합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>What I Did</h2>
+          <div>
+            <ul class="points">
+              <li>첫 화면 시안을 여러 개 만들어 비교한 뒤 하나로 정하고, 페이지 7개를 반응형으로 퍼블리싱</li>
+              <li>글자 대비와 터치 영역을 웹 접근성 AA 기준에 맞춤</li>
+              <li>관리자 CMS: 프로그램, 공지·소식, 팝업, 대회 사진, 설정 메뉴와 변경 이력</li>
+              <li>상담 신청 폼: 접수 내용을 구글 시트에 쌓고 담당자에게 메일 알림 (Apps Script)</li>
+              <li>운영 문서: 관리자 사용법, 처음 설정 방법, 본사 업로드 파일 만드는 법을 README로 정리</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Problem Solving</h2>
+          <div>
+            <article class="issue">
+              <h3>콘텐츠를 고칠 때마다 필요하던 본사 서버 업로드</h3>
+              <dl>
+                <dt>문제</dt><dd>자주 바뀌는 내용이 HTML에 섞여 있어, 공지 한 줄을 고쳐도 제가 코드를 고치고 본사에 서버 업로드를 요청해야 했습니다.</dd>
+                <dt>해결</dt><dd>내용을 JSON으로 빼서 GitHub Pages에 두고, 본사 서버의 페이지가 열릴 때 이 JSON을 읽어 화면을 채우게 했습니다. GitHub에서 내용을 못 받으면 HTML에 들어 있는 기본 내용이 보이게 해서 사이트가 깨지지 않습니다.</dd>
+                <dt>결과</dt><dd>2026년 10월 1일부터 6일까지 내용 수정 12건이 코드 수정과 본사 업로드 없이 반영됐습니다. (저장소의 CMS 커밋 기록 기준)</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>GitHub 계정이 없는 직원도 저장할 수 있어야 함</h3>
+              <dl>
+                <dt>문제</dt><dd>GitHub에 저장하려면 토큰이 필요한데, 직원마다 계정과 토큰을 만들게 할 수는 없었습니다.</dd>
+                <dt>해결</dt><dd>토큰은 Apps Script 설정에 숨기고, CMS는 이름과 비밀번호로 Apps Script에 로그인해 저장을 대신 요청합니다. 비밀번호를 다섯 번 틀리면 10분 동안 잠기고, 비밀번호 로그인으로는 내용과 사진만 바꿀 수 있게 막았습니다.</dd>
+                <dt>결과</dt><dd>담당자가 바뀌면 비밀번호만 바꾸면 되고, 변경 이력에는 로그인할 때 적은 이름이 남습니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>두 사람이 동시에 고치면 한쪽 수정이 사라질 수 있음</h3>
+              <dl>
+                <dt>문제</dt><dd>CMS를 여러 사람이 쓰면, 먼저 저장된 내용을 나중에 저장한 사람이 모르고 덮어쓸 수 있었습니다.</dd>
+                <dt>해결</dt><dd>저장 직전에 GitHub의 최신 파일을 다시 읽고, 내가 불러온 뒤에 바뀌었으면 저장을 멈추고 새로고침을 안내합니다. 여러 파일과 사진은 Git 데이터 API로 한 번의 커밋에 묶어 반쯤 저장되는 경우를 없앴습니다.</dd>
+                <dt>결과</dt><dd>변경 이력에서 원하는 시점으로 되돌릴 수 있고, 저장 뒤에는 10초마다 배포된 내용을 비교해 반영 완료를 화면에 표시합니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>모바일에서 첫 화면이 무거움</h3>
+              <dl>
+                <dt>문제</dt><dd>원본 사진과 한글 글꼴 전체를 그대로 받아, 휴대폰에서도 PC용 큰 사진을 받았습니다.</dd>
+                <dt>해결</dt><dd>사진을 WebP로 바꾸고 480, 960, 1440px 세 크기로 나눴습니다. 화면 밖 사진은 나중에 불러오고, 글꼴은 한글 상용 2,350자만 남겨 직접 올렸습니다.</dd>
+                <dt>결과</dt><dd>페이지 용량 1,766KB에서 578KB, 모바일 이미지 전송량 87% 절감, 웹폰트 1,211KB에서 222KB. 배포 전 브라우저에서 직접 측정했고 화면 크기 3구간을 확인했습니다.</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Decisions</h2>
+          <div>
+            <ul class="points">
+              <li>처음 넣었던 AI 생성 이미지를 실제 수업 사진으로 모두 바꿨습니다. 학부모가 보는 사이트라 실제 수업 모습을 보여 주는 쪽이 맞다고 판단했습니다.</li>
+              <li>기준이 모호하던 맞춤 추천 기능을 실제 운영 중인 14개 과정 데이터 기준으로 다시 짰습니다.</li>
+              <li>누를 수 없는 카드에 붙어 있던 반응 효과를 뺐습니다. 눌리는 것처럼 보여 잘못 누르게 만들었기 때문입니다.</li>
+              <li>제목 서체는 라이선스가 확인되지 않아 한 번 뺐다가, SIL OFL을 확인한 뒤 고지 파일과 함께 다시 넣었습니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="wrap pager" aria-label="다른 프로젝트">
+      <a class="prev" href="../index.html#projects"><small>목록으로</small><b>전체 프로젝트</b></a>
+      <a class="next" href="woosong-site.html"><small>다음 프로젝트</small><b>우송대학교 강사 양성 누리집</b></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+  </footer>
+</body>
+</html>

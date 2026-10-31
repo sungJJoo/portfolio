@@ -1,0 +1,137 @@
+<!-- 프로젝트 상세: 연구소 업무 스케줄러(담당표) -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>연구소 업무 스케줄러 | 박성주 포트폴리오</title>
+  <meta name="description" content="구글 시트로 관리하던 팀의 담당표, 업무, 근무일정을 서버 없이 돌아가는 웹앱으로 바꾼 프로젝트입니다.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="../index.html">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#solving">Problem Solving</a>
+        <a href="../index.html#projects" aria-current="page">Projects</a>
+        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a class="hide-m" href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="d-head">
+      <div class="wrap">
+        <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
+        <h1>연구소 업무 스케줄러 (담당표)</h1>
+        <p class="p-meta"><span class="chip chip-accent">Internal Tool</span>2026.05 ~ 2026.07</p>
+        <p class="d-summary">연구소 3인 팀의 담당표, 업무, 근무일정, 연간 일정을 한 화면에 모은 웹앱입니다. 구글 시트를 저장소로, Apps Script를 API로, GitHub Pages를 호스팅으로 써서 운영비 없이 돌아갑니다.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>기획, 개발</dd></div>
+          <div><dt>Team</dt><dd>1명 (팀원 3명이 사용)</dd></div>
+          <div><dt>Scale</dt><dd>코드 약 4,700줄<br>커밋 57개</dd></div>
+          <div><dt>Stack</dt><dd>JavaScript, Google Apps Script, Google Sheets, PWA</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="d-visual">
+      <div class="wrap">
+        <div class="c-fig" role="img" aria-label="웹앱이 Apps Script API를 거쳐 구글 시트를 읽고 쓰는 구조와 예약 작업">
+          <p class="fig-label">서버 없이 돌아가는 구조</p>
+          <div class="flow">
+            <span class="node me">웹앱 (GitHub Pages)<small>순수 JavaScript, 반응형, PWA로 설치</small></span><span class="arr">→</span>
+            <span class="node">Google Apps Script<small>웹 API와 예약 작업</small></span><span class="arr">→</span>
+            <span class="node">Google Sheets<small>담당표, 멤버, 근무일정, 완료 업무, 반복 업무, 캘린더</small></span>
+          </div>
+          <p class="fig-label">예약 작업</p>
+          <div class="flow">
+            <span class="node">15분마다<small>완료한 지 30분 지난 업무를 '완료 업무' 시트로 옮겨 보관</small></span>
+            <span class="node">매일 새벽 1시<small>달이 바뀌었으면 근무일정 날짜만 새 달로 바꾸고 패턴과 서식은 유지</small></span>
+          </div>
+          <p class="fig-note">팀 데이터는 원래 쓰던 구글 시트에 그대로 남습니다. 화면 캡처는 팀원 이름과 근무 정보가 보여 싣지 않았습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-body">
+      <div class="wrap">
+        <div class="d-section">
+          <h2>Overview</h2>
+          <div>
+            <p>연구소는 담당표와 업무를 구글 시트 하나로 관리했습니다. 내용이 늘수록 스크롤이 길어지고 휴대폰으로 보기 어려웠습니다. 시트의 데이터는 그대로 두고, 시트로는 불편했던 화면과 알림, 반복 작업을 웹앱으로 얹었습니다.</p>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Why</h2>
+          <div>
+            <table class="ptable">
+              <thead><tr><th>겪던 불편</th><th>바꾼 방법</th></tr></thead>
+              <tbody>
+                <tr><td>시트가 길어지면 스크롤이 끝없고 휴대폰으로 보기 어려움</td><td>한 화면 대시보드, 모바일 반응형, 앱처럼 설치하는 PWA</td></tr>
+                <tr><td>3주마다 담당 연구원이 바뀌어 매번 차례를 손으로 계산</td><td>기준 날짜로부터 3주 순환을 자동 계산하고 오늘 담당자를 강조</td></tr>
+                <tr><td>다른 일을 하다 보면 원래 업무를 놓침</td><td>마감 카운트다운 배지, 누락 업무 모아 보기, 당일 마감 브라우저 알림</td></tr>
+                <tr><td>행사와 외부 미팅이 잦아 한눈에 볼 곳이 필요</td><td>2026~2027 연간 캘린더, 한국 공휴일 내장</td></tr>
+                <tr><td>작은 팀이라 누가 쉬는지 바로 알아야 함</td><td>근무일정에서 연차와 반차를 뽑아 캘린더에 표시, 7일 안의 휴무 강조</td></tr>
+                <tr><td>회고 때 한 일을 기억하기 어려움</td><td>완료 업무를 자동으로 보관하고 담당자와 기간으로 다시 보기</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Problem Solving</h2>
+          <div>
+            <article class="issue">
+              <h3>저장할 때마다 화면이 멈춘 것처럼 보임</h3>
+              <dl>
+                <dt>문제</dt><dd>Apps Script 응답이 가끔 크게 느려져, 저장 응답을 기다리는 동안 화면이 멈춰 있었습니다.</dd>
+                <dt>해결</dt><dd>화면에 먼저 반영하고 저장 요청은 뒤에서 보내는 방식(낙관적 업데이트)으로 바꿨습니다. 실패할 때만 서버 데이터로 되돌리고, 요청에는 시간 제한을 걸어 무한 대기를 막았습니다.</dd>
+                <dt>결과</dt><dd>업무 추가, 완료 체크, 담당 변경이 누르는 즉시 화면에 보입니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>자동 갱신 때마다 전체 데이터를 받으면 무거움</h3>
+              <dl>
+                <dt>문제</dt><dd>여러 사람이 같은 화면을 보므로 자동 갱신이 필요했지만, 30초마다 모든 시트 데이터를 받으면 무거웠습니다.</dd>
+                <dt>해결</dt><dd>서버에 데이터의 버전 값(해시)만 먼저 묻고, 바뀌었을 때만 전체를 받아 다시 그리게 했습니다.</dd>
+                <dt>결과</dt><dd>아무도 수정하지 않는 동안에는 가벼운 확인 요청만 오갑니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>달이 바뀔 때마다 근무일정 날짜를 손으로 고침</h3>
+              <dl>
+                <dt>문제</dt><dd>근무일정 시트는 달이 바뀔 때마다 날짜를 손으로 새로 써야 했습니다.</dd>
+                <dt>해결</dt><dd>매일 새벽 1시에 도는 예약 작업이 달이 바뀐 것을 확인하면, 일요일을 뺀 그 달 날짜로 바꾸고 근무 패턴과 서식은 그대로 둡니다. 6주가 필요한 달은 마지막 주 칸을 자동으로 늘립니다.</dd>
+                <dt>결과</dt><dd>매달 손으로 하던 일이 없어졌습니다.</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Looking Back</h2>
+          <div>
+            <p>팀 안에서만 쓰는 도구라 인증을 단순하게 두었습니다. 운영하면서 코드를 직접 점검해, 정식 서비스로 바꾼다면 필요한 인증, 입력값 처리, API 구조 개선안을 따로 정리해 두었습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="wrap pager" aria-label="다른 프로젝트">
+      <a class="prev" href="woosong-site.html"><small>이전 프로젝트</small><b>우송대학교 강사 양성 누리집</b></a>
+      <a class="next" href="smartvision.html"><small>다음 프로젝트</small><b>SmartVision 시각장애인 보조 기기</b></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!-- 프로젝트 상세: Plantify 스마트 화분 -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plantify 스마트 화분 | 박성주 포트폴리오</title>
+  <meta name="description" content="아두이노와 ESP32-CAM으로 센서 값과 카메라 영상을 웹 페이지에 보여 주는 스마트 화분 팀 프로젝트입니다.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="../index.html">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#solving">Problem Solving</a>
+        <a href="../index.html#projects" aria-current="page">Projects</a>
+        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a class="hide-m" href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="d-head">
+      <div class="wrap">
+        <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
+        <h1>Plantify 스마트 화분</h1>
+        <p class="p-meta"><span class="chip chip-accent">반도체 경진대회 은상</span>2024.09 ~ 2024.12</p>
+        <p class="d-summary">마이크로프로세서 수업에서 3명이 만든 스마트 화분입니다. 아두이노 UNO가 센서 7종을 읽고, ESP32-CAM이 카메라 영상과 센서 값을 웹 페이지로 보여 줍니다. 우송대학교 반도체 경진대회에서 은상을 받았습니다.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>주제와 전체 구조, 일정과 역할 분담, 센서 조사, 코드 보조와 교차 검토, 발표</dd></div>
+          <div><dt>Team</dt><dd>3명</dd></div>
+          <div><dt>Result</dt><dd>우송대학교 반도체 경진대회 은상</dd></div>
+          <div><dt>Stack</dt><dd>Arduino UNO, ESP32-CAM, C++, UART, WebSocket</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="d-visual">
+      <div class="wrap">
+        <div class="shots-2">
+          <figure class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>ESP32가 띄운 웹 페이지</span></div><img src="../assets/img/plantify-web.webp" alt="센서 값 7개 표와 카메라 영상, 재생·촬영·LED 버튼이 있는 웹 페이지" width="564" height="498"></figure>
+          <figure class="frame narrow"><div class="frame-bar"><i></i><i></i><i></i><span>앱 화면 (팀원 담당)</span></div><img src="../assets/img/plantify-app.webp" alt="센서 값을 보여 주는 안드로이드 앱 화면" width="373" height="780"></figure>
+        </div>
+        <div class="c-fig" role="img" aria-label="아두이노가 센서 값을 UART로 ESP32에 보내고, ESP32가 JSON으로 바꿔 웹소켓으로 화면에 보내는 흐름">
+          <p class="fig-label">값이 화면까지 가는 길</p>
+          <div class="flow">
+            <span class="node">아두이노 UNO<small>센서 7종을 1초마다 읽고 보정</small></span><span class="arr">→</span>
+            <span class="node">UART 9600bps<small>값 7개를 쉼표로 묶어 전송</small></span><span class="arr">→</span>
+            <span class="node">ESP32-CAM<small>JSON으로 바꿔 웹소켓으로 전송</small></span><span class="arr">→</span>
+            <span class="node">웹 페이지<small>센서 표와 카메라 영상</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-body">
+      <div class="wrap">
+        <div class="d-section">
+          <h2>Overview</h2>
+          <div>
+            <p>화분 상태를 센서로 읽고, 떨어진 곳에서도 카메라와 수치로 확인하는 것이 목표였습니다. 센서는 조도, 온습도(DHT22), 미세먼지, 토양 수분, 수위, 연기(MQ-2)이고, 급수 펌프와 서보 모터, 조명용 LED 12개를 달았습니다.</p>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>What I Did</h2>
+          <div>
+            <ul class="points">
+              <li>주제를 정하고 전체 구조를 잡음, 일정과 역할 분담</li>
+              <li>센서별 원리와 보정 방법 자료 조사, 센서 라이브러리 수정</li>
+              <li>아두이노 코드 보조와 팀원 코드 교차 검토</li>
+              <li>발표 자료 제작과 발표</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Problem Solving</h2>
+          <div>
+            <article class="issue">
+              <h3>센서 값이 잘못 들어옴 (제 담당)</h3>
+              <dl>
+                <dt>문제</dt><dd>회로에서 읽어 오는 센서 값이 실제와 맞지 않았습니다.</dd>
+                <dt>해결</dt><dd>센서 라이브러리 소스를 직접 고쳐 회로에서 읽는 값이 맞게 나오도록 했습니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>웹 페이지를 보드에 올려야 함</h3>
+              <dl>
+                <dt>문제</dt><dd>ESP32-CAM은 따로 파일 서버가 없어서, 화면 HTML을 펌웨어 안에 넣어야 했습니다.</dd>
+                <dt>해결</dt><dd>HTML을 gzip으로 압축한 뒤 C 바이트 배열로 바꿔 넣었습니다. 변환 도구는 C로 작성해, 파일을 1바이트씩 읽어 16진수로 쓰고 파일 크기를 함께 기록하게 했습니다.</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Looking Back</h2>
+          <div>
+            <p>웹 화면의 버튼으로 펌프와 서보를 움직이는 연결은 마지막 버전에서 완성하지 못했고, 시리얼 명령으로만 제어했습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="wrap pager" aria-label="다른 프로젝트">
+      <a class="prev" href="face-removal.html"><small>이전 프로젝트</small><b>영상 속 특정 인물 제거 프로그램</b></a>
+      <a class="next" href="bank-manager.html"><small>다음 프로젝트</small><b>C언어 은행 관리 프로그램</b></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+  </footer>
+</body>
+</html>

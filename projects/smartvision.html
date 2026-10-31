@@ -1,0 +1,137 @@
+<!-- 프로젝트 상세: SmartVision 시각장애인 보조 기기 -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartVision 시각장애인 보조 기기 | 박성주 포트폴리오</title>
+  <meta name="description" content="Raspberry Pi 5에서 객체 인식과 음성 안내, 음성 명령, QR 메뉴판 읽기를 묶은 캡스톤디자인 2위 프로젝트입니다.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="../index.html">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#solving">Problem Solving</a>
+        <a href="../index.html#projects" aria-current="page">Projects</a>
+        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a class="hide-m" href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="d-head">
+      <div class="wrap">
+        <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
+        <h1>SmartVision 시각장애인 보조 기기</h1>
+        <p class="p-meta"><span class="chip chip-accent">캡스톤디자인 2위</span>2025.03 ~ 2025.06</p>
+        <p class="d-summary">시각장애인이 들고 다니며 앞의 장애물을 방향과 함께 듣고, 식당 QR 메뉴판을 음성으로 들을 수 있게 만든 Raspberry Pi 5 기기입니다. 캡스톤디자인1에서 2위를 했고 과목 학점 A+를 받았습니다.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>대표. 객체 인식, 음성 명령, QR 모드, 라즈베리파이 최적화</dd></div>
+          <div><dt>Team</dt><dd>2명</dd></div>
+          <div><dt>Result</dt><dd>캡스톤디자인 2위, 학점 A+</dd></div>
+          <div><dt>Links</dt><dd><a href="https://github.com/sungJJoo/2025Capstone" target="_blank" rel="noopener">GitHub 저장소</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="d-visual">
+      <div class="wrap">
+        <figure class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>라즈베리파이 시연 화면: QR 코드, 카메라 창, 인식 기록</span></div><img src="../assets/img/smartvision-demo.webp" alt="라즈베리파이 데스크톱에 QR 코드, 카메라 창, 객체 인식 기록 터미널이 떠 있는 시연 화면" width="1144" height="521"></figure>
+        <div class="c-fig" role="img" aria-label="카메라 영상을 YOLOv8n으로 인식해 방향과 함께 음성으로 안내하고, 마이크 음성 명령으로 객체 모드와 QR 모드를 바꾸는 흐름">
+          <p class="fig-label">라즈베리파이 5 한 대에서 도는 흐름 (초록 테두리가 제 담당)</p>
+          <div class="flow">
+            <span class="node">PiCamera2<small>실시간 영상</small></span><span class="arr">→</span>
+            <span class="node me">객체 인식<small>YOLOv8n, 위험 객체 12종, 신뢰도 0.5 이상</small></span><span class="arr">→</span>
+            <span class="node">방향 계산<small>화면을 셋으로 나눔</small></span><span class="arr">→</span>
+            <span class="node">음성 안내<small>gTTS로 만들고 pygame으로 재생</small></span>
+          </div>
+          <div class="flow">
+            <span class="node">마이크</span><span class="arr">→</span>
+            <span class="node me">음성 명령<small>speech_recognition, 한국어</small></span><span class="arr">→</span>
+            <span class="node me">모드 전환<small>객체 모드 / QR 메뉴판 모드</small></span>
+          </div>
+          <div class="flow">
+            <span class="node me">QR 모드<small>pyzbar로 주소를 읽음</small></span><span class="arr">→</span>
+            <span class="node">페이지 본문 추출<small>requests, BeautifulSoup</small></span><span class="arr">→</span>
+            <span class="node">음성으로 읽어 줌</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-body">
+      <div class="wrap">
+        <div class="d-section">
+          <h2>Overview</h2>
+          <div>
+            <p>점자블록이 없거나 장애물이 많은 길, 음성 안내가 없는 키오스크 때문에 시각장애인의 보행과 정보 접근이 어렵다는 문제에서 시작했습니다. 비싼 상용 기기 대신 Raspberry Pi와 공개 모델로 들고 다닐 수 있는 보조 기기를 만드는 것이 목표였습니다.</p>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>What I Did</h2>
+          <div>
+            <ul class="points">
+              <li>객체 인식: 사람, 자전거, 자동차, 버스, 신호등, 정지 표지판 등 12종을 신뢰도 0.5 이상일 때만 안내</li>
+              <li>음성 명령 모드: 객체, 큐알, 메뉴, 모드, 온도, 시간, 다시 안내, 종료</li>
+              <li>QR 모드와 모드 전환: QR 속 주소의 페이지를 받아 본문을 읽어 주는 음성 메뉴판</li>
+              <li>모델 경량화와 라즈베리파이 최적화, 팀원과 함께 전체 코드 관리</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Problem Solving</h2>
+          <div>
+            <article class="issue">
+              <h3>라즈베리파이에서 돌지 않던 인식 코드</h3>
+              <dl>
+                <dt>문제</dt><dd>보드가 10주차에야 도착했습니다. 그전까지 데스크톱에서 만든 인식과 음성 기능이 라즈베리파이에서는 패키지 충돌과 성능 한계로 돌지 않았습니다.</dd>
+                <dt>해결</dt><dd>인식 모델을 가장 가벼운 YOLOv8n으로 바꾸고, 필요한 패키지를 다시 골라 구성했습니다. 발열은 쿨러와 방열판으로 줄이고, 온도를 음성으로 확인하는 명령을 넣었습니다.</dd>
+                <dt>결과</dt><dd>Raspberry Pi 5에서 초당 5~10프레임으로 인식하고, 인식 후 1~2초 안에 음성으로 안내합니다. (캡스톤 최종보고서 기준)</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>안내 음성이 음성 명령으로 잘못 인식됨</h3>
+              <dl>
+                <dt>문제</dt><dd>스피커로 나온 안내 음성이 마이크로 다시 들어가 명령으로 인식됐습니다.</dd>
+                <dt>해결</dt><dd>안내 음성이 재생되는 동안에는 듣기를 멈추고, 재생이 끝난 뒤 다시 듣게 했습니다.</dd>
+                <dt>결과</dt><dd>안내와 음성 명령이 서로 끼어들지 않게 됐습니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>같은 안내가 끝없이 반복됨</h3>
+              <dl>
+                <dt>문제</dt><dd>카메라는 매 프레임 같은 물체를 다시 찾기 때문에, 그대로 두면 같은 문장이 쉬지 않고 반복됩니다.</dd>
+                <dt>해결</dt><dd>안내 사이에 3초 간격을 두고, QR도 같은 내용이면 간격을 둬서 다시 읽게 했습니다. 문장은 "왼쪽에 자전거가 있습니다"처럼 방향과 조사까지 맞췄습니다.</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Looking Back</h2>
+          <div>
+            <p>음성 합성과 음성 인식이 인터넷을 써서, 밖에서 연결이 끊기면 안내가 멈춥니다. 보고서에 오프라인 엔진(pyttsx3, Vosk)을 다음 과제로 적었습니다. 여러 물체가 한꺼번에 잡히면 프레임이 떨어지는 점도 한계로 남았고, 카메라 영상은 저장하거나 전송하지 않도록 했습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="wrap pager" aria-label="다른 프로젝트">
+      <a class="prev" href="scheduler.html"><small>이전 프로젝트</small><b>연구소 업무 스케줄러</b></a>
+      <a class="next" href="face-removal.html"><small>다음 프로젝트</small><b>영상 속 특정 인물 제거 프로그램</b></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+  </footer>
+</body>
+</html>
