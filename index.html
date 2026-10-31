@@ -1,0 +1,279 @@
+<!-- 박성주 포트폴리오 메인 페이지 (GitHub Pages) -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>박성주 — 기획부터 구현·운영까지</title>
+  <meta name="description" content="개발팀 없는 조직에서 서비스의 기획·구현·운영을 혼자 맡아 온 박성주의 포트폴리오입니다.">
+  <meta property="og:title" content="박성주 포트폴리오">
+  <meta property="og:description" content="기획부터 구현·운영까지 혼자 끝내는 개발자">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="#about">소개</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#experience">경력</a>
+        <a href="#skills">기술</a>
+        <a href="#contact">연락</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. 첫 화면 -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Developer · Service Builder</p>
+        <h1>기획부터 구현·운영까지<br><span class="accent">혼자 끝내는</span> 개발자, 박성주입니다.</h1>
+        <p class="lead">
+          개발팀이 없는 조직에서 웹사이트·사내 도구·외부 의뢰 사이트를 직접 기획하고 만들고 운영해 왔습니다.
+          AI 도구를 적극적으로 쓰되, 결과물을 <strong>검증하고 판단을 기록하는 일</strong>은 직접 합니다.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">프로젝트 보기</a>
+          <a class="btn" href="https://github.com/sungJJoo" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <ul class="stats" aria-label="핵심 숫자">
+          <li><b>1년+</b><span>AI 연구원 실무<br>(2025.07~)</span></li>
+          <li><b>103</b><span>연구소 사이트<br>커밋 수</span></li>
+          <li><b>34</b><span>외부 의뢰 사이트<br>제작 화면 수</span></li>
+          <li><b>350+</b><span>개인 프로젝트<br>자동 테스트</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. 소개 -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 class="sec-title">이렇게 일합니다</h2>
+        <div class="cards three">
+          <article class="card">
+            <span class="num">01</span>
+            <h3>끝까지 혼자 책임집니다</h3>
+            <p>요구사항 정리 → 화면 설계 → 개발 → 배포 → 운영 문서까지 한 사람이 맡는 환경에서 일했습니다. 프로젝트마다 기능명세서와 개발일지를 산출물로 남깁니다.</p>
+          </article>
+          <article class="card">
+            <span class="num">02</span>
+            <h3>AI는 쓰고, 판단은 제가 합니다</h3>
+            <p>Claude Code와 함께 개발하면서 계획·체크리스트·결정 기록을 먼저 씁니다. 자동 주문 기능을 일부러 막거나, 출처가 불확실한 서체를 빼는 식으로 "하지 않을 것"도 정합니다.</p>
+          </article>
+          <article class="card">
+            <span class="num">03</span>
+            <h3>숫자로 확인합니다</h3>
+            <p>"좋아졌다" 대신 페이지 용량 1,766→578KB, 명도 대비 9.7:1, 검증 항목 38개처럼 확인 가능한 숫자로 결과를 남깁니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 프로젝트 -->
+    <section id="projects" class="section alt">
+      <div class="wrap">
+        <h2 class="sec-title">대표 프로젝트</h2>
+        <p class="sec-sub">실무 3개 · 개인 2개 · 학부 1개</p>
+
+        <article class="project">
+          <div class="thumb t-blue" aria-hidden="true">
+            <span class="thumb-k">외부 의뢰</span>
+            <span class="thumb-n">34<small>화면</small></span>
+            <span class="thumb-s">사용자 21 · 관리자 13</span>
+          </div>
+          <div class="p-body">
+            <p class="p-meta">2026.08 – 2026.09 · 실무 (외부 의뢰) · 개발 전담</p>
+            <h3>우송대학교 RISE U-늘봄 강사 양성 누리집</h3>
+            <p>대학 사업단의 강사 양성 과정 신청·관리 사이트. 같은 사이트를 <b>프로토타입 · 퍼블리싱 산출물 · 동작 서버</b> 세 가지 형태로 제작했습니다.</p>
+            <ul class="points">
+              <li>교육생/관리자 <b>세션 분리 인증</b>, bcrypt 비밀번호, 승인·정지 상태별 로그인 차단</li>
+              <li>게시판 4종·프로그램·신청자 CRUD, 파일 업로드(한글 파일명), 신청자 <b>엑셀 내보내기</b></li>
+              <li>정원 초과 차단, 접수 기간 검증, 모집 상태를 DB 컬럼이 아닌 <b>날짜 계산</b>으로 처리해 동기화 버그 제거</li>
+              <li>기존 데이터를 지우지 않는 컬럼 마이그레이션, 기능명세서 620줄 · 검증 38항목</li>
+            </ul>
+            <p class="decision"><b>판단 기록</b> JS로 그리던 표를 정적 마크업으로 되돌림 — 이후 담당자가 JSP로 옮길 때 구조가 HTML에 보여야 하기 때문.</p>
+            <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>Node.js · Express</li><li>SQLite</li><li>EJS</li><li>bcrypt · multer · exceljs</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb t-green" aria-hidden="true">
+            <span class="thumb-k">모바일 전송량</span>
+            <span class="thumb-n">-87<small>%</small></span>
+            <span class="thumb-s">1,766 → 578KB</span>
+          </div>
+          <div class="p-body">
+            <p class="p-meta">2026.06 – 2026.09 · 실무 · 기획·디자인·개발·운영 단독</p>
+            <h3>FOX AI 연구소 공식 사이트</h3>
+            <p>프레임워크 없이 정적 HTML로 구축한 연구소 소개 사이트. 6단계·21작업일·103커밋으로 혼자 구축하고 본사 사이트군에 통합했습니다.</p>
+            <ul class="points">
+              <li>히어로 시안 9종 비교 후 확정, AI 생성 이미지를 <b>실제 활동 사진으로 전면 교체</b>(신뢰도)</li>
+              <li>WebP 반응형 이미지, 한글 폰트 서브셋 자체 호스팅 <b>1,211 → 222KB</b></li>
+              <li>명도 대비 9.7:1, 터치 영역 44px 등 <b>WCAG AA</b> 기준 점검</li>
+              <li>맞춤 추천 기능을 운영 중인 14개 과정 데이터 기준으로 재설계</li>
+            </ul>
+            <p class="decision"><b>판단 기록</b> 라이선스가 불확실한 제목 서체를 먼저 제거하고, SIL OFL 확인 후 고지 파일과 함께 복원.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub Pages</li><li>웹 접근성</li><li>성능 최적화</li></ul>
+            <p class="links"><a href="https://ai.foxconnect.kr" target="_blank" rel="noopener">ai.foxconnect.kr ↗</a></p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb t-amber" aria-hidden="true">
+            <span class="thumb-k">사내 도구</span>
+            <span class="thumb-n">PWA</span>
+            <span class="thumb-s">Apps Script + Sheets</span>
+          </div>
+          <div class="p-body">
+            <p class="p-meta">2026 · 실무 · 사내 업무 도구</p>
+            <h3>FOX AI 업무 담당표 대시보드</h3>
+            <p>팀의 업무·당번 로테이션을 관리하는 웹앱. 별도 서버 없이 Google Sheets를 데이터 저장소로 사용했습니다.</p>
+            <ul class="points">
+              <li>로테이션 캘린더, 시트와 양방향 동기화, 멤버 추가·수정·삭제</li>
+              <li>낙관적 UI 업데이트, 변경이 없으면 다시 그리지 않는 해시 비교, 요청 재시도</li>
+              <li>서비스 워커로 설치형 앱(PWA) 지원</li>
+              <li>운영 후 직접 보안·구조 점검을 해 <b>프로덕션 전환 시 개선안</b>(인증, API 설계, 출력 이스케이프)을 정리</li>
+            </ul>
+            <ul class="tags"><li>JavaScript</li><li>Google Apps Script</li><li>Google Sheets</li><li>PWA</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb t-ink" aria-hidden="true">
+            <span class="thumb-k">자동 테스트</span>
+            <span class="thumb-n">350<small>+</small></span>
+            <span class="thumb-s">Python 3,000줄+</span>
+          </div>
+          <div class="p-body">
+            <p class="p-meta">2026.09 – 현재 · 개인 프로젝트 · 운용 중</p>
+            <h3>규칙 기반 투자 판정 시스템</h3>
+            <p>증권사 Open API로 계좌·시세를 읽고, 직접 정한 규칙으로 매수·매도 신호를 판정하는 로컬 시스템. 판정과 리포트만 하고 <b>주문은 하지 않습니다.</b></p>
+            <ul class="points">
+              <li>OAuth2 토큰 캐시·호출 제한을 고려한 API 클라이언트</li>
+              <li>규칙 우선순위 엔진 — "원인을 모르는 하락은 사지 않는다"를 코드와 테스트로 강제</li>
+              <li>7개 탭 웹 UI, PDF 리포트 자동 생성, 작업 스케줄러로 정해진 시간 실행</li>
+              <li>로컬 서버 보안: 세션 토큰, Host 검증, 파일 서빙 화이트리스트</li>
+            </ul>
+            <p class="decision"><b>판단 기록</b> 자동매매는 구현할 수 있었지만 의도적으로 막음 — 검증되지 않은 규칙에 돈을 맡기지 않기 위해.</p>
+            <ul class="tags"><li>Python</li><li>REST API</li><li>OAuth2</li><li>자동 테스트</li><li>HTML UI</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb t-violet" aria-hidden="true">
+            <span class="thumb-k">교육 프로그램</span>
+            <span class="thumb-n">24<small>차시</small></span>
+            <span class="thumb-s">기획 · 콘텐츠 · 운영</span>
+          </div>
+          <div class="p-body">
+            <p class="p-meta">2025.07 – 현재 · 실무 · 기획·운영</p>
+            <h3>AI·코딩 교육 프로그램 기획과 콘텐츠 자동화</h3>
+            <p>초등학생 대상 프로그램을 기획하고 현장에서 운영했습니다. 반복 업무는 직접 도구를 만들어 자동화했습니다.</p>
+            <ul class="points">
+              <li>Minecraft Education 프로젝트 수업 24차시(12주) — 스토리·역할 설계와 코딩 연결</li>
+              <li>초등학교 생성형 AI 캠프(5차시) 운영안·포스터 작성, 학교 부스형 코딩 체험 공동 제안</li>
+              <li>여름 행사 4막 구성 기획·운영, 학부모 피드백 PPT 자동 생성(python-pptx)</li>
+              <li>HTML 기반 모션그래픽을 MP4로 렌더링해 수업용 개념 설명 영상 제작</li>
+            </ul>
+            <ul class="tags"><li>기획</li><li>python-pptx</li><li>Minecraft Education</li><li>LEGO Spike</li><li>HTML → MP4</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb t-teal" aria-hidden="true">
+            <span class="thumb-k">학부 프로젝트</span>
+            <span class="thumb-n">YOLOv8</span>
+            <span class="thumb-s">Raspberry Pi 5</span>
+          </div>
+          <div class="p-body">
+            <p class="p-meta">학부 · 팀 프로젝트</p>
+            <h3>SmartVision — 시각장애인 보조 기기</h3>
+            <p>Raspberry Pi 5에서 객체를 인식하고 음성으로 알려주는 보조 기기. 엣지 기기에서 돌아가도록 경량 모델(YOLOv8n)을 사용했습니다.</p>
+            <ul class="tags"><li>Python</li><li>YOLOv8n</li><li>gTTS</li><li>Raspberry Pi</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. 경력·학력 -->
+    <section id="experience" class="section">
+      <div class="wrap">
+        <h2 class="sec-title">경력 · 학력</h2>
+        <ol class="timeline">
+          <li>
+            <p class="t-date">2025.07 – 현재</p>
+            <h3>폭스러닝센터 FOX AI 연구소 <span class="role">AI 연구원</span></h3>
+            <ul>
+              <li>연구소 공식 사이트 기획·구축·운영 (본사 사이트군 통합)</li>
+              <li>사내 업무 담당표 웹앱 개발, 외부 의뢰 대학 사이트 개발</li>
+              <li>AI·코딩 교육 프로그램 기획·콘텐츠 제작·현장 운영, 운영 문서·기획안 작성</li>
+              <li>연구소 브랜드 독립안을 기준 3가지로 정리해 대표 승인</li>
+            </ul>
+          </li>
+          <li>
+            <p class="t-date">학부</p>
+            <h3>우송대학교 <span class="role">컴퓨터정보보안 · 컴퓨터공학 계열</span></h3>
+            <ul>
+              <li>4학년 학점 3.81 / 4.5</li>
+              <li>팀 프로젝트 리더 — Plantify 은상 등 프로젝트 수상</li>
+            </ul>
+          </li>
+          <li>
+            <p class="t-date">2018 – 2020</p>
+            <h3>Minecraft 게임 서버 운영 <span class="role">개인</span></h3>
+            <ul>
+              <li>Java 플러그인 개발, 동시 접속 약 50~80명 규모 서버 운영</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. 기술 -->
+    <section id="skills" class="section alt">
+      <div class="wrap">
+        <h2 class="sec-title">기술</h2>
+        <div class="skills">
+          <div class="skill-group">
+            <h3>Frontend</h3>
+            <ul class="tags"><li>HTML · CSS</li><li>JavaScript</li><li>TypeScript</li><li>Next.js</li><li>반응형 · 웹 접근성</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Backend · Data</h3>
+            <ul class="tags"><li>Node.js · Express</li><li>SQLite</li><li>Python</li><li>REST · OAuth2</li><li>Google Apps Script</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Tools · Ops</h3>
+            <ul class="tags"><li>Git · GitHub Pages</li><li>Vercel</li><li>Claude Code</li><li>작업 스케줄러</li><li>자동 테스트</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Learning</h3>
+            <ul class="tags"><li>Java · Spring Boot</li><li>JPA</li><li>알고리즘</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 연락 -->
+    <section id="contact" class="section contact">
+      <div class="wrap">
+        <h2 class="sec-title">연락</h2>
+        <p class="lead">함께 일할 기회를 기다리고 있습니다. 편하게 연락 주세요.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/sungJJoo" target="_blank" rel="noopener">GitHub @sungJJoo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주 · 글꼴 Pretendard (SIL OFL 1.1)</div>
+  </footer>
+  <script src="assets/main.js"></script>
+</body>
+</html>
