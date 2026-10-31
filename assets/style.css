@@ -29,7 +29,6 @@ a { color: inherit; }
 ul, ol { list-style: none; }
 img { display: block; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
-.narrow { max-width: 760px; }
 
 /* 아이콘: Phosphor SVG를 HTML에 직접 넣어 글자색(currentColor)을 따름 */
 .ico { display: inline-block; flex: none; vertical-align: middle; }
@@ -53,8 +52,8 @@ img { display: block; }
 
 /* 첫 화면 */
 .hero { padding: 88px 0 80px; }
-.hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center; }
-.hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.32; font-weight: 800; letter-spacing: -0.03em; }
+.hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1.35; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; }
 .hero-sub b { color: var(--ink); }
 .hero-sub { margin-top: 22px; max-width: 34em; font-size: 18px; color: var(--sub); }
 .profile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 8px 28px; box-shadow: 0 10px 30px -18px rgba(11, 122, 85, 0.35); }
@@ -76,9 +75,6 @@ img { display: block; }
 .section.tint { background: var(--tint); }
 .section h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
 .lead { margin-top: 8px; color: var(--sub); }
-
-/* 소개 */
-.prose { margin-top: 24px; display: grid; gap: 18px; font-size: 18px; color: #3f3f46; line-height: 1.85; }
 
 /* 대표 프로젝트 사례 */
 .case { margin-top: 40px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 40px; }
@@ -119,7 +115,9 @@ blockquote p { font-size: 16px; line-height: 1.7; color: var(--ink); }
 .m-body > p:first-child { color: #3f3f46; }
 .m-body ul { margin-top: 12px; display: grid; gap: 6px; }
 .m-body blockquote { margin-top: 16px; }
+.m-body ul + p:not(.m-stack) { margin-top: 12px; color: #3f3f46; }
 .m-stack { margin-top: 14px; font-size: 14px; color: var(--muted); }
+.m-link { margin-top: 6px; }
 
 /* 기술 */
 .skills { margin-top: 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -165,6 +163,8 @@ blockquote p { font-size: 16px; line-height: 1.7; color: var(--ink); }
 
 /* 태블릿: 1024px 아래 */
 @media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .profile { max-width: 560px; }
   .skills { grid-template-columns: repeat(2, 1fr); }
   .case-grid { grid-template-columns: 1fr; gap: 28px; }
 }
@@ -174,11 +174,11 @@ blockquote p { font-size: 16px; line-height: 1.7; color: var(--ink); }
   .nav nav { gap: 16px; font-size: 14px; }
   .hero { padding: 56px 0 64px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero h1 br { display: none; }
   .hero-sub { font-size: 16px; }
   .profile { padding: 4px 20px; }
   .section { padding: 64px 0; }
   .section h2 { font-size: 25px; }
-  .prose { font-size: 16px; }
   .case { padding: 24px 20px; }
   .case-head h3 { font-size: 21px; }
   .more summary { grid-template-columns: 1fr 20px; gap: 4px 12px; padding: 18px 0; }
