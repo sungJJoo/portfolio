@@ -6,7 +6,9 @@
 사이트: https://sungjjoo.github.io/portfolio/
 
 ## 구성
-- `index.html`: 한 페이지 포트폴리오 (프로젝트, 경력과 학력, 기술, 수상, 연락)
+- `index.html`: 메인 페이지 (세 줄 요약, 경력, 문제 해결 4건, 프로젝트 목록, 기술, 학력과 수상, 연락)
+- `projects/`: 프로젝트 상세 페이지 7개
+- `assets/img/`: 실제 화면 캡처 (WebP)
 - `assets/style.css`: 밝은 테마, 1024px과 768px 기준 반응형
 - `assets/fonts/`: Pretendard Variable 동적 서브셋 (SIL OFL 1.1)
 - `assets/icons/`: 기술 로고 Devicon, 화면 아이콘 Phosphor (둘 다 MIT)

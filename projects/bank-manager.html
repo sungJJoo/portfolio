@@ -1,0 +1,115 @@
+<!-- 프로젝트 상세: C언어 은행 관리 프로그램 -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C언어 은행 관리 프로그램 | 박성주 포트폴리오</title>
+  <meta name="description" content="Codyssey C언어 과정에서 3명이 3주 동안 만든 콘솔 은행 관리 프로그램입니다.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="../index.html">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#solving">Problem Solving</a>
+        <a href="../index.html#projects" aria-current="page">Projects</a>
+        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a class="hide-m" href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="d-head">
+      <div class="wrap">
+        <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
+        <h1>C언어 은행 관리 프로그램</h1>
+        <p class="p-meta"><span class="chip chip-accent">장려상</span>2024.12 (3주)</p>
+        <p class="d-summary">이노베이션 아카데미 Codyssey C언어 과정에서 3명이 3주 동안 만든 콘솔 프로그램입니다. 외부 라이브러리 없이 C 표준 함수와 Windows 콘솔 기능만 썼고, 우송대학교 첨단산업인재양성 경진대회에서 장려상을 받았습니다.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>팀장</dd></div>
+          <div><dt>Team</dt><dd>3명</dd></div>
+          <div><dt>Scale</dt><dd>C 1,286줄 (파일 하나)</dd></div>
+          <div><dt>Result</dt><dd>첨단산업인재양성 경진대회 장려상</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="d-visual">
+      <div class="wrap">
+        <figure class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>사용자 메뉴 (발표 자료 화면)</span></div><img src="../assets/img/bank-console.webp" alt="계좌 조회, 입금, 출금, 송금, 계좌 추가, 로그아웃 메뉴가 있는 콘솔 화면" width="1030" height="575"></figure>
+        <div class="c-fig" role="img" aria-label="회원가입과 로그인, 계좌 개설, 입출금과 송금, 거래 내역, JSON 파일 저장으로 이어지는 기능 구성">
+          <p class="fig-label">기능 구성</p>
+          <div class="flow">
+            <span class="node">회원가입, 로그인<small>아이디 중복 검사, 비밀번호 가림</small></span><span class="arr">→</span>
+            <span class="node">계좌 개설<small>은행 코드 + 연도 + 난수, 1인 5개까지</small></span><span class="arr">→</span>
+            <span class="node">입금, 출금, 송금<small>잔액 확인, 같은 계좌 송금 차단</small></span><span class="arr">→</span>
+            <span class="node">거래 내역<small>계좌마다 최근 20건</small></span>
+          </div>
+          <div class="flow">
+            <span class="node me">JSON 파일 저장과 불러오기<small>DB 없이 읽기와 쓰기를 직접 구현</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-body">
+      <div class="wrap">
+        <div class="d-section">
+          <h2>Overview</h2>
+          <div>
+            <p>C언어 과정에서 배운 구조체, 배열, 파일 입출력만으로 은행 업무를 흉내 내는 프로그램을 만들었습니다. 방향키로 메뉴를 고르고 ESC로 뒤로 가는 콘솔 화면을 커서 위치를 지정해 직접 그렸습니다.</p>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Key Features</h2>
+          <div>
+            <ul class="points">
+              <li>회원가입(아이디 중복 검사, 비밀번호 가림), 로그인</li>
+              <li>계좌 개설: 하나은행·농협은행 코드와 연도, 난수로 계좌번호 생성</li>
+              <li>입금, 출금, 송금: 잔액 확인, 받는 사람과 계좌 선택, 같은 계좌로 보내기 차단</li>
+              <li>거래 내역: 계좌마다 최근 20건을 남기고 오래된 것부터 밀어냄</li>
+              <li>저장: JSON 형식 읽기와 쓰기를 직접 짜서 파일에 저장하고 다시 불러옴</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Iterations</h2>
+          <div>
+            <p>3주 동안 주마다 고친 것을 발표 자료에 정리했습니다.</p>
+            <ul class="points">
+              <li>회원가입 때 아이디 중복 방지, 비밀번호를 * 로 가려 표시</li>
+              <li>화면 초기화 부분을 고쳐 사양이 낮은 컴퓨터에서도 원활하게 동작</li>
+              <li>송금할 때 계좌 번호를 검사해 받는 계좌가 겹치지 않게 함</li>
+              <li>메뉴 추가</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Looking Back</h2>
+          <div>
+            <p>비밀번호를 그대로 저장한 점이 가장 큰 약점이었습니다. 발표 때 다음 과제로 DB 적용, 계좌 종류 추가, 관리자 모드, 파일 분할, 보안 수정을 적었습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="wrap pager" aria-label="다른 프로젝트">
+      <a class="prev" href="plantify.html"><small>이전 프로젝트</small><b>Plantify 스마트 화분</b></a>
+      <a class="next" href="../index.html#projects"><small>목록으로</small><b>전체 프로젝트</b></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+  </footer>
+</body>
+</html>

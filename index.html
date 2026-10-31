@@ -5,10 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>박성주 포트폴리오</title>
-  <meta name="description" content="개발자가 한 명뿐인 교육 회사에서 연구소 사이트, 사내 업무 도구, 대학이 의뢰한 사이트를 만든 박성주의 포트폴리오입니다.">
+  <meta name="description" content="연구소 공식 사이트와 관리자 CMS를 만들어 운영하고, 대학 의뢰 사이트를 설계부터 서버까지 개발한 웹 개발자 박성주의 포트폴리오입니다.">
   <meta property="og:title" content="박성주 포트폴리오">
-  <meta property="og:description" content="회사에 개발자가 저 하나라서, 기획부터 배포까지 직접 합니다.">
+  <meta property="og:description" content="실제로 쓰이는 웹을 끝까지 만드는 개발자입니다.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://sungjjoo.github.io/portfolio/assets/img/fox-site.webp">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="assets/style.css">
@@ -18,29 +19,35 @@
     <div class="wrap nav-inner">
       <a class="logo" href="#top">박성주</a>
       <nav aria-label="주요 메뉴">
-        <a href="#work">Projects</a>
-        <a href="#career">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="#experience">Experience</a>
+        <a href="#solving">Problem Solving</a>
+        <a href="#projects">Projects</a>
+        <a class="hide-m" href="#skills">Skills</a>
+        <a class="hide-m" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <!-- 첫 화면: 왼쪽 인사말, 오른쪽 프로필 정보 -->
+    <!-- 첫 화면: 한 줄 소개와 숫자가 들어간 세 줄 요약 -->
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1>회사에 개발자가 저 하나라서, <br>기획부터 배포까지 직접 합니다.</h1>
-          <p class="hero-sub"><b>개발자 박성주</b>입니다. 2025년 7월부터 연구소 사이트와 사내 업무 도구를 만들었고, 대학이 의뢰한 강사 양성 사이트를 설계부터 서버까지 혼자 개발했습니다.</p>
+          <p class="hero-role">웹 개발자 박성주</p>
+          <h1>실제로 쓰이는 웹을 끝까지 만드는 개발자입니다.</h1>
+          <ul class="summary">
+            <li><b>연구소 공식 사이트와 관리자 CMS</b>를 기획부터 운영까지 맡아 2026년 6월부터 운영 중 (커밋 152개)</li>
+            <li><b>대학 의뢰 강사 양성 사이트</b>를 기능명세서 620줄로 정리한 뒤 화면 34개와 Express·SQLite 서버까지 개발, 서버 기능 38개 항목 점검</li>
+            <li>모바일 이미지 전송량 <b>87% 절감</b>, 시각장애인 보조 기기로 <b>캡스톤디자인 2위</b> (2인 팀 대표)</li>
+          </ul>
           <div class="actions">
-            <a class="btn btn-solid" href="#work">View Projects</a>
-            <a class="btn btn-line" href="mailto:shim.never60@gmail.com"><svg class="ico ico-mail" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg>Email Me</a>
+            <a class="btn btn-solid" href="#solving">Problem Solving</a>
+            <a class="btn btn-line" href="mailto:shim.never60@gmail.com"><svg class="ico" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg>Email</a>
+            <a class="btn btn-line" href="https://github.com/sungJJoo" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></svg>GitHub</a>
           </div>
         </div>
         <aside class="profile" aria-label="프로필">
           <dl>
-            <div><dt>Name</dt><dd>박성주</dd></div>
             <div><dt>Now</dt><dd>폭스러닝센터 FOX AI 연구소<br>AI 연구원 (2025.07 ~)</dd></div>
             <div><dt>Edu</dt><dd>우송대학교 컴퓨터정보보안전공<br>부전공 비즈니스창업융합부</dd></div>
             <div><dt>Email</dt><dd><a href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a></dd></div>
@@ -50,233 +57,299 @@
       </div>
     </section>
 
-    <!-- 프로젝트: 대표 2개는 사례 형식, 나머지는 펼쳐 보는 목록 -->
-    <section id="work" class="section tint">
+    <!-- 경력: 회사에서 만든 것과 그 밖의 일 -->
+    <section id="experience" class="section tint">
       <div class="wrap">
-        <h2>Projects</h2>
-
-        <article class="case">
-          <div class="case-head">
-            <p class="case-kind">Client Work</p>
-            <h3>우송대학교 RISE U-늘봄 강사 양성 누리집</h3>
+        <h2>Experience</h2>
+        <div class="exp">
+          <div class="exp-head">
+            <p class="exp-date">2025.07 - 현재</p>
+            <h3>폭스러닝센터 FOX AI 연구소</h3>
+            <p>AI 연구원 (2025.07 - 2025.11 인턴)</p>
           </div>
-          <div class="case-grid">
-            <dl class="facts">
-              <div><dt>Period</dt><dd>2026.08 - 2026.09</dd></div>
-              <div><dt>Role</dt><dd>설계와 개발 전담</dd></div>
-              <div><dt>Scale</dt><dd>사용자 화면 21개, 관리자 화면 13개<br>코드 약 6,700줄</dd></div>
-              <div><dt>Testing</dt><dd>기능명세서 620줄, 점검 항목 38개</dd></div>
-              <div><dt>Stack</dt><dd class="logos">
-                <img src="assets/icons/nextjs.svg" alt="" width="22" height="22">Next.js
-                <img src="assets/icons/typescript.svg" alt="" width="22" height="22">TypeScript
-                <img src="assets/icons/nodejs.svg" alt="" width="22" height="22">Node.js
-                <img src="assets/icons/express.svg" alt="" width="22" height="22">Express
-                <img src="assets/icons/sqlite.svg" alt="" width="22" height="22">SQLite
-              </dd></div>
-            </dl>
-            <div class="case-body">
-              <p>대학 사업단이 강사 양성 과정을 알리고 신청을 받는 사이트입니다. 화면 확인용 프로토타입(Next.js), 다른 개발자에게 넘길 HTML 퍼블리싱 파일, 실제로 돌아가는 서버(Express, SQLite)까지 세 가지로 만들었습니다.</p>
-              <ul>
-                <li>교육생과 관리자 로그인을 분리하고, 승인 전이거나 정지된 계정은 로그인을 막았습니다.</li>
-                <li>게시판 4종과 과정, 신청자 관리에 파일 첨부와 신청자 엑셀 내려받기를 붙였습니다.</li>
-                <li>정원을 넘는 신청, 접수 기간 밖의 신청, 신청 인원보다 작은 정원 수정을 서버에서 막았습니다.</li>
-                <li>모집 상태를 DB에 저장하지 않고 날짜로 계산하게 바꿔 상태가 어긋나는 문제를 없앴습니다.</li>
-              </ul>
-              <blockquote>
-                <p>표를 JavaScript로 그리던 코드를 일반 HTML로 되돌렸습니다. 나중에 이 화면을 JSP로 옮길 사람이 구조를 바로 볼 수 있어야 했기 때문입니다.</p>
-              </blockquote>
-            </div>
+          <div class="exp-body">
+            <h4>만든 것</h4>
+            <ul>
+              <li><a href="projects/fox-ai-lab.html">연구소 공식 사이트와 관리자 CMS</a> 2026.06 ~ 운영 중. 학부모가 보는 사이트 7페이지와 직원이 내용을 고치는 CMS</li>
+              <li><a href="projects/scheduler.html">연구소 업무 스케줄러</a> 2026.05 ~ 07. 팀의 담당표, 업무, 근무일정을 한 화면에 모은 웹앱</li>
+              <li><a href="projects/woosong-site.html">우송대학교 강사 양성 누리집</a> 2026.08 ~ 09. 외부 대학 의뢰, 화면 34개와 동작 서버</li>
+            </ul>
+            <h4>그 밖의 일</h4>
+            <ul>
+              <li>초등 AI·코딩 교육 프로그램 기획과 현장 운영. Minecraft Education 「마을을 지켜라!」 12주 24차시, LEGO SPIKE 신규 과정</li>
+              <li>학부모 피드백 PPT 자동 생성(python-pptx), HTML로 만든 수업용 개념 설명 영상</li>
+              <li>광주 서구청과 행복한 모두 콘서트에서 연구소 프로그램 발표</li>
+              <li>연구소 브랜드 독립안을 세 가지 기준으로 정리해 대표 승인</li>
+            </ul>
           </div>
-        </article>
-
-        <article class="case">
-          <div class="case-head">
-            <p class="case-kind">In-house</p>
-            <h3>FOX AI 연구소 공식 사이트</h3>
-            <a class="ext" href="https://ai.foxconnect.kr" target="_blank" rel="noopener">ai.foxconnect.kr<svg class="ico ico-out" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></a>
-          </div>
-          <div class="case-grid">
-            <dl class="facts">
-              <div><dt>Period</dt><dd>2026.06 - 2026.09</dd></div>
-              <div><dt>Role</dt><dd>기획, 디자인, 개발, 운영</dd></div>
-              <div><dt>Scale</dt><dd>6단계, 21작업일, 커밋 103개</dd></div>
-              <div><dt>Result</dt><dd>페이지 용량 1,766KB에서 578KB로<br>글꼴 1,211KB에서 222KB로</dd></div>
-              <div><dt>Stack</dt><dd class="logos">
-                <img src="assets/icons/html5.svg" alt="" width="22" height="22">HTML
-                <img src="assets/icons/css3.svg" alt="" width="22" height="22">CSS
-                <img src="assets/icons/javascript.svg" alt="" width="22" height="22">JavaScript
-                <img src="assets/icons/github.svg" alt="" width="22" height="22">GitHub Pages
-              </dd></div>
-            </dl>
-            <div class="case-body">
-              <p>연구소 프로그램을 소개하는 사이트입니다. 프레임워크 없이 정적 HTML로 혼자 만들었고, 마지막에 본사 사이트들과 메뉴를 묶어 통합했습니다.</p>
-              <ul>
-                <li>첫 화면 시안을 9가지 만들어 비교한 뒤 하나로 정했습니다.</li>
-                <li>이미지를 WebP로 바꾸고 화면 크기별로 나눠, 모바일에서 받는 용량을 87% 줄였습니다.</li>
-                <li>한글 글꼴을 필요한 글자만 남겨 직접 올렸고, 글자 대비와 터치 영역을 웹 접근성 AA 기준에 맞췄습니다.</li>
-                <li>막연하던 맞춤 추천 기능을 실제 운영 중인 14개 과정 기준으로 다시 짰습니다.</li>
-              </ul>
-              <blockquote>
-                <p>처음 넣었던 AI 생성 이미지를 실제 수업 사진으로 모두 바꿨습니다. 학부모가 보는 사이트라서 실제 수업 모습을 보여 주는 쪽이 맞다고 판단했습니다.</p>
-              </blockquote>
-            </div>
-          </div>
-        </article>
-
-        <h3 class="sub-title">More Work</h3>
-        <div class="more">
-          <details>
-            <summary>
-              <span class="m-year">2026</span>
-              <span class="m-title">업무 담당표 대시보드</span>
-              <span class="m-kind">Internal Tool</span>
-              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </summary>
-            <div class="m-body">
-              <p>팀의 업무와 당번 순서를 한 화면에서 보는 웹앱입니다. 서버를 따로 두지 않고 Google Sheets를 저장소로 썼습니다.</p>
-              <ul>
-                <li>순번 달력, 시트와 양쪽 방향 동기화, 팀원 추가와 수정</li>
-                <li>저장을 기다리지 않고 화면을 먼저 바꾸는 방식, 바뀐 게 없으면 다시 그리지 않는 처리</li>
-                <li>운영해 본 뒤 직접 점검해서, 정식 서비스로 바꿀 때 필요한 인증과 API 개선안을 정리</li>
-              </ul>
-              <p class="m-stack">JavaScript, Google Apps Script, Google Sheets, PWA</p>
-            </div>
-          </details>
-          <details>
-            <summary>
-              <span class="m-year">2025 ~</span>
-              <span class="m-title">AI·코딩 교육 프로그램과 수업 자료</span>
-              <span class="m-kind">In-house</span>
-              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </summary>
-            <div class="m-body">
-              <p>초등학생 대상 프로그램을 기획하고 현장에서 운영했습니다. 반복되는 일은 도구를 만들어 줄였습니다.</p>
-              <ul>
-                <li>Minecraft Education 「마을을 지켜라!」 12주 24차시 프로그램 제작. 늘봄 23명, 베이직 6명이 신청했고 학부모 반응은 모두 긍정적이었습니다.</li>
-                <li>LEGO SPIKE Essential 관찰력 챌린지 프로그램을 연구소 신규 과정으로 제작</li>
-                <li>초등학교 생성형 AI 캠프 운영안과 포스터, 학교 부스형 코딩 체험 공동 제안</li>
-                <li>학부모 피드백 PPT를 python-pptx로 자동 생성</li>
-                <li>HTML로 만든 모션그래픽을 MP4로 뽑아 수업용 개념 설명 영상 제작</li>
-                <li>행사장 화면용 유튜브 자동 재생과 전체 화면 전환을 작업 스케줄러로 자동화</li>
-              </ul>
-              <p class="m-stack">python-pptx, Minecraft Education, LEGO Spike, HTML</p>
-            </div>
-          </details>
-          <details>
-            <summary>
-              <span class="m-year">2025</span>
-              <span class="m-title">SmartVision 시각장애인 보조 기기</span>
-              <span class="m-kind">Team Lead</span>
-              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </summary>
-            <div class="m-body">
-              <p>시각장애인이 들고 다니며 앞의 장애물을 듣고, 식당 QR 메뉴판을 음성으로 들을 수 있게 만든 Raspberry Pi 5 기기입니다. 2인 팀의 대표를 맡았고 캡스톤디자인에서 2위를 했습니다.</p>
-              <ul>
-                <li>YOLOv8n으로 사람, 차량, 신호등 등 12종을 찾고, 화면을 셋으로 나눠 "왼쪽에 자전거가 있습니다"처럼 방향과 함께 안내</li>
-                <li>"큐알", "객체", "온도" 같은 음성 명령으로 모드 전환. 안내 음성이 마이크로 다시 들어가지 않게 재생 중에는 인식을 멈춤</li>
-                <li>QR 코드 주소에서 본문을 뽑아 읽어 주는 음성 메뉴판. 메뉴 페이지와 QR 이미지는 Flask 서버로 생성</li>
-                <li>보드가 10주차에 도착해 그때까지 데스크톱에서 만든 코드를 옮겼고, 그대로는 돌지 않아 모델과 패키지를 가볍게 바꿔 초당 5~10프레임으로 맞춤</li>
-              </ul>
-              <p>제 담당은 객체 인식, 음성 명령과 QR 모드 전환, 라즈베리파이 최적화였습니다.</p>
-              <p class="m-stack">Python, YOLOv8n, OpenCV, gTTS, Flask, Raspberry Pi 5</p>
-              <p class="m-link"><a class="ext" href="https://github.com/sungJJoo/2025Capstone" target="_blank" rel="noopener">github.com/sungJJoo/2025Capstone<svg class="ico ico-out" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></a></p>
-            </div>
-          </details>
-          <details>
-            <summary>
-              <span class="m-year">2024</span>
-              <span class="m-title">영상 속 특정 인물 제거 프로그램</span>
-              <span class="m-kind">Team Project</span>
-              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </summary>
-            <div class="m-body">
-              <p>영상에 나오는 사람 중 사용자가 고른 한 명만 지우고 배경을 채워 넣는 웹 프로그램입니다. 2024년 6월부터 9월까지 6명이 만들었고, 저는 얼굴 인식과 YOLOv8 모델을 맡았습니다.</p>
-              <ul>
-                <li>InsightFace로 프레임마다 얼굴을 찾고, 얼굴 벡터의 코사인 유사도로 같은 사람끼리 묶어 인물 ID를 만듦</li>
-                <li>인물마다 대표 벡터를 이동 평균으로 갱신해 각도나 표정이 바뀌어도 같은 ID로 유지하고, 가장 잘 인식된 얼굴을 골라 선택 화면에 표시</li>
-                <li>고른 인물은 팀원들이 맡은 분리, 추적, 인페인팅 단계로 넘어가 배경까지 복원</li>
-              </ul>
-              <p class="m-stack">Python, Flask, InsightFace, YOLOv8, Detectron2, OpenCV</p>
-              <p class="m-link"><a class="ext" href="https://github.com/zunobk/Haaaaaaaao" target="_blank" rel="noopener">github.com/zunobk/Haaaaaaaao<svg class="ico ico-out" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></a></p>
-            </div>
-          </details>
-          <details>
-            <summary>
-              <span class="m-year">2024</span>
-              <span class="m-title">Plantify 스마트 화분</span>
-              <span class="m-kind">Team Project</span>
-              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </summary>
-            <div class="m-body">
-              <p>마이크로프로세서 수업에서 3명이 만든 스마트 화분입니다. 아두이노가 화분 상태를 읽고, ESP32-CAM이 카메라 영상과 센서 값을 웹 페이지로 보여 줍니다. 우송대학교 반도체 경진대회에서 은상을 받았습니다.</p>
-              <ul>
-                <li>조도, 온습도, 미세먼지, 토양 수분, 수위, 연기 센서 7종을 1초마다 읽어 UART로 ESP32에 전송</li>
-                <li>ESP32가 받은 값을 JSON으로 바꿔 웹소켓으로 화면에 실시간 표시</li>
-                <li>웹 페이지를 보드에 올리려고 gzip으로 압축한 뒤 C 바이트 배열로 변환</li>
-              </ul>
-              <p>제 담당은 주제 선정과 전체 구조, 일정과 역할 분담, 센서 자료 조사, 아두이노 코드 보조와 교차 검토, 발표였습니다. 센서 값이 잘못 들어오던 문제는 라이브러리 소스를 고쳐서 해결했습니다.</p>
-              <p class="m-stack">Arduino UNO, ESP32-CAM, C++, UART, WebSocket</p>
-            </div>
-          </details>
-          <details>
-            <summary>
-              <span class="m-year">2024</span>
-              <span class="m-title">C언어 은행 관리 프로그램</span>
-              <span class="m-kind">Team Project</span>
-              <svg class="ico ico-caret" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </summary>
-            <div class="m-body">
-              <p>이노베이션 아카데미 Codyssey C언어 과정에서 3명이 3주 동안 만든 콘솔 프로그램입니다. 외부 라이브러리 없이 C 표준 함수와 Windows 콘솔 기능만 썼고, 우송대학교 첨단산업인재양성 경진대회에서 장려상을 받았습니다.</p>
-              <ul>
-                <li>회원가입과 로그인, 계좌 개설, 입금, 출금, 송금, 거래 내역 조회 (코드 1,286줄)</li>
-                <li>DB 대신 JSON 형식 읽기와 쓰기를 직접 짜서 파일에 저장</li>
-                <li>방향키로 고르는 메뉴, 비밀번호 가림 표시, 아이디 중복과 같은 계좌로의 송금 차단</li>
-              </ul>
-              <p>비밀번호를 그대로 저장한 점이 가장 큰 약점이었고, 발표 때 다음 과제로 DB 적용과 보안 수정을 적었습니다.</p>
-              <p class="m-stack">C, Windows 콘솔</p>
-            </div>
-          </details>
         </div>
       </div>
     </section>
 
-    <!-- 기술: 로고와 실제로 쓴 곳 -->
+    <!-- 문제 해결: 네 가지 모두 제목, 그림, 문제, 해결, 결과 순서 -->
+    <section id="solving" class="section">
+      <div class="wrap">
+        <h2>Problem Solving</h2>
+        <p class="lead">직접 겪은 문제 네 가지를 같은 순서로 정리했습니다. 그림은 실제 구조를 그대로 옮겼습니다.</p>
+        <div class="chunks">
+
+          <article class="chunk">
+            <span class="c-num">01</span>
+            <div class="c-main">
+              <p class="c-proj">FOX AI 연구소 사이트</p>
+              <h3>콘텐츠를 고칠 때마다 필요하던 본사 서버 업로드 없애기</h3>
+              <div class="c-fig" role="img" aria-label="전에는 직원 요청을 받아 제가 HTML을 고치고 본사에 업로드를 요청했고, 지금은 직원이 CMS에서 저장하면 Apps Script와 GitHub를 거쳐 반영된다">
+                <p class="fig-label">전: 공지 한 줄을 고쳐도</p>
+                <div class="flow">
+                  <span class="node dim">직원 요청</span><span class="arr">→</span>
+                  <span class="node dim">제가 HTML 수정</span><span class="arr">→</span>
+                  <span class="node dim">본사에 업로드 요청</span><span class="arr">→</span>
+                  <span class="node dim">반영</span>
+                </div>
+                <p class="fig-label">후: 직원이 CMS에서 직접</p>
+                <div class="flow">
+                  <span class="node">관리자 CMS<small>이름과 비밀번호 로그인</small></span><span class="arr">→</span>
+                  <span class="node me">저장 대행<small>Apps Script, 토큰 보관</small></span><span class="arr">→</span>
+                  <span class="node">GitHub<small>JSON과 사진을 한 번에 커밋</small></span><span class="arr">→</span>
+                  <span class="node">본사 서버 페이지<small>열 때마다 최신 내용 읽기</small></span>
+                </div>
+              </div>
+              <dl class="c-text">
+                <dt>문제</dt>
+                <dd>공지, 프로그램, 대회 사진처럼 자주 바뀌는 내용이 HTML에 섞여 있었습니다. 한 줄을 고쳐도 제가 코드를 고치고 본사에 서버 업로드를 요청해야 했고, 직원들은 GitHub 계정이 없어 직접 고칠 방법이 없었습니다.</dd>
+                <dt>해결</dt>
+                <dd>바뀌는 내용을 JSON으로 빼서 GitHub Pages에 두고, 본사 서버에는 화면 틀만 남겼습니다. 직원은 이름과 비밀번호로 CMS에 로그인하고, GitHub 토큰을 숨겨 둔 Apps Script가 저장을 대신합니다. 여러 파일은 한 번의 커밋으로 묶고, 저장 직전에 최신 파일과 비교해 다른 사람이 먼저 고친 내용은 덮어쓰지 않게 했습니다.</dd>
+                <dt>결과</dt>
+                <dd>CMS를 쓰기 시작한 2026년 10월 1일부터 6일까지 내용 수정 12건이 코드 수정과 본사 업로드 없이 반영됐습니다.<small>반영 시간: GitHub Pages 1~2분, 본사 서버는 캐시 때문에 최대 10분. 건수는 저장소의 CMS 커밋 기록 기준</small></dd>
+              </dl>
+            </div>
+            <p class="c-link"><a class="ext" href="projects/fox-ai-lab.html">프로젝트 자세히 보기<svg class="ico" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></p>
+          </article>
+
+          <article class="chunk">
+            <span class="c-num">02</span>
+            <div class="c-main">
+              <p class="c-proj">FOX AI 연구소 사이트</p>
+              <h3>모바일 첫 화면이 무겁던 문제, 이미지 전송량 87% 절감</h3>
+              <div class="c-fig" role="img" aria-label="페이지 용량 1,766KB에서 578KB로, 웹폰트 1,211KB에서 222KB로 줄어든 막대 그래프">
+                <div class="bars">
+                  <div class="bar-row"><span>페이지 용량</span>
+                    <div class="bar-wrap"><div class="bar" style="width:100%"><i>1,766KB</i></div></div>
+                    <div class="bar-wrap"><div class="bar after" style="width:32.7%"><i>578KB</i></div></div>
+                  </div>
+                  <div class="bar-row"><span>웹폰트</span>
+                    <div class="bar-wrap"><div class="bar" style="width:68.6%"><i>1,211KB</i></div></div>
+                    <div class="bar-wrap"><div class="bar after" style="width:12.6%"><i>222KB</i></div></div>
+                  </div>
+                </div>
+                <p class="fig-note">회색은 전, <b>초록</b>은 후. 막대 길이는 1,766KB를 기준으로 맞췄습니다.</p>
+              </div>
+              <dl class="c-text">
+                <dt>문제</dt>
+                <dd>원본 사진과 한글 글꼴 전체를 그대로 받고 있어서, 휴대폰에서도 PC용 큰 사진을 받았습니다. 외부 검토에서도 첫 화면이 무겁다는 의견이 나왔습니다.</dd>
+                <dt>해결</dt>
+                <dd>사진을 WebP로 바꾸고 480, 960, 1440px 세 크기로 만들어 화면에 맞는 것만 받게 했습니다. 화면 밖 사진은 나중에 불러오고, 글꼴은 한글 상용 2,350자만 남겨 직접 올렸습니다. 검토 의견은 항목별로 확인해 세 단계로 나눠 반영했습니다.</dd>
+                <dt>결과</dt>
+                <dd>페이지 용량 1,766KB에서 578KB, 모바일 이미지 전송량 87% 절감, 웹폰트 1,211KB에서 222KB.<small>측정 조건: 배포 전 브라우저에서 직접 측정, 화면 크기 3구간(모바일, 태블릿, PC) 확인</small></dd>
+              </dl>
+            </div>
+            <p class="c-link"><a class="ext" href="projects/fox-ai-lab.html">프로젝트 자세히 보기<svg class="ico" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></p>
+          </article>
+
+          <article class="chunk">
+            <span class="c-num">03</span>
+            <div class="c-main">
+              <p class="c-proj">우송대학교 강사 양성 누리집</p>
+              <h3>모집 상태를 저장하지 않고 날짜로 계산하는 수강 신청 구조</h3>
+              <div class="c-fig" role="img" aria-label="전에는 상태 값을 따로 저장해 기간이 지나도 남을 수 있었고, 후에는 오늘 날짜와 신청 기간으로 상태를 계산하고 신청은 서버가 다시 검사한다">
+                <p class="fig-label">원래 자료: 상태 값을 따로 들고 있음</p>
+                <div class="flow">
+                  <span class="node dim">과정 정보</span><span class="arr">+</span>
+                  <span class="node dim">상태 '접수중'<small>사람이 바꿔야 함</small></span><span class="arr">→</span>
+                  <span class="node dim">기간이 지나도 '접수중'으로 남을 수 있음</span>
+                </div>
+                <p class="fig-label">바꾼 구조: 볼 때마다 계산, 신청은 서버가 다시 검사</p>
+                <div class="flow">
+                  <span class="node">오늘 날짜</span><span class="arr">+</span>
+                  <span class="node">신청 시작일, 종료일</span><span class="arr">→</span>
+                  <span class="node me">상태 계산<small>접수예정 / 접수중 / 모집종료</small></span>
+                </div>
+                <div class="flow">
+                  <span class="node">수강 신청</span><span class="arr">→</span>
+                  <span class="node me">서버 검사<small>접수중인지, 정원, 계정 승인·정지</small></span><span class="arr">→</span>
+                  <span class="node">저장 또는 거부</span>
+                </div>
+              </div>
+              <dl class="c-text">
+                <dt>문제</dt>
+                <dd>받은 자료에는 과정마다 '접수중' 같은 상태 값이 따로 붙어 있었습니다. 이 값을 DB에 그대로 저장하면, 신청 기간이 지나도 누군가 바꾸기 전까지 '접수중'으로 남아 화면 표시와 실제 신청 가능 여부가 어긋날 수 있었습니다.</dd>
+                <dt>해결</dt>
+                <dd>상태를 입력 항목에서 빼고, 조회할 때마다 신청 시작일과 종료일을 오늘 날짜와 비교해 접수예정, 접수중, 모집종료로 계산했습니다. 수강 신청은 서버가 다시 검사해 접수중이 아니거나 정원이 찼거나 승인 전·정지 계정이면 거부하고, 신청 인원보다 작은 정원으로 고치는 것도 막았습니다.</dd>
+                <dt>결과</dt>
+                <dd>관리자가 상태를 손으로 바꿀 일이 없어졌고, 화면 표시와 신청 가능 여부가 같은 기준을 따릅니다.<small>검증: 서버 기능 점검 38개 항목 모두 통과 (정원 초과 거부, 정지 계정 차단, 한글 첨부파일 왕복 포함)</small></dd>
+              </dl>
+            </div>
+            <p class="c-link"><a class="ext" href="projects/woosong-site.html">프로젝트 자세히 보기<svg class="ico" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></p>
+          </article>
+
+          <article class="chunk">
+            <span class="c-num">04</span>
+            <div class="c-main">
+              <p class="c-proj">SmartVision 시각장애인 보조 기기</p>
+              <h3>라즈베리파이에서 돌지 않던 객체 인식을 줄여 실시간 음성 안내로</h3>
+              <div class="c-fig" role="img" aria-label="라즈베리파이 5에서 카메라 영상을 YOLOv8n으로 인식해 방향과 함께 음성으로 안내하고, 마이크 음성 명령으로 모드를 바꾸는 흐름">
+                <p class="fig-label">라즈베리파이 5 한 대에서 도는 흐름 (초록 테두리가 제 담당)</p>
+                <div class="flow">
+                  <span class="node">PiCamera2<small>실시간 영상</small></span><span class="arr">→</span>
+                  <span class="node me">객체 인식<small>YOLOv8n, 위험 객체 12종</small></span><span class="arr">→</span>
+                  <span class="node">방향 계산<small>화면을 셋으로 나눔</small></span><span class="arr">→</span>
+                  <span class="node">음성 안내<small>gTTS, pygame</small></span>
+                </div>
+                <div class="flow">
+                  <span class="node">마이크</span><span class="arr">→</span>
+                  <span class="node me">음성 명령<small>큐알, 객체, 온도, 종료 등</small></span><span class="arr">→</span>
+                  <span class="node me">모드 전환<small>객체 모드 / QR 메뉴판 모드</small></span>
+                </div>
+              </div>
+              <dl class="c-text">
+                <dt>문제</dt>
+                <dd>보드가 10주차에야 도착했습니다. 그전까지 데스크톱에서 만든 인식과 음성 기능이 라즈베리파이에서는 패키지 충돌과 성능 한계로 돌지 않았습니다.</dd>
+                <dt>해결</dt>
+                <dd>인식 모델을 가장 가벼운 YOLOv8n으로 바꾸고 패키지를 다시 구성했습니다. 안내 음성이 마이크로 다시 들어가 명령으로 잘못 인식되는 문제는 음성이 나오는 동안 듣기를 멈춰서 막았고, 같은 안내가 반복되지 않도록 3초 간격을 뒀습니다. 발열은 쿨러와 방열판으로 줄였습니다.</dd>
+                <dt>결과</dt>
+                <dd>Raspberry Pi 5에서 초당 5~10프레임으로 인식하고, 인식 후 1~2초 안에 음성으로 안내합니다. 캡스톤디자인 2위, 학점 A+.<small>측정 조건: Raspberry Pi 5, PiCamera2, YOLOv8n. 캡스톤 최종보고서 기준</small></dd>
+              </dl>
+            </div>
+            <p class="c-link"><a class="ext" href="projects/smartvision.html">프로젝트 자세히 보기<svg class="ico" width="15" height="15" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트: 기간, 인원, 역할을 클릭 없이 볼 수 있는 목록 -->
+    <section id="projects" class="section tint">
+      <div class="wrap">
+        <h2>Projects</h2>
+
+        <h3 class="group-title">Work <span>회사에서 만든 것</span></h3>
+        <div class="plist">
+          <a class="prow" href="projects/fox-ai-lab.html">
+            <div class="p-thumb"><img src="assets/img/fox-site.webp" alt="FOX AI 연구소 사이트 첫 화면" width="1200" height="605" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">In-house</span>2026.06 ~ 운영 중</p>
+              <h3>FOX AI 연구소 공식 사이트와 관리자 CMS</h3>
+              <p class="card-sum">학부모가 보는 연구소 사이트와, 직원이 코드 없이 내용을 고치는 관리자 CMS</p>
+              <dl class="card-facts"><dt>인원</dt><dd>1명</dd><dt>역할</dt><dd>기획, 디자인, 개발, 운영</dd><dt>규모</dt><dd>페이지 7개, 코드 약 6,400줄, 커밋 152개</dd><dt>스택</dt><dd>HTML, CSS, JavaScript, GitHub API, Apps Script</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="projects/woosong-site.html">
+            <div class="p-thumb"><div class="flow"><span class="node">프로토타입<small>Next.js</small></span><span class="arr">→</span><span class="node">퍼블리싱<small>34화면</small></span><span class="arr">→</span><span class="node me">서버<small>Express, SQLite</small></span></div></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">Client Work</span>2026.08 ~ 2026.09</p>
+              <h3>우송대학교 RISE U-늘봄 강사 양성 누리집</h3>
+              <p class="card-sum">대학 사업단의 강사 양성 과정 안내와 수강 신청 사이트, 관리자 화면 포함</p>
+              <dl class="card-facts"><dt>인원</dt><dd>1명 (외부 의뢰)</dd><dt>역할</dt><dd>설계, 개발, 문서 작성</dd><dt>규모</dt><dd>화면 34개, 코드 약 6,700줄, 기능명세서 620줄</dd><dt>스택</dt><dd>Next.js, TypeScript, Node.js, Express, SQLite</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="projects/scheduler.html">
+            <div class="p-thumb"><div class="flow"><span class="node me">웹앱<small>PWA</small></span><span class="arr">→</span><span class="node">Apps Script<small>API, 예약 작업</small></span><span class="arr">→</span><span class="node">Sheets<small>저장소</small></span></div></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">Internal Tool</span>2026.05 ~ 2026.07</p>
+              <h3>연구소 업무 스케줄러 (담당표)</h3>
+              <p class="card-sum">3인 팀의 담당표, 업무, 근무일정, 연간 일정을 한 화면에 모은 서버 없는 웹앱</p>
+              <dl class="card-facts"><dt>인원</dt><dd>1명 (팀원 3명이 사용)</dd><dt>역할</dt><dd>기획, 개발</dd><dt>규모</dt><dd>코드 약 4,700줄, 커밋 57개</dd><dt>스택</dt><dd>JavaScript, Google Apps Script, Google Sheets, PWA</dd></dl>
+            </div>
+          </a>
+        </div>
+
+        <h3 class="group-title">University <span>학교에서 만든 것</span></h3>
+        <div class="plist">
+          <a class="prow" href="projects/smartvision.html">
+            <div class="p-thumb"><img src="assets/img/smartvision-demo.webp" alt="라즈베리파이 화면: QR 코드, 카메라 창, 인식 기록" width="1144" height="521" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">캡스톤디자인 2위</span>2025.03 ~ 2025.06</p>
+              <h3>SmartVision 시각장애인 보조 기기</h3>
+              <p class="card-sum">앞의 장애물을 방향과 함께 알려 주고, QR 메뉴판을 읽어 주는 Raspberry Pi 5 기기</p>
+              <dl class="card-facts"><dt>인원</dt><dd>2명 (대표)</dd><dt>역할</dt><dd>객체 인식, 음성 명령, QR 모드, 라즈베리파이 최적화</dd><dt>결과</dt><dd>캡스톤디자인 2위, 학점 A+</dd><dt>스택</dt><dd>Python, YOLOv8n, OpenCV, gTTS, Flask</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="projects/face-removal.html">
+            <div class="p-thumb"><div class="flow"><span class="node me">인물 구분<small>InsightFace</small></span><span class="arr">→</span><span class="node">분리, 추적<small>Detectron2</small></span><span class="arr">→</span><span class="node">배경 복원<small>인페인팅</small></span></div></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip">Team Project</span>2024.06 ~ 2024.09</p>
+              <h3>영상 속 특정 인물 제거 프로그램</h3>
+              <p class="card-sum">영상에서 고른 한 명만 지우고 배경을 채우는 웹 프로그램</p>
+              <dl class="card-facts"><dt>인원</dt><dd>6명</dd><dt>역할</dt><dd>얼굴 인식(InsightFace), YOLOv8</dd><dt>스택</dt><dd>Python, Flask, InsightFace, YOLOv8, Detectron2</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="projects/plantify.html">
+            <div class="p-thumb contain"><img src="assets/img/plantify-web.webp" alt="ESP32가 띄운 웹 페이지: 센서 값 7개와 카메라 영상" width="564" height="498" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">반도체 경진대회 은상</span>2024.09 ~ 2024.12</p>
+              <h3>Plantify 스마트 화분</h3>
+              <p class="card-sum">아두이노가 센서 7종을 읽고, ESP32-CAM이 카메라 영상과 센서 값을 웹 페이지로 보여 주는 화분</p>
+              <dl class="card-facts"><dt>인원</dt><dd>3명</dd><dt>역할</dt><dd>주제와 전체 구조, 센서 조사, 코드 보조와 교차 검토, 발표</dd><dt>스택</dt><dd>Arduino, ESP32-CAM, C++, UART, WebSocket</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="projects/bank-manager.html">
+            <div class="p-thumb"><img src="assets/img/bank-console.webp" alt="은행 관리 프로그램의 사용자 메뉴 콘솔 화면" width="1030" height="575" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">장려상</span>2024.12 (3주)</p>
+              <h3>C언어 은행 관리 프로그램</h3>
+              <p class="card-sum">회원가입부터 송금까지 되는 콘솔 프로그램, DB 없이 JSON 읽기와 쓰기를 직접 구현</p>
+              <dl class="card-facts"><dt>인원</dt><dd>3명 (팀장)</dd><dt>규모</dt><dd>C 1,286줄</dd><dt>스택</dt><dd>C, Windows 콘솔</dd></dl>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기술: 실무에서 계속 쓰는 것과 프로젝트에서 써 본 것 -->
     <section id="skills" class="section">
       <div class="wrap">
         <h2>Skills</h2>
-        <p class="lead">써 본 곳을 함께 적었습니다.</p>
-        <ul class="skills">
-          <li><span class="s-logos"><img src="assets/icons/html5.svg" alt="" width="28" height="28"><img src="assets/icons/css3.svg" alt="" width="28" height="28"></span><b>HTML, CSS</b><span>연구소 사이트, 누리집 퍼블리싱 34화면</span></li>
-          <li><span class="s-logos"><img src="assets/icons/javascript.svg" alt="" width="28" height="28"></span><b>JavaScript</b><span>업무 담당표, 연구소 사이트</span></li>
-          <li><span class="s-logos"><img src="assets/icons/typescript.svg" alt="" width="28" height="28"><img src="assets/icons/nextjs.svg" alt="" width="28" height="28"></span><b>TypeScript, Next.js</b><span>누리집 프로토타입 20개 경로</span></li>
-          <li><span class="s-logos"><img src="assets/icons/nodejs.svg" alt="" width="28" height="28"><img src="assets/icons/express.svg" alt="" width="28" height="28"><img src="assets/icons/sqlite.svg" alt="" width="28" height="28"></span><b>Node.js, Express, SQLite</b><span>누리집 서버와 DB 설계, 로그인과 파일 업로드</span></li>
-          <li><span class="s-logos"><img src="assets/icons/python.svg" alt="" width="28" height="28"></span><b>Python</b><span>SmartVision 객체 인식, 인물 제거 프로그램 얼굴 인식, PPT 자동화</span></li>
-          <li><span class="s-logos"><img src="assets/icons/c.svg" alt="" width="28" height="28"><img src="assets/icons/arduino.svg" alt="" width="28" height="28"></span><b>C, Arduino</b><span>은행 관리 프로그램 1,286줄, Plantify 센서 제어</span></li>
-          <li><span class="s-logos"><img src="assets/icons/git.svg" alt="" width="28" height="28"><img src="assets/icons/github.svg" alt="" width="28" height="28"></span><b>Git, GitHub</b><span>GitHub Pages 배포와 운영</span></li>
-          <li><span class="s-logos"><img src="assets/icons/java.svg" alt="" width="28" height="28"><img src="assets/icons/spring.svg" alt="" width="28" height="28"></span><b>Java, Spring</b><span>게임 서버 플러그인, 지금은 Spring 공부 중</span></li>
+        <ul class="tiers">
+          <li>
+            <p class="tier-name"><b>실무에서 계속 쓰는 기술</b><span>연구소 사이트, CMS, 스케줄러를 만들고 운영하며 쓰는 것</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/javascript.svg" alt="" width="20" height="20">JavaScript</li>
+              <li><img src="assets/icons/html5.svg" alt="" width="20" height="20">HTML</li>
+              <li><img src="assets/icons/css3.svg" alt="" width="20" height="20">CSS</li>
+              <li><img src="assets/icons/google.svg" alt="" width="20" height="20">Apps Script, Sheets</li>
+              <li><img src="assets/icons/git.svg" alt="" width="20" height="20">Git</li>
+              <li><img src="assets/icons/github.svg" alt="" width="20" height="20">GitHub Pages, API</li>
+            </ul>
+          </li>
+          <li>
+            <p class="tier-name"><b>프로젝트에서 써 본 기술</b><span>한 프로젝트 이상에서 직접 써 본 것</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/typescript.svg" alt="" width="20" height="20">TypeScript</li>
+              <li><img src="assets/icons/python.svg" alt="" width="20" height="20">Python</li>
+              <li><img src="assets/icons/c.svg" alt="" width="20" height="20">C</li>
+              <li><img src="assets/icons/nextjs.svg" alt="" width="20" height="20">Next.js</li>
+              <li><img src="assets/icons/nodejs.svg" alt="" width="20" height="20">Node.js, Express</li>
+              <li><img src="assets/icons/flask.svg" alt="" width="20" height="20">Flask</li>
+              <li><img src="assets/icons/sqlite.svg" alt="" width="20" height="20">SQLite</li>
+              <li><img src="assets/icons/opencv.svg" alt="" width="20" height="20">OpenCV, YOLOv8</li>
+              <li><img src="assets/icons/raspberrypi.svg" alt="" width="20" height="20">Raspberry Pi</li>
+              <li><img src="assets/icons/arduino.svg" alt="" width="20" height="20">Arduino</li>
+            </ul>
+          </li>
+          <li>
+            <p class="tier-name"><b>공부 중</b><span>게임 서버 플러그인으로 처음 써 본 언어</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/java.svg" alt="" width="20" height="20">Java</li>
+              <li><img src="assets/icons/spring.svg" alt="" width="20" height="20">Spring</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </section>
 
-    <!-- 경력과 학력: 두 열 -->
-    <section id="career" class="section tint">
+    <!-- 학력, 수상, 활동: 개발과 관련된 것만 -->
+    <section id="education" class="section tint">
       <div class="wrap career">
-        <div>
-          <h2>Experience</h2>
-          <ol class="timeline">
-            <li>
-              <p class="t-date">2025.07 - Present</p>
-              <h3>폭스러닝센터 FOX AI 연구소</h3>
-              <p class="t-role">AI 연구원 (2025.07 - 2025.11 인턴)</p>
-              <ul>
-                <li>연구소 공식 사이트 기획부터 운영까지</li>
-                <li>사내 업무 도구와 외부 의뢰 사이트 개발</li>
-                <li>AI·코딩 교육 프로그램 기획과 현장 운영, 광주 서구청과 행복한 모두 콘서트에서 연구소 프로그램 발표</li>
-                <li>연구소 브랜드 독립안을 세 가지 기준으로 정리해 대표 승인</li>
-              </ul>
-            </li>
-          </ol>
-        </div>
         <div>
           <h2>Education</h2>
           <ol class="timeline">
@@ -286,7 +359,15 @@
               <p class="t-role">컴퓨터정보보안전공, 부전공 비즈니스창업융합부</p>
               <ul>
                 <li>학점 3.86 / 4.5, 성적 우수 장학생 (2022, 2025)</li>
-                <li>캡스톤디자인 2위(학점 A+), 교내 경진대회 은상과 장려상</li>
+              </ul>
+            </li>
+            <li>
+              <p class="t-date">2023 - 2024</p>
+              <h3>교육과 활동</h3>
+              <ul>
+                <li>우송대학교 비트교육센터 Windows Developer 고급과정 39기 수료 (2024)</li>
+                <li>이노베이션 아카데미 Codyssey C언어 PBL 수료 (2024)</li>
+                <li>SW창업 아이디어 경진대회 팀장으로 참가 (2023)</li>
               </ul>
             </li>
             <li>
@@ -299,34 +380,15 @@
             </li>
           </ol>
         </div>
-      </div>
-    </section>
-
-    <!-- 수상과 활동: 두 묶음 목록 -->
-    <section id="awards" class="section">
-      <div class="wrap">
-        <h2>Awards &amp; Activities</h2>
         <div class="awards">
-          <div>
-            <h3>수상</h3>
-            <ul class="alist">
-              <li><span class="a-year">2025</span><span class="a-name">우송대학교 캡스톤디자인 2위<small>대표학생. SmartVision 시각장애인 보조 기기</small></span></li>
-              <li><span class="a-year">2025</span><span class="a-name">한밭대전 대전·충청 대학생 아마추어 대회 우승</span></li>
-              <li><span class="a-year">2024</span><span class="a-name">우송대학교 반도체 경진대회 은상<small>센서로 화분을 관리하는 Plantify 스마트 화분</small></span></li>
-              <li><span class="a-year">2024</span><span class="a-name">우송대학교 첨단산업인재양성 경진대회 장려상<small>팀장. C언어만으로 은행 계좌 관리 프로그램 개발</small></span></li>
-              <li><span class="a-year">2024</span><span class="a-name">SW중심대학 Codyssey 비교과 성과발표회 독행상</span></li>
-              <li><span class="a-year">2022</span><span class="a-name">1인 앱 개발 대회 모범상</span></li>
-            </ul>
-          </div>
-          <div>
-            <h3>교육과 활동</h3>
-            <ul class="alist">
-              <li><span class="a-year">2024</span><span class="a-name">우송대학교 비트교육센터 Windows Developer 고급과정 39기 수료</span></li>
-              <li><span class="a-year">2024</span><span class="a-name">이노베이션 아카데미 Codyssey C언어 PBL 수료</span></li>
-              <li><span class="a-year">2023</span><span class="a-name">SW창업 아이디어 경진대회 참가<small>팀장</small></span></li>
-              <li><span class="a-year">2023</span><span class="a-name">Minecraft 사설 서버 밸런싱과 QA</span></li>
-            </ul>
-          </div>
+          <h2>Awards</h2>
+          <ul class="alist">
+            <li><span class="a-year">2025</span><span class="a-name">우송대학교 캡스톤디자인 2위<small>SmartVision 시각장애인 보조 기기, 2인 팀 대표</small></span></li>
+            <li><span class="a-year">2024</span><span class="a-name">우송대학교 반도체 경진대회 은상<small>Plantify 스마트 화분</small></span></li>
+            <li><span class="a-year">2024</span><span class="a-name">우송대학교 첨단산업인재양성 경진대회 장려상<small>C언어 은행 관리 프로그램</small></span></li>
+            <li><span class="a-year">2024</span><span class="a-name">SW중심대학 Codyssey 비교과 성과발표회 독행상</span></li>
+            <li><span class="a-year">2022</span><span class="a-name">1인 앱 개발 대회 모범상</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -337,7 +399,7 @@
         <h2>Let's work together</h2>
         <a class="mail" href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a>
         <div class="actions">
-          <a class="btn btn-line" href="https://github.com/sungJJoo" target="_blank" rel="noopener"><svg class="ico ico-gh" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></svg>GitHub</a>
+          <a class="btn btn-line" href="https://github.com/sungJJoo" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></svg>GitHub</a>
         </div>
       </div>
     </section>
@@ -346,11 +408,5 @@
   <footer class="footer">
     <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
   </footer>
-  <script>
-    // 인쇄하거나 PDF로 저장할 때 접힌 프로젝트 설명도 모두 펼쳐서 내보낸다
-    window.addEventListener('beforeprint', function () {
-      document.querySelectorAll('.more details').forEach(function (d) { d.open = true; });
-    });
-  </script>
 </body>
 </html>

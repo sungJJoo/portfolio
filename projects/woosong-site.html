@@ -1,0 +1,153 @@
+<!-- 프로젝트 상세: 우송대학교 RISE U-늘봄 강사 양성 누리집 -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>우송대학교 강사 양성 누리집 | 박성주 포트폴리오</title>
+  <meta name="description" content="대학 사업단의 강사 양성 과정 안내와 수강 신청 사이트를 기능명세서부터 서버까지 설계하고 개발한 프로젝트입니다.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="../index.html">박성주</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#solving">Problem Solving</a>
+        <a href="../index.html#projects" aria-current="page">Projects</a>
+        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a class="hide-m" href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="d-head">
+      <div class="wrap">
+        <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
+        <h1>우송대학교 RISE U-늘봄 강사 양성 누리집</h1>
+        <p class="p-meta"><span class="chip chip-accent">Client Work</span>2026.08 ~ 2026.09</p>
+        <p class="d-summary">대학 사업단이 강사 양성 과정을 알리고 수강 신청을 받는 사이트입니다. 외부 의뢰를 받아 기능명세서 작성부터 화면, 서버, DB까지 설계와 개발을 맡았습니다.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>설계, 개발, 문서 작성</dd></div>
+          <div><dt>Team</dt><dd>1명 (외부 의뢰)</dd></div>
+          <div><dt>Scale</dt><dd>화면 34개 (교육생 21, 관리자 13)<br>코드 약 6,700줄</dd></div>
+          <div><dt>Docs</dt><dd>기능명세서 620줄, 개발일지<br>서버 기능 점검 38개 항목</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="d-visual">
+      <div class="wrap">
+        <div class="c-fig" role="img" aria-label="누리집 결과물 세 가지와 화면 구성">
+          <p class="fig-label">결과물 세 가지</p>
+          <div class="flow">
+            <span class="node">프로토타입<small>Next.js, TypeScript, 20개 경로. 화면을 빨리 확인하는 용도</small></span><span class="arr">→</span>
+            <span class="node">퍼블리싱<small>HTML, CSS, JavaScript 34화면. 학교 쪽 개발자에게 넘길 파일</small></span><span class="arr">→</span>
+            <span class="node me">동작 서버<small>Express, SQLite, EJS. 로그인부터 엑셀까지 실제로 동작</small></span>
+          </div>
+          <p class="fig-label">화면 구성</p>
+          <div class="flow">
+            <span class="node">교육생 화면 21개<small>사업 소개, 기초·심화 과정 안내와 수강 신청, 공지사항·자료실·보도자료·질의응답 게시판, 로그인</small></span>
+            <span class="node">관리자 화면 13개<small>대시보드, 교육생 계정 승인과 정지, 과정 등록과 신청자 관리, 질의응답 답변, 메인 화면과 팝업 관리</small></span>
+          </div>
+          <p class="fig-note">회사 의뢰 건이라 코드는 공개하지 않고 구성과 해결한 문제만 정리했습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-body">
+      <div class="wrap">
+        <div class="d-section">
+          <h2>Overview</h2>
+          <div>
+            <p>우송대학교 RISE U-늘봄 사업단은 늘봄 강사를 양성하는 과정을 운영합니다. 과정 안내와 공지, 수강 신청, 신청자 관리를 한곳에서 할 사이트가 필요했습니다. 다른 대학의 늘봄 사이트를 디자인 참고로 삼되, 메뉴와 화면은 우송대 사업단에 맞게 새로 구성했습니다.</p>
+            <p>화면을 빨리 보여 드리려고 Next.js로 프로토타입을 먼저 만들고, 학교 쪽 개발자가 받아 쓸 수 있도록 같은 화면을 HTML 퍼블리싱 파일로 다시 정리했습니다. 마지막으로 실제 신청과 관리가 동작하는 Express 서버를 붙였습니다.</p>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>What I Did</h2>
+          <div>
+            <ul class="points">
+              <li>기능명세서 620줄(14장): 화면, 데이터, 파라미터, 입력값 검사, 권한, 반응형, 만들지 않은 기능과 그 이유</li>
+              <li>교육생과 관리자 화면 34개 퍼블리싱</li>
+              <li>서버: 로그인과 세션, 게시판 4종(공지사항, 자료실, 보도자료, 질의응답), 과정과 신청자 관리, 파일 첨부, 엑셀 내려받기</li>
+              <li>점검: 서버 기능 38개 항목, 1280·800·375px에서 가로 스크롤 확인, 상태별 테스트 계정 4종(관리자, 승인, 승인 대기, 정지)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Problem Solving</h2>
+          <div>
+            <article class="issue">
+              <h3>모집 상태가 신청 기간과 어긋날 수 있는 구조</h3>
+              <dl>
+                <dt>문제</dt><dd>받은 자료에는 과정마다 '접수중' 같은 상태 값이 따로 붙어 있었습니다. 그대로 저장하면 신청 기간이 지나도 누군가 바꾸기 전까지 '접수중'으로 남을 수 있었습니다.</dd>
+                <dt>해결</dt><dd>상태를 입력 항목에서 빼고, 조회할 때마다 신청 시작일과 종료일을 오늘 날짜와 비교해 접수예정, 접수중, 모집종료로 계산했습니다. 수강 신청은 서버가 다시 검사해 접수중이 아니거나 정원이 찼거나 승인 전·정지 계정이면 거부합니다.</dd>
+                <dt>결과</dt><dd>관리자가 상태를 손으로 바꿀 일이 없어졌고, 화면 표시와 신청 가능 여부가 같은 기준을 따릅니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>한글 첨부파일 이름이 깨짐</h3>
+              <dl>
+                <dt>문제</dt><dd>한글 이름의 파일을 올리면 저장된 이름이 깨졌습니다. 업로드 라이브러리(multer)가 파일 이름을 latin1로 읽고 있었습니다.</dd>
+                <dt>해결</dt><dd>받은 이름을 UTF-8로 다시 해석해 저장했습니다.</dd>
+                <dt>결과</dt><dd>한글 파일을 올리고 내려받는 왕복 점검을 통과했습니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>모바일에서 가로 스크롤이 생김</h3>
+              <dl>
+                <dt>문제</dt><dd>좁은 화면에서 페이지가 옆으로 밀렸습니다. CSS Grid 자식의 기본 최소 너비(min-width: auto) 때문에 긴 표가 칸을 넓히고 있었습니다.</dd>
+                <dt>해결</dt><dd>칸에 min-width: 0을 주고, 표는 따로 가로로 넘겨 보는 영역으로 감쌌습니다.</dd>
+                <dt>결과</dt><dd>1280, 800, 375px 모두 가로 스크롤이 없습니다.</dd>
+              </dl>
+            </article>
+            <article class="issue">
+              <h3>컬럼을 추가하면 쌓아 둔 데이터가 지워질 상황</h3>
+              <dl>
+                <dt>문제</dt><dd>질의응답을 회원 전용으로 바꾸면서 글에 작성 회원 컬럼이 필요해졌는데, DB를 새로 만들면 테스트하던 데이터가 사라졌습니다.</dd>
+                <dt>해결</dt><dd>서버가 켜질 때 컬럼이 없으면 그 컬럼만 추가하는 함수를 만들고, 기존 글에는 작성 회원을 연결했습니다.</dd>
+                <dt>결과</dt><dd>데이터를 지우지 않고 구조를 바꿨습니다.</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Decisions</h2>
+          <div>
+            <ul class="points">
+              <li>표를 JavaScript로 그리던 코드를 일반 HTML로 되돌렸습니다. 나중에 이 화면을 JSP로 옮길 사람이 구조를 바로 볼 수 있어야 했기 때문입니다.</li>
+              <li>질의응답을 로그인한 사람만 쓰게 바꿔, 작성자 이름과 이메일 같은 개인정보 입력란 자체를 없앴습니다.</li>
+              <li>교육생은 학교 계정이 없는 외부인이라 학교 통합 로그인 대신, 수강 신청 때 계정을 만들고 관리자가 승인하는 방식으로 했습니다.</li>
+              <li>서버가 퍼블리싱 파일의 CSS와 이미지를 복사하지 않고 그대로 쓰게 해, 디자인을 고치면 두 곳에 동시에 반영되게 했습니다.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d-section">
+          <h2>Not Done</h2>
+          <div>
+            <p>만들지 않은 기능은 이유와 함께 명세서에 적었습니다. 문자와 메일 발송은 외부 서비스 계약이, 지도는 API 키가, 관리자 통합 로그인은 학교 정보전산원 협의가 필요합니다. 공개 배포 전에 꼭 필요한 보안 설정(CSRF 방어, HTTPS, 세션 키 분리)도 README에 따로 적어 두었습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="wrap pager" aria-label="다른 프로젝트">
+      <a class="prev" href="fox-ai-lab.html"><small>이전 프로젝트</small><b>FOX AI 연구소 사이트와 관리자 CMS</b></a>
+      <a class="next" href="scheduler.html"><small>다음 프로젝트</small><b>연구소 업무 스케줄러</b></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+  </footer>
+</body>
+</html>
