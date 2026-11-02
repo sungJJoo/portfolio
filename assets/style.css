@@ -407,6 +407,7 @@ img { display: block; max-width: 100%; }
   .profile dl > div + div { padding-left: 16px; border-left: 1px solid var(--line); }
   .section { padding: 28px 0; }
   .section + .section { border-top: 0; }
+  #solving { padding-bottom: 0; }
   .exp { grid-template-columns: 210px 1fr; }
   .d-head { padding: 0 0 20px; }
   .d-body { padding: 24px 0 0; }
