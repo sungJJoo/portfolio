@@ -250,6 +250,15 @@ img { display: block; max-width: 100%; }
 .tier-items img { width: 20px; height: 20px; }
 .tier-items .sep { flex-basis: 100%; height: 0; padding: 0; border: 0; background: none; }
 
+/* 일하는 방식: 왼쪽 질문, 오른쪽 실제로 한 일 */
+.ways-lead { margin-top: 12px; font-size: 16px; color: var(--sub); }
+.ways { margin-top: 24px; border-top: 2px solid var(--ink); }
+.ways > li { display: grid; grid-template-columns: 240px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.ways h3 { font-size: 18px; line-height: 1.5; letter-spacing: -0.02em; }
+.ways p { font-size: 16px; line-height: 1.75; color: var(--body); max-width: 46em; }
+.ways .src { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+.ways .src a { color: var(--accent-ink); text-underline-offset: 3px; }
+
 /* 학력, 수상, 활동 */
 .career { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
 .timeline { margin-top: 24px; display: grid; gap: 28px; }
@@ -354,6 +363,7 @@ img { display: block; max-width: 100%; }
   .hero { padding-top: 40px; }
   .hero h1 { font-size: 33px; }
   .hero h1 br { display: none; }
+  .ways > li { grid-template-columns: 1fr; gap: 6px; }
   .summary li { font-size: 16px; }
   .layer .tag { font-size: 11px; top: 6px; left: 6px; }
   .wire { inset: 30px 12px 10px; gap: 4px; }
@@ -416,13 +426,13 @@ img { display: block; max-width: 100%; }
   .issue + .issue { margin-top: 10px; }
   .issue dl { margin-top: 6px; }
   .d-visual .shots-2 + figure.frame { max-width: 76%; margin-left: auto; margin-right: auto; }
-  #experience, #projects, #skills, .pdf-project { break-before: page; }
+  #how, #experience, #projects, #skills, .pdf-project { break-before: page; }
   .chunks { gap: 16px; }
-  .tiers > li { padding: 14px 0; }
+  .tiers > li, .ways > li { padding: 14px 0; }
   .timeline { gap: 18px; }
   .chunk { padding: 22px 26px 20px; }
   .c-fig { padding: 16px; }
-  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
+  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .ways > li, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
   h2, h3, h4, .fig-label, .group-title { break-after: avoid; }
   .d-section > h2 { break-after: auto; }
 }
