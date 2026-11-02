@@ -13,7 +13,8 @@ const OUT = path.resolve(process.argv[2] || '박성주_포트폴리오.pdf');
 
 (async () => {
   const browser = await chromium.launch();
-  const page = await browser.newPage();
+  // 움직임 줄이기 설정으로 열어 제목 타자 효과를 멈춘 채 고정 문장으로 찍음
+  const page = await browser.newPage({ reducedMotion: 'reduce' });
   await page.goto(pathToFileURL(path.join(ROOT, 'index.html')).href);
 
   const details = PROJECTS.map((name) => {
