@@ -417,6 +417,8 @@ img { display: block; max-width: 100%; }
   .d-visual .shots-2 + figure.frame { max-width: 76%; margin-left: auto; margin-right: auto; }
   #experience, #projects, #skills, .pdf-project { break-before: page; }
   .chunks { gap: 16px; }
+  .tiers > li { padding: 14px 0; }
+  .timeline { gap: 18px; }
   .chunk { padding: 22px 26px 20px; }
   .c-fig { padding: 16px; }
   .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
