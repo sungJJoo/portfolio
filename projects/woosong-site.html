@@ -7,7 +7,6 @@
   <title>우송대학교 강사 양성 누리집 | 박성주 포트폴리오</title>
   <meta name="description" content="대학 사업단의 강사 양성 과정 안내와 수강 신청 사이트를 기능명세서부터 서버까지 설계하고 개발한 프로젝트입니다.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="../assets/fonts/galmuri11-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -35,8 +34,8 @@
         <dl class="facts">
           <div><dt>Role</dt><dd>설계, 개발, 문서 작성</dd></div>
           <div><dt>Team</dt><dd>1명 (외부 의뢰)</dd></div>
-          <div><dt>Scale</dt><dd>화면 34개 (교육생 21, 관리자 13)<br>코드 약 6,700줄</dd></div>
-          <div><dt>Docs</dt><dd>기능명세서 620줄, 개발일지<br>서버 기능 점검 38개 항목</dd></div>
+          
+          <div><dt>Docs</dt><dd>기능명세서, 개발일지<br>서버 기능 점검표</dd></div>
         </dl>
       </div>
     </section>
@@ -46,16 +45,16 @@
         <div class="c-fig" role="img" aria-label="누리집 결과물 세 가지와 화면 구성">
           <p class="fig-label">결과물 세 가지</p>
           <div class="flow">
-            <span class="node">프로토타입<small>Next.js, TypeScript, 20개 경로. 화면을 빨리 확인하는 용도</small></span><span class="arr">→</span>
-            <span class="node">퍼블리싱<small>HTML, CSS, JavaScript 34화면. 학교 쪽 개발자에게 넘길 파일</small></span><span class="arr">→</span>
+            <span class="node">프로토타입<small>Next.js, TypeScript, 화면을 빨리 확인하는 용도</small></span><span class="arr">→</span>
+            <span class="node">퍼블리싱<small>HTML, CSS, JavaScript. 학교 쪽 개발자에게 넘길 파일</small></span><span class="arr">→</span>
             <span class="node me">동작 서버<small>Express, SQLite, EJS. 로그인부터 엑셀까지 실제로 동작</small></span>
           </div>
           <p class="fig-label">화면 구성</p>
           <div class="flow">
-            <span class="node">교육생 화면 21개<small>사업 소개, 기초·심화 과정 안내와 수강 신청, 공지사항·자료실·보도자료·질의응답 게시판, 로그인</small></span>
-            <span class="node">관리자 화면 13개<small>대시보드, 교육생 계정 승인과 정지, 과정 등록과 신청자 관리, 질의응답 답변, 메인 화면과 팝업 관리</small></span>
+            <span class="node">교육생 화면<small>사업 소개, 기초·심화 과정 안내와 수강 신청, 공지사항·자료실·보도자료·질의응답 게시판, 로그인</small></span>
+            <span class="node">관리자 화면<small>대시보드, 교육생 계정 승인과 정지, 과정 등록과 신청자 관리, 질의응답 답변, 메인 화면과 팝업 관리</small></span>
           </div>
-          <p class="fig-note">회사 의뢰 건이라 코드는 공개하지 않고 구성과 해결한 문제만 정리했습니다.</p>
+          <p class="fig-note">의뢰받은 사이트라 코드는 공개하지 않습니다.</p>
         </div>
       </div>
     </section>
@@ -74,10 +73,10 @@
           <h2>What I Did</h2>
           <div>
             <ul class="points">
-              <li>기능명세서 620줄(14장): 화면, 데이터, 파라미터, 입력값 검사, 권한, 반응형, 만들지 않은 기능과 그 이유</li>
-              <li>교육생과 관리자 화면 34개 퍼블리싱</li>
+              <li>기능명세서: 화면, 데이터, 입력값 검사, 권한, 반응형, 만들지 않은 기능과 그 이유</li>
+              <li>교육생과 관리자 화면 퍼블리싱</li>
               <li>서버: 로그인과 세션, 게시판 4종(공지사항, 자료실, 보도자료, 질의응답), 과정과 신청자 관리, 파일 첨부, 엑셀 내려받기</li>
-              <li>점검: 서버 기능 38개 항목, 1280·800·375px에서 가로 스크롤 확인, 상태별 테스트 계정 4종(관리자, 승인, 승인 대기, 정지)</li>
+              <li>점검: 서버 기능 점검표, 화면 크기별 가로 스크롤, 상태별 테스트 계정(관리자, 승인, 승인 대기, 정지)</li>
             </ul>
           </div>
         </div>
@@ -106,7 +105,7 @@
               <dl>
                 <dt>문제</dt><dd>좁은 화면에서 페이지가 옆으로 밀렸습니다. CSS Grid 자식의 기본 최소 너비(min-width: auto) 때문에 긴 표가 칸을 넓히고 있었습니다.</dd>
                 <dt>해결</dt><dd>칸에 min-width: 0을 주고, 표는 따로 가로로 넘겨 보는 영역으로 감쌌습니다.</dd>
-                <dt>결과</dt><dd>1280, 800, 375px 모두 가로 스크롤이 없습니다.</dd>
+                <dt>결과</dt><dd>PC, 태블릿, 휴대폰 크기에서 모두 가로 스크롤이 없습니다.</dd>
               </dl>
             </article>
             <article class="issue">
@@ -148,7 +147,7 @@
   </main>
 
   <footer class="footer">
-    <div class="wrap">© 2026 박성주. 글꼴 Pretendard와 Galmuri(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
+    <div class="wrap">© 2026 박성주. 글꼴 Pretendard(SIL OFL), 아이콘 Devicon과 Phosphor(MIT)</div>
   </footer>
 </body>
 </html>
