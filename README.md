@@ -10,10 +10,9 @@
 - `projects/`: 프로젝트 상세 페이지 7개
 - `assets/img/`: 실제 화면 캡처 (WebP)
 - `assets/style.css`: 밝은 테마, 1024px과 768px 기준 반응형, A4 인쇄용 규칙
-- `assets/fonts/`: 본문 Pretendard Variable 동적 서브셋, 제목 Galmuri11 Bold 픽셀 글꼴 (둘 다 SIL OFL 1.1)
+- `assets/fonts/`: Pretendard Variable 동적 서브셋 (SIL OFL 1.1)
 - `assets/icons/`: 기술 로고 Devicon, 화면 아이콘 Phosphor (둘 다 MIT)
 - `tools/make-pdf.js`: 메인과 상세 7개를 A4 PDF 한 개로 묶는 스크립트
-- `tools/make-wall.py`: 연구소 사이트 저장소의 커밋 기록으로 첫 화면 블록 벽을 다시 그리는 스크립트 (`python3 tools/make-wall.py <fox-ai-lab 경로>`)
 
 빌드 없이 정적 파일만으로 GitHub Pages에서 동작합니다.
 
