@@ -362,7 +362,6 @@ img { display: block; max-width: 100%; }
   .nav .hide-m { display: none; }
   .hero { padding-top: 40px; }
   .hero h1 { font-size: 33px; }
-  .hero h1 br { display: none; }
   .ways > li { grid-template-columns: 1fr; gap: 6px; }
   .summary li { font-size: 16px; }
   .layer .tag { font-size: 11px; top: 6px; left: 6px; }
@@ -394,6 +393,11 @@ img { display: block; max-width: 100%; }
   .nums { grid-template-columns: 1fr; }
   .pager { grid-template-columns: 1fr; }
   .pager .next { text-align: left; }
+}
+
+/* 아주 좁은 화면(320px대): 가장 긴 타자 문구도 한 줄에 들어가게 */
+@media (max-width: 359px) {
+  .hero h1 { font-size: 29px; }
 }
 
 /* 인쇄와 PDF (A4 세로): 메뉴·버튼·이동 링크는 숨기고 2열 배치는 유지.
