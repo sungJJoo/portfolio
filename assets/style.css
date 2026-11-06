@@ -244,13 +244,17 @@ img { display: block; max-width: 100%; }
 .tier-items .sep { flex-basis: 100%; height: 0; padding: 0; border: 0; background: none; }
 
 /* 일하는 방식: 왼쪽 질문, 오른쪽 실제로 한 일 */
-.ways-lead { margin-top: 12px; font-size: 16px; color: var(--sub); }
-.ways { margin-top: 24px; border-top: 2px solid var(--ink); }
-.ways > li { display: grid; grid-template-columns: 240px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-.ways h3 { font-size: 18px; line-height: 1.5; letter-spacing: -0.02em; }
-.ways p { font-size: 16px; line-height: 1.75; color: var(--body); max-width: 46em; }
-.ways .src { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
-.ways .src a { color: var(--accent-ink); text-underline-offset: 3px; }
+.how-lead { margin-top: 12px; font-size: 16px; color: var(--sub); }
+.how-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.how-card { border-top: 2px solid var(--ink); padding-top: 18px; }
+.how-card h3 { font-size: 20px; line-height: 1.4; letter-spacing: -0.02em; }
+.how-card h3 a { color: inherit; text-decoration: none; }
+.how-card h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.how-state { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.how-card dl { margin-top: 14px; display: grid; grid-template-columns: 104px 1fr; column-gap: 16px; font-size: 15.5px; }
+.how-card dt, .how-card dd { padding: 12px 0; border-top: 1px solid var(--line); }
+.how-card dt { font-size: 14.5px; font-weight: 800; color: var(--accent-ink); }
+.how-card dd { color: var(--body); line-height: 1.7; }
 
 /* 학력, 수상, 활동 */
 .career { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
@@ -355,7 +359,10 @@ img { display: block; max-width: 100%; }
   .nav .hide-m { display: none; }
   .hero { padding-top: 40px; }
   .hero h1 { font-size: 33px; }
-  .ways > li { grid-template-columns: 1fr; gap: 6px; }
+  .how-grid { grid-template-columns: 1fr; gap: 32px; }
+  .how-card dl { grid-template-columns: 1fr; }
+  .how-card dt { padding-bottom: 0; }
+  .how-card dd { padding-top: 4px; border-top: 0; }
   .summary li { font-size: 16px; }
   .layer .tag { font-size: 11px; top: 6px; left: 6px; }
   .wire { inset: 30px 12px 10px; gap: 4px; }
@@ -425,11 +432,13 @@ img { display: block; max-width: 100%; }
   .d-visual .shots-2 + figure.frame { max-width: 76%; margin-left: auto; margin-right: auto; }
   #how, #experience, #projects, #skills, .pdf-project { break-before: page; }
   .chunks { gap: 16px; }
-  .tiers > li, .ways > li { padding: 14px 0; }
+  .tiers > li { padding: 14px 0; }
+  .how-grid { gap: 28px; }
+  .how-card dt, .how-card dd { padding: 9px 0; }
   .timeline { gap: 18px; }
   .chunk { padding: 22px 26px 20px; }
   .c-fig { padding: 16px; }
-  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .ways > li, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
+  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .how-card, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
   h2, h3, h4, .fig-label, .group-title { break-after: avoid; }
   .d-section > h2 { break-after: auto; }
 }
