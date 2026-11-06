@@ -256,6 +256,12 @@ img { display: block; max-width: 100%; }
 .how-card dt { font-size: 14.5px; font-weight: 800; color: var(--accent-ink); }
 .how-card dd { color: var(--body); line-height: 1.7; }
 
+/* 교육: 왼쪽 구분, 오른쪽 내용 */
+.teach { margin-top: 24px; border-top: 2px solid var(--ink); }
+.teach li { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.teach b { font-size: 16px; }
+.teach p { font-size: 15.5px; line-height: 1.7; color: var(--body); }
+
 /* 학력, 수상, 활동 */
 .career { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
 .timeline { margin-top: 24px; display: grid; gap: 28px; }
@@ -363,6 +369,7 @@ img { display: block; max-width: 100%; }
   .how-card dl { grid-template-columns: 1fr; }
   .how-card dt { padding-bottom: 0; }
   .how-card dd { padding-top: 4px; border-top: 0; }
+  .teach li { grid-template-columns: 1fr; gap: 4px; }
   .summary li { font-size: 16px; }
   .layer .tag { font-size: 11px; top: 6px; left: 6px; }
   .wire { inset: 30px 12px 10px; gap: 4px; }
@@ -438,7 +445,7 @@ img { display: block; max-width: 100%; }
   .timeline { gap: 18px; }
   .chunk { padding: 22px 26px 20px; }
   .c-fig { padding: 16px; }
-  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .how-card, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
+  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .how-card, .teach li, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
   h2, h3, h4, .fig-label, .group-title { break-after: avoid; }
   .d-section > h2 { break-after: auto; }
 }
