@@ -38,6 +38,7 @@ const OUT = path.resolve(process.argv[2] || '박성주_포트폴리오.pdf');
     for (const d of details) {
       const doc = new DOMParser().parseFromString(d.html, 'text/html');
       doc.querySelectorAll('[src]').forEach((el) => el.setAttribute('src', new URL(el.getAttribute('src'), d.fileUrl).href));
+      doc.querySelectorAll('[poster]').forEach((el) => el.setAttribute('poster', new URL(el.getAttribute('poster'), d.fileUrl).href));
       doc.querySelectorAll('a[href]').forEach((a) => fixLink(a, d.liveUrl));
       const wrap = document.createElement('div');
       wrap.className = 'pdf-project';
@@ -45,6 +46,14 @@ const OUT = path.resolve(process.argv[2] || '박성주_포트폴리오.pdf');
       wrap.append(...doc.querySelector('main').childNodes);
       main.append(wrap);
     }
+    // PDF에서는 영상을 재생할 수 없으니 대표 이미지로 바꾼다
+    document.querySelectorAll('video.demo').forEach((v) => {
+      const img = document.createElement('img');
+      img.src = new URL(v.getAttribute('poster'), location.href).href;
+      img.alt = v.getAttribute('aria-label') || '';
+      img.width = v.width; img.height = v.height;
+      v.replaceWith(img);
+    });
     document.querySelectorAll('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
   }, { details, LIVE, PROJECTS });
 

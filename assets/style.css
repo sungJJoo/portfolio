@@ -207,6 +207,8 @@ img { display: block; max-width: 100%; }
 .p-thumb { position: relative; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; background: var(--paper); border: 1px solid var(--line); display: grid; place-items: center; transition: border-color .15s; }
 .p-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .p-thumb.contain img { object-fit: contain; padding: 10px; }
+.p-thumb.dark { background: #0c0c0c; }
+.p-thumb.dark img { object-position: left top; }
 .p-thumb .flow { flex-direction: column; flex-wrap: nowrap; justify-content: center; padding: 10px; margin: 0; gap: 2px; }
 .p-thumb .node { font-size: 12.5px; padding: 4px 10px; text-align: center; min-width: 150px; }
 .p-thumb .node small { display: inline; margin-left: 4px; font-size: 11.5px; }
@@ -352,6 +354,8 @@ img { display: block; max-width: 100%; }
 .frame-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
 .frame-bar span { margin-left: 8px; font-size: 12px; color: var(--muted); font-style: normal; }
 .frame img { width: 100%; height: auto; }
+.frame video { display: block; width: 100%; height: auto; background: var(--paper); }
+.c-video { margin-top: 18px; }
 .frame.narrow { max-width: 260px; }
 .d-visual .shots-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
 .d-visual figure + figure, .d-visual .shots-2 + figure { margin-top: 20px; }
