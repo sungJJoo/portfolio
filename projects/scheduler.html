@@ -94,7 +94,7 @@
               <div class="uml-scroll"><div class="seq" style="--n:3">
                 <div class="seq-head"><span>팀원<small>화면</small></span><span>Apps Script<small>웹 API</small></span><span>구글 시트<small>데이터</small></span></div>
                 <ol class="seq-body">
-                <li class="part"><span>완료 체크·담당 변경</span></li>
+                <li class="part"><span>담당 변경·개인 완료 체크</span></li>
                 <li class="note" style="--from:1;--to:2;--span:1"><span class="sr-only">팀원: </span>화면에 먼저 반영</li>
                 <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">팀원 → Apps Script: </span>저장 요청</li>
                 <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → 구글 시트: </span>값 쓰기</li>
@@ -125,8 +125,8 @@
               <h3>저장할 때마다 화면이 멈춘 것처럼 보임</h3>
               <dl>
                 <dt>문제</dt><dd>Apps Script 응답이 가끔 크게 느려지는데, 저장할 때마다 응답을 기다린 뒤 전체 데이터를 다시 받아 그동안 화면이 멈춰 있었습니다.</dd>
-                <dt>해결</dt><dd>완료 체크, 담당 변경, 삭제는 화면에 먼저 반영하고 저장 요청은 뒤에서 보내는 방식(낙관적 업데이트)으로 바꿨습니다. 업무 저장은 응답을 받은 뒤 전체를 다시 받지 않고 바뀐 항목만 고쳐 그립니다. 실패할 때만 시트 내용을 다시 받아 되돌리고, 전체 데이터를 받는 요청에는 22초 시간 제한과 한 번의 재시도를 걸었습니다.</dd>
-                <dt>결과</dt><dd>완료 체크와 담당 변경은 누르는 즉시 화면에 보이고, 업무를 저장해도 전체를 다시 받지 않습니다.</dd>
+                <dt>해결</dt><dd>담당 변경, 여러 명이 맡은 업무의 개인 완료 체크, 삭제는 화면에 먼저 반영하고 저장 요청은 뒤에서 보내는 방식(낙관적 업데이트)으로 바꿨습니다. 업무 저장은 응답을 받은 뒤 전체를 다시 받지 않고 바뀐 항목만 고쳐 그립니다. 실패할 때만 시트 내용을 다시 받아 되돌리고, 전체 데이터를 받는 요청에는 22초 시간 제한과 한 번의 재시도를 걸었습니다.</dd>
+                <dt>결과</dt><dd>담당 변경과 개인 완료 체크는 누르는 즉시 화면에 보이고, 업무를 저장해도 전체를 다시 받지 않습니다.</dd>
               </dl>
             </article>
             <article class="issue">
