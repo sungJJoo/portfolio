@@ -257,6 +257,59 @@ img { display: block; max-width: 100%; }
 .teach b { font-size: 16px; }
 .teach p { font-size: 15.5px; line-height: 1.7; color: var(--body); }
 
+/* UML 도식: 시퀀스, 상태, 판단 흐름, 클래스. 그림 파일 대신 코드로 그려 글자가 선명하고 검색된다 */
+.uml { margin: 0; }
+.uml + .uml { margin-top: 32px; }
+.uml .fig-label { margin-bottom: 12px; }
+.uml-note { margin-top: 12px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+.uml-scroll { overflow-x: auto; padding-bottom: 4px; }
+.seq { --n: 3; min-width: 600px; }
+.seq-head, .seq-body { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+.seq-head > span { justify-self: center; max-width: 94%; padding: 7px 12px; border: 1.5px solid var(--ink); border-radius: 6px; background: var(--surface); text-align: center; font-size: 14px; font-weight: 700; line-height: 1.35; }
+.seq-head small { display: block; font-size: 12px; font-weight: 500; color: var(--muted); }
+.seq-body { row-gap: 2px; padding: 10px 0 8px; background: linear-gradient(to right, transparent calc(50% - 0.75px), var(--line-strong) calc(50% - 0.75px) calc(50% + 0.75px), transparent calc(50% + 0.75px)) 0 0 / calc(100% / var(--n)) 100% repeat-x; }
+.seq-body > li { position: relative; grid-column: var(--from) / var(--to); margin-inline: calc(50% / var(--span)); padding: 3px 8px 12px; text-align: center; font-size: 13px; line-height: 1.45; color: var(--body); }
+.seq-body > .m::before { content: ""; position: absolute; left: 0; right: 0; bottom: 5px; border-top: 1.5px solid var(--ink); }
+.seq-body > .m::after { content: ""; position: absolute; bottom: 1px; border-block: 4.5px solid transparent; }
+.seq-body > .r::after { right: -1px; border-left: 8px solid var(--ink); }
+.seq-body > .l::after { left: -1px; border-right: 8px solid var(--ink); }
+.seq-body > .ret::before { border-top-style: dashed; }
+.seq-body > .note { margin: 3px 6px; padding: 6px 10px; border: 1px solid var(--l-api); border-radius: 6px; background: var(--accent-soft); color: var(--ink); text-align: left; font-size: 12.5px; }
+.seq-body > .part { grid-column: 1 / -1; margin: 12px 0 4px; padding: 0; text-align: left; font-size: 12px; font-weight: 800; color: var(--accent-ink); }
+.seq-body > .part span { padding: 2px 8px; border: 1px solid var(--accent-ink); border-radius: 4px; background: var(--bg); }
+.states { display: flex; flex-wrap: wrap; align-items: center; row-gap: 14px; }
+.st { padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: 16px; background: var(--surface); text-align: center; font-size: 14px; font-weight: 700; line-height: 1.35; }
+.st small { display: block; margin-top: 3px; font-size: 12px; font-weight: 500; line-height: 1.45; color: var(--muted); }
+.st-init { flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--ink); }
+.tr { position: relative; flex: 0 1 auto; min-width: 70px; max-width: 170px; padding: 0 10px 12px; text-align: center; font-size: 12.5px; line-height: 1.4; color: var(--sub); }
+.tr::before { content: ""; position: absolute; left: 3px; right: 6px; bottom: 5px; border-top: 1.5px solid var(--ink); }
+.tr::after { content: ""; position: absolute; right: 2px; bottom: 1px; border-block: 4.5px solid transparent; border-left: 8px solid var(--ink); }
+.tr.l::after { right: auto; left: 0; border-left: 0; border-right: 8px solid var(--ink); }
+.tr2 { display: flex; flex-direction: column; gap: 8px; }
+.act { display: grid; justify-items: start; }
+.act-row { display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; }
+.act-box { padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: 6px; background: var(--surface); font-size: 14px; font-weight: 700; line-height: 1.4; }
+.act-box small { display: block; font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.act-box.me { border-color: var(--l-ui); background: var(--accent-soft); }
+.act-box.no { border-style: dashed; border-color: var(--box); color: var(--sub); }
+.act-q { max-width: 360px; padding: 10px 28px; background: var(--accent-soft); clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 16px 100%, 0 50%); font-size: 13.5px; font-weight: 700; line-height: 1.45; color: var(--ink); }
+.act-arr { position: relative; min-width: 64px; padding: 0 10px 12px; text-align: center; font-size: 12.5px; color: var(--sub); }
+.act-arr::before { content: ""; position: absolute; left: 3px; right: 6px; bottom: 5px; border-top: 1.5px solid var(--ink); }
+.act-arr::after { content: ""; position: absolute; right: 2px; bottom: 1px; border-block: 4.5px solid transparent; border-left: 8px solid var(--ink); }
+.act-down { position: relative; display: flex; align-items: center; min-height: 40px; margin-left: 30px; padding-left: 14px; font-size: 12.5px; color: var(--sub); }
+.act-down::before { content: ""; position: absolute; left: 0; top: 0; bottom: 6px; border-left: 1.5px solid var(--ink); }
+.act-down::after { content: ""; position: absolute; left: -3.75px; bottom: 0; border-inline: 4.5px solid transparent; border-top: 8px solid var(--ink); }
+.classes { display: flex; flex-wrap: wrap; align-items: center; row-gap: 16px; }
+.cls { flex: none; border: 1.5px solid var(--ink); border-radius: 6px; background: var(--surface); }
+.cls b { display: block; padding: 6px 12px; border-bottom: 1.5px solid var(--ink); text-align: center; font-size: 14px; }
+.cls ul { display: grid; gap: 1px; padding: 8px 12px 10px; }
+.cls li { font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--body); white-space: nowrap; }
+.assoc { position: relative; flex: 1 1 60px; min-width: 64px; max-width: 110px; height: 1.5px; margin: 0 2px; background: var(--ink); }
+.assoc i, .assoc em { position: absolute; bottom: 6px; font-style: normal; font-size: 12px; font-weight: 800; color: var(--accent-ink); }
+.assoc i { left: 4px; }
+.assoc em { right: 4px; }
+.assoc small { position: absolute; top: 7px; left: 0; right: 0; text-align: center; font-size: 11.5px; color: var(--muted); }
+
 /* 학력, 수상, 활동 */
 .career { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
 .timeline { margin-top: 24px; display: grid; gap: 28px; }
@@ -365,6 +418,19 @@ img { display: block; max-width: 100%; }
   .how-card dt { padding-bottom: 0; }
   .how-card dd { padding-top: 4px; border-top: 0; }
   .teach li { grid-template-columns: 1fr; gap: 4px; }
+  .states { flex-direction: column; align-items: flex-start; row-gap: 0; }
+  .tr { min-width: 0; max-width: none; min-height: 40px; padding: 8px 0 8px 22px; text-align: left; }
+  .tr::before { left: 7px; right: auto; top: 0; bottom: 6px; border-top: 0; border-left: 1.5px solid var(--ink); }
+  .tr::after { left: 3.25px; right: auto; bottom: 0; border-block: 0; border-inline: 4.5px solid transparent; border-top: 8px solid var(--ink); }
+  .tr.l::before { top: 6px; bottom: 0; }
+  .tr.l::after { top: 0; bottom: auto; left: 3.25px; border-top: 0; border-left: 4.5px solid transparent; border-right: 4.5px solid transparent; border-bottom: 8px solid var(--ink); }
+  .tr2 { flex-direction: row; gap: 4px; }
+  .classes { flex-direction: column; align-items: flex-start; row-gap: 0; }
+  .assoc { flex: none; width: 1.5px; height: 64px; min-width: 0; max-width: none; margin: 0 0 0 40px; }
+  .assoc i, .assoc em { left: 10px; right: auto; bottom: auto; }
+  .assoc i { top: 2px; }
+  .assoc em { bottom: 2px; }
+  .assoc small { top: 50%; left: 10px; right: auto; transform: translateY(-50%); text-align: left; white-space: nowrap; }
   .summary li { font-size: 16px; }
   .layer .tag { font-size: 11px; top: 6px; left: 6px; }
   .wire { inset: 30px 12px 10px; gap: 4px; }
@@ -439,7 +505,7 @@ img { display: block; max-width: 100%; }
   .timeline { gap: 18px; }
   .chunk { padding: 22px 26px 20px; }
   .c-fig { padding: 16px; }
-  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .how-card, .teach li, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
+  .chunk, .prow, .issue, figure, .c-fig, .facts, .nums, .tiers > li, .how-card, .teach li, .uml, .timeline > li, .alist li, .ptable tr, .stack-fig { break-inside: avoid; }
   h2, h3, h4, .fig-label, .group-title { break-after: avoid; }
   .d-section > h2 { break-after: auto; }
 }

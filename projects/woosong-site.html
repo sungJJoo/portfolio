@@ -84,6 +84,25 @@
         </div>
 
         <div class="d-section">
+          <h2>Diagram</h2>
+          <div>
+            <figure class="uml">
+              <figcaption class="fig-label">상태 다이어그램: 과정 모집 상태 (저장하지 않고 볼 때마다 날짜로 계산)</figcaption>
+              <div class="states"><span class="st-init" aria-label="시작"></span><span class="tr">과정 등록</span><span class="st">접수예정</span><span class="tr">오늘이 신청 시작일이 되면</span><span class="st">접수중</span><span class="tr">신청 종료일이 지나면</span><span class="st">모집종료</span></div>
+            </figure>
+            <figure class="uml">
+              <figcaption class="fig-label">상태 다이어그램: 교육생 계정</figcaption>
+              <div class="states"><span class="st-init" aria-label="시작"></span><span class="tr">가입</span><span class="st">승인 대기<small>로그인 안 됨</small></span><span class="tr">관리자 승인</span><span class="st">승인</span><span class="tr">관리자 정지</span><span class="st">정지<small>로그인 안 됨</small></span></div>
+            </figure>
+            <figure class="uml">
+              <figcaption class="fig-label">활동 다이어그램: 수강 신청을 받을 때 서버가 다시 확인하는 것</figcaption>
+              <div class="act"><div class="act-row"><span class="act-box">수강 신청</span></div><div class="act-down"></div><div class="act-row"><span class="act-q">과정이 접수중이고, 정원이 남았고, 승인된 계정인가?</span><span class="act-arr">아니오</span><span class="act-box no">거부</span></div><div class="act-down">예</div><div class="act-row"><span class="act-box me">신청 저장</span></div></div>
+              <p class="uml-note">관리자가 정원을 지금 신청 인원보다 작게 고치는 것도 막습니다.</p>
+            </figure>
+          </div>
+        </div>
+
+        <div class="d-section">
           <h2>Problem Solving</h2>
           <div>
             <article class="issue">

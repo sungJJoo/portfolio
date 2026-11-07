@@ -87,6 +87,38 @@
         </div>
 
         <div class="d-section">
+          <h2>Diagram</h2>
+          <div>
+            <figure class="uml">
+              <figcaption class="fig-label">시퀀스 다이어그램: 저장과 자동 갱신</figcaption>
+              <div class="uml-scroll"><div class="seq" style="--n:3">
+                <div class="seq-head"><span>팀원<small>화면</small></span><span>Apps Script<small>웹 API</small></span><span>구글 시트<small>데이터</small></span></div>
+                <ol class="seq-body">
+                <li class="part"><span>완료 체크·담당 변경</span></li>
+                <li class="note" style="--from:1;--to:2;--span:1"><span class="sr-only">팀원: </span>화면에 먼저 반영</li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">팀원 → Apps Script: </span>저장 요청</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → 구글 시트: </span>값 쓰기</li>
+                <li class="note" style="--from:2;--to:3;--span:1"><span class="sr-only">Apps Script: </span>버전 값을 지금 시각으로 바꿈</li>
+                <li class="m l ret" style="--from:1;--to:3;--span:2"><span class="sr-only">Apps Script → 팀원: </span>성공 여부</li>
+                <li class="note" style="--from:1;--to:3;--span:1"><span class="sr-only">팀원: </span>실패하면 시트에서 전체를 다시 받아 되돌림</li>
+                <li class="part"><span>자동 갱신: 30초마다, 탭이 가려졌거나 입력 중이면 쉼</span></li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">팀원 → Apps Script: </span>버전 값만 요청</li>
+                <li class="m l ret" style="--from:1;--to:3;--span:2"><span class="sr-only">Apps Script → 팀원: </span>버전 값</li>
+                <li class="note" style="--from:1;--to:2;--span:1"><span class="sr-only">팀원: </span>처음과 같으면 여기서 끝</li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">팀원 → Apps Script: </span>다르면 전체 데이터 요청</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → 구글 시트: </span>읽기</li>
+                <li class="m l ret" style="--from:1;--to:3;--span:2"><span class="sr-only">Apps Script → 팀원: </span>전체 데이터, 화면 다시 그림</li>
+                <li class="part"><span>예약 작업</span></li>
+                <li class="note" style="--from:2;--to:4;--span:1"><span class="sr-only">Apps Script: </span>15분마다: 완료한 지 30분 지난 업무를 완료 업무 시트로</li>
+                <li class="note" style="--from:2;--to:4;--span:1"><span class="sr-only">Apps Script: </span>매일 새벽 1시: 달이 바뀌었으면 근무일정 날짜를 새 달로</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → 구글 시트: </span>옮기기, 날짜 바꾸기</li>
+                </ol>
+              </div></div>
+            </figure>
+          </div>
+        </div>
+
+        <div class="d-section">
           <h2>Problem Solving</h2>
           <div>
             <article class="issue">
