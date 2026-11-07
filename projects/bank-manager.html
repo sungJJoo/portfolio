@@ -81,6 +81,17 @@
         </div>
 
         <div class="d-section">
+          <h2>Diagram</h2>
+          <div>
+            <figure class="uml">
+              <figcaption class="fig-label">클래스 다이어그램: 데이터 구조 (C 구조체)</figcaption>
+              <div class="classes"><div class="cls"><b>User</b><ul><li>char name[50]</li><li>char id[50]</li><li>char password[50]</li><li>Account account[5]</li><li>int accountCount</li></ul></div><span class="assoc" role="presentation"><i>1</i><em>0..5</em><small>최대 5개</small></span><div class="cls"><b>Account</b><ul><li>char accountname[50]</li><li>char accountNumber[14]</li><li>char openDate[20]</li><li>long long balance</li><li>Transaction history[20]</li><li>int historyCount</li></ul></div><span class="assoc" role="presentation"><i>1</i><em>0..20</em><small>최근 20건</small></span><div class="cls"><b>Transaction</b><ul><li>char date[20]</li><li>char description[100]</li><li>long long amount</li><li>long long balanceAfter</li></ul></div></div>
+              <p class="uml-note">사용자는 최대 100명까지 배열에 담고, 켤 때 JSON 파일에서 불러와 끌 때 다시 저장합니다. 파일을 쓰고 읽는 코드도 직접 만들었습니다.</p>
+            </figure>
+          </div>
+        </div>
+
+        <div class="d-section">
           <h2>Iterations</h2>
           <div>
             <p>주마다 고친 것을 발표 자료에 남겼습니다.</p>

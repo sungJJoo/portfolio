@@ -80,6 +80,28 @@
         </div>
 
         <div class="d-section">
+          <h2>Diagram</h2>
+          <div>
+            <figure class="uml">
+              <figcaption class="fig-label">시퀀스 다이어그램: 센서 값이 1초마다 화면까지</figcaption>
+              <div class="uml-scroll"><div class="seq" style="--n:3">
+                <div class="seq-head"><span>아두이노 UNO<small>센서 7종</small></span><span>ESP32-CAM<small>카메라, Wi-Fi</small></span><span>웹 페이지<small>브라우저</small></span></div>
+                <ol class="seq-body">
+                <li class="part"><span>1초마다</span></li>
+                <li class="note" style="--from:1;--to:2;--span:1"><span class="sr-only">아두이노 UNO: </span>센서 7종 읽기와 보정</li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">아두이노 UNO → ESP32-CAM: </span>UART 9600bps, 값 7개를 쉼표로 묶어</li>
+                <li class="note" style="--from:2;--to:3;--span:1"><span class="sr-only">ESP32-CAM: </span>JSON으로 바꿈</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">ESP32-CAM → 웹 페이지: </span>웹소켓으로 전송</li>
+                <li class="note" style="--from:3;--to:4;--span:1"><span class="sr-only">웹 페이지: </span>센서 표 갱신</li>
+                <li class="part"><span>계속</span></li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">ESP32-CAM → 웹 페이지: </span>카메라 영상</li>
+                </ol>
+              </div></div>
+            </figure>
+          </div>
+        </div>
+
+        <div class="d-section">
           <h2>Problem Solving</h2>
           <div>
             <article class="issue">

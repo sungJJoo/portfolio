@@ -82,6 +82,38 @@
         </div>
 
         <div class="d-section">
+          <h2>Diagram</h2>
+          <div>
+            <figure class="uml">
+              <figcaption class="fig-label">시퀀스 다이어그램: CMS에서 한 번 저장한 내용이 사이트에 반영되기까지</figcaption>
+              <div class="uml-scroll"><div class="seq" style="--n:4">
+                <div class="seq-head"><span>직원<small>CMS 화면</small></span><span>Apps Script<small>저장 대행</small></span><span>GitHub<small>저장소</small></span><span>GitHub Pages<small>사이트가 읽는 데이터</small></span></div>
+                <ol class="seq-body">
+                <li class="part"><span>로그인</span></li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">직원 → Apps Script: </span>이름과 비밀번호</li>
+                <li class="note" style="--from:2;--to:4;--span:1"><span class="sr-only">Apps Script: </span>비밀번호 확인. 연달아 5번 틀리면 10분 동안 잠금</li>
+                <li class="m l ret" style="--from:1;--to:3;--span:2"><span class="sr-only">Apps Script → 직원: </span>세션 (30일 유지)</li>
+                <li class="part"><span>저장</span></li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">직원 → Apps Script: </span>바뀐 파일의 최신 버전 조회</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → GitHub: </span>숨겨 둔 토큰을 붙여 대신 요청</li>
+                <li class="m l ret" style="--from:1;--to:4;--span:3"><span class="sr-only">GitHub → 직원: </span>파일 버전</li>
+                <li class="note" style="--from:1;--to:3;--span:1"><span class="sr-only">직원: </span>처음 불러온 버전과 다르면 저장 중단. 다른 사람이 먼저 고친 것</li>
+                <li class="m r" style="--from:1;--to:3;--span:2"><span class="sr-only">직원 → Apps Script: </span>바뀐 JSON과 새 사진으로 트리 요청</li>
+                <li class="note" style="--from:2;--to:4;--span:1"><span class="sr-only">Apps Script: </span>저장 경로 검사: data의 JSON과 사진만 허용</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → GitHub: </span>트리와 커밋 만들기, 작성자는 로그인한 이름</li>
+                <li class="m r" style="--from:2;--to:4;--span:2"><span class="sr-only">Apps Script → GitHub: </span>main 갱신, 강제 덮어쓰기 금지</li>
+                <li class="m r" style="--from:3;--to:5;--span:2"><span class="sr-only">GitHub → GitHub Pages: </span>빌드 (1~2분)</li>
+                <li class="part"><span>반영 확인: 10초마다, 최대 6분</span></li>
+                <li class="m r" style="--from:1;--to:5;--span:4"><span class="sr-only">직원 → GitHub Pages: </span>저장한 JSON 다시 받기</li>
+                <li class="note" style="--from:1;--to:3;--span:1"><span class="sr-only">직원: </span>저장한 내용과 같아지면 “반영 완료” 표시</li>
+                </ol>
+              </div></div>
+              <p class="uml-note">GitHub에 보내는 요청은 모두 Apps Script를 거칩니다. 토큰은 Apps Script 안에만 있고 브라우저로 내려가지 않습니다.</p>
+            </figure>
+          </div>
+        </div>
+
+        <div class="d-section">
           <h2>What I Did</h2>
           <div>
             <ul class="points">

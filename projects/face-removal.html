@@ -77,6 +77,17 @@
         </div>
 
         <div class="d-section">
+          <h2>Diagram</h2>
+          <div>
+            <figure class="uml">
+              <figcaption class="fig-label">활동 다이어그램: 새로 찾은 얼굴을 어떤 인물로 볼지 (제 담당 코드)</figcaption>
+              <div class="act"><div class="act-row"><span class="act-box">얼굴 하나의 특징 벡터<small>InsightFace</small></span></div><div class="act-down"></div><div class="act-row"><span class="act-q">인물마다 가진 대표 벡터 중 가장 닮은 것이 코사인 유사도 0.4보다 큰가?</span><span class="act-arr">예</span><span class="act-box me">같은 인물<small>대표 벡터를 새 얼굴 쪽으로 10% 옮김</small></span></div><div class="act-down">아니오</div><div class="act-row"><span class="act-q">지금까지 모은 얼굴 벡터 중 0.4보다 닮은 것이 있나?</span><span class="act-arr">예</span><span class="act-box me">그 인물<small>벡터를 하나 더 모음</small></span></div><div class="act-down">아니오</div><div class="act-row"><span class="act-box me">새 인물 ID 등록</span></div></div>
+              <p class="uml-note">인물마다 등장한 프레임과 얼굴 위치를 기록하고, 가장 잘 잡힌 얼굴을 골라 선택 화면에 보여 줍니다.</p>
+            </figure>
+          </div>
+        </div>
+
+        <div class="d-section">
           <h2>Problem Solving</h2>
           <div>
             <article class="issue">
