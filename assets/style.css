@@ -508,6 +508,8 @@ img { display: block; max-width: 100%; }
   .tiers > li { padding: 14px 0; }
   .how-grid { gap: 28px; }
   .how-card dt, .how-card dd { padding: 9px 0; }
+  .seq-body > li { padding: 2px 8px 10px; }
+  .seq-body > .part { margin: 8px 0 2px; }
   .timeline { gap: 18px; }
   .chunk { padding: 22px 26px 20px; }
   .c-fig { padding: 16px; }
