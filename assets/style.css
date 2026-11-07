@@ -358,7 +358,9 @@ img { display: block; max-width: 100%; }
 .c-video { margin-top: 18px; }
 .frame.narrow { max-width: 260px; }
 .d-visual .shots-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
+.d-visual .shots-2.even { grid-template-columns: 1fr 1fr; }
 .d-visual figure + figure, .d-visual .shots-2 + figure { margin-top: 20px; }
+.d-visual .shots-2 > figure + figure { margin-top: 0; }
 .d-visual .c-fig { margin-top: 0; }
 .d-visual figure + .c-fig, .d-visual .shots-2 + .c-fig { margin-top: 20px; }
 .d-body { padding: 52px 0 24px; }
@@ -461,7 +463,7 @@ img { display: block; max-width: 100%; }
   .tiers > li { grid-template-columns: 1fr; gap: 12px; }
   .career { grid-template-columns: 1fr; gap: 40px; }
   .facts { grid-template-columns: 1fr; }
-  .d-visual .shots-2 { grid-template-columns: 1fr; }
+  .d-visual .shots-2, .d-visual .shots-2.even { grid-template-columns: 1fr; }
   .nums { grid-template-columns: 1fr; }
   .pager { grid-template-columns: 1fr; }
   .pager .next { text-align: left; }
