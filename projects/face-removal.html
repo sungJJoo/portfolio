@@ -15,10 +15,10 @@
     <div class="wrap nav-inner">
       <a class="logo" href="../index.html">박성주</a>
       <nav aria-label="주요 메뉴">
-        <a href="../index.html#experience">Experience</a>
-        <a href="../index.html#solving">Problem Solving</a>
-        <a href="../index.html#projects" aria-current="page">Projects</a>
-        <a class="hide-m" href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">경력</a>
+        <a href="../index.html#solving">문제 해결</a>
+        <a href="../index.html#projects" aria-current="page">프로젝트</a>
+        <a class="hide-m" href="../index.html#skills">기술</a>
       </nav>
     </div>
   </header>
@@ -28,13 +28,13 @@
       <div class="wrap">
         <a class="back" href="../index.html#projects"><svg class="ico" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>프로젝트 목록</a>
         <h1>영상 속 특정 인물 제거 프로그램</h1>
-        <p class="p-meta"><span class="chip">Team Project</span>2024.06 ~ 2024.09</p>
+        <p class="p-meta"><span class="chip">팀 프로젝트</span>2024.06 ~ 2024.09</p>
         <p class="d-summary">영상에 나오는 사람 중 사용자가 고른 한 명만 지우고 배경을 채워 넣는 Flask 웹 프로그램입니다. 6명이 만들었고, 저는 얼굴 인식과 YOLOv8 모델을 맡았습니다.</p>
         <dl class="facts">
-          <div><dt>Role</dt><dd>얼굴 인식(InsightFace), YOLOv8</dd></div>
-          <div><dt>Team</dt><dd>6명</dd></div>
-          <div><dt>My Code</dt><dd>utils/insight_face.py</dd></div>
-          <div><dt>Links</dt><dd><a href="https://github.com/zunobk/Haaaaaaaao" target="_blank" rel="noopener">GitHub 저장소 (팀)</a></dd></div>
+          <div><dt>역할</dt><dd>얼굴 인식(InsightFace), YOLOv8</dd></div>
+          <div><dt>인원</dt><dd>6명</dd></div>
+          <div><dt>맡은 코드</dt><dd>utils/insight_face.py</dd></div>
+          <div><dt>링크</dt><dd><a href="https://github.com/zunobk/Haaaaaaaao" target="_blank" rel="noopener">GitHub 저장소 (팀)</a></dd></div>
         </dl>
       </div>
     </section>
@@ -58,14 +58,14 @@
     <section class="d-body">
       <div class="wrap">
         <div class="d-section">
-          <h2>Overview</h2>
+          <h2>개요</h2>
           <div>
             <p>영상에서 특정 인물만 지우려면 프레임마다 손으로 지워야 해서 시간이 오래 걸립니다. 영상 속 얼굴을 모두 찾아 사람별로 묶고, 사용자가 고른 사람만 추적해 지운 뒤 배경을 채우는 과정을 하나로 이었습니다.</p>
           </div>
         </div>
 
         <div class="d-section">
-          <h2>What I Did</h2>
+          <h2>한 일</h2>
           <div>
             <ul class="points">
               <li>InsightFace로 프레임마다 얼굴을 찾고, 얼굴마다 특징 벡터(임베딩)를 뽑음</li>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="d-section">
-          <h2>Diagram</h2>
+          <h2>다이어그램</h2>
           <div>
             <figure class="uml">
               <figcaption class="fig-label">활동 다이어그램: 새로 찾은 얼굴을 어떤 인물로 볼지 (제 담당 코드)</figcaption>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="d-section">
-          <h2>Problem Solving</h2>
+          <h2>문제 해결</h2>
           <div>
             <article class="issue">
               <h3>같은 사람이 여러 인물로 나뉠 수 있음</h3>
@@ -109,7 +109,7 @@
         </div>
 
         <div class="d-section">
-          <h2>Note</h2>
+          <h2>참고</h2>
           <div>
             <p>코드는 팀 저장소에 함께 올라가 있습니다. 제가 맡은 얼굴 인식 부분은 utils/insight_face.py입니다.</p>
           </div>
