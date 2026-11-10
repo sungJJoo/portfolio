@@ -34,48 +34,41 @@
     <span class="pct" aria-hidden="true">00%</span>
   </nav>
 
-  <!-- 무대: 아래 판(도메인)에 들은 것이 메모로 놓이고, 위 판(구조)으로 올라가 칸이 된다. 단계마다 journey.js가 html에 v1~v7을 붙인다 -->
+  <!-- 무대: 똑바로 놓인 판 하나. 들은 것이 메모로 흩어져 놓이고(질문), 줄을 맞춰 정한 것과 이어지고(설계), 채워져 확인 표시가 붙고(구현), 새 문의가 한 줄 더해진다(운영). journey.js가 html에 v1~v7을 붙인다 -->
   <div class="stage" aria-hidden="true">
-    <div class="scene">
-      <div class="iso">
-        <div class="sheet sh-domain"><span>도메인</span></div>
-        <div class="sheet sh-struct"><span>구조</span></div>
-        <!-- 메모 하나 = 들은 것(.heard, 아래 판에 흩어짐) + 정한 것(.made, 위 판의 제자리). --x --y --r은 흩어진 자리와 기울기, --sx --sy는 칸 자리 -->
-        <div class="memo" style="--n:0; --x:4cqi; --y:9.5cqi; --r:-6deg; --sx:3cqi; --sy:7.2cqi">
-          <span class="heard">직접 못 고침</span>
-          <span class="made"><b>화면</b><i></i></span>
-        </div>
-        <div class="memo" style="--n:1; --x:38cqi; --y:5cqi; --r:4deg; --sx:35.9cqi; --sy:7.2cqi">
-          <span class="heard">DB 서버 없음</span>
-          <span class="made"><b>데이터</b><i></i></span>
-        </div>
-        <div class="memo" style="--n:2; --x:17cqi; --y:21.5cqi; --r:-2.5deg; --sx:3cqi; --sy:19.7cqi">
-          <span class="heard">학교 계정 없음</span>
-          <span class="made"><b>권한</b><i></i></span>
-        </div>
-        <div class="memo" style="--n:3; --x:3cqi; --y:32.5cqi; --r:3.5deg; --sx:35.9cqi; --sy:19.7cqi">
-          <span class="heard">상태는 기간이 정함</span>
-          <span class="made"><b>규칙</b><i></i></span>
-        </div>
-        <div class="memo" style="--n:4; --x:40cqi; --y:33cqi; --r:-5deg; --sx:3cqi; --sy:32.2cqi">
-          <span class="heard">계약·협의 필요</span>
-          <span class="made is-cut"><b>뺀 것</b></span>
-        </div>
-        <div class="memo add" style="--n:0; --x:45cqi; --y:15cqi; --r:5deg; --sx:35.9cqi; --sy:32.2cqi">
-          <span class="heard">팝업이 안 보임</span>
-          <span class="made"><b>운영 반영</b><i></i></span>
-        </div>
+    <div class="board">
+      <p class="board-head"><span>들은 것</span><span></span><span>정한 것</span></p>
+      <div class="row" style="--n:0; --dx:8cqi; --dy:6px; --r:-5deg">
+        <span class="q"><span class="l">직원은 직접 고칠 방법이 없음</span><span class="s">직접 못 고침</span></span>
+        <span class="ar"></span>
+        <span class="a"><i>화면</i><span class="l">관리자 CMS</span><span class="s">관리자 CMS</span></span>
+      </div>
+      <div class="row" style="--n:1; --dx:46cqi; --dy:-4px; --r:4deg">
+        <span class="q"><span class="l">DB 서버를 둘 수 없음</span><span class="s">DB 서버 없음</span></span>
+        <span class="ar"></span>
+        <span class="a"><i>데이터</i><span class="l">바뀌는 내용만 JSON으로</span><span class="s">JSON으로 저장</span></span>
+      </div>
+      <div class="row" style="--n:2; --dx:24cqi; --dy:4px; --r:-3deg">
+        <span class="q"><span class="l">교육생은 학교 계정이 없음</span><span class="s">학교 계정 없음</span></span>
+        <span class="ar"></span>
+        <span class="a"><i>권한</i><span class="l">가입 후 관리자 승인</span><span class="s">가입 후 승인</span></span>
+      </div>
+      <div class="row" style="--n:3; --dx:2cqi; --dy:8px; --r:3deg">
+        <span class="q"><span class="l">모집 상태는 신청 기간이 정함</span><span class="s">기간이 상태를 정함</span></span>
+        <span class="ar"></span>
+        <span class="a"><i>규칙</i><span class="l">모집 상태는 날짜로 계산</span><span class="s">날짜로 계산</span></span>
+      </div>
+      <div class="row" style="--n:4; --dx:40cqi; --dy:-6px; --r:-4deg">
+        <span class="q"><span class="l">문자 발송은 계약이나 협의가 필요</span><span class="s">계약·협의 필요</span></span>
+        <span class="ar"></span>
+        <span class="a cut"><i>뺀 것</i><span class="l">문자 발송</span><span class="s">문자 발송</span></span>
+      </div>
+      <div class="row add" style="--n:0; --dx:30cqi; --dy:-10px; --r:5deg">
+        <span class="q"><span class="l">하루짜리 팝업이 안 보인다는 문의</span><span class="s">팝업이 안 보임</span></span>
+        <span class="ar"></span>
+        <span class="a"><i>운영 반영</i><span class="l">팝업 시작일 표시</span><span class="s">시작일 표시</span></span>
       </div>
     </div>
-    <!-- 그림 속 여섯 칸을 똑바로 읽는 목록: 들은 것 → 정한 것 (그림과 같은 단계에 나타남) -->
-    <ul class="legend">
-      <li><span>직원은 직접 고칠 방법이 없음</span><b><i>화면</i>관리자 CMS</b></li>
-      <li><span>DB 서버를 둘 수 없음</span><b><i>데이터</i>바뀌는 내용만 JSON으로</b></li>
-      <li><span>교육생은 학교 계정이 없음</span><b><i>권한</i>가입 후 관리자 승인</b></li>
-      <li><span>모집 상태는 신청 기간이 정함</span><b><i>규칙</i>모집 상태는 날짜로 계산</b></li>
-      <li class="is-cut"><span>문자 발송은 계약이나 협의가 필요</span><b><i>뺀 것</i>문자 발송</b></li>
-      <li class="add"><span>하루짜리 팝업이 안 보인다는 문의</span><b><i>운영 반영</i>팝업 시작일 표시</b></li>
-    </ul>
     <p class="cap"><b id="cap-tag">시작</b><span id="cap-text">아직 아무것도 없는 화면에서</span></p>
   </div>
 
