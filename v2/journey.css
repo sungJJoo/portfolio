@@ -21,7 +21,7 @@
   --grid: rgba(143, 164, 255, .06);
   --rule: rgba(245, 246, 250, .62);
   --gutter: clamp(20px, 5vw, 96px);
-  --header: 72px;
+  --header: 58px;
   --rail-room: 132px;
   color-scheme: dark;
 }
@@ -44,7 +44,7 @@ body::before {
 .top nav { margin-left: auto; display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: #3a4256; }
 .top nav a { text-decoration: none; white-space: nowrap; }
 .top nav a:hover { color: #2a3fc4; }
-.top .cta { display: inline-flex; align-items: center; height: 38px; padding: 0 16px; background: var(--l-ui); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.top .cta { display: inline-flex; align-items: center; height: 34px; padding: 0 16px; background: var(--l-ui); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .top .cta:hover { background: var(--l-ops); }
 .progress { position: fixed; top: var(--header); left: 0; right: 0; z-index: 20; height: 3px; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
 
@@ -60,96 +60,69 @@ body::before {
 .rail a.on { color: var(--accent); }
 .rail .pct { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* 무대: 오른쪽에 고정된 그림. 아래 판(도메인)에 들은 것이 메모로 놓이고, 위 판(구조)으로 올라가 칸이 된다.
-   html에 붙는 v2(질문) v3(설계) v4(구현) v5(운영) v7(완성)이 그림을 한 단계씩 채운다 */
+/* 무대: 오른쪽에 고정된 판 하나(똑바로 읽힘). html에 붙는 v2(질문) v3(설계) v4(구현) v5(운영) v7(완성)이 한 단계씩 채운다 */
 .stage {
-  position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding-right: 60px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding-bottom: 56px;
+  position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding: max(10vh, 110px) 100px 56px 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   pointer-events: none; transition: opacity .45s var(--ease);
 }
-/* 맨 아래 이름 칸이 올라오면 그림은 사라짐 (반쯤 잘린 채 남지 않게) */
+/* 맨 아래 칸이 올라오면 판은 사라짐 */
 .at-end .stage { opacity: 0; }
-.scene {
-  position: relative; width: min(42vw, 620px, (100vh - var(--header) - 270px) / .92); aspect-ratio: 1 / .92;
-  container-type: inline-size; transition: scale .8s var(--ease);
+.board {
+  width: min(100% - 32px, 560px); container-type: inline-size; padding: 14px 20px 8px;
+  border: 1.5px dashed rgba(143, 164, 255, .5); border-radius: 10px; background: rgba(10, 12, 20, .6);
+  transition: scale .8s var(--ease), border-color .4s;
 }
-.v7 .scene { scale: .9; }
-/* 기울인 평면. 안의 것은 모두 이 평면 좌표로 놓는다 (1cqi = 그림 폭의 1%).
-   화면에서 똑바로 위로 d만큼 올리려면 평면에서는 (1.197d, -1.329d)만큼 옮기면 된다: --up이 아래 판에서 위 판까지의 거리 */
-.iso {
-  --up-x: 48.9cqi; --up-y: -54.3cqi;
-  position: absolute; left: 15cqi; bottom: 2cqi; width: 70cqi; height: 45.5cqi;
-  transform: rotateX(56deg) rotateZ(-42deg);
+.v3 .board { border-style: solid; border-color: rgba(143, 164, 255, .55); }
+.v7 .board { scale: .94; }
+.board-head, .row { display: grid; grid-template-columns: 1fr 44px 1.12fr; align-items: center; }
+.board-head { padding-bottom: 8px; font-size: 12px; font-weight: 700; line-height: 1.5; color: rgba(143, 164, 255, .8); }
+.board-head span { opacity: 0; transition: opacity .4s; }
+.v2 .board-head span:first-child, .v3 .board-head span:last-child { opacity: 1; }
+.row { --d: calc(var(--n) * 90ms); min-height: 52px; border-top: 1px dashed var(--line); }
+.q, .a { justify-self: start; line-height: 1.4; white-space: nowrap; border-radius: 7px; }
+.s { display: none; }
+/* 들은 것: 점선 메모가 비뚤게 흩어져 내려앉았다가(질문), 줄을 맞춰 제자리로 감(설계). 사라질 때는 먼저 흐려짐 */
+.q {
+  padding: .45em .8em; border: 1px dashed rgba(143, 164, 255, .8); background: var(--bg);
+  font-size: 14px; font-weight: 500; color: var(--white);
+  opacity: 0; translate: var(--dx) calc(var(--dy) - 16px); rotate: var(--r);
+  transition: opacity .25s, translate 0s .25s, rotate 0s .25s, color 0s .25s, border-color 0s .25s;
 }
-.sheet { position: absolute; inset: 0; border: 1.5px dashed rgba(143, 164, 255, .5); border-radius: 10px; transition: border-color .4s; }
-.sh-struct { translate: var(--up-x) var(--up-y); }
-.sheet span { position: absolute; top: 1.6cqi; left: 1.8cqi; font-size: clamp(10px, 2.1cqi, 13px); font-weight: 700; line-height: 1.5; color: rgba(143, 164, 255, .72); transition: color .4s; }
-.v2 .sh-domain, .v3 .sh-struct { border-color: rgba(143, 164, 255, .85); }
-.v2 .sh-domain span, .v3 .sh-struct span { color: var(--white); }
-.v3 .sh-struct { border-style: solid; }
-
-.memo { display: contents; --d: calc(var(--n) * 90ms); }
-.heard, .made { position: absolute; line-height: 1.35; letter-spacing: -.01em; }
-/* 들은 것: 점선 메모가 아래 판에 비뚤게 내려앉음. 사라질 때는 먼저 흐려진 뒤 자리로 돌아감 */
-.heard {
-  left: var(--x); top: var(--y); padding: .5em .8em; rotate: var(--r); white-space: nowrap;
-  border: 1px dashed rgba(143, 164, 255, .8); border-radius: .5em; background: rgba(10, 12, 20, .92);
-  font-size: 3cqi; font-weight: 600; color: var(--white);
-  opacity: 0; translate: 2.7cqi -3cqi;
-  transition: opacity .25s, translate 0s .25s;
+.v2 .q { opacity: 1; translate: var(--dx) var(--dy); transition: opacity .4s var(--ease) var(--d), translate .7s var(--ease) var(--d); }
+.v3 .q { translate: 0 0; rotate: 0deg; color: var(--dim); border-color: rgba(143, 164, 255, .4); transition: translate .85s var(--ease) var(--d), rotate .85s var(--ease) var(--d), color .4s, border-color .4s, opacity .4s; }
+/* 화살표가 그어지고 정한 것이 나타남 */
+.ar { position: relative; height: 1.5px; margin: 0 8px 0 4px; background: var(--accent); transform-origin: 0 50%; scale: 0 1; transition: scale .2s; }
+.ar::after { content: ""; position: absolute; right: -2px; top: -3.5px; border-block: 4.2px solid transparent; border-left: 7px solid var(--accent); }
+.v3 .ar { scale: 1 1; transition: scale .45s var(--ease) calc(.55s + var(--d)); }
+.a {
+  position: relative; padding: .5em .85em; border: 1px solid rgba(143, 164, 255, .6); background: var(--bg);
+  font-size: 14.5px; font-weight: 700; color: var(--white);
+  opacity: 0; translate: -14px 0;
+  transition: opacity .25s, translate 0s .25s, background-color 0s .25s, color 0s .25s, border-color 0s .25s, box-shadow 0s .25s;
 }
-.v2 .heard { opacity: 1; translate: 0 0; transition: opacity .4s var(--ease) var(--d), translate .7s var(--ease) var(--d); }
-.v3 .heard { opacity: .45; }
-/* 정한 것: 메모 자리에서 떠올라 위 판의 칸으로 감 */
-.made {
-  left: var(--sx); top: var(--sy); width: 31.1cqi; height: 10.7cqi; padding: 0 1.8cqi;
-  display: flex; flex-direction: column; justify-content: center; gap: .2cqi;
-  border: 1px dashed rgba(143, 164, 255, .8); border-radius: .9cqi; background: var(--bg);
-  font-size: 3.5cqi; color: var(--white); white-space: nowrap;
-  opacity: 0; rotate: var(--r); translate: calc(var(--x) - var(--sx)) calc(var(--y) - var(--sy));
-  transition: opacity .25s, translate 0s .25s, rotate 0s .25s, background-color 0s .25s, color 0s .25s, border-color 0s .25s, box-shadow 0s .25s;
-}
-.made b { font-weight: 700; }
-.made i { position: absolute; top: -1.3cqi; right: -1.3cqi; width: 3.6cqi; height: 3.6cqi; border-radius: 50%; background: var(--accent); scale: 0; transition: scale .2s; }
-.made i::after { content: ""; position: absolute; left: 35%; top: 19%; width: 24%; height: 46%; border: solid #0a0c14; border-width: 0 .42cqi .42cqi 0; rotate: 45deg; }
-.v3 .made {
-  opacity: 1; rotate: 0deg; translate: var(--up-x) var(--up-y); border-style: solid; border-color: rgba(143, 164, 255, .65);
-  transition: opacity .35s var(--ease) var(--d), translate .95s var(--ease) var(--d), rotate .95s var(--ease) var(--d), background-color .45s, color .45s, border-color .45s, box-shadow .45s;
-}
-.v3 .made.is-cut { border-style: dashed; border-color: rgba(143, 164, 255, .5); color: var(--quiet); }
-.made.is-cut b { text-decoration: line-through; text-decoration-thickness: .14em; }
-/* 구현: 칸이 두께 있는 밝은 판으로 채워지고(옆면은 그림자 세 겹), 확인 표시가 하나씩 붙음. 뺀 것은 그대로 */
-.v4 .made:not(.is-cut) {
-  translate: calc(var(--up-x) + .9cqi) calc(var(--up-y) - 1cqi);
-  background: #f5f6fa; color: #0e1530; border-color: #f5f6fa;
-  box-shadow: -.3cqi .33cqi 0 var(--l-ui), -.6cqi .66cqi 0 var(--l-ui), -.9cqi 1cqi 0 var(--l-ui);
-}
-.v4 .made i { scale: 1; transition: scale .35s var(--ease) calc(.45s + var(--d)); }
-/* 운영: 새로 들은 문의 하나가 같은 길로 올라와 칸이 됨 (그 전에는 숨김) */
-.v2 .memo.add .heard { opacity: 0; translate: 2.7cqi -3cqi; }
-.v3 .memo.add .made { opacity: 0; rotate: var(--r); translate: calc(var(--x) - var(--sx)) calc(var(--y) - var(--sy)); box-shadow: none; }
-.v3 .memo.add .made i { scale: 0; }
-.v5 .memo.add .heard { opacity: .9; translate: 0 0; border-color: var(--accent); transition: opacity .4s var(--ease), translate .7s var(--ease); }
-.v5 .memo.add .made {
-  opacity: 1; rotate: 0deg; translate: calc(var(--up-x) + .9cqi) calc(var(--up-y) - 1cqi);
-  background: var(--accent); color: #0a0c14; border-color: var(--accent);
-  box-shadow: -.3cqi .33cqi 0 var(--l-ops), -.6cqi .66cqi 0 var(--l-ops), -.9cqi 1cqi 0 var(--l-ops);
-  transition: opacity .35s var(--ease) .8s, translate .95s var(--ease) .8s, rotate .95s var(--ease) .8s;
-}
-.v5 .memo.add .made i { scale: 1; background: #0a0c14; transition: scale .35s var(--ease) 1.9s; }
-.v5 .memo.add .made i::after { border-color: var(--accent); }
-
-/* 그림 속 칸을 똑바로 읽는 목록: 왼쪽 들은 것(질문부터), 오른쪽 정한 것(설계부터), 마지막 줄은 운영에서 */
-.legend { width: min(100% - 40px, 520px); border-top: 1px solid var(--line); font-size: 13px; line-height: 1.5; opacity: 0; transition: opacity .4s; }
-.v2 .legend { opacity: 1; }
-.legend li { display: grid; grid-template-columns: 1fr 1.12fr; gap: 14px; padding: 5px 2px; border-bottom: 1px solid var(--line); }
-.legend span { color: var(--dim); }
-.legend b { font-weight: 600; color: var(--white); opacity: 0; transition: opacity .4s; }
-.legend b i { display: inline-block; min-width: 4.6em; font-style: normal; font-weight: 700; font-size: 12px; color: var(--accent); }
-.v3 .legend b { opacity: 1; }
-.legend .is-cut b { color: var(--quiet); text-decoration: line-through; }
-.legend .add { opacity: 0; transition: opacity .4s; }
-.v5 .legend .add { opacity: 1; }
+.a i { margin-right: .7em; font-style: normal; font-size: 11.5px; color: var(--accent); transition: color .4s; }
+.v3 .a { opacity: 1; translate: 0 0; transition: opacity .4s var(--ease) calc(.85s + var(--d)), translate .5s var(--ease) calc(.85s + var(--d)), background-color .45s, color .45s, border-color .45s, box-shadow .45s; }
+.a.cut { border-style: dashed; border-color: rgba(143, 164, 255, .45); color: var(--quiet); }
+.a.cut .l, .a.cut .s { text-decoration: line-through; }
+.a.cut i { color: var(--quiet); }
+/* 구현: 칸이 밝게 채워지고 확인 표시가 하나씩 붙음. 뺀 것은 그대로 */
+.v4 .a:not(.cut) { background: #f5f6fa; color: #0e1530; border-color: #f5f6fa; box-shadow: 0 3px 0 var(--l-ui); }
+.v4 .a:not(.cut) i { color: var(--l-ops); }
+.a:not(.cut)::after { content: ""; position: absolute; top: -9px; right: -9px; width: 19px; height: 19px; border-radius: 50%; background: var(--accent); scale: 0; transition: scale .2s; }
+.a:not(.cut)::before { content: ""; position: absolute; z-index: 1; top: -5px; right: -2.5px; width: 4px; height: 8px; border: solid #0a0c14; border-width: 0 2px 2px 0; rotate: 45deg; scale: 0; transition: scale .2s; }
+.v4 .a::after, .v4 .a::before { scale: 1; transition: scale .35s var(--ease) calc(.4s + var(--d) * 2); }
+/* 운영: 새로 들은 문의 한 줄이 같은 순서로 더해짐 (그 전에는 숨김) */
+.v2 .row.add .q { opacity: 0; translate: var(--dx) calc(var(--dy) - 16px); rotate: var(--r); }
+.v3 .row.add .ar { scale: 0 1; }
+.v3 .row.add .a { opacity: 0; translate: -14px 0; }
+.v4 .row.add .a::after, .v4 .row.add .a::before { scale: 0; }
+.v5 .row.add .q { opacity: 1; translate: 0 0; rotate: 0deg; color: var(--white); border-color: var(--accent); transition: opacity .4s var(--ease), translate .8s var(--ease) .1s, rotate .8s var(--ease) .1s; }
+.v5 .row.add .ar { scale: 1 1; transition: scale .45s var(--ease) .9s; }
+.v5 .row.add .a { opacity: 1; translate: 0 0; background: var(--accent); color: #0a0c14; border-color: var(--accent); box-shadow: 0 3px 0 var(--l-ops); transition: opacity .4s var(--ease) 1.25s, translate .5s var(--ease) 1.25s; }
+.v5 .row.add .a i { color: #1a2470; }
+.v5 .row.add .a::after { scale: 1; background: #f5f6fa; transition: scale .35s var(--ease) 1.9s; }
+.v5 .row.add .a::before { scale: 1; transition: scale .35s var(--ease) 1.9s; }
 
 .cap { position: absolute; left: 50%; bottom: 3%; translate: -50% 0; display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; line-height: 1.5; color: var(--dim); }
 html:not(.js) .cap { display: none; }
@@ -231,20 +204,33 @@ main { position: relative; z-index: 5; }
 .end .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--quiet); }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage, .scene, .sheet, .sheet span, .heard, .made, .made i, .legend, .legend b, .legend .add { transition: none !important; }
+  .stage, .board, .board-head span, .q, .ar, .a, .a i, .a::before, .a::after { transition: none !important; }
+}
+
+/* 좁은 PC 화면: 판이 좁아지므로 짧은 글로 */
+@media (max-width: 1100px) {
+  .l { display: none; }
+  .s { display: inline; }
+  .board-head, .row { grid-template-columns: 1fr 34px 1.1fr; }
 }
 
 /* 태블릿 세로와 휴대폰: 무대는 위쪽 절반, 단계 표시는 아래 막대 */
 @media (max-width: 900px) {
-  :root { --header: 60px; --gutter: 20px; --rail-room: 20px; }
+  :root { --header: 52px; --gutter: 20px; --rail-room: 20px; }
   html { scroll-padding-top: 72px; }
   .top { gap: 12px; }
   .brand small, .top .hide-m { display: none; }
   .top nav { gap: 14px; font-size: 13.5px; }
-  .top .cta { height: 34px; padding: 0 12px; font-size: 13px; }
-  .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 4px 0 0; justify-content: flex-start; }
-  .legend { display: none; }
-  .scene { width: min(88vw, 400px, 40vh); }
+  .top .cta { height: 32px; padding: 0 12px; font-size: 13px; }
+  .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 8px 0 0; justify-content: flex-start; }
+  .board { width: min(100% - 32px, 460px); padding: 8px 12px 4px; }
+  .board-head, .row { grid-template-columns: 1fr 26px 1.05fr; }
+  .board-head { padding-bottom: 4px; font-size: 11px; }
+  .row { min-height: min(40px, (44vh - 84px) / 6); }
+  .q, .a { font-size: 12px; }
+  .a i { font-size: 10.5px; margin-right: .5em; }
+  .l { display: none; }
+  .s { display: inline; }
   .cap { width: calc(100vw - 40px); justify-content: center; white-space: normal; text-align: center; font-size: 12px; }
   .rail { top: auto; bottom: 0; left: 0; right: 0; translate: none; display: flex; justify-content: space-between; align-items: center; gap: 0; padding: 10px 14px; border-width: 1px 0 0; background: var(--bg); font-size: 10.5px; }
   .rail a { padding: 0; gap: 3px; }
