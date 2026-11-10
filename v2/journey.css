@@ -1,4 +1,4 @@
-/* 새 메인(미리보기) 스타일: style.css 위에 어두운 색 변수를 덮고, 층이 쌓이는 무대·단계 표시·단계 본문을 얹는다 */
+/* 새 메인(미리보기) 스타일: style.css 위에 어두운 색 변수를 덮고, 도메인에서 구조로 채워지는 그림(무대)·단계 표시·단계 본문을 얹는다 */
 :root {
   /* style.css 색 변수를 어두운 바탕용으로 바꿈. 예전 부품(문제 해결, 프로젝트, 기술, 경력)이 그대로 따라온다 */
   --bg: #0a0c14;
@@ -60,48 +60,91 @@ body::before {
 .rail a.on { color: var(--accent); }
 .rail .pct { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* 무대: 오른쪽에 고정된 네 층. 층 안은 밝은 화면처럼 보이게 밝은 색 변수로 되돌린다 */
+/* 무대: 오른쪽에 고정된 그림. 아래 판(도메인)에 들은 것이 메모로 놓이고, 위 판(구조)으로 올라가 칸이 된다.
+   html에 붙는 v2(질문) v3(설계) v4(구현) v5(운영) v7(완성)이 그림을 한 단계씩 채운다 */
 .stage {
-  --surface: #fff; --paper: #f7f8fa; --ink: #0e1530; --sub: #525a72; --box: #a9b0c2;
-  position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw;
+  position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding-right: 60px;
   display: grid; place-items: center; pointer-events: none; transition: opacity .45s var(--ease);
 }
-/* 맨 아래 이름 칸이 올라오면 층 그림은 사라짐 (반쯤 잘린 채 남지 않게) */
+/* 맨 아래 이름 칸이 올라오면 그림은 사라짐 (반쯤 잘린 채 남지 않게) */
 .at-end .stage { opacity: 0; }
-.stage .stack { width: min(44vw, 620px); container-type: inline-size; transition: scale .8s var(--ease); }
-/* 층 안 글자와 칸은 그림 폭(cqi)에 맞춰 줄어듦: 620px 그림에서 예전 크기와 같고, 좁은 화면에서도 칸이 넘치지 않음 */
-.stage .layer .tag, .ghost span { top: 1.6cqi; left: 1.6cqi; font-size: clamp(10px, 2.1cqi, 13px); }
-.stage .layer .tag { padding: .15em .75em; }
-.stage .wire { inset: 7cqi 3.5cqi 2.6cqi; gap: 1cqi; }
-.stage .wire b { padding: 0 1.6cqi; font-size: min(12px, 2.2cqi); }
-.stage .pipe { margin: 0 3cqi; gap: 1cqi; }
-.stage .pipe:first-of-type { margin-top: 9cqi; }
-.stage .pipe + .pipe { margin-top: 3.5cqi; }
-.stage .pipe b { padding: .5em .75em; font-size: min(11.5px, 2.05cqi); }
-.s7 .stage .stack { scale: .9; }
-.ghost {
-  position: absolute; left: 19%; bottom: 4%; width: 62%; aspect-ratio: 16 / 10; border-radius: 10px;
-  border: 1.5px dashed rgba(143, 164, 255, .5);
-  transform: rotateX(56deg) rotateZ(-42deg); translate: 0 calc(var(--i) * -47%);
-  transition: border-color .3s, background-color .3s;
+.scene {
+  position: relative; width: min(42vw, 620px, (100vh - var(--header) - 96px) / .92); aspect-ratio: 1 / .92;
+  container-type: inline-size; transition: scale .8s var(--ease);
 }
-.ghost span { position: absolute; font-weight: 700; color: rgba(143, 164, 255, .72); transition: color .3s; }
-.stage .layer { bottom: 4%; transition: opacity .55s var(--ease), translate .75s var(--ease); }
-.js .stage .layer { opacity: 0; translate: 0 calc(var(--i) * -47% - 26%); }
-.js .s2 .l-plan, .js .s3 .l-api, .js .s4 .l-ui, .js .s5 .l-ops { opacity: 1; translate: 0 calc(var(--i) * -47%); }
+.v7 .scene { scale: .9; }
+/* 기울인 평면. 안의 것은 모두 이 평면 좌표로 놓는다 (1cqi = 그림 폭의 1%).
+   화면에서 똑바로 위로 d만큼 올리려면 평면에서는 (1.197d, -1.329d)만큼 옮기면 된다: --up이 아래 판에서 위 판까지의 거리 */
+.iso {
+  --up-x: 48.9cqi; --up-y: -54.3cqi;
+  position: absolute; left: 15cqi; bottom: 2cqi; width: 70cqi; height: 45.5cqi;
+  transform: rotateX(56deg) rotateZ(-42deg);
+}
+.sheet { position: absolute; inset: 0; border: 1.5px dashed rgba(143, 164, 255, .5); border-radius: 10px; transition: border-color .4s; }
+.sh-struct { translate: var(--up-x) var(--up-y); }
+.sheet span { position: absolute; top: 1.6cqi; left: 1.8cqi; font-size: clamp(10px, 2.1cqi, 13px); font-weight: 700; line-height: 1.5; color: rgba(143, 164, 255, .72); transition: color .4s; }
+.v2 .sh-domain, .v3 .sh-struct { border-color: rgba(143, 164, 255, .85); }
+.v2 .sh-domain span, .v3 .sh-struct span { color: var(--white); }
+.v3 .sh-struct { border-style: solid; }
+
+.memo { display: contents; --d: calc(var(--n) * 90ms); }
+.heard, .made { position: absolute; line-height: 1.35; letter-spacing: -.01em; }
+/* 들은 것: 점선 메모가 아래 판에 비뚤게 내려앉음. 사라질 때는 먼저 흐려진 뒤 자리로 돌아감 */
+.heard {
+  left: var(--x); top: var(--y); padding: .5em .8em; rotate: var(--r); white-space: nowrap;
+  border: 1px dashed rgba(143, 164, 255, .8); border-radius: .5em; background: rgba(10, 12, 20, .92);
+  font-size: 2.2cqi; font-weight: 500; color: var(--white);
+  opacity: 0; translate: 2.7cqi -3cqi;
+  transition: opacity .25s, translate 0s .25s;
+}
+.v2 .heard { opacity: 1; translate: 0 0; transition: opacity .4s var(--ease) var(--d), translate .7s var(--ease) var(--d); }
+.v3 .heard { opacity: .45; }
+/* 정한 것: 메모 자리에서 떠올라 위 판의 칸으로 감 */
+.made {
+  left: var(--sx); top: var(--sy); width: 31.1cqi; height: 10.7cqi; padding: 0 1.8cqi;
+  display: flex; flex-direction: column; justify-content: center; gap: .2cqi;
+  border: 1px dashed rgba(143, 164, 255, .8); border-radius: .9cqi; background: var(--bg);
+  font-size: 2.45cqi; color: var(--white); white-space: nowrap;
+  opacity: 0; rotate: var(--r); translate: calc(var(--x) - var(--sx)) calc(var(--y) - var(--sy));
+  transition: opacity .25s, translate 0s .25s, rotate 0s .25s, background-color 0s .25s, color 0s .25s, border-color 0s .25s, box-shadow 0s .25s;
+}
+.made small { font-size: 1.9cqi; font-weight: 700; color: var(--accent); transition: color .4s; }
+.made b { font-weight: 700; }
+.made i { position: absolute; top: -1.3cqi; right: -1.3cqi; width: 3.6cqi; height: 3.6cqi; border-radius: 50%; background: var(--accent); scale: 0; transition: scale .2s; }
+.made i::after { content: ""; position: absolute; left: 35%; top: 19%; width: 24%; height: 46%; border: solid #0a0c14; border-width: 0 .42cqi .42cqi 0; rotate: 45deg; }
+.v3 .made {
+  opacity: 1; rotate: 0deg; translate: var(--up-x) var(--up-y); border-style: solid; border-color: rgba(143, 164, 255, .65);
+  transition: opacity .35s var(--ease) var(--d), translate .95s var(--ease) var(--d), rotate .95s var(--ease) var(--d), background-color .45s, color .45s, border-color .45s, box-shadow .45s;
+}
+.v3 .made.is-cut { border-style: dashed; border-color: rgba(143, 164, 255, .5); color: var(--quiet); }
+.made.is-cut small { color: var(--quiet); }
+.made.is-cut b { text-decoration: line-through; text-decoration-thickness: .14em; }
+/* 구현: 칸이 두께 있는 밝은 판으로 채워지고(옆면은 그림자 세 겹), 확인 표시가 하나씩 붙음. 뺀 것은 그대로 */
+.v4 .made:not(.is-cut) {
+  translate: calc(var(--up-x) + .9cqi) calc(var(--up-y) - 1cqi);
+  background: #f5f6fa; color: #0e1530; border-color: #f5f6fa;
+  box-shadow: -.3cqi .33cqi 0 var(--l-ui), -.6cqi .66cqi 0 var(--l-ui), -.9cqi 1cqi 0 var(--l-ui);
+}
+.v4 .made:not(.is-cut) small { color: var(--l-ops); }
+.v4 .made i { scale: 1; transition: scale .35s var(--ease) calc(.45s + var(--d)); }
+/* 운영: 새로 들은 문의 하나가 같은 길로 올라와 칸이 됨 (그 전에는 숨김) */
+.v2 .memo.add .heard { opacity: 0; translate: 2.7cqi -3cqi; }
+.v3 .memo.add .made { opacity: 0; rotate: var(--r); translate: calc(var(--x) - var(--sx)) calc(var(--y) - var(--sy)); box-shadow: none; }
+.v3 .memo.add .made i { scale: 0; }
+.v5 .memo.add .heard { opacity: .9; translate: 0 0; border-color: var(--accent); transition: opacity .4s var(--ease), translate .7s var(--ease); }
+.v5 .memo.add .made {
+  opacity: 1; rotate: 0deg; translate: calc(var(--up-x) + .9cqi) calc(var(--up-y) - 1cqi);
+  background: var(--accent); color: #0a0c14; border-color: var(--accent);
+  box-shadow: -.3cqi .33cqi 0 var(--l-ops), -.6cqi .66cqi 0 var(--l-ops), -.9cqi 1cqi 0 var(--l-ops);
+  transition: opacity .35s var(--ease) .8s, translate .95s var(--ease) .8s, rotate .95s var(--ease) .8s;
+}
+.v5 .memo.add .made small { color: #1a2470; }
+.v5 .memo.add .made i { scale: 1; background: #0a0c14; transition: scale .35s var(--ease) 1.9s; }
+.v5 .memo.add .made i::after { border-color: var(--accent); }
+
 .cap { position: absolute; left: 50%; bottom: 3%; translate: -50% 0; display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; line-height: 1.5; color: var(--dim); }
 html:not(.js) .cap { display: none; }
 .cap b { flex: none; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); font-size: 12px; font-weight: 700; }
-
-/* 첫 화면 문구가 한 층을 말할 때 그 점선 층이 밝아짐 (아직 아무 층도 안 쌓인 1단계에서만) */
-.s1:not(.s2)[data-on="plan"] .ghost.k-plan,
-.s1:not(.s2)[data-on="api"] .ghost.k-api,
-.s1:not(.s2)[data-on="ui"] .ghost.k-ui,
-.s1:not(.s2)[data-on="ops"] .ghost.k-ops { border-style: solid; border-color: var(--c); background-color: color-mix(in srgb, var(--c) 18%, transparent); }
-.s1:not(.s2)[data-on="plan"] .ghost.k-plan span,
-.s1:not(.s2)[data-on="api"] .ghost.k-api span,
-.s1:not(.s2)[data-on="ui"] .ghost.k-ui span,
-.s1:not(.s2)[data-on="ops"] .ghost.k-ops span { color: var(--white); }
 
 /* 단계 본문 */
 main { position: relative; z-index: 5; }
@@ -114,15 +157,7 @@ main { position: relative; z-index: 5; }
 /* 가장 긴 문구(도메인부터 구조까지 이해하는)가 첫 줄 한 줄에 들어가는 크기 */
 .chap h1 { font-size: min(60px, 4.1vw); }
 .hl { color: var(--accent); }
-#c1 .type {
-  color: var(--accent); background: none; white-space: nowrap;
-  text-decoration-line: underline; text-decoration-thickness: .06em; text-underline-offset: .2em; text-decoration-color: transparent;
-  transition: text-decoration-color .3s;
-}
-[data-on="plan"] #c1 .type { text-decoration-color: var(--l-plan); }
-[data-on="api"] #c1 .type { text-decoration-color: var(--l-api); }
-[data-on="ui"] #c1 .type { text-decoration-color: var(--l-ui); }
-[data-on="ops"] #c1 .type { text-decoration-color: var(--l-ops); }
+#c1 .type { color: var(--accent); background: none; white-space: nowrap; }
 #c1 .typing .type::after { width: max(3px, .05em); }
 .chap .lead { margin: 28px 0 0; max-width: 30em; font-size: 17px; line-height: 1.75; color: var(--dim); }
 .ask { margin: 30px 0 0; font-size: clamp(20px, 1.9vw, 26px); font-weight: 500; line-height: 1.5; letter-spacing: -.02em; }
@@ -164,7 +199,7 @@ main { position: relative; z-index: 5; }
 .more { display: inline-block; margin-top: 20px; padding-bottom: 6px; border-bottom: 1px solid var(--line-strong); font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; }
 .more:hover { color: var(--accent); border-color: var(--accent); }
 
-/* 06 이력: 예전 섹션. 꽉 찬 바탕이 층 그림을 덮고, 내용은 오른쪽 단계 표시를 피해 놓인다 */
+/* 06 이력: 예전 섹션. 꽉 찬 바탕이 그림을 덮고, 내용은 오른쪽 단계 표시를 피해 놓인다 */
 .hist { position: relative; z-index: 5; background: var(--bg); border-top: 1px solid var(--line); }
 .hist .wrap {
   --w: min(1104px, 100% - var(--gutter) - var(--rail-room));
@@ -188,7 +223,7 @@ main { position: relative; z-index: 5; }
 .word { font-size: clamp(110px, 24vw, 360px); font-weight: 800; letter-spacing: -.07em; line-height: .9; color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage, .stage .layer, .stage .stack, .ghost, .ghost span, #c1 .type { transition: none; }
+  .stage, .scene, .sheet, .sheet span, .heard, .made, .made small, .made i { transition: none !important; }
 }
 
 /* 태블릿 세로와 휴대폰: 무대는 위쪽 절반, 단계 표시는 아래 막대 */
@@ -199,13 +234,13 @@ main { position: relative; z-index: 5; }
   .brand small, .top .hide-m { display: none; }
   .top nav { gap: 14px; font-size: 13.5px; }
   .top .cta { height: 34px; padding: 0 12px; font-size: 13px; }
-  .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; }
-  .stage .stack { width: min(78vw, 380px); }
+  .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 4px 0 0; align-items: start; }
+  .scene { width: min(88vw, 400px, 40vh); }
   .cap { width: calc(100vw - 40px); justify-content: center; white-space: normal; text-align: center; font-size: 12px; }
   .rail { top: auto; bottom: 0; left: 0; right: 0; translate: none; display: flex; justify-content: space-between; align-items: center; gap: 0; padding: 10px 14px; border-width: 1px 0 0; background: var(--bg); font-size: 10.5px; }
   .rail a { padding: 0; gap: 3px; }
   .rail .pct { margin: 0; padding: 0; border: 0; }
-  /* 글은 층 그림 바로 아래(머리 막대 + 44vh)에서 시작 */
+  /* 글은 그림 바로 아래(머리 막대 + 44vh)에서 시작 */
   .chap { min-height: 100vh; justify-content: flex-end; padding: calc(var(--header) + 44vh) 20px 72px; }
   #c1 { padding-top: calc(var(--header) + 44vh); padding-bottom: 72px; }
   .copy, #c1 .copy { max-width: 640px; padding-top: 22px; background: linear-gradient(to bottom, rgba(10, 12, 20, 0), var(--bg) 28px); }

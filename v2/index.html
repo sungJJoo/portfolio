@@ -1,6 +1,6 @@
-<!-- 박성주 포트폴리오 새 메인(미리보기): 내려가면 기획·서버·화면·운영 네 층이 쌓이고, 그 아래에 경력·문제 해결·프로젝트를 이어 붙인 한 페이지 -->
+<!-- 박성주 포트폴리오 새 메인(미리보기): 내려가면 들은 것(도메인)이 구조가 되어 가는 그림이 단계마다 채워지고, 그 아래에 경력·문제 해결·프로젝트를 이어 붙인 한 페이지 -->
 <!doctype html>
-<html lang="ko">
+<html lang="ko" class="v1 v2 v3 v4 v5 v6 v7">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="journey.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <!-- 스크립트가 켜져 있으면 그림을 빈 판(v1)에서 시작. 꺼져 있으면 위에 적힌 v1~v7 그대로라 완성된 그림이 보인다 -->
+  <script>document.documentElement.className = 'js v1';</script>
 </head>
-<body class="s1">
+<body>
   <header class="top">
     <a class="brand" href="#c1"><b>박성주</b><small>풀스택 개발자<br>도메인부터 구조까지</small></a>
     <nav aria-label="주요 메뉴">
@@ -38,30 +39,44 @@
     <span class="pct" aria-hidden="true">00%</span>
   </nav>
 
-  <!-- 무대: 연구소 사이트를 네 층으로 나눈 그림. 단계마다 한 층씩 쌓인다 (journey.js가 body에 s1~s7을 붙임) -->
+  <!-- 무대: 아래 판(도메인)에 들은 것이 메모로 놓이고, 위 판(구조)으로 올라가 칸이 된다. 단계마다 journey.js가 html에 v1~v7을 붙인다 -->
   <div class="stage" aria-hidden="true">
-    <div class="stack">
-      <div class="ghost k-plan" style="--i:0"><span>기획</span></div>
-      <div class="ghost k-api" style="--i:1"><span>서버</span></div>
-      <div class="ghost k-ui" style="--i:2"><span>화면</span></div>
-      <div class="ghost k-ops" style="--i:3"><span>운영</span></div>
-      <div class="layer l-plan" style="--i:0">
-        <span class="tag">기획</span>
-        <div class="wire"><b>철학</b><b>프로그램</b><b>결과물</b><b>신뢰</b><b>상담</b></div>
+    <div class="scene">
+      <div class="iso">
+        <div class="sheet sh-domain"><span>도메인</span></div>
+        <div class="sheet sh-struct"><span>구조</span></div>
+        <!-- 메모 하나 = 들은 것(.heard, 아래 판에 흩어짐) + 정한 것(.made, 위 판의 제자리). --x --y --r은 흩어진 자리와 기울기, --sx --sy는 칸 자리 -->
+        <div class="memo" style="--n:0; --x:4cqi; --y:9.5cqi; --r:-6deg; --sx:3cqi; --sy:7.2cqi">
+          <span class="heard">직원은 직접<br>고칠 방법이 없음</span>
+          <span class="made"><small>화면</small><b>관리자 CMS</b><i></i></span>
+        </div>
+        <div class="memo" style="--n:1; --x:38cqi; --y:5cqi; --r:4deg; --sx:35.9cqi; --sy:7.2cqi">
+          <span class="heard">DB 서버를 둘 수 없음</span>
+          <span class="made"><small>데이터</small><b>바뀌는 내용만 JSON으로</b><i></i></span>
+        </div>
+        <div class="memo" style="--n:2; --x:17cqi; --y:21.5cqi; --r:-2.5deg; --sx:3cqi; --sy:19.7cqi">
+          <span class="heard">교육생은<br>학교 계정이 없음</span>
+          <span class="made"><small>권한</small><b>가입 후 관리자 승인</b><i></i></span>
+        </div>
+        <div class="memo" style="--n:3; --x:3cqi; --y:32.5cqi; --r:3.5deg; --sx:35.9cqi; --sy:19.7cqi">
+          <span class="heard">모집 상태는<br>신청 기간이 정함</span>
+          <span class="made"><small>규칙</small><b>모집 상태는 날짜로 계산</b><i></i></span>
+        </div>
+        <div class="memo" style="--n:4; --x:40cqi; --y:33cqi; --r:-5deg; --sx:3cqi; --sy:32.2cqi">
+          <span class="heard">문자 발송은<br>계약이나 협의가 필요</span>
+          <span class="made is-cut"><small>뺀 것</small><b>문자 발송</b></span>
+        </div>
+        <div class="memo add" style="--n:0; --x:47cqi; --y:17.5cqi; --r:5deg; --sx:35.9cqi; --sy:32.2cqi">
+          <span class="heard">하루짜리 팝업이<br>안 보인다는 문의</span>
+          <span class="made"><small>운영 중 반영</small><b>팝업 시작일 표시</b><i></i></span>
+        </div>
       </div>
-      <div class="layer l-api" style="--i:1">
-        <span class="tag">서버</span>
-        <div class="pipe"><b>관리자 CMS</b><i></i><b>Apps Script</b><i></i><b>GitHub JSON</b></div>
-        <div class="pipe"><b>상담 신청</b><i></i><b>구글 시트</b><i></i><b>메일 알림</b></div>
-      </div>
-      <div class="layer l-ui" style="--i:2"><span class="tag">화면</span><img src="../assets/img/fox-site.webp" alt="" width="1200" height="605"></div>
-      <div class="layer l-ops" style="--i:3"><span class="tag">운영</span><img src="../assets/img/fox-cms.webp" alt="" width="1200" height="750"></div>
     </div>
     <p class="cap"><b id="cap-tag">시작</b><span id="cap-text">아직 아무것도 없는 화면에서</span></p>
   </div>
 
   <main>
-    <!-- 01 소개: 바뀌는 문구는 도메인부터 구조까지 이해하는 → 기획하는 → 서버를 짜는 → 화면을 만드는 → 운영까지 하는 -->
+    <!-- 01 소개: 바뀌는 문구는 도메인부터 구조까지 이해하는 → 왜 필요한지 묻는 → 구조부터 세우는 → 결과를 직접 확인하는 → 만든 뒤에도 운영하는 (문구마다 그림이 그 단계를 미리 보여 줌) -->
     <section class="chap" id="c1" data-step="1">
       <div class="copy">
         <p class="label">01 / 소개</p>
@@ -76,7 +91,7 @@
           <div><dt>현재</dt><dd>폭스커넥트 대전 AI 연구소<br>AI 연구원 (2025.07 ~)</dd></div>
           <div><dt>학력</dt><dd>우송대학교 컴퓨터정보보안전공<br>부전공 비즈니스창업융합부</dd></div>
         </dl>
-        <p class="hint">내려 보면 네 층이 차례로 쌓입니다</p>
+        <p class="hint">내려 보면 빈 판이 단계마다 채워집니다</p>
       </div>
     </section>
 
@@ -196,7 +211,7 @@
       </div>
     </section>
 
-    <!-- 06 이력: 예전 메인의 섹션을 그대로 옮김. 바탕이 층 그림을 덮는다 -->
+    <!-- 06 이력: 예전 메인의 섹션을 그대로 옮김. 바탕이 오른쪽 그림을 덮는다 -->
     <div class="hist" id="c6" data-step="6">
     <!-- 경력: 회사에서 만든 것과 그 밖의 일 -->
     <section id="experience" class="section tint">
