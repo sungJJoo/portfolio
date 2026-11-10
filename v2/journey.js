@@ -14,7 +14,7 @@
     ['설계', '메모마다 만들 것과 뺄 것을 정한 기능명세'],
     ['구현', '칸마다 검증 항목으로 확인한 결과'],
     ['운영', '쓰다가 나온 문의도 같은 순서로 반영'],
-    ['이력', '경력과 프로젝트'],
+    ['다음', '문제 해결과 프로젝트'],
     ['완성', '도메인에서 들은 것이 구조가 되기까지'],
   ];
 
@@ -30,18 +30,25 @@
   const setStep = (n) => {
     if (n === step) return;
     step = n;
+    render();
+  };
+  // 오른쪽 표시는 메뉴(개발, 활동, 경력, 연락) 가운데 지금 보고 있는 곳. 첫 화면(0)에서는 아무것도 켜지 않는다
+  const setNav = (n) => {
     links.forEach((a, i) => {
       a.classList.toggle('on', i === n - 1);
-      if (i === n - 1) a.setAttribute('aria-current', 'step');
+      if (i === n - 1) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
-    render();
   };
   // 화면 가운데 띠(위아래 45%를 뺀 곳)에 걸린 단계가 지금 단계
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) setStep(Number(e.target.dataset.step)); });
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      if (e.target.dataset.step) setStep(Number(e.target.dataset.step));
+      if (e.target.dataset.nav) setNav(Number(e.target.dataset.nav));
+    });
   }, { rootMargin: '-45% 0px -45% 0px' });
-  document.querySelectorAll('[data-step]').forEach((s) => io.observe(s));
+  document.querySelectorAll('[data-step], [data-nav]').forEach((s) => io.observe(s));
   // 맨 아래 이름 칸이 화면 아래 15% 선을 넘어 올라오면 그림을 숨김
   const endIo = new IntersectionObserver(([e]) => {
     root.classList.toggle('at-end', e.isIntersecting);
