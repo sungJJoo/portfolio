@@ -35,7 +35,7 @@
         <div class="hero-copy">
           <p class="hero-hi">안녕하세요,</p>
           <h1><span class="sr-only">기획부터 운영까지 하는 풀스택 개발자 박성주입니다.</span><span aria-hidden="true"><span class="type">기획부터 운영까지 하는</span> <br>풀스택 개발자 <br><em>박성주</em>입니다.</span></h1>
-          <p class="intro">만들기 전에 왜 필요한지, 쓰는 사람이 무엇을 불편해하는지부터 봅니다. 도메인을 이해하는 데 시간이 걸려도 최대한 완벽에 가깝게 파악하려 하고, 기능명세부터 잡은 뒤에 개발합니다. 코드는 AI가 일할 수 있는 환경을 만들어 맡기고, 결과가 맞는지는 제가 검토합니다. 지금은 학부모가 보는 연구소 사이트와 직원들이 쓰는 관리자 CMS를 혼자 만들어 운영하고 있습니다.</p>
+          <p class="intro">만들기 전에 왜 필요한지, 쓰는 사람이 무엇을 불편해하는지부터 봅니다. 도메인을 이해하는 데 시간이 걸려도 최대한 완벽에 가깝게 파악하려 하고, 기능명세부터 잡은 뒤에 개발합니다. 설계와 검증은 직접 하고, 코드 작성에는 AI를 도구로 씁니다. 지금은 학부모가 보는 연구소 사이트와 직원들이 쓰는 관리자 CMS를 혼자 만들어 운영하고 있습니다.</p>
           <ul class="summary">
             <li><b>연구소 공식 사이트와 관리자 CMS</b>를 기획부터 운영까지 맡아 2026년 6월부터 운영 중</li>
             <li><b>대학 의뢰 강사 양성 사이트</b>를 기능명세서부터 화면, 서버까지 혼자 개발</li>
@@ -103,7 +103,7 @@
               <dt>정한 규칙</dt>
               <dd>비밀번호가 새도 사이트 코드는 바꿀 수 없게 저장 경로를 제한했고, 다른 사람이 먼저 고친 내용은 덮어쓰지 않게 했습니다.</dd>
               <dt>확인한 방법</dt>
-              <dd>코드는 AI에게 맡기고, 기능마다 검증 항목을 적은 체크리스트로 로그인, 잠금, 허용되지 않은 저장까지 확인했습니다.</dd>
+              <dd>기능마다 검증 항목을 적은 체크리스트로 로그인, 잠금, 허용되지 않은 저장까지 확인했습니다.</dd>
               <dt>운영</dt>
               <dd>첫 주에 내용 수정 12건이 업로드 없이 반영됐고, 하루짜리 팝업이 안 보인다는 문의에는 시작일 표시를 넣었습니다.</dd>
             </dl>
@@ -344,55 +344,60 @@
       </div>
     </section>
 
-    <!-- 기술: 실무에서 계속 쓰는 것과 프로젝트에서 써 본 것 -->
+    <!-- 기술: 숙련도가 섞여 보이지 않게, 어디서 썼는지에 따라 묶음 (실무 운영, 프로젝트 구현, AI·비전, 임베디드, 학습 중) -->
     <section id="skills" class="section">
       <div class="wrap">
         <h2>기술</h2>
         <ul class="tiers">
+          <li class="k-ops">
+            <p class="tier-name"><b>실무 운영</b><span>지금 운영 중인 연구소 사이트와 CMS, 팀이 쓴 업무 스케줄러에서 쓴 것</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/javascript.svg" alt="" width="20" height="20">JavaScript</li>
+              <li><img src="assets/icons/html5.svg" alt="" width="20" height="20">HTML</li>
+              <li><img src="assets/icons/css3.svg" alt="" width="20" height="20">CSS</li>
+              <li><img src="assets/icons/google.svg" alt="" width="20" height="20">Apps Script, Sheets</li>
+              <li><img src="assets/icons/github.svg" alt="" width="20" height="20">GitHub Pages, API</li>
+              <li><img src="assets/icons/git.svg" alt="" width="20" height="20">Git</li>
+            </ul>
+          </li>
+          <li class="k-ui">
+            <p class="tier-name"><b>프로젝트 구현</b><span>우송대학교 강사 양성 누리집의 프로토타입과 수강 신청 서버에서 쓴 것</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/typescript.svg" alt="" width="20" height="20">TypeScript</li>
+              <li><img src="assets/icons/nextjs.svg" alt="" width="20" height="20">Next.js</li>
+              <li><img src="assets/icons/nodejs.svg" alt="" width="20" height="20">Node.js, Express</li>
+              <li><img src="assets/icons/sqlite.svg" alt="" width="20" height="20">SQLite</li>
+            </ul>
+          </li>
+          <li class="k-api">
+            <p class="tier-name"><b>AI·컴퓨터 비전</b><span>SmartVision 보조 기기와 영상 속 인물 제거 프로그램에서 쓴 것</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/flask.svg" alt="" width="20" height="20">Python, Flask</li>
+              <li><img src="assets/icons/opencv.svg" alt="" width="20" height="20">OpenCV, YOLOv8</li>
+            </ul>
+          </li>
           <li class="k-plan">
-            <p class="tier-name"><b>기획</b><span>만들기 전에 기능명세서와 정보 순서부터 씁니다</span></p>
+            <p class="tier-name"><b>임베디드·C</b><span>SmartVision, Plantify 스마트 화분, C언어 은행 관리 프로그램에서 쓴 것</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/raspberrypi.svg" alt="" width="20" height="20">Raspberry Pi</li>
+              <li><img src="assets/icons/arduino.svg" alt="" width="20" height="20">Arduino, ESP32</li>
+              <li><img src="assets/icons/c.svg" alt="" width="20" height="20">C, C++</li>
+            </ul>
+          </li>
+          <li class="k-etc">
+            <p class="tier-name"><b>학습 중</b><span>Java는 Minecraft 서버 플러그인을 만들 때 썼고, Spring은 공부하고 있습니다</span></p>
+            <ul class="tier-items">
+              <li><img src="assets/icons/java.svg" alt="" width="20" height="20">Java</li>
+              <li class="learning"><img src="assets/icons/spring.svg" alt="" width="20" height="20">Spring<small>공부 중</small></li>
+            </ul>
+          </li>
+          <li class="k-etc">
+            <p class="tier-name"><b>문서</b><span>만들기 전에 기능명세서와 정보 순서부터 씁니다</span></p>
             <ul class="tier-items">
               <li class="text">기능명세서</li>
               <li class="text">페이지 정보 순서</li>
               <li class="text">화면 시안 비교</li>
               <li class="text">운영 문서(README)</li>
-            </ul>
-          </li>
-          <li class="k-ui">
-            <p class="tier-name"><b>화면</b><span>반응형, 웹 접근성, 이미지·글꼴 줄이기를 직접 합니다</span></p>
-            <ul class="tier-items">
-              <li><img src="assets/icons/javascript.svg" alt="" width="20" height="20">JavaScript</li>
-              <li><img src="assets/icons/html5.svg" alt="" width="20" height="20">HTML</li>
-              <li><img src="assets/icons/css3.svg" alt="" width="20" height="20">CSS</li>
-              <li><img src="assets/icons/typescript.svg" alt="" width="20" height="20">TypeScript</li>
-              <li><img src="assets/icons/nextjs.svg" alt="" width="20" height="20">Next.js</li>
-            </ul>
-          </li>
-          <li class="k-api">
-            <p class="tier-name"><b>서버</b><span>Apps Script로 저장 대행과 메일 알림을, Express로 수강 신청 서버를 만들었습니다</span></p>
-            <ul class="tier-items">
-              <li><img src="assets/icons/google.svg" alt="" width="20" height="20">Apps Script, Sheets</li>
-              <li><img src="assets/icons/nodejs.svg" alt="" width="20" height="20">Node.js, Express</li>
-              <li><img src="assets/icons/sqlite.svg" alt="" width="20" height="20">SQLite</li>
-              <li><img src="assets/icons/flask.svg" alt="" width="20" height="20">Python, Flask</li>
-              <li><img src="assets/icons/java.svg" alt="" width="20" height="20">Java</li>
-              <li class="learning"><img src="assets/icons/spring.svg" alt="" width="20" height="20">Spring<small>공부 중</small></li>
-            </ul>
-          </li>
-          <li class="k-ops">
-            <p class="tier-name"><b>운영</b><span>GitHub Pages로 배포하고 운영 문서를 남깁니다</span></p>
-            <ul class="tier-items">
-              <li><img src="assets/icons/git.svg" alt="" width="20" height="20">Git</li>
-              <li><img src="assets/icons/github.svg" alt="" width="20" height="20">GitHub Pages, API</li>
-            </ul>
-          </li>
-          <li class="k-etc">
-            <p class="tier-name"><b>그 밖에</b><span>학교 프로젝트에서 써 본 것</span></p>
-            <ul class="tier-items">
-              <li><img src="assets/icons/c.svg" alt="" width="20" height="20">C</li>
-              <li><img src="assets/icons/opencv.svg" alt="" width="20" height="20">OpenCV, YOLOv8</li>
-              <li><img src="assets/icons/raspberrypi.svg" alt="" width="20" height="20">Raspberry Pi</li>
-              <li><img src="assets/icons/arduino.svg" alt="" width="20" height="20">Arduino</li>
             </ul>
           </li>
         </ul>
