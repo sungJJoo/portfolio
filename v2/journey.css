@@ -217,10 +217,9 @@ main { position: relative; z-index: 5; }
 /* 검은 아이콘(GitHub, Flask, Next.js 등)도 보이게 밝은 작은 칸 위에 */
 .tier-items img { width: 24px; height: 24px; padding: 3px; border-radius: 6px; background: #f5f6fa; }
 
-/* 끝: 꽉 찬 바탕 위 큰 이름 */
-.end { position: relative; z-index: 5; padding: 12vh var(--rail-room) 40px var(--gutter); overflow: hidden; background: var(--bg); }
+/* 끝: 꽉 찬 바탕 위 한 줄 */
+.end { position: relative; z-index: 5; padding: 6vh var(--rail-room) 28px var(--gutter); overflow: hidden; background: var(--bg); }
 .end .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--quiet); }
-.word { font-size: clamp(110px, 24vw, 360px); font-weight: 800; letter-spacing: -.07em; line-height: .9; color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   .stage, .scene, .sheet, .sheet span, .heard, .made, .made small, .made i { transition: none !important; }
