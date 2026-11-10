@@ -136,6 +136,7 @@ main { position: relative; z-index: 5; }
 .who div { padding: 12px 0 0; }
 .who dt { font-size: 12.5px; font-weight: 700; color: var(--quiet); }
 .who dd { margin-top: 2px; font-size: 14.5px; line-height: 1.55; color: var(--dim); }
+.chap .mail { margin-top: 26px; font-weight: 600; }
 .hint { margin-top: 36px; padding-bottom: 10px; width: max-content; max-width: 100%; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--quiet); }
 
 /* 두 프로젝트가 그 단계에서 실제로 한 일 (예전 '일하는 방식' 행) */
