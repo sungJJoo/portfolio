@@ -64,12 +64,13 @@ body::before {
    html에 붙는 v2(질문) v3(설계) v4(구현) v5(운영) v7(완성)이 그림을 한 단계씩 채운다 */
 .stage {
   position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding-right: 60px;
-  display: grid; place-items: center; pointer-events: none; transition: opacity .45s var(--ease);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding-bottom: 56px;
+  pointer-events: none; transition: opacity .45s var(--ease);
 }
 /* 맨 아래 이름 칸이 올라오면 그림은 사라짐 (반쯤 잘린 채 남지 않게) */
 .at-end .stage { opacity: 0; }
 .scene {
-  position: relative; width: min(42vw, 620px, (100vh - var(--header) - 96px) / .92); aspect-ratio: 1 / .92;
+  position: relative; width: min(42vw, 620px, (100vh - var(--header) - 270px) / .92); aspect-ratio: 1 / .92;
   container-type: inline-size; transition: scale .8s var(--ease);
 }
 .v7 .scene { scale: .9; }
@@ -93,7 +94,7 @@ body::before {
 .heard {
   left: var(--x); top: var(--y); padding: .5em .8em; rotate: var(--r); white-space: nowrap;
   border: 1px dashed rgba(143, 164, 255, .8); border-radius: .5em; background: rgba(10, 12, 20, .92);
-  font-size: 2.2cqi; font-weight: 500; color: var(--white);
+  font-size: 3cqi; font-weight: 600; color: var(--white);
   opacity: 0; translate: 2.7cqi -3cqi;
   transition: opacity .25s, translate 0s .25s;
 }
@@ -104,11 +105,10 @@ body::before {
   left: var(--sx); top: var(--sy); width: 31.1cqi; height: 10.7cqi; padding: 0 1.8cqi;
   display: flex; flex-direction: column; justify-content: center; gap: .2cqi;
   border: 1px dashed rgba(143, 164, 255, .8); border-radius: .9cqi; background: var(--bg);
-  font-size: 2.45cqi; color: var(--white); white-space: nowrap;
+  font-size: 3.5cqi; color: var(--white); white-space: nowrap;
   opacity: 0; rotate: var(--r); translate: calc(var(--x) - var(--sx)) calc(var(--y) - var(--sy));
   transition: opacity .25s, translate 0s .25s, rotate 0s .25s, background-color 0s .25s, color 0s .25s, border-color 0s .25s, box-shadow 0s .25s;
 }
-.made small { font-size: 1.9cqi; font-weight: 700; color: var(--accent); transition: color .4s; }
 .made b { font-weight: 700; }
 .made i { position: absolute; top: -1.3cqi; right: -1.3cqi; width: 3.6cqi; height: 3.6cqi; border-radius: 50%; background: var(--accent); scale: 0; transition: scale .2s; }
 .made i::after { content: ""; position: absolute; left: 35%; top: 19%; width: 24%; height: 46%; border: solid #0a0c14; border-width: 0 .42cqi .42cqi 0; rotate: 45deg; }
@@ -117,7 +117,6 @@ body::before {
   transition: opacity .35s var(--ease) var(--d), translate .95s var(--ease) var(--d), rotate .95s var(--ease) var(--d), background-color .45s, color .45s, border-color .45s, box-shadow .45s;
 }
 .v3 .made.is-cut { border-style: dashed; border-color: rgba(143, 164, 255, .5); color: var(--quiet); }
-.made.is-cut small { color: var(--quiet); }
 .made.is-cut b { text-decoration: line-through; text-decoration-thickness: .14em; }
 /* 구현: 칸이 두께 있는 밝은 판으로 채워지고(옆면은 그림자 세 겹), 확인 표시가 하나씩 붙음. 뺀 것은 그대로 */
 .v4 .made:not(.is-cut) {
@@ -125,7 +124,6 @@ body::before {
   background: #f5f6fa; color: #0e1530; border-color: #f5f6fa;
   box-shadow: -.3cqi .33cqi 0 var(--l-ui), -.6cqi .66cqi 0 var(--l-ui), -.9cqi 1cqi 0 var(--l-ui);
 }
-.v4 .made:not(.is-cut) small { color: var(--l-ops); }
 .v4 .made i { scale: 1; transition: scale .35s var(--ease) calc(.45s + var(--d)); }
 /* 운영: 새로 들은 문의 하나가 같은 길로 올라와 칸이 됨 (그 전에는 숨김) */
 .v2 .memo.add .heard { opacity: 0; translate: 2.7cqi -3cqi; }
@@ -138,9 +136,20 @@ body::before {
   box-shadow: -.3cqi .33cqi 0 var(--l-ops), -.6cqi .66cqi 0 var(--l-ops), -.9cqi 1cqi 0 var(--l-ops);
   transition: opacity .35s var(--ease) .8s, translate .95s var(--ease) .8s, rotate .95s var(--ease) .8s;
 }
-.v5 .memo.add .made small { color: #1a2470; }
 .v5 .memo.add .made i { scale: 1; background: #0a0c14; transition: scale .35s var(--ease) 1.9s; }
 .v5 .memo.add .made i::after { border-color: var(--accent); }
+
+/* 그림 속 칸을 똑바로 읽는 목록: 왼쪽 들은 것(질문부터), 오른쪽 정한 것(설계부터), 마지막 줄은 운영에서 */
+.legend { width: min(100% - 40px, 520px); border-top: 1px solid var(--line); font-size: 13px; line-height: 1.5; opacity: 0; transition: opacity .4s; }
+.v2 .legend { opacity: 1; }
+.legend li { display: grid; grid-template-columns: 1fr 1.12fr; gap: 14px; padding: 5px 2px; border-bottom: 1px solid var(--line); }
+.legend span { color: var(--dim); }
+.legend b { font-weight: 600; color: var(--white); opacity: 0; transition: opacity .4s; }
+.legend b i { display: inline-block; min-width: 4.6em; font-style: normal; font-weight: 700; font-size: 12px; color: var(--accent); }
+.v3 .legend b { opacity: 1; }
+.legend .is-cut b { color: var(--quiet); text-decoration: line-through; }
+.legend .add { opacity: 0; transition: opacity .4s; }
+.v5 .legend .add { opacity: 1; }
 
 .cap { position: absolute; left: 50%; bottom: 3%; translate: -50% 0; display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; line-height: 1.5; color: var(--dim); }
 html:not(.js) .cap { display: none; }
@@ -222,7 +231,7 @@ main { position: relative; z-index: 5; }
 .end .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--quiet); }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage, .scene, .sheet, .sheet span, .heard, .made, .made small, .made i { transition: none !important; }
+  .stage, .scene, .sheet, .sheet span, .heard, .made, .made i, .legend, .legend b, .legend .add { transition: none !important; }
 }
 
 /* 태블릿 세로와 휴대폰: 무대는 위쪽 절반, 단계 표시는 아래 막대 */
@@ -233,7 +242,8 @@ main { position: relative; z-index: 5; }
   .brand small, .top .hide-m { display: none; }
   .top nav { gap: 14px; font-size: 13.5px; }
   .top .cta { height: 34px; padding: 0 12px; font-size: 13px; }
-  .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 4px 0 0; align-items: start; }
+  .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 4px 0 0; justify-content: flex-start; }
+  .legend { display: none; }
   .scene { width: min(88vw, 400px, 40vh); }
   .cap { width: calc(100vw - 40px); justify-content: center; white-space: normal; text-align: center; font-size: 12px; }
   .rail { top: auto; bottom: 0; left: 0; right: 0; translate: none; display: flex; justify-content: space-between; align-items: center; gap: 0; padding: 10px 14px; border-width: 1px 0 0; background: var(--bg); font-size: 10.5px; }

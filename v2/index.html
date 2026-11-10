@@ -18,24 +18,19 @@
   <header class="top">
     <a class="brand" href="#c1"><b>박성주</b><small>풀스택 개발자<br>도메인부터 구조까지</small></a>
     <nav aria-label="주요 메뉴">
-      <a class="hide-m" href="#c2">일하는 방식</a>
-      <a class="hide-m" href="#experience">경력</a>
-      <a href="#solving">문제 해결</a>
-      <a href="#projects">프로젝트</a>
-      <a class="hide-m" href="#skills">기술</a>
+      <a href="#dev">개발</a>
+      <a href="#teaching">AI·교육 활동</a>
+      <a href="#experience">경력</a>
     </nav>
     <a class="cta" href="mailto:shim.never60@gmail.com">이메일</a>
   </header>
   <div class="progress" aria-hidden="true"></div>
 
-  <nav class="rail" aria-label="단계">
-    <a href="#c1" class="on" aria-current="step"><b>01</b>소개</a>
-    <a href="#c2"><b>02</b>질문</a>
-    <a href="#c3"><b>03</b>설계</a>
-    <a href="#c4"><b>04</b>구현</a>
-    <a href="#c5"><b>05</b>운영</a>
-    <a href="#c6"><b>06</b>이력</a>
-    <a href="#c7"><b>07</b>연락</a>
+  <nav class="rail" aria-label="메뉴">
+    <a href="#dev"><b>01</b>개발</a>
+    <a href="#teaching"><b>02</b>활동</a>
+    <a href="#experience"><b>03</b>경력</a>
+    <a href="#c7"><b>04</b>연락</a>
     <span class="pct" aria-hidden="true">00%</span>
   </nav>
 
@@ -47,39 +42,48 @@
         <div class="sheet sh-struct"><span>구조</span></div>
         <!-- 메모 하나 = 들은 것(.heard, 아래 판에 흩어짐) + 정한 것(.made, 위 판의 제자리). --x --y --r은 흩어진 자리와 기울기, --sx --sy는 칸 자리 -->
         <div class="memo" style="--n:0; --x:4cqi; --y:9.5cqi; --r:-6deg; --sx:3cqi; --sy:7.2cqi">
-          <span class="heard">직원은 직접<br>고칠 방법이 없음</span>
-          <span class="made"><small>화면</small><b>관리자 CMS</b><i></i></span>
+          <span class="heard">직접 못 고침</span>
+          <span class="made"><b>화면</b><i></i></span>
         </div>
         <div class="memo" style="--n:1; --x:38cqi; --y:5cqi; --r:4deg; --sx:35.9cqi; --sy:7.2cqi">
-          <span class="heard">DB 서버를 둘 수 없음</span>
-          <span class="made"><small>데이터</small><b>바뀌는 내용만 JSON으로</b><i></i></span>
+          <span class="heard">DB 서버 없음</span>
+          <span class="made"><b>데이터</b><i></i></span>
         </div>
         <div class="memo" style="--n:2; --x:17cqi; --y:21.5cqi; --r:-2.5deg; --sx:3cqi; --sy:19.7cqi">
-          <span class="heard">교육생은<br>학교 계정이 없음</span>
-          <span class="made"><small>권한</small><b>가입 후 관리자 승인</b><i></i></span>
+          <span class="heard">학교 계정 없음</span>
+          <span class="made"><b>권한</b><i></i></span>
         </div>
         <div class="memo" style="--n:3; --x:3cqi; --y:32.5cqi; --r:3.5deg; --sx:35.9cqi; --sy:19.7cqi">
-          <span class="heard">모집 상태는<br>신청 기간이 정함</span>
-          <span class="made"><small>규칙</small><b>모집 상태는 날짜로 계산</b><i></i></span>
+          <span class="heard">상태는 기간이 정함</span>
+          <span class="made"><b>규칙</b><i></i></span>
         </div>
         <div class="memo" style="--n:4; --x:40cqi; --y:33cqi; --r:-5deg; --sx:3cqi; --sy:32.2cqi">
-          <span class="heard">문자 발송은<br>계약이나 협의가 필요</span>
-          <span class="made is-cut"><small>뺀 것</small><b>문자 발송</b></span>
+          <span class="heard">계약·협의 필요</span>
+          <span class="made is-cut"><b>뺀 것</b></span>
         </div>
-        <div class="memo add" style="--n:0; --x:47cqi; --y:17.5cqi; --r:5deg; --sx:35.9cqi; --sy:32.2cqi">
-          <span class="heard">하루짜리 팝업이<br>안 보인다는 문의</span>
-          <span class="made"><small>운영 중 반영</small><b>팝업 시작일 표시</b><i></i></span>
+        <div class="memo add" style="--n:0; --x:45cqi; --y:15cqi; --r:5deg; --sx:35.9cqi; --sy:32.2cqi">
+          <span class="heard">팝업이 안 보임</span>
+          <span class="made"><b>운영 반영</b><i></i></span>
         </div>
       </div>
     </div>
+    <!-- 그림 속 여섯 칸을 똑바로 읽는 목록: 들은 것 → 정한 것 (그림과 같은 단계에 나타남) -->
+    <ul class="legend">
+      <li><span>직원은 직접 고칠 방법이 없음</span><b><i>화면</i>관리자 CMS</b></li>
+      <li><span>DB 서버를 둘 수 없음</span><b><i>데이터</i>바뀌는 내용만 JSON으로</b></li>
+      <li><span>교육생은 학교 계정이 없음</span><b><i>권한</i>가입 후 관리자 승인</b></li>
+      <li><span>모집 상태는 신청 기간이 정함</span><b><i>규칙</i>모집 상태는 날짜로 계산</b></li>
+      <li class="is-cut"><span>문자 발송은 계약이나 협의가 필요</span><b><i>뺀 것</i>문자 발송</b></li>
+      <li class="add"><span>하루짜리 팝업이 안 보인다는 문의</span><b><i>운영 반영</i>팝업 시작일 표시</b></li>
+    </ul>
     <p class="cap"><b id="cap-tag">시작</b><span id="cap-text">아직 아무것도 없는 화면에서</span></p>
   </div>
 
   <main>
     <!-- 01 소개: 바뀌는 문구는 도메인부터 구조까지 이해하는 → 왜 필요한지 묻는 → 구조부터 세우는 → 결과를 직접 확인하는 → 만든 뒤에도 운영하는 (문구마다 그림이 그 단계를 미리 보여 줌) -->
-    <section class="chap" id="c1" data-step="1">
+    <section class="chap" id="c1" data-step="1" data-nav="0">
       <div class="copy">
-        <p class="label">01 / 소개</p>
+        <p class="label">소개</p>
         <h1><span class="sr-only">도메인부터 구조까지 이해하는 풀스택 개발자 박성주입니다.</span><span aria-hidden="true"><span class="type">도메인부터 구조까지 이해하는</span><br>풀스택 개발자<br>박성주입니다.</span></h1>
         <p class="lead">현장의 문제를 듣고 요구사항을 정리해, 웹 서비스를 만들고 운영까지 합니다. 지금은 연구소 공식 사이트와 관리자 CMS를 혼자 만들어 2026년 6월부터 운영하고 있습니다.</p>
         <div class="btns">
@@ -95,10 +99,12 @@
       </div>
     </section>
 
+    <!-- 01 개발: 일하는 방식 네 단계(오른쪽 그림이 채워짐) + 문제 해결·프로젝트·기술 -->
+    <div id="dev" data-nav="1">
     <!-- 02~05: 예전 '일하는 방식' 두 프로젝트의 행을 단계마다 나눠 넣음 -->
     <section class="chap" id="c2" data-step="2">
       <div class="copy">
-        <p class="label">02 / 질문</p>
+        <p class="label">01 / 개발 · 질문</p>
         <h2>만들기 전에<br><span class="hl">왜 필요한지</span> 묻습니다.</h2>
         <p class="ask">누가 쓰고, 무엇이 불편하고,<br>무엇이 필요한가.</p>
         <p class="lead">도메인을 이해하는 데 시간이 걸려도 최대한 완벽에 가깝게 파악하려 합니다.</p>
@@ -127,7 +133,7 @@
 
     <section class="chap" id="c3" data-step="3">
       <div class="copy">
-        <p class="label">03 / 설계</p>
+        <p class="label">01 / 개발 · 설계</p>
         <h2>기능명세로<br><span class="hl">구조부터</span> 세웁니다.</h2>
         <p class="lead">무엇을 만들고 무엇을 뺄지 먼저 정한 뒤에 개발합니다. 대학 의뢰 강사 양성 사이트는 기능명세서부터 화면, 서버까지 혼자 개발했습니다.</p>
         <div class="cases">
@@ -151,7 +157,7 @@
 
     <section class="chap" id="c4" data-step="4">
       <div class="copy">
-        <p class="label">04 / 구현</p>
+        <p class="label">01 / 개발 · 구현</p>
         <h2>무엇을 만들지 정하고,<br><span class="hl">맞는지 직접 확인합니다.</span></h2>
         <p class="lead">코드를 쓸 때는 AI의 도움도 받습니다. 그래도 설계는 제가 하고, 결과는 검증 항목을 적어 하나씩 확인합니다.</p>
         <div class="cases">
@@ -176,7 +182,7 @@
 
     <section class="chap" id="c5" data-step="5">
       <div class="copy">
-        <p class="label">05 / 운영</p>
+        <p class="label">01 / 개발 · 운영</p>
         <h2>만든 뒤에도<br><span class="hl">직접 운영합니다.</span></h2>
         <p class="lead">직원이 코드 없이 공지와 사진을 고치고, 저장하면 업로드 요청 없이 사이트에 반영됩니다.</p>
         <dl class="stats">
@@ -188,37 +194,7 @@
       </div>
     </section>
 
-    <!-- 06 이력: 예전 메인의 섹션을 그대로 옮김. 바탕이 오른쪽 그림을 덮는다 -->
-    <div class="hist" id="c6" data-step="6">
-    <!-- 경력: 회사에서 만든 것과 그 밖의 일 -->
-    <section id="experience" class="section tint">
-      <div class="wrap">
-        <p class="label">06 / 이력</p>
-        <h2>경력</h2>
-        <div class="exp">
-          <div class="exp-head">
-            <p class="exp-date">2025.07 - 현재</p>
-            <h3>폭스커넥트 대전 AI 연구소</h3>
-            <p>AI 연구원<br>인턴 2025.07 - 2025.11, 2025.12부터 정규직</p>
-          </div>
-          <div class="exp-body">
-            <h4>만든 것</h4>
-            <ul>
-              <li><a href="../projects/fox-ai-lab.html">연구소 공식 사이트와 관리자 CMS</a> 2026.06 ~ 운영 중. 학부모가 보는 사이트와, 직원이 직접 내용을 고치는 CMS</li>
-              <li><a href="../projects/scheduler.html">연구소 업무 스케줄러</a> 2026.05 ~ 07. 팀의 담당표, 업무, 근무일정을 한 화면에 모은 웹앱</li>
-              <li><a href="../projects/woosong-site.html">우송대학교 강사 양성 누리집</a> 2026.08 ~ 09. 외부 대학 의뢰. 기능명세서와 화면, 서버까지</li>
-            </ul>
-            <h4>그 밖의 일</h4>
-            <ul>
-              <li>가오고 진로 탐색 사이트 제작 지원. 팀장이 바이브 코딩으로 만드는 동안 개발 쪽 피드백</li>
-              <li>연구소 브랜드 독립안을 정리해 대표 승인을 받음</li>
-              <li>수업과 교육 과정은 아래 <a href="#teaching">교육 활동</a>에 따로 모았습니다</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <div class="hist" data-step="6">
     <!-- 문제 해결: 네 가지 모두 제목, 그림, 문제, 해결, 결과 순서 -->
     <section id="solving" class="section">
       <div class="wrap">
@@ -325,7 +301,6 @@
         </div>
       </div>
     </section>
-
     <!-- 프로젝트: 기간, 인원, 역할을 클릭 없이 볼 수 있는 목록 -->
     <section id="projects" class="section tint">
       <div class="wrap">
@@ -406,7 +381,6 @@
         </div>
       </div>
     </section>
-
     <!-- 기술: 숙련도가 섞여 보이지 않게, 어디서 썼는지에 따라 묶음 (실무 운영, 프로젝트 구현, AI·비전, 임베디드, 학습 중) -->
     <section id="skills" class="section">
       <div class="wrap">
@@ -466,11 +440,16 @@
         </ul>
       </div>
     </section>
+    </div>
+    </div>
 
+    <!-- 02 AI·교육 활동 -->
+    <div class="hist" data-step="6" data-nav="2">
     <!-- 교육: 개발과 함께 맡은 수업과 교육 과정 (개발 경력과 분리) -->
     <section id="teaching" class="section">
       <div class="wrap">
-        <h2>교육 활동</h2>
+        <p class="label">02 / AI·교육 활동</p>
+        <h2>AI·교육 활동</h2>
         <p class="how-lead">연구소에서 개발과 함께 맡은 수업과 교육 과정입니다.</p>
         <ul class="teach">
           <li><b>과정 기획</b><p>Minecraft Education 「마을을 지켜라!」(12주 24차시)와 「에이전트와 함께해요!」, LEGO SPIKE 신규 과정</p></li>
@@ -483,7 +462,38 @@
         </ul>
       </div>
     </section>
+    </div>
 
+    <!-- 03 경력: 회사 경력, 학력, 수상 -->
+    <div class="hist" data-step="6" data-nav="3">
+    <!-- 경력: 회사에서 만든 것과 그 밖의 일 -->
+    <section id="experience" class="section tint">
+      <div class="wrap">
+        <p class="label">03 / 경력</p>
+        <h2>경력</h2>
+        <div class="exp">
+          <div class="exp-head">
+            <p class="exp-date">2025.07 - 현재</p>
+            <h3>폭스커넥트 대전 AI 연구소</h3>
+            <p>AI 연구원 (웹 개발, 교육 과정 기획)<br>인턴 2025.07 - 2025.11, 2025.12부터 정규직</p>
+          </div>
+          <div class="exp-body">
+            <h4>만든 것</h4>
+            <ul>
+              <li><a href="../projects/fox-ai-lab.html">연구소 공식 사이트와 관리자 CMS</a> 2026.06 ~ 운영 중. 학부모가 보는 사이트와, 직원이 직접 내용을 고치는 CMS</li>
+              <li><a href="../projects/scheduler.html">연구소 업무 스케줄러</a> 2026.05 ~ 07. 팀의 담당표, 업무, 근무일정을 한 화면에 모은 웹앱</li>
+              <li><a href="../projects/woosong-site.html">우송대학교 강사 양성 누리집</a> 2026.08 ~ 09. 외부 대학 의뢰. 기능명세서와 화면, 서버까지</li>
+            </ul>
+            <h4>그 밖의 일</h4>
+            <ul>
+              <li>가오고 진로 탐색 사이트 제작 지원. 팀장이 바이브 코딩으로 만드는 동안 개발 쪽 피드백</li>
+              <li>연구소 브랜드 독립안을 정리해 대표 승인을 받음</li>
+              <li>수업과 교육 과정은 <a href="#teaching">AI·교육 활동</a>에 따로 모았습니다</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- 학력, 수상, 활동: 개발과 관련된 것만 -->
     <section id="education" class="section tint">
       <div class="wrap career">
@@ -531,9 +541,9 @@
     </section>
     </div>
 
-    <section class="chap" id="c7" data-step="7">
+    <section class="chap" id="c7" data-step="7" data-nav="4">
       <div class="copy">
-        <p class="label">07 / 연락</p>
+        <p class="label">04 / 연락</p>
         <h2>연락처</h2>
         <a class="mail" href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a>
         <div class="btns">
