@@ -112,7 +112,9 @@ main { position: relative; z-index: 5; }
 .btn-solid:hover { background: #bcc8ff; border-color: #bcc8ff; }
 .btn-line { background: transparent; color: var(--white); border-color: rgba(245, 246, 250, .5); }
 .btn-line:hover { border-color: var(--white); }
-.who { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin-top: 34px; max-width: 36em; border-top: 1px solid var(--line); }
+.who { display: grid; grid-template-columns: 1fr 1.25fr; gap: 0 24px; margin-top: 30px; max-width: 36em; border-top: 1px solid var(--line); }
+.who dd a { color: var(--accent-ink); text-decoration: none; }
+.who dd a:hover { text-decoration: underline; }
 .who div { padding: 12px 0 0; }
 .who dt { font-size: 12.5px; font-weight: 700; color: var(--quiet); }
 .who dd { margin-top: 2px; font-size: 14.5px; line-height: 1.55; color: var(--dim); }
