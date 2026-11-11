@@ -125,22 +125,30 @@ main { position: relative; z-index: 5; }
 #c1.cover { display: grid; grid-template-columns: 44vw minmax(0, 1fr); align-items: center; gap: 0; min-height: 100vh; padding: var(--header) 0 0; background: var(--bg); }
 .cover-art { position: relative; align-self: stretch; display: grid; place-items: center end; padding-right: 3vw; }
 .cover-art::before { content: ""; position: absolute; inset: 0; background: var(--l-ui); clip-path: polygon(0 0, 64% 0, 88% 100%, 0 100%); }
-.cover-card { position: relative; display: grid; grid-template-rows: repeat(3, 1fr); width: min(22vw, 330px); height: min(78vh, 760px); border-radius: 10px; overflow: hidden; background: #f5f6fa; box-shadow: 0 24px 60px rgba(5, 6, 12, .5); }
-.cover-card img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-.cover-card img + img { border-top: 3px solid #f5f6fa; }
-.cover-card.photo { display: block; }
-.cover-card.photo img { object-position: center top; }
-#c1.cover .copy { max-width: 620px; padding: 4vh var(--gutter) 4vh 2vw; }
-#c1.cover h1 { font-size: min(46px, 3.3vw); }
+.cover-card { position: relative; width: min(25vw, 360px); padding: 28px 26px 24px; border-radius: 10px; background: #f5f6fa; color: #0e1530; box-shadow: 0 24px 60px rgba(5, 6, 12, .5); }
+.cover-card .photo { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; margin-bottom: 22px; border-radius: 6px; }
+.me-name { font-size: 30px; font-weight: 800; letter-spacing: -.04em; line-height: 1.2; }
+.me-name small { display: block; margin-top: 4px; font-size: 14px; font-weight: 700; letter-spacing: 0; color: var(--l-ops); }
+.me { margin-top: 18px; border-top: 2px solid #0e1530; }
+.me div { display: grid; grid-template-columns: 44px 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid #dfe3ec; }
+.me dt { font-size: 12.5px; font-weight: 700; line-height: 1.7; color: #646c88; }
+.me dd { font-size: 13.5px; line-height: 1.6; color: #2c3550; }
+.me dd a { color: var(--l-ops); font-weight: 600; text-decoration: none; word-break: break-all; }
+.me dd a:hover { text-decoration: underline; }
+#c1.cover .copy { max-width: 640px; padding: 4vh var(--gutter) 4vh 2vw; }
+#c1.cover h1 { font-size: min(44px, 3.2vw); line-height: 1.22; }
 #c1.cover h1 em { font-style: normal; color: var(--accent); }
-#c1.cover .lead { margin-top: 22px; font-size: 16px; }
-.who-title { margin-top: 34px; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -.02em !important; line-height: 1.4 !important; }
-#c1.cover .who { grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 12px; border-top: 0; }
-#c1.cover .who div { display: flex; gap: 8px; padding: 0; font-size: 14.5px; }
-#c1.cover .who dt { flex: none; font-size: 14.5px; font-weight: 500; color: var(--dim); }
-#c1.cover .who dt::after { content: " :"; }
-#c1.cover .who dd { margin: 0; color: var(--accent-ink); font-weight: 600; }
+#c1.cover .lead { margin-top: 18px; font-size: 17px; color: var(--white); }
+/* 숫자 세 개: 5초 안에 눈에 걸리는 근거 */
+.proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 26px; background: var(--line-strong); border: 1px solid var(--line-strong); }
+.proof li { padding: 14px 14px 13px; background: var(--bg); }
+.proof b { display: block; font-size: 28px; font-weight: 700; letter-spacing: -.04em; line-height: 1.2; color: var(--accent); font-variant-numeric: tabular-nums; }
+.proof span { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.55; color: var(--dim); }
+.stackline { margin-top: 18px; font-size: 14px; line-height: 1.7; color: var(--dim); }
+.stackline b { margin-right: 10px; font-size: 12.5px; color: var(--quiet); }
+#c1.cover .btns { margin-top: 26px; }
 #c1.cover .btn-solid { border-radius: 999px; padding: 0 26px; }
+#c1.cover .btn-line { border-radius: 999px; padding: 0 22px; }
 /* 표지가 보이는 동안에는 오른쪽 카드 더미를 숨김 */
 .at-top .stage { opacity: 0; }
 
@@ -235,7 +243,10 @@ main { position: relative; z-index: 5; }
   #c1.cover { grid-template-columns: 1fr; padding: var(--header) 0 40px; }
   .cover-art { place-items: center; padding: 26px 0; }
   .cover-art::before { clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%); }
-  .cover-card { width: min(62vw, 300px); height: min(46vh, 380px); }
+  .cover-card { width: min(100% - 40px, 380px); padding: 22px 20px 18px; }
+  .proof b { font-size: 22px; }
+  .proof span { font-size: 11.5px; }
+  .proof li { padding: 11px 9px; }
   #c1.cover .copy { max-width: none; padding: 8px 20px 0; background: none; }
   #c1.cover h1 { font-size: clamp(22px, calc((100vw - 40px) / 11.4), 40px); }
   .proj h2 { font-size: clamp(26px, 7.4vw, 36px); }
@@ -259,7 +270,7 @@ main { position: relative; z-index: 5; }
 @media (max-width: 560px) {
   .btns { gap: 8px; }
   .btn { height: 44px; padding: 0 13px; gap: 6px; font-size: 14px; }
-  .who, #c1.cover .who { grid-template-columns: 1fr; }
+  .who { grid-template-columns: 1fr; }
   .case dl { grid-template-columns: 1fr; }
   .case dt { padding-bottom: 0; border-bottom: 0; }
   .case dd { padding-top: 2px; }
