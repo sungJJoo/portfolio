@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="journey.css">
-  <!-- 스크립트가 켜져 있으면 카드가 한 장씩 내려앉으며 시작(opening)하고, 주소에 #이 없으면 첫 화면만 보이는 문 상태(gate)로 연다. 꺼져 있으면 위에 적힌 v1~v4 그대로라 네 장이 다 보인다 -->
-  <script>document.documentElement.className = 'js opening' + (location.hash && location.hash !== '#c1' ? '' : ' gate');</script>
+  <!-- 스크립트가 켜져 있으면 첫 화면만 보이는 문 상태(gate)로 연다. 상세 페이지에서 #위치로 돌아온 경우에만 문 없이 그 자리로 간다. 꺼져 있으면 위에 적힌 v1~v4 그대로라 네 장이 다 보인다 -->
+  <script>document.documentElement.className = 'js at-top' + (location.hash.length > 1 && /\/projects\//.test(document.referrer) ? '' : ' gate');</script>
 </head>
 <body>
   <header class="top">
@@ -47,22 +47,30 @@
 
   <main>
     <!-- 01 소개: 바뀌는 문구는 도메인부터 구조까지 이해하는 → 왜 필요한지 묻는 → 구조부터 세우는 → 결과를 직접 확인하는 → 만든 뒤에도 운영하는 -->
-    <section class="chap" id="c1" data-step="0" data-nav="0">
+    <section class="chap cover" id="c1" data-step="0" data-nav="0">
+      <!-- 왼쪽: 색 면 위의 세로 카드. 본인 사진 자리이고, 사진을 받기 전까지는 대표 화면 세 장을 넣어 둔다 -->
+      <div class="cover-art" aria-hidden="true">
+        <div class="cover-card">
+          <img src="../assets/img/fox-site.webp" alt="" width="1200" height="605">
+          <img src="../assets/img/smartvision-demo.webp" alt="" width="1144" height="521">
+          <img src="../assets/img/fox-cms.webp" alt="" width="1200" height="750">
+        </div>
+      </div>
       <div class="copy">
         <p class="label">안녕하세요</p>
-        <h1><span class="sr-only">도메인부터 구조까지 이해하는 풀스택 개발자 박성주입니다.</span><span aria-hidden="true"><span class="type">도메인부터 구조까지 이해하는</span><br>풀스택 개발자<br>박성주입니다.</span></h1>
+        <h1><span class="sr-only">도메인부터 구조까지 이해하는 풀스택 개발자 박성주입니다.</span><span aria-hidden="true"><span class="type">도메인부터 구조까지 이해하는</span><br>풀스택 개발자<br><em>박성주</em>입니다.</span></h1>
         <p class="lead">현장의 문제를 듣고 요구사항을 정리해, 웹 서비스를 만들고 운영까지 합니다. 지금은 연구소 공식 사이트와 관리자 CMS를 혼자 만들어 2026년 6월부터 운영하고 있습니다.</p>
+        <h2 class="who-title">인적 사항</h2>
         <dl class="who">
           <div><dt>이름</dt><dd>박성주</dd></div>
-          <div><dt>현재</dt><dd>폭스커넥트 대전 AI 연구소<br>AI 연구원 (2025.07 ~)</dd></div>
-          <div><dt>학력</dt><dd>우송대학교 컴퓨터정보보안전공<br>부전공 비즈니스창업융합부</dd></div>
-          <div><dt>연락</dt><dd><a href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a><br><a href="https://github.com/sungJJoo" target="_blank" rel="noopener">github.com/sungJJoo</a></dd></div>
+          <div><dt>현재</dt><dd>폭스커넥트 대전 AI 연구소 AI 연구원</dd></div>
+          <div><dt>학력</dt><dd>우송대학교 컴퓨터정보보안전공</dd></div>
+          <div><dt>이메일</dt><dd><a href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/sungJJoo" target="_blank" rel="noopener">github.com/sungJJoo</a></dd></div>
         </dl>
         <div class="btns">
           <a class="btn btn-solid" href="#about">ABOUT ME 더 보기</a>
-          <a class="btn btn-line" href="#projects">프로젝트 보기</a>
         </div>
-        <p class="hint">ABOUT ME를 누르면 안으로 들어갑니다</p>
       </div>
     </section>
 

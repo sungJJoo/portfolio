@@ -121,11 +121,34 @@ main { position: relative; z-index: 5; }
 .chap .mail { margin-top: 26px; font-weight: 600; }
 .hint { margin-top: 36px; padding-bottom: 10px; width: max-content; max-width: 100%; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--quiet); }
 
+/* 첫 화면(표지): 왼쪽 색 면 위에 세로 카드(사진 자리), 오른쪽에 인사와 인적 사항, ABOUT ME 버튼 */
+#c1.cover { display: grid; grid-template-columns: 44vw minmax(0, 1fr); align-items: center; gap: 0; min-height: 100vh; padding: var(--header) 0 0; background: var(--bg); }
+.cover-art { position: relative; align-self: stretch; display: grid; place-items: center end; padding-right: 3vw; }
+.cover-art::before { content: ""; position: absolute; inset: 0; background: var(--l-ui); clip-path: polygon(0 0, 64% 0, 88% 100%, 0 100%); }
+.cover-card { position: relative; display: grid; grid-template-rows: repeat(3, 1fr); width: min(22vw, 330px); height: min(78vh, 760px); border-radius: 10px; overflow: hidden; background: #f5f6fa; box-shadow: 0 24px 60px rgba(5, 6, 12, .5); }
+.cover-card img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.cover-card img + img { border-top: 3px solid #f5f6fa; }
+.cover-card.photo { display: block; }
+.cover-card.photo img { object-position: center top; }
+#c1.cover .copy { max-width: 620px; padding: 4vh var(--gutter) 4vh 2vw; }
+#c1.cover h1 { font-size: min(46px, 3.3vw); }
+#c1.cover h1 em { font-style: normal; color: var(--accent); }
+#c1.cover .lead { margin-top: 22px; font-size: 16px; }
+.who-title { margin-top: 34px; font-size: 20px !important; font-weight: 700 !important; letter-spacing: -.02em !important; line-height: 1.4 !important; }
+#c1.cover .who { grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 12px; border-top: 0; }
+#c1.cover .who div { display: flex; gap: 8px; padding: 0; font-size: 14.5px; }
+#c1.cover .who dt { flex: none; font-size: 14.5px; font-weight: 500; color: var(--dim); }
+#c1.cover .who dt::after { content: " :"; }
+#c1.cover .who dd { margin: 0; color: var(--accent-ink); font-weight: 600; }
+#c1.cover .btn-solid { border-radius: 999px; padding: 0 26px; }
+/* 표지가 보이는 동안에는 오른쪽 카드 더미를 숨김 */
+.at-top .stage { opacity: 0; }
+
 /* 첫 화면은 문: ABOUT ME나 메뉴를 누르기 전에는 첫 화면만 있고(gate), 누르면 첫 화면이 물러나며(entering) 안쪽이 떠오른다(entered) */
 .gate main > :not(#c1), .gate .end, .gate .rail, .gate .progress { display: none; }
-#c1 .copy, .pile { transition: opacity .45s var(--ease), translate .45s var(--ease), scale .45s var(--ease); }
-.entering #c1 .copy { opacity: 0; translate: -40px 0; }
-.entering .pile { opacity: 0; scale: 1.14; }
+#c1 .copy, .cover-art { transition: opacity .45s var(--ease), translate .45s var(--ease); }
+.entering #c1 .copy { opacity: 0; translate: 60px 0; }
+.entering .cover-art { opacity: 0; translate: -60px 0; }
 .entered main { animation: enter .75s var(--ease) both; }
 @keyframes enter { from { opacity: 0; translate: 0 48px; } }
 
@@ -186,7 +209,7 @@ main { position: relative; z-index: 5; }
 .end .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--quiet); }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage, .pcard, #c1 .copy, .pile { transition: none !important; }
+  .stage, .pcard, #c1 .copy, .cover-art { transition: none !important; }
   .entered main { animation: none; }
 }
 
@@ -209,6 +232,12 @@ main { position: relative; z-index: 5; }
   .ptab { gap: 7px; padding: 0 6px 0 9px; font-size: 11.5px; }
   .ptab > span:first-child { font-size: 10.5px; }
   .ptab .chip { font-size: 10px; padding: 0 6px; }
+  #c1.cover { grid-template-columns: 1fr; padding: var(--header) 0 40px; }
+  .cover-art { place-items: center; padding: 26px 0; }
+  .cover-art::before { clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%); }
+  .cover-card { width: min(62vw, 300px); height: min(46vh, 380px); }
+  #c1.cover .copy { max-width: none; padding: 8px 20px 0; background: none; }
+  #c1.cover h1 { font-size: clamp(22px, calc((100vw - 40px) / 11.4), 40px); }
   .proj h2 { font-size: clamp(26px, 7.4vw, 36px); }
   .proj.big h2 { font-size: clamp(32px, 9vw, 42px); }
   .cap { width: calc(100vw - 40px); justify-content: center; white-space: normal; text-align: center; font-size: 12px; }
@@ -230,7 +259,7 @@ main { position: relative; z-index: 5; }
 @media (max-width: 560px) {
   .btns { gap: 8px; }
   .btn { height: 44px; padding: 0 13px; gap: 6px; font-size: 14px; }
-  .who { grid-template-columns: 1fr; }
+  .who, #c1.cover .who { grid-template-columns: 1fr; }
   .case dl { grid-template-columns: 1fr; }
   .case dt { padding-bottom: 0; border-bottom: 0; }
   .case dd { padding-top: 2px; }
