@@ -60,69 +60,31 @@ body::before {
 .rail a.on { color: var(--accent); }
 .rail .pct { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* 무대: 오른쪽에 고정된 판 하나(똑바로 읽힘). html에 붙는 v2(질문) v3(설계) v4(구현) v5(운영) v7(완성)이 한 단계씩 채운다 */
+/* 무대: 오른쪽에 고정된 카드 더미. 만든 순서대로 한 장씩 내려앉고, 먼저 놓인 카드는 제목 줄만 남는다. html의 v1~v7이 쌓인 장 수 */
 .stage {
-  position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding: max(10vh, 110px) 100px 56px 0;
+  --tab: 34px;
+  --pw: min(36vw - 20px, 520px, (100vh - var(--header) - 150px - 7 * var(--tab)) / .625);
+  position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding: max(6vh, 40px) 80px 56px 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   pointer-events: none; transition: opacity .45s var(--ease);
 }
-/* 맨 아래 칸이 올라오면 판은 사라짐 */
+/* 맨 아래 칸이 올라오면 더미는 사라짐 */
 .at-end .stage { opacity: 0; }
-.board {
-  width: min(100% - 32px, 560px); container-type: inline-size; padding: 14px 20px 8px;
-  border: 1.5px dashed rgba(143, 164, 255, .5); border-radius: 10px; background: rgba(10, 12, 20, .6);
-  transition: scale .8s var(--ease), border-color .4s;
+.pile { position: relative; width: var(--pw); height: calc(7 * var(--tab) + var(--pw) * .625 + 2px); }
+.pcard {
+  position: absolute; left: 0; right: 0; top: calc(var(--i) * var(--tab));
+  background: var(--surface); border: 1px solid var(--line-strong); box-shadow: 0 -10px 24px rgba(5, 6, 12, .55);
+  opacity: 0; translate: 36px -70px; rotate: 2.5deg;
+  transition: opacity .25s, translate 0s .25s, rotate 0s .25s;
 }
-.v3 .board { border-style: solid; border-color: rgba(143, 164, 255, .55); }
-.v7 .board { scale: .94; }
-.board-head, .row { display: grid; grid-template-columns: 1fr 44px 1.12fr; align-items: center; }
-.board-head { padding-bottom: 8px; font-size: 12px; font-weight: 700; line-height: 1.5; color: rgba(143, 164, 255, .8); }
-.board-head span { opacity: 0; transition: opacity .4s; }
-.v2 .board-head span:first-child, .v3 .board-head span:last-child { opacity: 1; }
-.row { --d: calc(var(--n) * 90ms); min-height: 52px; border-top: 1px dashed var(--line); }
-.q, .a { justify-self: start; line-height: 1.4; white-space: nowrap; border-radius: 7px; }
-.s { display: none; }
-/* 들은 것: 점선 메모가 비뚤게 흩어져 내려앉았다가(질문), 줄을 맞춰 제자리로 감(설계). 사라질 때는 먼저 흐려짐 */
-.q {
-  padding: .45em .8em; border: 1px dashed rgba(143, 164, 255, .8); background: var(--bg);
-  font-size: 14px; font-weight: 500; color: var(--white);
-  opacity: 0; translate: var(--dx) calc(var(--dy) - 16px); rotate: var(--r);
-  transition: opacity .25s, translate 0s .25s, rotate 0s .25s, color 0s .25s, border-color 0s .25s;
-}
-.v2 .q { opacity: 1; translate: var(--dx) var(--dy); transition: opacity .4s var(--ease) var(--d), translate .7s var(--ease) var(--d); }
-.v3 .q { translate: 0 0; rotate: 0deg; color: var(--dim); border-color: rgba(143, 164, 255, .4); transition: translate .85s var(--ease) var(--d), rotate .85s var(--ease) var(--d), color .4s, border-color .4s, opacity .4s; }
-/* 화살표가 그어지고 정한 것이 나타남 */
-.ar { position: relative; height: 1.5px; margin: 0 8px 0 4px; background: var(--accent); transform-origin: 0 50%; scale: 0 1; transition: scale .2s; }
-.ar::after { content: ""; position: absolute; right: -2px; top: -3.5px; border-block: 4.2px solid transparent; border-left: 7px solid var(--accent); }
-.v3 .ar { scale: 1 1; transition: scale .45s var(--ease) calc(.55s + var(--d)); }
-.a {
-  position: relative; padding: .5em .85em; border: 1px solid rgba(143, 164, 255, .6); background: var(--bg);
-  font-size: 14.5px; font-weight: 700; color: var(--white);
-  opacity: 0; translate: -14px 0;
-  transition: opacity .25s, translate 0s .25s, background-color 0s .25s, color 0s .25s, border-color 0s .25s, box-shadow 0s .25s;
-}
-.a i { margin-right: .7em; font-style: normal; font-size: 11.5px; color: var(--accent); transition: color .4s; }
-.v3 .a { opacity: 1; translate: 0 0; transition: opacity .4s var(--ease) calc(.85s + var(--d)), translate .5s var(--ease) calc(.85s + var(--d)), background-color .45s, color .45s, border-color .45s, box-shadow .45s; }
-.a.cut { border-style: dashed; border-color: rgba(143, 164, 255, .45); color: var(--quiet); }
-.a.cut .l, .a.cut .s { text-decoration: line-through; }
-.a.cut i { color: var(--quiet); }
-/* 구현: 칸이 밝게 채워지고 확인 표시가 하나씩 붙음. 뺀 것은 그대로 */
-.v4 .a:not(.cut) { background: #f5f6fa; color: #0e1530; border-color: #f5f6fa; box-shadow: 0 3px 0 var(--l-ui); }
-.v4 .a:not(.cut) i { color: var(--l-ops); }
-.a:not(.cut)::after { content: ""; position: absolute; top: -9px; right: -9px; width: 19px; height: 19px; border-radius: 50%; background: var(--accent); scale: 0; transition: scale .2s; }
-.a:not(.cut)::before { content: ""; position: absolute; z-index: 1; top: -5px; right: -2.5px; width: 4px; height: 8px; border: solid #0a0c14; border-width: 0 2px 2px 0; rotate: 45deg; scale: 0; transition: scale .2s; }
-.v4 .a::after, .v4 .a::before { scale: 1; transition: scale .35s var(--ease) calc(.4s + var(--d) * 2); }
-/* 운영: 새로 들은 문의 한 줄이 같은 순서로 더해짐 (그 전에는 숨김) */
-.v2 .row.add .q { opacity: 0; translate: var(--dx) calc(var(--dy) - 16px); rotate: var(--r); }
-.v3 .row.add .ar { scale: 0 1; }
-.v3 .row.add .a { opacity: 0; translate: -14px 0; }
-.v4 .row.add .a::after, .v4 .row.add .a::before { scale: 0; }
-.v5 .row.add .q { opacity: 1; translate: 0 0; rotate: 0deg; color: var(--white); border-color: var(--accent); transition: opacity .4s var(--ease), translate .8s var(--ease) .1s, rotate .8s var(--ease) .1s; }
-.v5 .row.add .ar { scale: 1 1; transition: scale .45s var(--ease) .9s; }
-.v5 .row.add .a { opacity: 1; translate: 0 0; background: var(--accent); color: #0a0c14; border-color: var(--accent); box-shadow: 0 3px 0 var(--l-ops); transition: opacity .4s var(--ease) 1.25s, translate .5s var(--ease) 1.25s; }
-.v5 .row.add .a i { color: #1a2470; }
-.v5 .row.add .a::after { scale: 1; background: #f5f6fa; transition: scale .35s var(--ease) 1.9s; }
-.v5 .row.add .a::before { scale: 1; transition: scale .35s var(--ease) 1.9s; }
+.v1 .pcard:nth-child(1), .v2 .pcard:nth-child(2), .v3 .pcard:nth-child(3), .v4 .pcard:nth-child(4), .v5 .pcard:nth-child(5), .v6 .pcard:nth-child(6), .v7 .pcard:nth-child(7) { opacity: 1; translate: 0 0; rotate: 0deg; transition: opacity .35s var(--ease) var(--dl, 0s), translate .7s var(--ease) var(--dl, 0s), rotate .7s var(--ease) var(--dl, 0s); }
+/* 처음 열 때만 한 장씩 차례로 */
+.opening .pcard { --dl: calc(.35s + var(--i) * .16s); }
+.ptab { display: flex; align-items: center; gap: 10px; height: var(--tab); padding: 0 10px 0 14px; font-size: 13px; line-height: 1; white-space: nowrap; }
+.ptab > span:first-child { font-size: 12px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ptab b { font-weight: 700; color: var(--white); overflow: hidden; text-overflow: ellipsis; }
+.ptab .chip { margin-left: auto; font-size: 11.5px; }
+.pcard .p-thumb { border: 0; border-top: 1px solid var(--line); border-radius: 0; }
 
 .cap { position: absolute; left: 50%; bottom: 3%; translate: -50% 0; display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; line-height: 1.5; color: var(--dim); }
 html:not(.js) .cap { display: none; }
@@ -155,6 +117,14 @@ main { position: relative; z-index: 5; }
 .who dd { margin-top: 2px; font-size: 14.5px; line-height: 1.55; color: var(--dim); }
 .chap .mail { margin-top: 26px; font-weight: 600; }
 .hint { margin-top: 36px; padding-bottom: 10px; width: max-content; max-width: 100%; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--quiet); }
+
+/* 프로젝트 한 개 = 한 단계 */
+.proj h2 { font-size: clamp(30px, 3.5vw, 54px); line-height: 1.18; }
+.proj h2 a { text-decoration: none; }
+.proj h2 a:hover { color: var(--accent); }
+.proj-chip { margin-top: 22px; }
+.proj .card-facts { margin-top: 14px; max-width: 34em; grid-template-columns: 44px 1fr; gap: 6px 12px; font-size: 14.5px; }
+.proj .card-facts dd { color: var(--dim); }
 
 /* 두 프로젝트가 그 단계에서 실제로 한 일 (예전 '일하는 방식' 행) */
 .cases { display: grid; gap: 24px; margin-top: 34px; max-width: 34em; }
@@ -204,14 +174,12 @@ main { position: relative; z-index: 5; }
 .end .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--quiet); }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage, .board, .board-head span, .q, .ar, .a, .a i, .a::before, .a::after { transition: none !important; }
+  .stage, .pcard { transition: none !important; }
 }
 
-/* 좁은 PC 화면: 판이 좁아지므로 짧은 글로 */
+/* 좁은 PC 화면: 카드가 좁아지므로 제목 줄의 꼬리표는 숨김 */
 @media (max-width: 1100px) {
-  .l { display: none; }
-  .s { display: inline; }
-  .board-head, .row { grid-template-columns: 1fr 34px 1.1fr; }
+  .ptab .chip { display: none; }
 }
 
 /* 태블릿 세로와 휴대폰: 무대는 위쪽 절반, 단계 표시는 아래 막대 */
@@ -223,14 +191,12 @@ main { position: relative; z-index: 5; }
   .top nav { gap: 14px; font-size: 13.5px; }
   .top .cta { height: 32px; padding: 0 12px; font-size: 13px; }
   .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 8px 0 0; justify-content: flex-start; }
-  .board { width: min(100% - 32px, 460px); padding: 8px 12px 4px; }
-  .board-head, .row { grid-template-columns: 1fr 26px 1.05fr; }
-  .board-head { padding-bottom: 4px; font-size: 11px; }
-  .row { min-height: min(40px, (44vh - 84px) / 6); }
-  .q, .a { font-size: 12px; }
-  .a i { font-size: 10.5px; margin-right: .5em; }
-  .l { display: none; }
-  .s { display: inline; }
+  .stage { --tab: 24px; --pw: min(100vw - 40px, 420px, (44vh - 74px - 7 * var(--tab)) / .625); }
+  .ptab .chip { display: none; }
+  .ptab { gap: 7px; padding: 0 6px 0 9px; font-size: 11.5px; }
+  .ptab > span:first-child { font-size: 10.5px; }
+  .ptab .chip { font-size: 10px; padding: 0 6px; }
+  .proj h2 { font-size: clamp(26px, 7.4vw, 36px); }
   .cap { width: calc(100vw - 40px); justify-content: center; white-space: normal; text-align: center; font-size: 12px; }
   .rail { top: auto; bottom: 0; left: 0; right: 0; translate: none; display: flex; justify-content: space-between; align-items: center; gap: 0; padding: 10px 14px; border-width: 1px 0 0; background: var(--bg); font-size: 10.5px; }
   .rail a { padding: 0; gap: 3px; }

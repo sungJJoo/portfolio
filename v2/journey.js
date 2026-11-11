@@ -1,4 +1,4 @@
-// 새 메인(미리보기): 스크롤 단계에 맞춰 오른쪽 그림을 채우고, 진행 막대와 단계 표시를 바꾸고, 첫 화면 문구를 타자 치듯 바꾼다
+// 새 메인(미리보기): 스크롤에 맞춰 오른쪽 카드 더미를 한 장씩 쌓고, 진행 막대와 메뉴 표시를 바꾸고, 첫 화면 문구를 타자 치듯 바꾼다
 (() => {
   const root = document.documentElement;
   const progress = document.querySelector('.progress');
@@ -7,25 +7,17 @@
   const capTag = document.getElementById('cap-tag');
   const capText = document.getElementById('cap-text');
 
-  // 그림 아래 설명: 그 단계에서 그림에 새로 생긴 것
-  const caps = [
-    ['시작', '아직 아무것도 없는 화면에서'],
-    ['질문', '들은 것을 그대로 적은 메모'],
-    ['설계', '메모마다 만들 것과 뺄 것을 정한 기능명세'],
-    ['구현', '칸마다 검증 항목으로 확인한 결과'],
-    ['운영', '쓰다가 나온 문의도 같은 순서로 반영'],
-    ['다음', '문제 해결과 프로젝트'],
-    ['완성', '들은 것이 구조가 되고, 운영까지'],
-  ];
+  // 더미 아래 한 줄: 지금까지 쌓인 장 수와 방금 놓인 프로젝트
+  const tabs = [...document.querySelectorAll('.pcard .ptab')].map((p) => p.children[0].textContent + ' ' + p.children[1].textContent);
+  const total = tabs.length;
 
-  // 그림은 v1~vn을 html에 붙여 n단계까지 채운다. 첫 화면에 있을 때만 바뀌는 문구가 고른 단계(preview)를 미리 보여 준다
-  let step = 1;
-  let preview = 0;
+  // 첫 화면과 프로젝트 이야기 뒤로는 일곱 장이 다 쌓여 있고(0), 이야기 안에서는 n번째 프로젝트까지만 쌓인다
+  let step = 0;
   const render = () => {
-    const view = step === 1 && preview ? preview : step;
-    for (let i = 1; i <= caps.length; i++) root.classList.toggle('v' + i, i <= view);
-    capTag.textContent = caps[view - 1][0];
-    capText.textContent = caps[view - 1][1];
+    const view = step || total;
+    for (let i = 1; i <= total; i++) root.classList.toggle('v' + i, i <= view);
+    capTag.textContent = view + ' / ' + total;
+    capText.textContent = step ? tabs[view - 1] : '2024년부터 만든 순서대로';
   };
   const setStep = (n) => {
     if (n === step) return;
@@ -40,11 +32,14 @@
       else a.removeAttribute('aria-current');
     });
   };
+  render();
+  // 처음 한 번만 카드가 차례로 내려앉고, 그 뒤로는 스크롤에 바로 반응
+  setTimeout(() => root.classList.remove('opening'), 2600);
   // 화면 가운데 띠(위아래 45%를 뺀 곳)에 걸린 단계가 지금 단계
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
-      if (e.target.dataset.step) setStep(Number(e.target.dataset.step));
+      if (e.target.dataset.step) setStep(e.target.classList.contains('proj') ? Number(e.target.dataset.step) : 0);
       if (e.target.dataset.nav) setNav(Number(e.target.dataset.nav));
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
@@ -69,7 +64,7 @@
   addEventListener('resize', request);
   onScroll();
 
-  // 첫 화면 문구: 기본 문구 → 02~05 단계를 한 줄씩 → 다시 기본 문구. 문구마다 그림이 그 단계 모습이 된다
+  // 첫 화면 문구: 기본 문구 → 일하는 방식 네 줄 → 다시 기본 문구
   const word = document.querySelector('#c1 .type');
   if (!word || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const main = word.textContent;
@@ -86,8 +81,6 @@
     for (let i = 0; ; i = (i + 1) % phrases.length) {
       const [view, text] = phrases[i];
       await erase();
-      preview = view;
-      render();
       await typeIn(text);
       await sleep(view === 5 ? 3400 : view ? 2300 : 3000);
     }
