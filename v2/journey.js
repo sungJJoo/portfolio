@@ -11,20 +11,20 @@
   const tabs = [...document.querySelectorAll('.pcard .ptab')].map((p) => p.children[0].textContent + ' ' + p.children[1].textContent);
   const total = tabs.length;
 
-  // 첫 화면과 프로젝트 이야기 뒤로는 일곱 장이 다 쌓여 있고(0), 이야기 안에서는 n번째 프로젝트까지만 쌓인다
+  // 첫 화면과 ABOUT ME 뒤로는 네 장이 다 쌓여 있고(0), ABOUT ME 안에서는 n번째 단계까지만 쌓인다
   let step = 0;
   const render = () => {
     const view = step || total;
     for (let i = 1; i <= total; i++) root.classList.toggle('v' + i, i <= view);
     capTag.textContent = view + ' / ' + total;
-    capText.textContent = step ? tabs[view - 1] : '2024년부터 만든 순서대로';
+    capText.textContent = step ? tabs[view - 1] : '질문에서 운영까지, 일하는 순서대로';
   };
   const setStep = (n) => {
     if (n === step) return;
     step = n;
     render();
   };
-  // 오른쪽 표시는 메뉴(개발, 활동, 경력, 연락) 가운데 지금 보고 있는 곳. 첫 화면(0)에서는 아무것도 켜지 않는다
+  // 오른쪽 표시는 메뉴(소개, 프로젝트, 활동, 경력, 연락) 가운데 지금 보고 있는 곳. 첫 화면(0)에서는 아무것도 켜지 않는다
   const setNav = (n) => {
     links.forEach((a, i) => {
       a.classList.toggle('on', i === n - 1);
