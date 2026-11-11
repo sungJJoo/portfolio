@@ -26,6 +26,7 @@
   };
   // 오른쪽 표시는 메뉴(소개, 프로젝트, 활동, 연락) 가운데 지금 보고 있는 곳. 첫 화면(0)에서는 아무것도 켜지 않는다
   const setNav = (n) => {
+    root.classList.toggle('at-top', n === 0);
     links.forEach((a, i) => {
       a.classList.toggle('on', i === n - 1);
       if (i === n - 1) a.setAttribute('aria-current', 'true');
@@ -33,8 +34,6 @@
     });
   };
   render();
-  // 처음 한 번만 카드가 차례로 내려앉고, 그 뒤로는 스크롤에 바로 반응
-  setTimeout(() => root.classList.remove('opening'), 2600);
   // 화면 가운데 띠(위아래 45%를 뺀 곳)에 걸린 단계가 지금 단계
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
@@ -78,7 +77,6 @@
       root.classList.add('entered');
       const target = document.querySelector(hash);
       if (target) target.scrollIntoView({ behavior: 'instant' });
-      history.replaceState(null, '', hash);
       onScroll();
       setTimeout(() => root.classList.remove('entered'), 900);
     }, calm ? 0 : 460);
