@@ -1,6 +1,6 @@
 <!-- 박성주 포트폴리오 새 메인(미리보기): 내려가면 들은 것(도메인)이 구조가 되어 가는 그림이 단계마다 채워지고, 그 아래에 경력·문제 해결·프로젝트를 이어 붙인 한 페이지 -->
 <!doctype html>
-<html lang="ko" class="v1 v2 v3 v4 v5 v6 v7">
+<html lang="ko" class="v1 v2 v3 v4">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,15 +11,16 @@
   <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="journey.css">
-  <!-- 스크립트가 켜져 있으면 카드가 한 장씩 내려앉으며 시작(opening). 꺼져 있으면 위에 적힌 v1~v7 그대로라 일곱 장이 다 보인다 -->
+  <!-- 스크립트가 켜져 있으면 카드가 한 장씩 내려앉으며 시작(opening). 꺼져 있으면 위에 적힌 v1~v4 그대로라 네 장이 다 보인다 -->
   <script>document.documentElement.className = 'js opening';</script>
 </head>
 <body>
   <header class="top">
     <a class="brand" href="#c1"><b>박성주</b><small>풀스택 개발자<br>도메인부터 구조까지</small></a>
     <nav aria-label="주요 메뉴">
-      <a href="#dev">개발</a>
-      <a href="#teaching">AI·교육 활동</a>
+      <a href="#about">ABOUT ME</a>
+      <a href="#projects">프로젝트</a>
+      <a class="hide-m" href="#teaching">AI·교육 활동</a>
       <a href="#experience">경력</a>
     </nav>
     <a class="cta" href="mailto:shim.never60@gmail.com">이메일</a>
@@ -27,25 +28,23 @@
   <div class="progress" aria-hidden="true"></div>
 
   <nav class="rail" aria-label="메뉴">
-    <a href="#dev"><b>01</b>개발</a>
-    <a href="#teaching"><b>02</b>활동</a>
-    <a href="#experience"><b>03</b>경력</a>
-    <a href="#c7"><b>04</b>연락</a>
+    <a href="#about"><b>01</b>소개</a>
+    <a href="#projects"><b>02</b>프로젝트</a>
+    <a href="#teaching"><b>03</b>활동</a>
+    <a href="#experience"><b>04</b>경력</a>
+    <a href="#c7"><b>05</b>연락</a>
     <span class="pct" aria-hidden="true">00%</span>
   </nav>
 
-  <!-- 무대: 만든 순서대로 프로젝트 카드가 한 장씩 쌓이는 더미. 먼저 만든 것은 제목 줄만 남고 새 카드가 그 아래에 놓인다. journey.js가 html에 v1~v7(쌓인 장 수)을 붙인다 -->
+  <!-- 무대: 일하는 순서대로 대표 프로젝트의 실제 화면이 한 장씩 쌓이는 더미. 먼저 놓인 카드는 제목 줄만 남는다. journey.js가 html에 v1~v4(쌓인 장 수)를 붙인다 -->
   <div class="stage" aria-hidden="true">
     <div class="pile">
-      <div class="pcard" style="--i:0"><p class="ptab"><span>2024.06</span><b>영상 속 인물 제거</b><span class="chip">팀 프로젝트</span></p><div class="p-thumb"><div class="flow"><span class="node me">인물 구분<small>InsightFace</small></span><span class="arr">→</span><span class="node">분리, 추적<small>Detectron2</small></span><span class="arr">→</span><span class="node">배경 복원<small>인페인팅</small></span></div></div></div>
-      <div class="pcard" style="--i:1"><p class="ptab"><span>2024.09</span><b>Plantify 스마트 화분</b><span class="chip chip-accent">반도체 경진대회 은상</span></p><div class="p-thumb contain"><img src="../assets/img/plantify-web.webp" alt="ESP32가 띄운 웹 페이지: 센서 값 7개와 카메라 영상" width="564" height="498"></div></div>
-      <div class="pcard" style="--i:2"><p class="ptab"><span>2024.12</span><b>C언어 은행 관리</b><span class="chip chip-accent">장려상</span></p><div class="p-thumb dark"><img src="../assets/video/bank.webp" alt="은행 관리 프로그램을 실행한 콘솔의 거래 내역 화면" width="1280" height="664"></div></div>
-      <div class="pcard" style="--i:3"><p class="ptab"><span>2025.03</span><b>SmartVision 보조 기기</b><span class="chip chip-accent">졸업 작품 2위</span></p><div class="p-thumb"><img src="../assets/img/smartvision-demo.webp" alt="라즈베리파이 화면: QR 코드, 카메라 창, 인식 기록" width="1144" height="521"></div></div>
-      <div class="pcard" style="--i:4"><p class="ptab"><span>2026.05</span><b>연구소 업무 스케줄러</b><span class="chip chip-accent">사내 도구</span></p><div class="p-thumb"><img src="../assets/video/scheduler.webp" alt="스케줄러 화면: 3주 담당표와 업무 리스트 (가짜 이름)" width="1280" height="800"></div></div>
-      <div class="pcard" style="--i:5"><p class="ptab"><span>2026.06</span><b>FOX AI 연구소 사이트와 CMS</b><span class="chip chip-accent">사내 개발</span></p><div class="p-thumb"><img src="../assets/img/fox-site.webp" alt="FOX AI 연구소 사이트 첫 화면" width="1200" height="605"></div></div>
-      <div class="pcard" style="--i:6"><p class="ptab"><span>2026.08</span><b>우송대 강사 양성 누리집</b><span class="chip chip-accent">외부 의뢰</span></p><div class="p-thumb"><div class="flow"><span class="node">프로토타입<small>Next.js</small></span><span class="arr">→</span><span class="node">퍼블리싱<small>HTML, CSS</small></span><span class="arr">→</span><span class="node me">서버<small>Express, SQLite</small></span></div></div></div>
+      <div class="pcard" style="--i:0"><p class="ptab"><span>질문</span><b>FOX AI 연구소 사이트</b></p><div class="p-thumb"><img src="../assets/img/fox-site.webp" alt="" width="1200" height="605"></div></div>
+      <div class="pcard" style="--i:1"><p class="ptab"><span>설계</span><b>우송대 강사 양성 누리집</b></p><div class="p-thumb"><div class="flow"><span class="node">프로토타입<small>Next.js</small></span><span class="arr">→</span><span class="node">퍼블리싱<small>HTML, CSS</small></span><span class="arr">→</span><span class="node me">서버<small>Express, SQLite</small></span></div></div></div>
+      <div class="pcard" style="--i:2"><p class="ptab"><span>구현</span><b>SmartVision 보조 기기</b></p><div class="p-thumb"><img src="../assets/img/smartvision-demo.webp" alt="" width="1144" height="521"></div></div>
+      <div class="pcard" style="--i:3"><p class="ptab"><span>운영</span><b>FOX 관리자 CMS</b></p><div class="p-thumb"><img src="../assets/img/fox-cms.webp" alt="" width="1200" height="750"></div></div>
     </div>
-    <p class="cap"><b id="cap-tag">7 / 7</b><span id="cap-text">2024년부터 만든 순서대로</span></p>
+    <p class="cap"><b id="cap-tag">4 / 4</b><span id="cap-text">질문에서 운영까지, 일하는 순서대로</span></p>
   </div>
 
   <main>
@@ -56,7 +55,7 @@
         <h1><span class="sr-only">도메인부터 구조까지 이해하는 풀스택 개발자 박성주입니다.</span><span aria-hidden="true"><span class="type">도메인부터 구조까지 이해하는</span><br>풀스택 개발자<br>박성주입니다.</span></h1>
         <p class="lead">현장의 문제를 듣고 요구사항을 정리해, 웹 서비스를 만들고 운영까지 합니다. 지금은 연구소 공식 사이트와 관리자 CMS를 혼자 만들어 2026년 6월부터 운영하고 있습니다.</p>
         <div class="btns">
-          <a class="btn btn-solid" href="#solving">문제 해결 보기</a>
+          <a class="btn btn-solid" href="#projects">프로젝트 보기</a>
           <a class="btn btn-line" href="mailto:shim.never60@gmail.com"><svg class="ico" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg>이메일</a>
           <a class="btn btn-line" href="https://github.com/sungJJoo" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></svg>GitHub</a>
         </div>
@@ -64,101 +63,177 @@
           <div><dt>현재</dt><dd>폭스커넥트 대전 AI 연구소<br>AI 연구원 (2025.07 ~)</dd></div>
           <div><dt>학력</dt><dd>우송대학교 컴퓨터정보보안전공<br>부전공 비즈니스창업융합부</dd></div>
         </dl>
-        <p class="hint">내려 보면 만든 순서대로 한 장씩 쌓입니다</p>
+        <p class="hint">내려 보면 일하는 순서대로 한 장씩 쌓입니다</p>
       </div>
     </section>
 
-    <!-- 01 개발: 만든 순서대로 프로젝트 일곱 개(오른쪽에 카드가 쌓임) + 일하는 방식·문제 해결·기술 -->
-    <div id="dev" data-nav="1">
-    <section class="chap proj" id="p1" data-step="1">
+    <!-- 01 ABOUT ME: 일하는 순서 네 단계. 단계마다 대표 프로젝트 하나에서 실제로 한 일을 붙이고, 오른쪽에 그 화면이 쌓인다 -->
+    <div id="about" data-nav="1">
+    <section class="chap proj big" id="a1" data-step="1">
       <div class="copy">
-        <p class="label">01 / 개발 · 2024.06 ~ 2024.09</p>
-        <h2><a href="../projects/face-removal.html">영상 속 특정 인물 제거 프로그램</a></h2>
-        <p class="lead">영상에서 고른 한 명만 지우고 배경을 채우는 웹 프로그램</p>
-        <p class="proj-chip"><span class="chip">팀 프로젝트</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>6명</dd><dt>역할</dt><dd>얼굴 인식(InsightFace), YOLOv8</dd><dt>스택</dt><dd>Python, Flask, InsightFace, YOLOv8, Detectron2</dd></dl>
-        <a class="more" href="../projects/face-removal.html">자세히 보기</a>
+        <p class="label">01 / ABOUT ME · 질문</p>
+        <h2>만들기 전에<br><span class="hl">왜 필요한지</span> 묻습니다.</h2>
+        <p class="lead">누가 쓰고, 무엇이 불편하고, 무엇이 필요한지부터 봅니다. 도메인을 이해하는 데 시간이 걸려도 최대한 완벽에 가깝게 파악하려 합니다.</p>
+        <div class="cases">
+          <div class="case">
+            <h3><a href="../projects/fox-ai-lab.html">FOX AI 연구소 사이트와 CMS</a></h3>
+            <dl>
+              <dt>왜 만들었나</dt>
+              <dd>공지 한 줄을 고쳐도 제가 코드를 고치고 본사에 업로드를 요청해야 했고, 직원은 직접 고칠 방법이 없었습니다.</dd>
+              <dt>먼저 이해한 것</dt>
+              <dd>본사 서버는 관리할 사람이 없어 DB 서버를 둘 수 없었고, 진짜 불편은 고칠 때마다 업로드를 요청하는 일이었습니다.</dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="chap proj" id="p2" data-step="2">
+    <section class="chap proj big" id="a2" data-step="2">
       <div class="copy">
-        <p class="label">01 / 개발 · 2024.09 ~ 2024.12</p>
-        <h2><a href="../projects/plantify.html">Plantify 스마트 화분</a></h2>
-        <p class="lead">아두이노가 센서 7종을 읽고, ESP32-CAM이 카메라 영상과 센서 값을 웹 페이지로 보여 주는 화분</p>
-        <p class="proj-chip"><span class="chip chip-accent">반도체 경진대회 은상</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>3명 (팀장)</dd><dt>역할</dt><dd>주제와 전체 구조, 센서 조사, 코드 보조와 교차 검토, 발표</dd><dt>스택</dt><dd>Arduino, ESP32-CAM, C++, UART, WebSocket</dd></dl>
-        <a class="more" href="../projects/plantify.html">자세히 보기</a>
+        <p class="label">01 / ABOUT ME · 설계</p>
+        <h2>기능명세로<br><span class="hl">구조부터</span> 세웁니다.</h2>
+        <p class="lead">무엇을 만들고 무엇을 뺄지 먼저 정한 뒤에 개발합니다.</p>
+        <div class="cases">
+          <div class="case">
+            <h3><a href="../projects/woosong-site.html">우송대학교 강사 양성 누리집</a></h3>
+            <dl>
+              <dt>만든 것과 뺀 것</dt>
+              <dd>기능명세서에 화면, 데이터, 입력값 검사, 권한을 정리했습니다. 문자 발송이나 관리자 통합 로그인처럼 계약이나 협의가 필요한 기능은 이유를 적고 뺐습니다.</dd>
+              <dt>정한 규칙</dt>
+              <dd>가입 후 관리자가 승인해야 신청할 수 있고, 질의응답은 로그인한 사람만 쓰며 비공개 문의는 작성자와 관리자만 봅니다.</dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="chap proj" id="p3" data-step="3">
+    <section class="chap proj big" id="a3" data-step="3">
       <div class="copy">
-        <p class="label">01 / 개발 · 2024.12 (3주)</p>
-        <h2><a href="../projects/bank-manager.html">C언어 은행 관리 프로그램</a></h2>
-        <p class="lead">회원가입부터 송금까지 되는 콘솔 프로그램, DB 없이 JSON 읽기와 쓰기를 직접 구현</p>
-        <p class="proj-chip"><span class="chip chip-accent">장려상</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>3명 (팀장)</dd><dt>스택</dt><dd>C, Windows 콘솔</dd></dl>
-        <a class="more" href="../projects/bank-manager.html">자세히 보기</a>
+        <p class="label">01 / ABOUT ME · 구현</p>
+        <h2>막히면 원인을 찾아<br><span class="hl">끝까지 돌아가게</span> 합니다.</h2>
+        <p class="lead">코드를 쓸 때는 AI의 도움도 받습니다. 그래도 설계는 제가 하고, 결과는 직접 확인합니다.</p>
+        <div class="cases">
+          <div class="case">
+            <h3><a href="../projects/smartvision.html">SmartVision 시각장애인 보조 기기</a></h3>
+            <dl>
+              <dt>부딪힌 문제</dt>
+              <dd>보드가 10주차에야 도착했습니다. 그전까지 데스크톱에서 만든 인식과 음성 기능이 라즈베리파이에서는 패키지 충돌과 성능 한계로 돌지 않았습니다.</dd>
+              <dt>해결</dt>
+              <dd>인식 모델을 가장 가벼운 YOLOv8n으로 바꾸고, 필요한 패키지를 다시 골라 구성했습니다. 발열은 쿨러와 방열판으로 줄이고, 온도를 음성으로 확인하는 명령을 넣었습니다.</dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="chap proj" id="p4" data-step="4">
+    <section class="chap proj big" id="a4" data-step="4">
       <div class="copy">
-        <p class="label">01 / 개발 · 2025.03 ~ 2025.06</p>
-        <h2><a href="../projects/smartvision.html">SmartVision 시각장애인 보조 기기</a></h2>
-        <p class="lead">앞의 장애물을 방향과 함께 알려 주고, QR 메뉴판을 읽어 주는 Raspberry Pi 5 기기</p>
-        <p class="proj-chip"><span class="chip chip-accent">졸업 작품 2위</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>2명 (대표)</dd><dt>역할</dt><dd>객체 인식, 음성 명령, QR 모드, 라즈베리파이 최적화</dd><dt>결과</dt><dd>졸업 작품 2위, 학점 A+</dd><dt>스택</dt><dd>Python, YOLOv8n, OpenCV, gTTS, Flask</dd></dl>
-        <a class="more" href="../projects/smartvision.html">자세히 보기</a>
+        <p class="label">01 / ABOUT ME · 운영</p>
+        <h2>만든 뒤에도<br><span class="hl">직접 운영합니다.</span></h2>
+        <p class="lead">직원이 코드 없이 공지와 사진을 고치고, 저장하면 업로드 요청 없이 사이트에 반영됩니다.</p>
+        <dl class="stats">
+          <div><dt>CMS 첫 주 내용 수정</dt><dd><em>12건</em> 업로드 없이</dd></div>
+          <div><dt>저장부터 반영까지</dt><dd><em>1~2분</em></dd></div>
+        </dl>
+        <p class="note">2026년 10월 1일부터 6일까지 저장소 커밋 기록 기준. 반영은 본사 서버 캐시 때문에 길면 10분 걸립니다.</p>
+        <div class="cases">
+          <div class="case">
+            <h3><a href="../projects/fox-ai-lab.html">FOX 관리자 CMS</a></h3>
+            <dl>
+              <dt>받은 문의</dt>
+              <dd>하루짜리 팝업이 안 보인다는 문의에는 시작일 표시를 넣었습니다.</dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="chap proj" id="p5" data-step="5">
-      <div class="copy">
-        <p class="label">01 / 개발 · 2026.05 ~ 2026.07</p>
-        <h2><a href="../projects/scheduler.html">연구소 업무 스케줄러 (담당표)</a></h2>
-        <p class="lead">3인 팀의 담당표, 업무, 근무일정, 연간 일정을 한 화면에 모은 서버 없는 웹앱</p>
-        <p class="proj-chip"><span class="chip chip-accent">사내 도구</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>1명 (팀원 3명이 사용)</dd><dt>역할</dt><dd>기획, 개발</dd><dt>스택</dt><dd>JavaScript, Google Apps Script, Google Sheets, PWA</dd></dl>
-        <a class="more" href="../projects/scheduler.html">자세히 보기</a>
-      </div>
-    </section>
+    </div>
 
-    <section class="chap proj" id="p6" data-step="6">
-      <div class="copy">
-        <p class="label">01 / 개발 · 2026.06 ~ 운영 중</p>
-        <h2><a href="../projects/fox-ai-lab.html">FOX AI 연구소 공식 사이트와 관리자 CMS</a></h2>
-        <p class="lead">학부모가 보는 연구소 사이트와, 직원이 코드 없이 내용을 고치는 관리자 CMS</p>
-        <p class="proj-chip"><span class="chip chip-accent">사내 개발</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>1명</dd><dt>역할</dt><dd>기획, 디자인, 개발, 운영</dd><dt>스택</dt><dd>HTML, CSS, JavaScript, GitHub API, Apps Script</dd></dl>
-        <a class="more" href="../projects/fox-ai-lab.html">자세히 보기</a>
-      </div>
-    </section>
-
-    <section class="chap proj" id="p7" data-step="7">
-      <div class="copy">
-        <p class="label">01 / 개발 · 2026.08 ~ 2026.09</p>
-        <h2><a href="../projects/woosong-site.html">우송대학교 RISE U-늘봄 강사 양성 누리집</a></h2>
-        <p class="lead">대학 사업단의 강사 양성 과정 안내와 수강 신청 사이트, 관리자 화면 포함</p>
-        <p class="proj-chip"><span class="chip chip-accent">외부 의뢰</span></p>
-        <dl class="card-facts"><dt>인원</dt><dd>1명 (외부 의뢰)</dd><dt>역할</dt><dd>설계, 개발, 문서 작성</dd><dt>스택</dt><dd>Next.js, TypeScript, Node.js, Express, SQLite</dd></dl>
-        <a class="more" href="../projects/woosong-site.html">자세히 보기</a>
-      </div>
-    </section>
-    <div class="hist" data-step="7">
-    <!-- 일하는 방식: 네 줄로 -->
-    <section id="how" class="section">
+    <!-- 02 프로젝트: 대표 세 개, 다른 네 개, 문제 해결, 기술 -->
+    <div class="hist" data-step="0" data-nav="2">
+    <!-- 프로젝트: 대표 세 개를 먼저, 나머지는 아래에 -->
+    <section id="projects" class="section">
       <div class="wrap">
-        <h2>일하는 방식</h2>
-        <ul class="teach">
-          <li><b>질문</b><p>만들기 전에 왜 필요한지 묻습니다. 누가 쓰고, 무엇이 불편하고, 무엇이 필요한지부터 봅니다.</p></li>
-          <li><b>설계</b><p>기능명세로 구조부터 세웁니다. 무엇을 만들고 무엇을 뺄지 먼저 정한 뒤에 개발합니다.</p></li>
-          <li><b>구현</b><p>무엇을 만들지 정하고, 맞는지 직접 확인합니다. 코드를 쓸 때는 AI의 도움도 받지만, 결과는 검증 항목을 적어 하나씩 확인합니다.</p></li>
-          <li><b>운영</b><p>만든 뒤에도 직접 운영합니다. 쓰면서 나온 문의를 받아 고칩니다.</p></li>
-        </ul>
+        <p class="label">02 / 프로젝트</p>
+        <h2>프로젝트</h2>
+
+        <h3 class="group-title">대표 프로젝트</h3>
+        <div class="plist">
+          <a class="prow" href="../projects/fox-ai-lab.html">
+            <div class="p-thumb"><img src="../assets/img/fox-site.webp" alt="FOX AI 연구소 사이트 첫 화면" width="1200" height="605" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">사내 개발</span>2026.06 ~ 운영 중</p>
+              <h3>FOX AI 연구소 공식 사이트와 관리자 CMS</h3>
+              <p class="card-sum">학부모가 보는 연구소 사이트와, 직원이 코드 없이 내용을 고치는 관리자 CMS</p>
+              <p class="layers" aria-label="맡은 층"><span class="on k-plan">기획</span><span class="on k-api">서버</span><span class="on k-ui">화면</span><span class="on k-ops">운영</span></p>
+              <dl class="card-facts"><dt>인원</dt><dd>1명</dd><dt>역할</dt><dd>기획, 디자인, 개발, 운영</dd><dt>스택</dt><dd>HTML, CSS, JavaScript, GitHub API, Apps Script</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="../projects/woosong-site.html">
+            <div class="p-thumb"><div class="flow"><span class="node">프로토타입<small>Next.js</small></span><span class="arr">→</span><span class="node">퍼블리싱<small>HTML, CSS</small></span><span class="arr">→</span><span class="node me">서버<small>Express, SQLite</small></span></div></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">외부 의뢰</span>2026.08 ~ 2026.09</p>
+              <h3>우송대학교 RISE U-늘봄 강사 양성 누리집</h3>
+              <p class="card-sum">대학 사업단의 강사 양성 과정 안내와 수강 신청 사이트, 관리자 화면 포함</p>
+              <p class="layers" aria-label="맡은 층"><span class="on k-plan">기획</span><span class="on k-api">서버</span><span class="on k-ui">화면</span><span class="k-ops">운영</span></p>
+              <dl class="card-facts"><dt>인원</dt><dd>1명 (외부 의뢰)</dd><dt>역할</dt><dd>설계, 개발, 문서 작성</dd><dt>스택</dt><dd>Next.js, TypeScript, Node.js, Express, SQLite</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="../projects/smartvision.html">
+            <div class="p-thumb"><img src="../assets/img/smartvision-demo.webp" alt="라즈베리파이 화면: QR 코드, 카메라 창, 인식 기록" width="1144" height="521" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">졸업 작품 2위</span>2025.03 ~ 2025.06</p>
+              <h3>SmartVision 시각장애인 보조 기기</h3>
+              <p class="card-sum">앞의 장애물을 방향과 함께 알려 주고, QR 메뉴판을 읽어 주는 Raspberry Pi 5 기기</p>
+              <dl class="card-facts"><dt>인원</dt><dd>2명 (대표)</dd><dt>역할</dt><dd>객체 인식, 음성 명령, QR 모드, 라즈베리파이 최적화</dd><dt>결과</dt><dd>졸업 작품 2위, 학점 A+</dd><dt>스택</dt><dd>Python, YOLOv8n, OpenCV, gTTS, Flask</dd></dl>
+            </div>
+          </a>
+        </div>
+
+        <h3 class="group-title">다른 프로젝트</h3>
+        <div class="plist">
+          <a class="prow" href="../projects/scheduler.html">
+            <div class="p-thumb"><img src="../assets/video/scheduler.webp" alt="스케줄러 화면: 3주 담당표와 업무 리스트 (가짜 이름)" width="1280" height="800" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">사내 도구</span>2026.05 ~ 2026.07</p>
+              <h3>연구소 업무 스케줄러 (담당표)</h3>
+              <p class="card-sum">3인 팀의 담당표, 업무, 근무일정, 연간 일정을 한 화면에 모은 서버 없는 웹앱</p>
+              <p class="layers" aria-label="맡은 층"><span class="on k-plan">기획</span><span class="on k-api">서버</span><span class="on k-ui">화면</span><span class="on k-ops">운영</span></p>
+              <dl class="card-facts"><dt>인원</dt><dd>1명 (팀원 3명이 사용)</dd><dt>역할</dt><dd>기획, 개발</dd><dt>스택</dt><dd>JavaScript, Google Apps Script, Google Sheets, PWA</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="../projects/plantify.html">
+            <div class="p-thumb contain"><img src="../assets/img/plantify-web.webp" alt="ESP32가 띄운 웹 페이지: 센서 값 7개와 카메라 영상" width="564" height="498" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">반도체 경진대회 은상</span>2024.09 ~ 2024.12</p>
+              <h3>Plantify 스마트 화분</h3>
+              <p class="card-sum">아두이노가 센서 7종을 읽고, ESP32-CAM이 카메라 영상과 센서 값을 웹 페이지로 보여 주는 화분</p>
+              <dl class="card-facts"><dt>인원</dt><dd>3명 (팀장)</dd><dt>역할</dt><dd>주제와 전체 구조, 센서 조사, 코드 보조와 교차 검토, 발표</dd><dt>스택</dt><dd>Arduino, ESP32-CAM, C++, UART, WebSocket</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="../projects/face-removal.html">
+            <div class="p-thumb"><div class="flow"><span class="node me">인물 구분<small>InsightFace</small></span><span class="arr">→</span><span class="node">분리, 추적<small>Detectron2</small></span><span class="arr">→</span><span class="node">배경 복원<small>인페인팅</small></span></div></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip">팀 프로젝트</span>2024.06 ~ 2024.09</p>
+              <h3>영상 속 특정 인물 제거 프로그램</h3>
+              <p class="card-sum">영상에서 고른 한 명만 지우고 배경을 채우는 웹 프로그램</p>
+              <dl class="card-facts"><dt>인원</dt><dd>6명</dd><dt>역할</dt><dd>얼굴 인식(InsightFace), YOLOv8</dd><dt>스택</dt><dd>Python, Flask, InsightFace, YOLOv8, Detectron2</dd></dl>
+            </div>
+          </a>
+          <a class="prow" href="../projects/bank-manager.html">
+            <div class="p-thumb dark"><img src="../assets/video/bank.webp" alt="은행 관리 프로그램을 실행한 콘솔의 거래 내역 화면" width="1280" height="664" loading="lazy"></div>
+            <div class="p-body">
+              <p class="card-meta"><span class="chip chip-accent">장려상</span>2024.12 (3주)</p>
+              <h3>C언어 은행 관리 프로그램</h3>
+              <p class="card-sum">회원가입부터 송금까지 되는 콘솔 프로그램, DB 없이 JSON 읽기와 쓰기를 직접 구현</p>
+              <dl class="card-facts"><dt>인원</dt><dd>3명 (팀장)</dd><dt>스택</dt><dd>C, Windows 콘솔</dd></dl>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
+
     <!-- 문제 해결: 네 가지 모두 제목, 그림, 문제, 해결, 결과 순서 -->
     <section id="solving" class="section">
       <div class="wrap">
@@ -325,14 +400,13 @@
       </div>
     </section>
     </div>
-    </div>
 
-    <!-- 02 AI·교육 활동 -->
-    <div class="hist" data-step="7" data-nav="2">
+    <!-- 03 AI·교육 활동 -->
+    <div class="hist" data-step="0" data-nav="3">
     <!-- 교육: 개발과 함께 맡은 수업과 교육 과정 (개발 경력과 분리) -->
     <section id="teaching" class="section">
       <div class="wrap">
-        <p class="label">02 / AI·교육 활동</p>
+        <p class="label">03 / AI·교육 활동</p>
         <h2>AI·교육 활동</h2>
         <p class="how-lead">연구소에서 개발과 함께 맡은 수업과 교육 과정입니다.</p>
         <ul class="teach">
@@ -348,12 +422,12 @@
     </section>
     </div>
 
-    <!-- 03 경력: 회사 경력, 학력, 수상 -->
-    <div class="hist" data-step="7" data-nav="3">
+    <!-- 04 경력: 회사 경력, 학력, 수상 -->
+    <div class="hist" data-step="0" data-nav="4">
     <!-- 경력: 회사에서 만든 것과 그 밖의 일 -->
     <section id="experience" class="section tint">
       <div class="wrap">
-        <p class="label">03 / 경력</p>
+        <p class="label">04 / 경력</p>
         <h2>경력</h2>
         <div class="exp">
           <div class="exp-head">
@@ -425,9 +499,9 @@
     </section>
     </div>
 
-    <section class="chap" id="c7" data-step="7" data-nav="4">
+    <section class="chap" id="c7" data-step="0" data-nav="5">
       <div class="copy">
-        <p class="label">04 / 연락</p>
+        <p class="label">05 / 연락</p>
         <h2>연락처</h2>
         <a class="mail" href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a>
         <div class="btns">

@@ -60,17 +60,18 @@ body::before {
 .rail a.on { color: var(--accent); }
 .rail .pct { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* 무대: 오른쪽에 고정된 카드 더미. 만든 순서대로 한 장씩 내려앉고, 먼저 놓인 카드는 제목 줄만 남는다. html의 v1~v7이 쌓인 장 수 */
+/* 무대: 오른쪽에 고정된 카드 더미. 일하는 순서(질문·설계·구현·운영)대로 한 장씩 내려앉고, 먼저 놓인 카드는 제목 줄만 남는다. html의 v1~v4가 쌓인 장 수 */
 .stage {
   --tab: 34px;
-  --pw: min(36vw - 20px, 520px, (100vh - var(--header) - 150px - 7 * var(--tab)) / .625);
+  --cards: 4;
+  --pw: min(36vw - 20px, 560px, (100vh - var(--header) - 150px - var(--cards) * var(--tab)) / .625);
   position: fixed; z-index: 1; top: var(--header); right: 0; bottom: 0; width: 56vw; padding: max(6vh, 40px) 80px 56px 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   pointer-events: none; transition: opacity .45s var(--ease);
 }
 /* 맨 아래 칸이 올라오면 더미는 사라짐 */
 .at-end .stage { opacity: 0; }
-.pile { position: relative; width: var(--pw); height: calc(7 * var(--tab) + var(--pw) * .625 + 2px); }
+.pile { position: relative; width: var(--pw); height: calc(var(--cards) * var(--tab) + var(--pw) * .625 + 2px); }
 .pcard {
   position: absolute; left: 0; right: 0; top: calc(var(--i) * var(--tab));
   background: var(--surface); border: 1px solid var(--line-strong); box-shadow: 0 -10px 24px rgba(5, 6, 12, .55);
@@ -81,7 +82,7 @@ body::before {
 /* 처음 열 때만 한 장씩 차례로 */
 .opening .pcard { --dl: calc(.35s + var(--i) * .16s); }
 .ptab { display: flex; align-items: center; gap: 10px; height: var(--tab); padding: 0 10px 0 14px; font-size: 13px; line-height: 1; white-space: nowrap; }
-.ptab > span:first-child { font-size: 12px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ptab > span:first-child { min-width: 2.4em; font-size: 12px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
 .ptab b { font-weight: 700; color: var(--white); overflow: hidden; text-overflow: ellipsis; }
 .ptab .chip { margin-left: auto; font-size: 11.5px; }
 .pcard .p-thumb { border: 0; border-top: 1px solid var(--line); border-radius: 0; }
@@ -121,6 +122,7 @@ main { position: relative; z-index: 5; }
 /* 프로젝트 한 개 = 한 단계 */
 .proj h2 { font-size: clamp(30px, 3.5vw, 54px); line-height: 1.18; }
 .proj h2 a { text-decoration: none; }
+.proj.big h2 { font-size: clamp(40px, 5.2vw, 80px); line-height: 1.13; }
 .proj h2 a:hover { color: var(--accent); }
 .proj-chip { margin-top: 22px; }
 .proj .card-facts { margin-top: 14px; max-width: 34em; grid-template-columns: 44px 1fr; gap: 6px 12px; font-size: 14.5px; }
@@ -191,12 +193,13 @@ main { position: relative; z-index: 5; }
   .top nav { gap: 14px; font-size: 13.5px; }
   .top .cta { height: 32px; padding: 0 12px; font-size: 13px; }
   .stage { left: 0; width: 100vw; bottom: auto; height: 44vh; padding: 8px 0 0; justify-content: flex-start; }
-  .stage { --tab: 24px; --pw: min(100vw - 40px, 420px, (44vh - 74px - 7 * var(--tab)) / .625); }
+  .stage { --tab: 24px; --pw: min(100vw - 40px, 420px, (44vh - 74px - var(--cards) * var(--tab)) / .625); }
   .ptab .chip { display: none; }
   .ptab { gap: 7px; padding: 0 6px 0 9px; font-size: 11.5px; }
   .ptab > span:first-child { font-size: 10.5px; }
   .ptab .chip { font-size: 10px; padding: 0 6px; }
   .proj h2 { font-size: clamp(26px, 7.4vw, 36px); }
+  .proj.big h2 { font-size: clamp(32px, 9vw, 42px); }
   .cap { width: calc(100vw - 40px); justify-content: center; white-space: normal; text-align: center; font-size: 12px; }
   .rail { top: auto; bottom: 0; left: 0; right: 0; translate: none; display: flex; justify-content: space-between; align-items: center; gap: 0; padding: 10px 14px; border-width: 1px 0 0; background: var(--bg); font-size: 10.5px; }
   .rail a { padding: 0; gap: 3px; }
