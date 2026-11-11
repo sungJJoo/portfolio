@@ -121,6 +121,14 @@ main { position: relative; z-index: 5; }
 .chap .mail { margin-top: 26px; font-weight: 600; }
 .hint { margin-top: 36px; padding-bottom: 10px; width: max-content; max-width: 100%; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--quiet); }
 
+/* 첫 화면은 문: ABOUT ME나 메뉴를 누르기 전에는 첫 화면만 있고(gate), 누르면 첫 화면이 물러나며(entering) 안쪽이 떠오른다(entered) */
+.gate main > :not(#c1), .gate .end, .gate .rail, .gate .progress { display: none; }
+#c1 .copy, .pile { transition: opacity .45s var(--ease), translate .45s var(--ease), scale .45s var(--ease); }
+.entering #c1 .copy { opacity: 0; translate: -40px 0; }
+.entering .pile { opacity: 0; scale: 1.14; }
+.entered main { animation: enter .75s var(--ease) both; }
+@keyframes enter { from { opacity: 0; translate: 0 48px; } }
+
 /* 프로젝트 한 개 = 한 단계 */
 .proj h2 { font-size: clamp(30px, 3.5vw, 54px); line-height: 1.18; }
 .proj h2 a { text-decoration: none; }
@@ -178,7 +186,8 @@ main { position: relative; z-index: 5; }
 .end .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--quiet); }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage, .pcard { transition: none !important; }
+  .stage, .pcard, #c1 .copy, .pile { transition: none !important; }
+  .entered main { animation: none; }
 }
 
 /* 좁은 PC 화면: 카드가 좁아지므로 제목 줄의 꼬리표는 숨김 */

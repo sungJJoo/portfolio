@@ -64,6 +64,26 @@
   addEventListener('resize', request);
   onScroll();
 
+  // 첫 화면은 문: 안쪽으로 가는 링크(ABOUT ME, 메뉴)를 누르면 첫 화면이 물러난 뒤 문이 열리고 그 자리로 간다
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('click', (e) => {
+    if (!root.classList.contains('gate')) return;
+    const a = e.target.closest('a[href^="#"]');
+    const hash = a && a.getAttribute('href');
+    if (!hash || hash === '#c1') return;
+    e.preventDefault();
+    root.classList.add('entering');
+    setTimeout(() => {
+      root.classList.remove('gate', 'entering');
+      root.classList.add('entered');
+      const target = document.querySelector(hash);
+      if (target) target.scrollIntoView({ behavior: 'instant' });
+      history.replaceState(null, '', hash);
+      onScroll();
+      setTimeout(() => root.classList.remove('entered'), 900);
+    }, calm ? 0 : 460);
+  });
+
   // 첫 화면 문구: 기본 문구 → 일하는 방식 네 줄 → 다시 기본 문구
   const word = document.querySelector('#c1 .type');
   if (!word || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
