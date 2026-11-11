@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="journey.css">
-  <!-- 스크립트가 켜져 있으면 카드가 한 장씩 내려앉으며 시작(opening). 꺼져 있으면 위에 적힌 v1~v4 그대로라 네 장이 다 보인다 -->
-  <script>document.documentElement.className = 'js opening';</script>
+  <!-- 스크립트가 켜져 있으면 카드가 한 장씩 내려앉으며 시작(opening)하고, 주소에 #이 없으면 첫 화면만 보이는 문 상태(gate)로 연다. 꺼져 있으면 위에 적힌 v1~v4 그대로라 네 장이 다 보인다 -->
+  <script>document.documentElement.className = 'js opening' + (location.hash && location.hash !== '#c1' ? '' : ' gate');</script>
 </head>
 <body>
   <header class="top">
@@ -62,7 +62,7 @@
           <a class="btn btn-solid" href="#about">ABOUT ME 더 보기</a>
           <a class="btn btn-line" href="#projects">프로젝트 보기</a>
         </div>
-        <p class="hint">내려 보면 일하는 순서대로 한 장씩 쌓입니다</p>
+        <p class="hint">ABOUT ME를 누르면 안으로 들어갑니다</p>
       </div>
     </section>
 
