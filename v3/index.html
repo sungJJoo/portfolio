@@ -1,172 +1,162 @@
 <!doctype html>
-<!-- 박성주 포트폴리오 v3. 측정한 결과와 직접 눌러 보는 시뮬레이션을 중심으로 한 단일 페이지 -->
+<!-- 박성주 포트폴리오 v3. 인사와 소개로 시작해 실제 화면과 눌러 보는 시뮬레이션으로 이어지는 단일 페이지 (portfolio 저장소의 v3/ 에 놓이며 ../assets 를 읽는다) -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>박성주 · 납품한 뒤에도 다시 깨뜨려 보는 개발자</title>
-<meta name="description" content="요구사항 정리부터 개발, 운영, 운영 후 성능 점검까지 맡아 본 웹 개발자 박성주의 포트폴리오">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<title>박성주 포트폴리오</title>
+<meta name="description" content="요구사항을 듣는 일부터 개발, 운영, 운영 뒤 점검까지 맡아 온 웹 개발자 박성주의 포트폴리오">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
 <style>
-:root{
-  --bg:#f4f1ea; --paper:#fbf9f4; --ink:#16150f; --mute:#6b675c; --line:#d9d4c7;
-  --bad:#e5401c; --ok:#0d7a4a; --panel:#17160f; --panel-line:#34322a; --panel-mute:#a39e8f;
-  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
-}
+:root{--bg:#fbfbfc;--ink:#14161a;--sub:#555c68;--line:#e4e6ea;--soft:#f1f3f6;--blue:#1d4ed8;--red:#d92d20;--r:12px}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,"Malgun Gothic",sans-serif;
-  font-size:17px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,"Malgun Gothic",sans-serif;font-size:17px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-underline-offset:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+img,video{display:block;max-width:100%;height:auto}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.narrow{max-width:720px}
+.media{border-radius:var(--r);border:1px solid var(--line);background:var(--soft);width:100%}
+figure figcaption{margin-top:10px;font-size:14px;color:var(--sub)}
+.btn{display:inline-block;font-weight:600;font-size:16px;text-decoration:none;padding:12px 20px;border-radius:var(--r);border:1px solid var(--ink);white-space:nowrap}
+.btn.fill{background:var(--ink);color:#fff}
+.btn:hover{border-color:var(--blue);color:var(--blue)}
+.btn.fill:hover{background:var(--blue);color:#fff}
+.btn:active{transform:translateY(1px)}
+.more{font-weight:600;color:var(--blue);text-decoration:none}
+.more:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
-/* 상단 */
-header{position:sticky;top:0;z-index:5;background:rgba(244,241,234,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;font-size:14px}
-header strong{font-weight:700;letter-spacing:-.01em}
-nav{display:flex;gap:22px;color:var(--mute)}
+header{position:sticky;top:0;z-index:10;background:rgba(251,251,252,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+header strong{font-size:17px}
+nav{display:flex;gap:28px;font-size:15px;color:var(--sub)}
 nav a{text-decoration:none}
 nav a:hover{color:var(--ink)}
-.mail{font-weight:600;text-decoration:none;border-bottom:2px solid var(--ink)}
+header .btn{padding:7px 14px;font-size:14px}
 
-/* 첫 화면 */
-.hero{padding-top:96px;padding-bottom:72px}
-.eyebrow{font-size:14px;color:var(--mute);letter-spacing:.02em;margin-bottom:28px}
-.eyebrow b{color:var(--ink)}
-h1{font-size:clamp(38px,6.4vw,82px);line-height:1.12;letter-spacing:-.045em;font-weight:800}
-h1 em{font-style:normal;background:linear-gradient(transparent 62%,#ffd2c4 62%)}
-.lede{max-width:680px;margin-top:32px;font-size:19px;color:#3a382f}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;border-top:2px solid var(--ink)}
-.metric{padding:24px 20px 4px 0;border-right:1px solid var(--line)}
-.metric+.metric{padding-left:20px}
-.metric:last-child{border-right:0}
-.metric .num{font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1.1;white-space:nowrap}
-.metric .num small{font-size:.45em;font-weight:600;letter-spacing:0;color:var(--mute);margin-left:3px}
-.metric .what{margin-top:12px;font-weight:600;font-size:15.5px;line-height:1.45}
-.metric .src{margin-top:6px;font-size:13px;color:var(--mute);line-height:1.5}
+/* 인사 */
+.hello{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:88px}
+h1{font-size:clamp(40px,5.2vw,68px);line-height:1.18;letter-spacing:-.04em;font-weight:800}
+.hello p{margin-top:24px;font-size:20px;color:var(--sub);max-width:440px;line-height:1.65}
+.hello .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
 
-/* 섹션 공통 */
-section{padding:88px 0;border-top:1px solid var(--line)}
-.case{display:grid;grid-template-columns:240px 1fr;gap:56px}
-.side{position:sticky;top:88px;align-self:start;font-size:14px;color:var(--mute)}
-.side .no{font-family:var(--mono);font-size:13px;color:var(--bad);margin-bottom:10px}
-.side dl{margin-top:18px;display:grid;gap:10px}
-.side dt{font-size:12px;letter-spacing:.04em}
-.side dd{color:var(--ink);font-weight:500;line-height:1.5}
-.side a{font-weight:600;color:var(--ink)}
-h2{font-size:clamp(27px,3.4vw,40px);line-height:1.25;letter-spacing:-.035em;font-weight:800;margin-bottom:22px}
-h3{font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--mute);margin:40px 0 12px}
-.body p{max-width:700px}
-.body p+p{margin-top:14px}
-.label{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;border:1px solid currentColor;margin-right:8px;vertical-align:2px}
-.label.bad{color:var(--bad)} .label.ok{color:var(--ok)}
+/* 공통 */
+section{padding:96px 0}
+h2{font-size:clamp(28px,3.3vw,40px);line-height:1.3;letter-spacing:-.035em;font-weight:800}
+h3{font-size:22px;letter-spacing:-.02em;line-height:1.4}
+.lead{margin-top:20px;color:var(--sub);max-width:680px}
+.meta{font-size:15px;color:var(--sub);margin-top:10px}
 
-/* 시뮬레이터 */
-.sim{margin-top:32px;background:var(--panel);color:#f1eee4;border-radius:14px;padding:28px}
+/* 소개 */
+.about{background:var(--soft)}
+.about p{font-size:20px;line-height:1.85;margin-top:24px}
+.about p b{font-weight:700}
+
+/* 연구소 사이트 */
+.pair{display:grid;grid-template-columns:3fr 2fr;gap:24px;margin-top:44px;align-items:start}
+.change{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
+.change h3{margin-bottom:10px}
+.change p{color:var(--sub)}
+.change .now p{color:var(--ink)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
+.trio h3{font-size:18px;margin-bottom:6px}
+.trio p{font-size:16px;color:var(--sub)}
+.perf{display:grid;grid-template-columns:2fr 3fr;gap:56px;margin-top:72px;padding:44px;background:var(--soft);border-radius:var(--r);align-items:center}
+.perf p{color:var(--sub);margin-top:12px;font-size:16px}
+.perf dl{display:grid;gap:18px}
+.perf dt{font-size:15px;color:var(--sub)}
+.perf dd{font-size:clamp(24px,2.8vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.3}
+.perf dd span{color:var(--blue)}
+
+/* 수강 신청 */
+.sim{margin-top:44px;border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:32px}
 .sim-top{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.sim-title{font-size:13px;color:var(--panel-mute)}
-.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.switch{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;cursor:pointer;user-select:none}
-.switch input{appearance:none;width:44px;height:26px;border-radius:99px;background:#4a473d;position:relative;cursor:pointer;transition:background .15s;flex:none}
+.sim-top b{font-size:17px}
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.switch{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;cursor:pointer;user-select:none}
+.switch input{appearance:none;width:44px;height:26px;border-radius:99px;background:#c5c9d1;position:relative;cursor:pointer;transition:background .15s;flex:none}
 .switch input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
-.switch input:checked{background:var(--ok)}
+.switch input:checked{background:var(--blue)}
 .switch input:checked::after{transform:translateX(18px)}
-.switch input:focus-visible,.run:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.run{font:inherit;font-size:15px;font-weight:700;color:var(--panel);background:#f1eee4;border:0;border-radius:8px;padding:10px 18px;cursor:pointer}
-.run:hover{background:#fff}
-.run:disabled{opacity:.45;cursor:default}
-.board{display:grid;grid-template-columns:1fr 200px;gap:28px;margin-top:26px;align-items:start}
-.seats-label{font-size:12px;color:var(--panel-mute);margin-bottom:8px}
+button.btn{font-family:inherit;cursor:pointer}
+button.btn:disabled{opacity:.4;cursor:default}
+.board{display:grid;grid-template-columns:1fr 220px;gap:40px;margin-top:28px;align-items:start}
+.seats-label{font-size:14px;color:var(--sub);margin-bottom:8px}
+.board>div{min-width:0}
+.seats,.over{max-width:480px}
+.shelf .media{aspect-ratio:16/10;object-fit:contain;background:#fff}
 .seats{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
-.seat{aspect-ratio:1;border-radius:5px;border:1px solid var(--panel-line);transition:background .12s}
-.seat.on{background:#2fbf7f;border-color:#2fbf7f}
-.over{display:flex;flex-wrap:wrap;gap:6px;min-height:30px;margin-top:6px}
-.over .seat{width:calc((100% - 54px)/10);background:var(--bad);border-color:var(--bad)}
-.count{font-variant-numeric:tabular-nums}
-.count .big{font-family:var(--mono);font-size:44px;font-weight:700;line-height:1;letter-spacing:-.03em}
-.count .big.bad{color:#ff6a47}
-.count .big.ok{color:#2fbf7f}
-.count .cap{color:var(--panel-mute);font-size:14px;margin-top:6px}
-.count ul{list-style:none;padding:0;margin-top:16px;font-size:13.5px;color:var(--panel-mute);display:grid;gap:4px}
-.count ul b{color:#f1eee4;font-weight:600}
-.verdict{margin-top:22px;padding-top:18px;border-top:1px solid var(--panel-line);font-size:15.5px;min-height:74px;line-height:1.65}
-.note{margin-top:14px;font-size:12.5px;color:var(--panel-mute)}
+.seat{aspect-ratio:1;border-radius:4px;background:var(--soft);transition:background .12s}
+.seat.on{background:var(--blue)}
+.over{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;min-height:34px}
+.over .seat{background:var(--red)}
+.count .big{font-size:56px;font-weight:800;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.count .big.bad{color:var(--red)}
+.count .big.ok{color:var(--blue)}
+.count p{font-size:15px;color:var(--sub);margin-top:6px}
+.count p b{color:var(--ink)}
+.verdict{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);min-height:84px}
+.note{margin-top:10px;font-size:14px;color:var(--sub)}
+.after{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+.after .n{font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.25}
+.after p{font-size:16px;color:var(--sub);margin-top:8px}
 
-/* 목록, 흐름, 막대 */
-.facts{list-style:none;padding:0;display:grid;gap:0;border-top:1px solid var(--line);max-width:760px}
-.facts li{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:16px}
-.facts .k{font-weight:800;letter-spacing:-.02em;font-size:18px}
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14.5px;margin:8px 0 18px}
-.flow span{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 12px;line-height:1.4}
-.flow span small{display:block;color:var(--mute);font-size:12.5px}
-.flow i{font-style:normal;color:var(--mute)}
-.flow.dead span{color:var(--mute);border-style:dashed;background:none}
-.bars{display:grid;gap:22px;max-width:760px}
-.bar-row .cap2{display:flex;justify-content:space-between;font-size:14.5px;font-weight:600;margin-bottom:8px}
-.bar-row .cap2 b{color:var(--ok)}
-.bar{height:26px;border-radius:5px;display:flex;align-items:center;padding-left:10px;font-family:var(--mono);font-size:12.5px;white-space:nowrap}
-.bar.before{background:#d6d0c1;color:#4c493f;width:100%}
-.bar.after{background:var(--ink);color:#fff;margin-top:5px}
-.steps{list-style:none;padding:0;max-width:760px;counter-reset:s}
-.steps li{position:relative;padding:0 0 26px 44px;border-left:1px solid var(--line);margin-left:14px}
-.steps li:last-child{border-color:transparent;padding-bottom:0}
-.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:-14px;top:0;width:28px;height:28px;border-radius:50%;
-  background:var(--bg);border:1px solid var(--ink);font-family:var(--mono);font-size:12.5px;display:grid;place-items:center}
-.steps li.done::before{content:"✓";background:var(--ok);border-color:var(--ok);color:#fff}
-.steps b{display:block;font-size:17px}
-.steps span{color:#3a382f;font-size:15.5px}
+/* SmartVision */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:44px}
+.split ol{padding-left:22px;display:grid;gap:14px}
+.split ol li::marker{font-weight:700;color:var(--blue)}
+.split ol b{display:block}
+.split ol span{color:var(--sub);font-size:16px}
+.result{margin-top:24px;font-weight:700;font-size:19px}
+
+/* 그 밖에 */
+.shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;align-items:start}
+.shelf h3{font-size:19px;margin-top:16px}
+.shelf p{font-size:16px;color:var(--sub);margin-top:4px}
+.textlist{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:28px 56px}
+.textlist p{font-size:16px;color:var(--sub)}
+.textlist b{color:var(--ink)}
 
 /* 일하는 방식 */
-.ways{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);margin-top:36px}
-.way{padding:22px 22px 0 0;border-right:1px solid var(--line)}
-.way+.way{padding-left:22px}
-.way:last-child{border-right:0}
-.way .n{font-family:var(--mono);font-size:13px;color:var(--bad)}
-.way h4{font-size:22px;letter-spacing:-.03em;margin:6px 0 10px}
-.way p{font-size:15px;color:#3a382f;line-height:1.65}
-.quote{margin-top:56px;padding:28px 32px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:4px;max-width:860px}
-.quote h4{font-size:13px;letter-spacing:.03em;color:var(--mute);margin-bottom:8px}
-.quote p{font-size:18px;line-height:1.7}
+.work{background:var(--soft)}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:40px 72px;margin-top:44px}
+.ways p{color:var(--sub);margin-top:6px}
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:72px;padding-top:56px;border-top:1px solid #d6d9df}
+.honest p{margin-top:10px}
 
 /* 이력 */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:56px 64px;margin-top:36px}
-.grid2 h3{margin-top:0}
-.rows{list-style:none;padding:0;border-top:1px solid var(--line)}
-.rows li{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.55}
-.rows .when{font-variant-numeric:tabular-nums;font-size:13px;color:var(--mute);padding-top:3px}
-.rows b{font-weight:700}
-.rows small{display:block;color:var(--mute);font-size:14px}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.tags span{font-size:13.5px;border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:2px 9px}
+.cv{display:grid;grid-template-columns:1fr 1fr;gap:56px 72px;margin-top:44px}
+.cv h3{font-size:16px;color:var(--sub);font-weight:600;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.cv ul{list-style:none;padding:0}
+.cv li{display:grid;grid-template-columns:128px 1fr;gap:16px;padding:10px 0;font-size:16px;line-height:1.6}
+.cv time,.cv .k{font-size:14px;color:var(--sub);font-variant-numeric:tabular-nums;padding-top:2px}
+.cv small{display:block;color:var(--sub);font-size:14.5px}
 
-/* 연락처 */
-.contact{background:var(--panel);color:#f1eee4;border-top:0;padding:96px 0}
-.contact h2{font-size:clamp(30px,4.6vw,56px);margin-bottom:28px}
-.contact a.big{font-size:clamp(20px,2.6vw,30px);font-weight:700;text-decoration:none;border-bottom:2px solid #f1eee4}
-.contact p{color:var(--panel-mute);margin-top:26px;font-size:15px}
-.contact p a{color:#f1eee4}
+/* 연락 */
+.bye{padding:112px 0;border-top:1px solid var(--line)}
+.bye h2{font-size:clamp(32px,4.6vw,56px);line-height:1.25}
+.bye p{margin-top:20px;color:var(--sub);max-width:560px}
+.bye .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
 
-@media (max-width:860px){
+@media (max-width:900px){
   body{font-size:16px}
-  nav{display:none}
   .wrap{padding:0 20px}
-  .hero{padding-top:64px;padding-bottom:56px}
-  .metrics{grid-template-columns:1fr 1fr}
-  .metric,.metric+.metric{padding:20px 14px 16px 0;border-right:0;border-bottom:1px solid var(--line)}
+  nav{display:none}
   section{padding:64px 0}
-  .case{grid-template-columns:1fr;gap:24px}
-  .side{position:static}
-  .side dl{grid-template-columns:1fr 1fr}
-  .board{grid-template-columns:1fr}
+  .hello{grid-template-columns:1fr;gap:36px;padding-top:44px;padding-bottom:56px}
+  .hello p{font-size:18px}
+  .about p{font-size:18px}
+  .pair,.change,.trio,.perf,.board,.after,.split,.shelf,.textlist,.ways,.honest,.cv{grid-template-columns:1fr}
+  .change,.trio,.after,.ways,.honest{gap:28px}
+  .perf{padding:28px;gap:28px}
   .sim{padding:20px}
-  .facts li{grid-template-columns:1fr;gap:2px}
-  .ways{grid-template-columns:1fr 1fr}
-  .way,.way+.way{padding:20px 14px 20px 0;border-right:0;border-bottom:1px solid var(--line)}
-  .grid2{grid-template-columns:1fr;gap:44px}
-  .rows li{grid-template-columns:1fr;gap:0}
+  .split{gap:28px}
+  .cv{gap:40px}
+  .cv li{grid-template-columns:1fr;gap:0}
+  .bye{padding:72px 0}
 }
-@media (max-width:480px){.metrics,.ways{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -176,280 +166,299 @@ h3{font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--mute);margin:
   <div class="wrap">
     <strong>박성주</strong>
     <nav>
-      <a href="#c1">동시 신청</a>
-      <a href="#c2">CMS</a>
-      <a href="#c3">성능</a>
-      <a href="#c4">SmartVision</a>
+      <a href="#about">소개</a>
+      <a href="#fox">연구소 사이트</a>
+      <a href="#apply">수강 신청</a>
+      <a href="#vision">SmartVision</a>
       <a href="#how">일하는 방식</a>
       <a href="#cv">이력</a>
     </nav>
-    <a class="mail" href="mailto:shim.never60@gmail.com">연락하기</a>
+    <a class="btn" href="mailto:shim.never60@gmail.com">이메일 보내기</a>
   </div>
 </header>
 
 <main>
-<div class="wrap hero">
-  <p class="eyebrow"><b>박성주</b> · 웹 개발자 (백엔드, 프론트엔드) · 폭스커넥트 AI 연구소 재직 중</p>
-  <h1>납품한 뒤에도,<br>제가 만든 것을<br><em>다시 깨뜨려 봅니다.</em></h1>
-  <p class="lede">요구사항 정리부터 개발, 운영, 그리고 운영 후 성능 점검까지 한 서비스의 전 과정을 혼자 맡아 봤습니다. 아래 숫자는 모두 직접 측정했거나 기록으로 확인한 것입니다.</p>
 
-  <div class="metrics">
-    <div class="metric">
-      <div class="num">0<small>건</small></div>
-      <div class="what">동시 신청 시 정원 초과 접수</div>
-      <div class="src">납품 후 부하 테스트로 발견, 트랜잭션으로 해결</div>
-    </div>
-    <div class="metric">
-      <div class="num">12 → 85<small>건/초</small></div>
-      <div class="what">로그인 처리량</div>
-      <div class="src">비밀번호 검증을 비동기 방식으로 전환</div>
-    </div>
-    <div class="metric">
-      <div class="num">−67<small>%</small></div>
-      <div class="what">페이지 용량 1,766KB → 578KB</div>
-      <div class="src">배포 전 브라우저에서 직접 측정</div>
-    </div>
-    <div class="metric">
-      <div class="num">12<small>건</small></div>
-      <div class="what">CMS 도입 첫 주, 개발자 요청 없이 반영된 수정</div>
-      <div class="src">저장소 커밋 기록 기준</div>
+<div class="wrap hello">
+  <div>
+    <h1>안녕하세요,<br>박성주입니다.</h1>
+    <p>요구사항을 듣는 일부터 개발, 운영, 그리고 운영 뒤 점검까지 직접 해 온 웹 개발자입니다.</p>
+    <div class="cta">
+      <a class="btn fill" href="#fox">만든 것 보기</a>
+      <a class="btn" href="https://github.com/sungJJoo" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
+  <figure>
+    <video class="media" autoplay muted loop playsinline preload="metadata" poster="../assets/video/fox-site.webp" width="1280" height="800" aria-label="연구소 사이트 첫 화면부터 프로그램 페이지까지 내려 보는 화면">
+      <source src="../assets/video/fox-site.mp4" type="video/mp4">
+    </video>
+    <figcaption>혼자 만들어 2026년 6월부터 운영 중인 FOX AI 연구소 사이트</figcaption>
+  </figure>
 </div>
 
-<!-- 사례 1 -->
-<section id="c1"><div class="wrap case">
-  <aside class="side">
-    <div class="no">CASE 01</div>
-    <strong style="color:var(--ink)">우송대학교 늘봄 강사 양성 과정 수강 신청 사이트</strong>
-    <dl>
-      <div><dt>구분</dt><dd>외부 대학 의뢰, 1인 개발</dd></div>
-      <div><dt>기간</dt><dd>2026.08 ~ 09</dd></div>
-      <div><dt>스택</dt><dd>Node.js, Express, SQLite, Next.js, TypeScript</dd></div>
-      <div><dt>검증</dt><dd>Jest 16개, GitHub Actions CI</dd></div>
-    </dl>
-  </aside>
-  <div class="body">
-    <h2>정원 30명인 과정에 50명이 동시에 신청하면 어떻게 될까요?</h2>
-    <p>기능 점검표는 모두 통과한 상태로 납품했습니다. 그런데 신청이 한꺼번에 몰리는 상황은 점검표에 없었습니다. 그래서 납품 후 부하 테스트로 다시 확인했고, 여러 프로세스가 동시에 신청하면 정원을 넘겨 접수되는 문제를 찾았습니다.</p>
-    <p>아래에서 직접 눌러 보실 수 있습니다. 먼저 그대로 실행해 보고, 트랜잭션을 켠 뒤 다시 실행해 보세요.</p>
+<section class="about" id="about">
+  <div class="wrap"><div class="narrow">
+    <h2>게임 서버를 고치다가 개발을 시작했습니다.</h2>
+    <p>2018년부터 2년 가까이 동시 접속 50~80명 규모의 Minecraft 서버를 총관리자로 운영했습니다. 포트포워딩과 도메인 연결을 직접 했고, 플러그인이 말썽을 부리면 소스 코드를 열어 원인을 찾았습니다. 그때 컴퓨터를 전공하기로 정했습니다.</p>
+    <p>대학에서는 팀장으로 시각장애인 보조 기기를 만들어 졸업 작품 2위를 했습니다. 2025년 9월에 폭스커넥트 AI 연구소에 인턴으로 들어가 12월에 정규직이 됐고, 지금은 연구소 공식 사이트와 외부 대학 의뢰 사이트를 혼자 맡아 만들고 운영합니다.</p>
+    <p>혼자 맡다 보니 만들고 끝낼 수가 없었습니다. 납품한 사이트를 부하 테스트로 다시 점검해 <b>정원 초과 접수를 0건</b>으로 만들었고, <b>로그인 처리량은 초당 12건에서 85건</b>으로, 연구소 사이트의 <b>페이지 용량은 67%</b> 줄였습니다. 아래는 그 과정입니다.</p>
+  </div></div>
+</section>
+
+<section id="fox">
+  <div class="wrap">
+    <h2>공지 한 줄을 고치는 데<br>개발자와 본사가 필요했습니다.</h2>
+    <p class="meta">FOX AI 연구소 공식 사이트와 관리자 CMS. 기획, 디자인, 개발, 운영 1인. JavaScript, Google Apps Script, GitHub API</p>
+
+    <div class="pair">
+      <figure>
+        <video class="media" controls muted loop playsinline preload="none" poster="../assets/video/fox-cms.webp" width="1280" height="800" aria-label="관리자 CMS에 로그인해 예시 공지를 쓰고 저장하면, 반영 완료 표시가 뜨고 사이트 공지 목록에 새 글이 보이는 화면">
+          <source src="../assets/video/fox-cms.mp4" type="video/mp4">
+        </video>
+        <figcaption>직원이 공지를 쓰고 저장하면 사이트에 반영되는 과정 (예시 데이터, 재생해 보세요)</figcaption>
+      </figure>
+      <figure>
+        <img class="media" src="../assets/img/fox-pages.webp" alt="사이트의 네 페이지를 나란히 놓은 화면" width="1440" height="1150" loading="lazy">
+        <figcaption>학부모가 보는 사이트의 페이지들</figcaption>
+      </figure>
+    </div>
+
+    <div class="change">
+      <div>
+        <h3>전에는</h3>
+        <p>자주 바뀌는 내용이 HTML 안에 있었습니다. 직원이 요청하면 제가 코드를 고치고, 다시 본사에 서버 업로드를 요청해야 반영됐습니다. 직원이 직접 고칠 방법은 없었습니다.</p>
+      </div>
+      <div class="now">
+        <h3>지금은</h3>
+        <p>직원이 관리자 화면에서 저장하면 1~2분 안에 반영됩니다. 2026년 10월 1일부터 6일까지, 도입 첫 주에 수정 12건이 저를 거치지 않고 올라갔습니다.</p>
+      </div>
+    </div>
+
+    <div class="trio">
+      <div>
+        <h3>서버 없이 만들었습니다</h3>
+        <p>본사 서버를 관리할 사람이 없어 DB 서버를 둘 수 없었습니다. 바뀌는 내용만 JSON으로 빼서 GitHub Pages에 두고, GitHub 토큰은 Apps Script 안에 숨겼습니다.</p>
+      </div>
+      <div>
+        <h3>서로 덮어쓰지 않습니다</h3>
+        <p>여러 직원이 동시에 고쳐도 먼저 저장된 내용이 사라지지 않도록, 저장 직전에 버전을 비교합니다. 비밀번호가 새도 사이트 코드는 바꿀 수 없게 저장 경로를 제한했습니다.</p>
+      </div>
+      <div>
+        <h3>쓰는 사람 말을 듣고 고쳤습니다</h3>
+        <p>도입 뒤 직원 요청을 받아 변경 이력과 되돌리기를 추가했습니다. 하루짜리 팝업이 안 보인다는 문의에는 시작일 표시를 넣었습니다.</p>
+      </div>
+    </div>
+
+    <div class="perf">
+      <div>
+        <h3>휴대폰에서 무겁다는 말을 듣고</h3>
+        <p>외부 검토에서 모바일 첫 화면이 무겁다는 의견이 나왔습니다. 사진을 WebP 세 크기(480, 960, 1440px)로 만들어 화면에 맞는 것만 받게 하고, 글꼴에는 자주 쓰는 한글 2,350자만 남겼습니다. 배포 전 브라우저에서 직접 쟀습니다.</p>
+      </div>
+      <dl>
+        <div><dt>페이지 용량</dt><dd>1,766KB → <span>578KB</span></dd></div>
+        <div><dt>웹폰트</dt><dd>1,211KB → <span>222KB</span></dd></div>
+        <div><dt>모바일 이미지 전송량</dt><dd><span>87%</span> 감소</dd></div>
+      </dl>
+    </div>
+
+    <p style="margin-top:32px"><a class="more" href="https://ai.foxconnect.kr" target="_blank" rel="noopener">운영 중인 사이트 열기</a> &nbsp; <a class="more" href="https://github.com/sungJJoo/fox-ai-lab" target="_blank" rel="noopener">코드 보기</a></p>
+  </div>
+</section>
+
+<section id="apply" style="padding-top:0">
+  <div class="wrap">
+    <h2>정원 30명인 과정에<br>50명이 동시에 신청하면 어떻게 될까요?</h2>
+    <p class="meta">우송대학교 늘봄 강사 양성 과정 수강 신청 사이트. 외부 대학 의뢰, 1인 개발. Node.js, Express, SQLite, Next.js, TypeScript</p>
+    <p class="lead">기능명세서를 먼저 써서 담당자와 범위를 합의하고 개발했고, 기능 점검표를 모두 통과한 상태로 납품했습니다. 그런데 신청이 한꺼번에 몰리는 상황은 점검표에 없었습니다. 납품 뒤 부하 테스트로 다시 확인해 보니, 동시에 신청하면 정원을 넘겨 접수되고 있었습니다.</p>
 
     <div class="sim">
       <div class="sim-top">
-        <div class="sim-title">수강 신청 동시성 시뮬레이션 · 정원 30명, 신청 50명</div>
+        <b>직접 눌러 보세요</b>
         <div class="controls">
           <label class="switch"><input type="checkbox" id="tx" role="switch"> 트랜잭션 <span id="txState">꺼짐</span></label>
-          <button class="run" id="run">50명 동시 신청</button>
+          <button class="btn fill" id="run">50명 동시 신청</button>
         </div>
       </div>
       <div class="board">
         <div>
           <div class="seats-label">정원 30석</div>
           <div class="seats" id="seats"></div>
-          <div class="seats-label" style="margin-top:16px">정원을 넘겨 접수된 신청</div>
+          <div class="seats-label" style="margin-top:18px">정원을 넘겨 접수된 신청</div>
           <div class="over" id="over"></div>
         </div>
         <div class="count">
           <div class="big" id="accepted">0</div>
-          <div class="cap">접수 / 정원 30</div>
-          <ul>
-            <li>초과 접수 <b id="overN">0</b>건</li>
-            <li>거부 <b id="rejected">0</b>건</li>
-          </ul>
+          <p>접수 (정원 30)</p>
+          <p style="margin-top:14px">초과 접수 <b id="overN">0</b>건<br>거부 <b id="rejected">0</b>건</p>
         </div>
       </div>
-      <div class="verdict" id="verdict" aria-live="polite">버튼을 누르면 50개의 신청이 1초 안에 한꺼번에 들어옵니다.</div>
-      <div class="note">실제 서버 코드가 아니라, 문제의 원리를 보여 주는 브라우저 시뮬레이션입니다.</div>
+      <div class="verdict" id="verdict" aria-live="polite">버튼을 누르면 신청 50건이 1초 안에 한꺼번에 들어옵니다. 먼저 그대로 눌러 보고, 트랜잭션을 켠 뒤 다시 눌러 보세요.</div>
+      <p class="note">실제 서버 코드가 아니라, 문제의 원리를 보여 주는 시뮬레이션입니다.</p>
     </div>
 
-    <h3>납품 후 재점검에서 고친 것</h3>
-    <ul class="facts">
-      <li><span class="k">초과 접수 0건</span><span>인원 확인과 저장을 하나의 트랜잭션으로 묶어, 동시에 몰려도 정원을 넘지 않게 했습니다.</span></li>
-      <li><span class="k">12 → 85건/초</span><span>비밀번호 검증이 다른 요청을 막고 있던 것을 비동기 방식으로 바꿔 로그인 처리량을 올렸습니다.</span></li>
-      <li><span class="k">테스트 16개 + CI</span><span>Jest 자동 테스트와 GitHub Actions를 구성해, 코드가 바뀔 때마다 신청과 로그인이 자동으로 검증됩니다.</span></li>
-    </ul>
-
-    <h3>처음 설계할 때 정한 것</h3>
-    <p>받은 자료에는 과정마다 '접수중' 같은 상태 값이 따로 붙어 있었습니다. 이 값을 그대로 저장하면 기간이 지나도 누군가 바꾸기 전까지 '접수중'으로 남습니다. 그래서 상태를 저장하지 않고, 볼 때마다 신청 시작일과 종료일을 오늘 날짜와 비교해 계산하게 했습니다. 관리자가 상태를 손으로 바꿀 일이 없어졌고, 화면 표시와 실제 신청 가능 여부가 같은 기준을 따릅니다.</p>
-    <p>개발 전에 기능명세서를 먼저 써서 담당자와 범위를 합의했습니다. 문자 발송처럼 계약이나 협의가 필요한 기능은 이유를 적고 뺐습니다.</p>
-  </div>
-</div></section>
-
-<!-- 사례 2 -->
-<section id="c2"><div class="wrap case">
-  <aside class="side">
-    <div class="no">CASE 02</div>
-    <strong style="color:var(--ink)">FOX AI 연구소 공식 사이트와 관리자 CMS</strong>
-    <dl>
-      <div><dt>구분</dt><dd>사내 개발, 1인 (기획, 디자인, 개발, 운영)</dd></div>
-      <div><dt>기간</dt><dd>2026.06 ~ 운영 중</dd></div>
-      <div><dt>스택</dt><dd>JavaScript, Google Apps Script, GitHub API</dd></div>
-      <div><dt>링크</dt><dd><a href="https://ai.foxconnect.kr" target="_blank" rel="noopener">ai.foxconnect.kr</a><br><a href="https://github.com/sungJJoo/fox-ai-lab" target="_blank" rel="noopener">GitHub 저장소</a></dd></div>
-    </dl>
-  </aside>
-  <div class="body">
-    <h2>공지 한 줄을 고치는 데 개발자와 본사가 필요했습니다.</h2>
-    <p><span class="label bad">전</span>자주 바뀌는 내용이 HTML 안에 있어서, 직원은 직접 고칠 방법이 없었습니다.</p>
-    <div class="flow dead"><span>직원 요청</span><i>→</i><span>제가 HTML 수정</span><i>→</i><span>본사에 업로드 요청</span><i>→</i><span>반영</span></div>
-    <p><span class="label ok">후</span>직원이 관리자 화면에서 저장하면 1~2분 안에 사이트에 반영됩니다.</p>
-    <div class="flow"><span>관리자 CMS<small>이름과 비밀번호 로그인</small></span><i>→</i><span>Apps Script<small>GitHub 토큰 보관, 저장 대행</small></span><i>→</i><span>GitHub<small>JSON과 사진을 한 번에 커밋</small></span><i>→</i><span>사이트<small>열 때마다 최신 내용 읽기</small></span></div>
-
-    <h3>왜 이 구조인가</h3>
-    <p>본사 서버를 관리할 사람이 없어 DB 서버를 둘 수 없었습니다. 그래서 바뀌는 내용만 JSON으로 빼서 GitHub Pages에 두고, 본사 서버에는 화면 틀만 남겼습니다. 주어진 제약 안에서 운영 부담이 가장 적은 방법을 골랐습니다.</p>
-
-    <h3>운영하면서 지킨 것</h3>
-    <ul class="facts">
-      <li><span class="k">덮어쓰기 방지</span><span>여러 직원이 동시에 고쳐도 먼저 저장된 내용이 사라지지 않도록, 저장 직전에 버전을 비교하는 낙관적 잠금을 적용했습니다.</span></li>
-      <li><span class="k">권한 제한</span><span>비밀번호가 새더라도 사이트 코드는 바꿀 수 없게 저장 경로를 제한했습니다.</span></li>
-      <li><span class="k">이력과 되돌리기</span><span>도입 후 직원 요청을 받아 변경 이력과 되돌리기 기능을 추가했습니다.</span></li>
-      <li><span class="k">첫 주 12건</span><span>2026년 10월 1일부터 6일까지 내용 수정 12건이 코드 수정과 본사 업로드 없이 반영됐습니다. 본사 서버 캐시 때문에 길면 10분이 걸립니다.</span></li>
-    </ul>
-  </div>
-</div></section>
-
-<!-- 사례 3 -->
-<section id="c3"><div class="wrap case">
-  <aside class="side">
-    <div class="no">CASE 03</div>
-    <strong style="color:var(--ink)">FOX AI 연구소 사이트 성능 개선</strong>
-    <dl>
-      <div><dt>계기</dt><dd>외부 검토에서 나온 "모바일 첫 화면이 무겁다"는 의견</dd></div>
-      <div><dt>측정</dt><dd>배포 전 같은 페이지를 휴대폰, 태블릿, PC 크기로 브라우저에서 직접 측정</dd></div>
-    </dl>
-  </aside>
-  <div class="body">
-    <h2>휴대폰이 PC용 사진과 한글 글꼴 전체를 받고 있었습니다.</h2>
-    <div class="bars">
-      <div class="bar-row">
-        <div class="cap2"><span>페이지 용량</span><b>−67%</b></div>
-        <div class="bar before">전 1,766KB</div>
-        <div class="bar after" style="width:32.7%">후 578KB</div>
+    <div class="after">
+      <div>
+        <div class="n">초과 접수 0건</div>
+        <p>인원 확인과 저장을 하나의 트랜잭션으로 묶어, 동시에 몰려도 정원을 넘지 않게 했습니다.</p>
       </div>
-      <div class="bar-row">
-        <div class="cap2"><span>웹폰트</span><b>−82%</b></div>
-        <div class="bar before">전 1,211KB</div>
-        <div class="bar after" style="width:18.3%">후 222KB</div>
+      <div>
+        <div class="n">초당 12건 → 85건</div>
+        <p>비밀번호 검증을 비동기 방식으로 바꿔 로그인 처리량을 올렸습니다.</p>
+      </div>
+      <div>
+        <div class="n">자동 테스트 16개</div>
+        <p>Jest와 GitHub Actions를 구성해, 코드가 바뀔 때마다 신청과 로그인이 자동으로 검증됩니다.</p>
       </div>
     </div>
-    <h3>한 일</h3>
-    <ul class="facts">
-      <li><span class="k">사진</span><span>WebP로 바꾸고 480, 960, 1440px 세 크기로 만들어 화면에 맞는 것만 받게 했습니다. 화면 밖 사진은 나중에 불러옵니다.</span></li>
-      <li><span class="k">글꼴</span><span>자주 쓰는 한글 2,350자만 남겨 직접 올렸습니다.</span></li>
-      <li><span class="k">이미지 전송량</span><span>휴대폰에서 87%, PC에서 60% 줄었습니다.</span></li>
-    </ul>
-  </div>
-</div></section>
 
-<!-- 사례 4 -->
-<section id="c4"><div class="wrap case">
-  <aside class="side">
-    <div class="no">CASE 04</div>
-    <strong style="color:var(--ink)">SmartVision 시각장애인 보조 기기</strong>
-    <dl>
-      <div><dt>구분</dt><dd>졸업 작품, 2인 팀 팀장</dd></div>
-      <div><dt>기간</dt><dd>2025.03 ~ 06</dd></div>
-      <div><dt>스택</dt><dd>Python, YOLOv8n, OpenCV, Raspberry Pi 5</dd></div>
-      <div><dt>결과</dt><dd>캡스톤디자인 2위, A+</dd></div>
-      <div><dt>링크</dt><dd><a href="https://github.com/sungJJoo/2025Capstone" target="_blank" rel="noopener">GitHub 저장소</a></dd></div>
-    </dl>
-  </aside>
-  <div class="body">
-    <h2>보드는 10주차에 도착했고, 코드는 동작하지 않았습니다.</h2>
-    <p>카메라로 장애물 12종을 인식해 방향과 함께 음성으로 안내하고, QR 메뉴판을 읽어 주는 기기입니다. 노트북에서 잘 돌던 인식 코드가 Raspberry Pi 5에서는 돌지 않았습니다. 남은 시간이 적어서, 다시 만들지 않고 원인을 하나씩 좁혔습니다.</p>
-    <h3>원인을 좁힌 순서</h3>
-    <ol class="steps">
-      <li><b>모델이 보드 성능에 비해 무거웠습니다</b><span>가장 가벼운 YOLOv8n으로 교체했습니다.</span></li>
-      <li><b>패키지 버전이 맞지 않았습니다</b><span>패키지를 다시 구성해 12종 인식을 보드에서 동작시켰습니다.</span></li>
-      <li><b>기기가 자기 안내 음성을 명령으로 알아들었습니다</b><span>안내하는 동안에는 명령 인식을 멈추게 했습니다.</span></li>
-      <li><b>같은 안내가 계속 반복됐습니다</b><span>같은 안내 사이에 3초 간격을 뒀습니다.</span></li>
-      <li class="done"><b>졸업 작품 2위, 과목 학점 A+</b><span>밀린 일정 안에서 완성해 발표했습니다.</span></li>
-    </ol>
+    <p class="lead" style="margin-top:56px">설계 단계에서는 모집 상태를 저장하지 않기로 했습니다. 받은 자료에는 과정마다 '접수중' 같은 값이 붙어 있었는데, 그대로 저장하면 기간이 지나도 누군가 바꾸기 전까지 '접수중'으로 남습니다. 그래서 볼 때마다 신청 시작일과 종료일을 오늘 날짜와 비교해 계산하게 했습니다.</p>
   </div>
-</div></section>
+</section>
 
-<!-- 일하는 방식 -->
-<section id="how"><div class="wrap">
-  <h2>일하는 방식</h2>
-  <p style="max-width:700px">위 네 사례에서 실제로 거친 순서입니다.</p>
-  <div class="ways">
-    <div class="way"><div class="n">01</div><h4>먼저 묻습니다</h4><p>개발을 모르는 직원이 불편을 말하면, 무엇이 불편한지 다시 묻고 그 사람의 말로 정리합니다. CMS의 진짜 요구는 "예쁜 관리자 화면"이 아니라 "업로드 요청을 안 하는 것"이었습니다.</p></div>
-    <div class="way"><div class="n">02</div><h4>문서로 범위를 맞춥니다</h4><p>기능명세서에 화면, 데이터, 입력값 검사, 권한을 먼저 적고 담당자와 합의합니다. 빼는 기능은 이유를 함께 적습니다.</p></div>
-    <div class="way"><div class="n">03</div><h4>제약 안에서 만듭니다</h4><p>서버를 관리할 사람이 없으면 서버 없는 구조를, 보드가 느리면 가벼운 모델을 고릅니다. 운영할 사람이 감당할 수 있는 쪽을 택합니다.</p></div>
-    <div class="way"><div class="n">04</div><h4>측정해서 확인합니다</h4><p>부하 테스트, 브라우저 측정, 커밋 기록처럼 확인할 수 있는 근거로 결과를 말합니다. 점검표를 통과한 뒤에도 다시 깨뜨려 봅니다.</p></div>
+<section id="vision" style="padding-top:0">
+  <div class="wrap">
+    <h2>보드는 10주차에 도착했고,<br>코드는 동작하지 않았습니다.</h2>
+    <p class="meta">SmartVision 시각장애인 보조 기기. 졸업 작품, 2인 팀 팀장. Python, YOLOv8n, OpenCV, Raspberry Pi 5</p>
+    <div class="split">
+      <figure>
+        <img class="media" src="../assets/img/smartvision-demo.webp" alt="라즈베리파이 데스크톱에 QR 코드, 카메라 창, 객체 인식 기록 터미널이 떠 있는 시연 화면" width="1144" height="521" loading="lazy">
+        <figcaption>Raspberry Pi에서 QR 인식과 객체 인식이 함께 도는 시연 화면</figcaption>
+      </figure>
+      <div>
+        <p>카메라로 장애물 12종을 인식해 방향과 함께 음성으로 안내하고, QR 메뉴판을 읽어 주는 기기입니다. 노트북에서 돌던 코드가 보드에서는 돌지 않았고 남은 시간은 적었습니다. 다시 만들지 않고 원인을 하나씩 좁혔습니다.</p>
+        <ol style="margin-top:24px">
+          <li><b>모델이 보드에 비해 무거웠습니다</b><span>가장 가벼운 YOLOv8n으로 바꿨습니다.</span></li>
+          <li><b>패키지 버전이 맞지 않았습니다</b><span>패키지를 다시 구성해 12종 인식을 보드에서 돌렸습니다.</span></li>
+          <li><b>기기가 자기 목소리를 명령으로 알아들었습니다</b><span>안내하는 동안에는 명령 인식을 멈추게 했습니다.</span></li>
+          <li><b>같은 안내가 계속 반복됐습니다</b><span>같은 안내 사이에 3초 간격을 뒀습니다.</span></li>
+        </ol>
+        <p class="result">캡스톤디자인 졸업 작품 2위, 과목 학점 A+</p>
+        <p style="margin-top:12px"><a class="more" href="https://github.com/sungJJoo/2025Capstone" target="_blank" rel="noopener">코드 보기</a></p>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="quote">
-    <h4>설명하는 능력</h4>
-    <p>연구소에서 개발과 함께 수업도 맡았습니다. 같은 내용을 초등학생에게는 게임 속 활동으로, 대전교통공사 신입사원 40명에게는 바로 쓸 수 있는 업무 예시로 바꿔 설명했습니다. 직접 기획하고 주강사로 진행한 Minecraft Education 코딩 과정 「마을을 지켜라!」(12주 24차시)는 대전광역시교육청 2025 늘봄 공식 프로그램으로 채택됐습니다.</p>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>그 밖에 만든 것</h2>
+    <div class="shelf">
+      <div>
+        <video class="media" controls muted loop playsinline preload="none" poster="../assets/video/scheduler.webp" width="1280" height="800" aria-label="담당표에서 수요일 담당을 바꾸고, 여러 명이 맡은 업무에서 개인 완료를 체크하면 바로 바뀌는 화면">
+          <source src="../assets/video/scheduler.mp4" type="video/mp4">
+        </video>
+        <h3>연구소 업무 스케줄러</h3>
+        <p>따로 관리하던 담당표와 근무일정을 한 화면으로 모은 웹앱. 팀원 3명이 사용. Apps Script, Google Sheets</p>
+      </div>
+      <div>
+        <video class="media" controls muted loop playsinline preload="none" poster="../assets/video/bank.webp" width="1280" height="664" aria-label="은행 관리 프로그램을 실행해 로그인하고, 입금과 송금을 한 뒤 거래 내역을 보는 콘솔 화면">
+          <source src="../assets/video/bank.mp4" type="video/mp4">
+        </video>
+        <h3>C언어 은행 관리 프로그램</h3>
+        <p>외부 라이브러리 없이 회원가입부터 송금까지. 바뀐 영역만 다시 그려 저사양 PC에서도 지연이 없습니다. 3명, 팀장, 장려상</p>
+      </div>
+      <div>
+        <img class="media" src="../assets/img/plantify-web.webp" alt="센서 값 7개 표와 카메라 영상이 있는 웹 페이지" width="564" height="498" loading="lazy">
+        <h3>Plantify 스마트 화분</h3>
+        <p>센서 7종과 카메라 영상을 웹 페이지로 보여 주는 화분. Arduino, ESP32-CAM. 3명, 팀장, 반도체 경진대회 은상</p>
+      </div>
+    </div>
+    <div class="textlist">
+      <p><b>학부모 피드백 자료 자동 생성.</b> 매월 손으로 만들던 PPT를 python-pptx로 만들게 했고, 행사 때마다 손으로 켜던 안내 영상은 정해진 시간에 자동으로 재생되게 했습니다.</p>
+      <p><b>영상 속 특정 인물 제거.</b> 영상에서 고른 한 명만 지우고 배경을 채우는 웹 프로그램. 6명 팀에서 얼굴 인식(InsightFace)과 YOLOv8 모델을 맡았습니다.</p>
+    </div>
   </div>
-  <div class="quote" style="margin-top:20px;border-left-color:var(--bad)">
-    <h4>아직 부족한 것</h4>
-    <p>작은 조직에서 기획부터 운영까지 혼자 맡았기 때문에, 큰 팀의 규칙 안에서 코드 리뷰를 받으며 일한 경험은 부족합니다. 입사하면 팀의 코드와 배포 방식을 먼저 익히고, 리뷰를 통해 제 습관을 다듬겠습니다.</p>
-  </div>
-</div></section>
+</section>
 
-<!-- 이력 -->
-<section id="cv"><div class="wrap">
-  <h2>이력</h2>
-  <div class="grid2">
-    <div>
-      <h3>경력 · 1년 3개월</h3>
-      <ul class="rows">
-        <li><span class="when">2025.12 ~ 현재</span><span><b>폭스커넥트 AI 연구소 연구원</b> (웹 개발)<small>연구소 사이트와 CMS 개발·운영, 외부 대학 의뢰 사이트 개발, 업무 자동화 도구, 교육 과정 기획과 출강</small></span></li>
-        <li><span class="when">2025.09 ~ 12</span><span><b>폭스에듀 AI 연구소 인턴</b><small>학교 연계 현장실습 후 정규직 전환. 수업 자료와 Scratch, Minecraft Education 교안 개발</small></span></li>
-        <li><span class="when">2018.03 ~ 2020.01</span><span><b>Minecraft 서버 총관리자</b><small>동시 접속 50~80명 서버 운영. 포트포워딩과 DNS 연결, 플러그인 소스 분석으로 개발을 시작한 계기</small></span></li>
-      </ul>
+<section class="work" id="how">
+  <div class="wrap">
+    <h2>이렇게 일합니다</h2>
+    <div class="ways">
+      <div>
+        <h3>먼저 묻습니다</h3>
+        <p>개발을 모르는 직원이 불편을 말하면, 무엇이 불편한지 다시 묻고 그 사람의 말로 정리합니다. CMS에서 직원이 원한 것은 관리자 화면이 아니라 업로드 요청을 안 하는 것이었습니다.</p>
+      </div>
+      <div>
+        <h3>문서로 범위를 맞춥니다</h3>
+        <p>기능명세서에 화면, 데이터, 입력값 검사, 권한을 먼저 적고 담당자와 합의합니다. 문자 발송처럼 계약이나 협의가 필요한 기능은 이유를 적고 뺐습니다.</p>
+      </div>
+      <div>
+        <h3>운영할 사람을 생각합니다</h3>
+        <p>서버를 관리할 사람이 없으면 서버 없는 구조를, 보드가 느리면 가벼운 모델을 고릅니다. 만든 뒤 누가 감당하는지를 먼저 봅니다.</p>
+      </div>
+      <div>
+        <h3>측정해서 확인합니다</h3>
+        <p>부하 테스트, 브라우저 측정, 커밋 기록처럼 확인할 수 있는 근거로 결과를 말합니다. 이 페이지의 숫자는 모두 그렇게 나온 것입니다.</p>
+      </div>
     </div>
-    <div>
-      <h3>그 밖에 만든 것</h3>
-      <ul class="rows">
-        <li><span class="when">2026.05 ~ 07</span><span><b>연구소 업무 스케줄러</b><small>따로 관리하던 담당표와 근무일정을 한 화면으로 통합. Apps Script, Google Sheets, PWA</small></span></li>
-        <li><span class="when">사내 자동화</span><span><b>학부모 피드백 자료 자동 생성</b><small>매월 손으로 만들던 PPT를 python-pptx로 생성. 행사 안내 영상은 작업 스케줄러로 자동 재생</small></span></li>
-        <li><span class="when">2024.09 ~ 12</span><span><b>Plantify 스마트 화분</b> (3명, 팀장)<small>센서 7종과 카메라 영상을 웹 페이지로 출력. Arduino, ESP32-CAM</small></span></li>
-        <li><span class="when">2024.12</span><span><b>C언어 은행 관리 프로그램</b> (3명, 팀장)<small>외부 라이브러리 없이 구현. 바뀐 영역만 다시 그려 저사양 PC에서도 지연 없이 동작</small></span></li>
-        <li><span class="when">2024.06 ~ 09</span><span><b>영상 속 특정 인물 제거</b> (6명)<small>얼굴 인식(InsightFace)과 YOLOv8 모델 담당</small></span></li>
-      </ul>
-    </div>
-    <div>
-      <h3>기술</h3>
-      <ul class="rows">
-        <li><span class="when">실무 운영</span><span class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Google Apps Script</span><span>GitHub API, Pages</span><span>Git</span></span></li>
-        <li><span class="when">프로젝트 구현</span><span class="tags"><span>TypeScript</span><span>Next.js (React)</span><span>Node.js, Express</span><span>SQLite</span><span>Jest</span><span>GitHub Actions</span></span></li>
-        <li><span class="when">AI · 임베디드</span><span class="tags"><span>Python, Flask</span><span>OpenCV, YOLOv8</span><span>Raspberry Pi</span><span>Arduino, ESP32</span><span>C, C++</span></span></li>
-        <li><span class="when">교육 과정 · 학습 중</span><span class="tags"><span>Java</span><span>C# (.NET)</span><span>MySQL</span><span>Spring (공부 중)</span></span></li>
-      </ul>
-    </div>
-    <div>
-      <h3>수상</h3>
-      <ul class="rows">
-        <li><span class="when">2025</span><span><b>캡스톤디자인 졸업 작품 2위</b><small>SmartVision, 팀장</small></span></li>
-        <li><span class="when">2024</span><span><b>우송대학교 반도체 경진대회 은상</b><small>Plantify, 팀장</small></span></li>
-        <li><span class="when">2024</span><span><b>첨단산업인재양성 경진대회 장려상</b><small>C언어 은행 관리 프로그램, 팀장</small></span></li>
-        <li><span class="when">2024</span><span><b>Codyssey 비교과 성과발표회 독행상</b></span></li>
-        <li><span class="when">2022</span><span><b>1인 앱 개발 대회 모범상</b></span></li>
-      </ul>
-    </div>
-    <div>
-      <h3>학력</h3>
-      <ul class="rows">
-        <li><span class="when">2022.03 ~ 2026.02</span><span><b>우송대학교 컴퓨터정보보안전공</b> 졸업<small>부전공 비즈니스창업융합부 · 학점 3.8 / 4.5</small></span></li>
-      </ul>
-    </div>
-    <div>
-      <h3>교육</h3>
-      <ul class="rows">
-        <li><span class="when">2024.03 ~ 09</span><span><b>비트교육센터 Windows Developer 고급과정 39기</b><small>C, C#(.NET), Java 응용 프로그램 개발, 6개월</small></span></li>
-        <li><span class="when">2024.09 ~ 12</span><span><b>반도체 SW분야 부트캠프</b>, <b>Codyssey C언어 PBL</b><small>자료구조, 네트워크, 마이크로프로세서 · 동료 평가 기반 학습</small></span></li>
-      </ul>
+    <div class="honest">
+      <div>
+        <h3>설명은 자신 있습니다</h3>
+        <p>연구소에서 개발과 함께 수업도 맡았습니다. 같은 내용을 초등학생에게는 게임 속 활동으로, 대전교통공사 신입사원 40명에게는 바로 쓸 수 있는 업무 예시로 바꿔 설명했습니다. 직접 기획하고 주강사로 진행한 Minecraft Education 과정 「마을을 지켜라!」(12주 24차시)는 대전광역시교육청 2025 늘봄 공식 프로그램으로 채택됐습니다.</p>
+      </div>
+      <div>
+        <h3>아직 부족한 것도 있습니다</h3>
+        <p>작은 조직에서 혼자 맡아 왔기 때문에, 큰 팀의 규칙 안에서 코드 리뷰를 받으며 일한 경험은 부족합니다. 입사하면 팀의 코드와 배포 방식을 먼저 익히고, 리뷰를 통해 제 습관을 다듬겠습니다.</p>
+      </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section class="contact"><div class="wrap">
-  <h2>왜 필요한지 먼저 묻고,<br>만든 뒤에도 책임지겠습니다.</h2>
-  <a class="big" href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a>
-  <p><a href="https://github.com/sungJJoo" target="_blank" rel="noopener">github.com/sungJJoo</a> · 희망 근무지 서울, 경기, 대전</p>
-</div></section>
+<section id="cv">
+  <div class="wrap">
+    <h2>이력</h2>
+    <div class="cv">
+      <div>
+        <h3>경력 1년 3개월</h3>
+        <ul>
+          <li><time>2025.12 ~ 현재</time><span>폭스커넥트 AI 연구소 연구원<small>웹 개발, 업무 자동화, 교육 과정 기획과 출강</small></span></li>
+          <li><time>2025.09 ~ 12</time><span>폭스에듀 AI 연구소 인턴<small>학교 연계 현장실습 뒤 정규직 전환</small></span></li>
+          <li><time>2018.03 ~ 2020.01</time><span>Minecraft 서버 총관리자<small>동시 접속 50~80명</small></span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>학력과 교육</h3>
+        <ul>
+          <li><time>2022.03 ~ 2026.02</time><span>우송대학교 컴퓨터정보보안전공 졸업<small>부전공 비즈니스창업융합부, 학점 3.8 / 4.5</small></span></li>
+          <li><time>2024.03 ~ 09</time><span>비트교육센터 Windows Developer 고급과정 39기<small>C, C#(.NET), Java 응용 프로그램 개발, 6개월</small></span></li>
+          <li><time>2024.09 ~ 12</time><span>반도체 SW분야 부트캠프, Codyssey C언어 PBL</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>기술</h3>
+        <ul>
+          <li><span class="k">실무에서 운영</span><span>JavaScript, HTML, CSS, Google Apps Script, GitHub API와 Pages, Git</span></li>
+          <li><span class="k">프로젝트에서 구현</span><span>TypeScript, Next.js(React), Node.js, Express, SQLite, Jest, GitHub Actions</span></li>
+          <li><span class="k">AI와 임베디드</span><span>Python, Flask, OpenCV, YOLOv8, Raspberry Pi, Arduino, C, C++</span></li>
+          <li><span class="k">배운 것, 배우는 것</span><span>Java, C#(.NET), MySQL, Spring(공부 중)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>수상</h3>
+        <ul>
+          <li><time>2025</time><span>캡스톤디자인 졸업 작품 2위</span></li>
+          <li><time>2024</time><span>우송대학교 반도체 경진대회 은상</span></li>
+          <li><time>2024</time><span>첨단산업인재양성 경진대회 장려상</span></li>
+          <li><time>2024</time><span>Codyssey 비교과 성과발표회 독행상</span></li>
+          <li><time>2022</time><span>1인 앱 개발 대회 모범상</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bye">
+  <div class="wrap">
+    <h2>왜 필요한지 먼저 묻고,<br>만든 뒤에도 책임지겠습니다.</h2>
+    <p>여기까지 읽어 주셔서 감사합니다. 궁금한 점은 메일로 편하게 물어봐 주세요. 서울, 경기, 대전에서 일할 수 있습니다.</p>
+    <div class="cta">
+      <a class="btn fill" href="mailto:shim.never60@gmail.com">이메일 보내기</a>
+      <a class="btn" href="https://github.com/sungJJoo" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p style="margin-top:20px;font-size:15px">shim.never60@gmail.com</p>
+  </div>
+</section>
+
 </main>
 
 <script>
@@ -480,6 +489,8 @@ for(let s=1;s<=50;s++){
 
 const CAP=30,N=50,$=id=>document.getElementById(id);
 const seats=$('seats'),over=$('over'),tx=$('tx'),run=$('run');
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(still)document.querySelector('video[autoplay]').removeAttribute('autoplay');
 for(let i=0;i<CAP;i++)seats.appendChild(Object.assign(document.createElement('div'),{className:'seat'}));
 tx.addEventListener('change',()=>{$('txState').textContent=tx.checked?'켜짐':'꺼짐'});
 
@@ -493,20 +504,18 @@ function paint(count,rejected){
 }
 
 run.addEventListener('click',()=>{
-  const on=tx.checked,res=simulate(N,CAP,on,Date.now()%100000);
-  const slow=matchMedia('(prefers-reduced-motion:reduce)').matches?0:2;
+  const on=tx.checked,res=simulate(N,CAP,on,Date.now()%100000),slow=still?0:2;
   run.disabled=tx.disabled=true;over.innerHTML='';paint(0,0);
-  $('verdict').textContent='신청 50건 처리 중…';
+  $('verdict').textContent='신청 50건을 처리하고 있습니다.';
   let rejected=0;
   res.steps.forEach(s=>setTimeout(()=>{if(!s.ok)rejected++;paint(s.count,rejected)},s.t*slow));
   setTimeout(()=>{
     run.disabled=tx.disabled=false;
-    const extra=res.accepted-CAP;
     if(on){
       $('accepted').className='big ok';
       $('verdict').innerHTML='<b>정확히 30명에서 멈췄고, 나머지 '+(N-CAP)+'건은 거부됐습니다.</b><br>인원 확인과 저장이 한 덩어리로 실행되어, 다른 신청이 그 사이에 끼어들 수 없습니다.';
     }else{
-      $('verdict').innerHTML='<b>정원 30명인데 '+res.accepted+'명이 접수됐습니다. 초과 '+extra+'건.</b><br>여러 신청이 저장되기 전의 같은 인원수를 읽고, 각자 "자리가 있다"고 판단했기 때문입니다. 이제 트랜잭션을 켜고 다시 눌러 보세요.';
+      $('verdict').innerHTML='<b>정원 30명인데 '+res.accepted+'명이 접수됐습니다. 초과 '+(res.accepted-CAP)+'건.</b><br>여러 신청이 저장되기 전의 같은 인원수를 읽고, 각자 자리가 있다고 판단했기 때문입니다. 이제 트랜잭션을 켜고 다시 눌러 보세요.';
     }
   },res.steps[res.steps.length-1].t*slow+80);
 });
