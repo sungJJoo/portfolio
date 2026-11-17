@@ -1,0 +1,759 @@
+<!doctype html>
+<!-- 박성주 포트폴리오 v13. v11 의 어두운 배색에서 둥근 상자, 떠오르는 효과, 반복 링크, 칩을 걷어내고 프로젝트를 줄 목록으로 바꾼 판 (portfolio 저장소의 v13/ 에 놓이며 ../assets 와 ../projects 를 읽는다) -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>박성주 포트폴리오</title>
+<meta name="description" content="요구사항을 듣는 일부터 개발, 운영, 운영 뒤 점검까지 맡아 온 웹 개발자 박성주의 포트폴리오">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/fonts/pretendardvariable-dynamic-subset.css">
+<script>document.documentElement.className='js'+(location.hash.length>1?'':' gate')</script>
+<style>
+:root{--bg:#0a0c14;--paper:#0e1220;--card:#141a33;--line:#232a4d;--ink:#f5f6fa;--body:#c9cddb;--muted:#8d93ab;--acc:#8fa4ff;--slab:#4a64ea;--red:#ff6b5e;--r:4px;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px;background:var(--bg)}
+body{background:var(--bg);color:var(--body);font-family:"Pretendard Variable",Pretendard,-apple-system,"Malgun Gothic",sans-serif;font-size:17px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-underline-offset:4px}
+img,video{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 36px}
+.media{width:100%;border-radius:var(--r);border:1px solid var(--line);background:var(--card)}
+figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
+.btn{display:inline-block;font:inherit;font-weight:700;font-size:16px;text-decoration:none;padding:13px 22px;border-radius:var(--r);border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease),background .2s}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.fill{background:var(--acc);color:#0a0c14}
+.btn.fill:hover{background:#b3c1ff}
+.btn.fill:disabled{opacity:.4;cursor:default}
+.btn.line{border-color:#3a4270;color:var(--ink)}
+.btn.line:hover{border-color:var(--acc);color:var(--acc)}
+.more{font-weight:600;color:var(--acc);text-decoration:none;margin-right:20px}
+.more:hover{text-decoration:underline}
+h2{font-size:clamp(30px,4vw,52px);line-height:1.22;letter-spacing:-.04em;font-weight:800;color:var(--ink)}
+h3{font-size:20px;letter-spacing:-.02em;line-height:1.4;color:var(--ink)}
+.lead{margin-top:20px;font-size:19px;max-width:640px}
+.meta{font-size:15px;color:var(--muted)}
+section{padding:120px 0}
+
+/* 스크롤하면 떠오르기 */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+
+header{position:fixed;top:0;left:0;right:0;z-index:10;transition:background .3s}
+header.solid{background:rgba(10,12,20,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+header nav{display:flex;gap:30px;font-size:15px}
+header nav a{text-decoration:none;color:var(--body)}
+header nav a:hover{color:var(--ink)}
+header .btn{padding:8px 16px;font-size:14px}
+
+/* 표지: 한 화면에 고정되고, ABOUT ME 를 누르면 위로 물러난다 */
+.cover{position:relative;z-index:20;min-height:100dvh;background:var(--bg);overflow:hidden;display:grid;align-items:center}
+.js .cover{position:fixed;inset:0;overflow-y:auto;transition:transform .9s var(--ease),visibility 0s .9s}
+.js.gate .cover{transition:transform .9s var(--ease)}
+.js:not(.gate) .cover{transform:translateY(-100%);visibility:hidden}
+.gate body{overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0 60% 0 0;background:var(--slab);clip-path:polygon(0 0,60% 0,100% 100%,0 100%)}
+.cover .wrap{position:relative;width:100%;display:grid;grid-template-columns:300px minmax(0,1fr);gap:80px;align-items:center;padding-top:36px;padding-bottom:36px}
+.cover .hi{color:var(--acc);font-weight:700;font-size:19px}
+h1{font-size:clamp(34px,4.1vw,58px);line-height:1.24;letter-spacing:-.04em;font-weight:800;color:var(--ink);margin-top:12px}
+.cover .wrap>div{grid-column:2}
+.who{margin-top:34px;display:grid;gap:16px;max-width:680px}
+.who div{display:grid;grid-template-columns:108px 1fr;gap:18px}
+.who dt{color:var(--acc);font-weight:700;font-size:15px;padding-top:3px}
+.who dd{font-size:18px;line-height:1.65;color:var(--body)}
+.who b{color:#fff;font-weight:700}
+.info{margin-top:28px;padding-top:22px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;font-size:15px;max-width:640px}
+.info dt{display:inline;color:var(--muted);margin-right:8px}
+.info dd{display:inline}
+.info a{color:var(--acc);text-decoration:none}
+.info a:hover{text-decoration:underline}
+.cover .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.cover .btn.fill{padding-left:30px;padding-right:30px;letter-spacing:.02em}
+.js.gate .cover .up{animation:up .9s var(--ease) backwards;animation-delay:calc(var(--i)*110ms + 100ms)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:13px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:6px}
+.hint::after{content:"";width:1px;height:20px;background:var(--acc);transform-origin:top;animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media (max-height:760px){.hint{display:none}}
+#home{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.02em;text-decoration:none}
+#home small{font-size:13px;font-weight:600;color:var(--muted);margin-right:12px;letter-spacing:0}
+#home:hover small{color:var(--acc)}
+
+/* 일하는 방식: 왼쪽 글이 내려가는 동안 오른쪽에 프로젝트 카드가 한 장씩 쌓인다 */
+.way{padding-bottom:60px}
+.way .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);gap:72px;align-items:start}
+.step{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.step .tag{font-size:15px;font-weight:700;color:var(--acc)}
+.step h2{margin-top:10px}
+.step h2 span{color:var(--acc)}
+.step .lead{font-size:18px;max-width:520px}
+.case{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);max-width:560px}
+.case h3 a{text-decoration:none}
+.case h3 a:hover{color:var(--acc);text-decoration:underline;text-underline-offset:5px}
+.case dl{margin-top:12px;display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:16px;line-height:1.7}
+.case dt{color:var(--acc);font-weight:700;font-size:14px;padding-top:3px}
+.pile{position:sticky;top:calc(50vh - 200px)}
+.nums{position:relative;display:block;min-height:330px;text-decoration:none}
+.num{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .6s var(--ease)}
+.num.on,html:not(.js) .num:first-child{opacity:1;transform:none}
+.big-n{font-size:clamp(96px,10vw,148px);font-weight:800;letter-spacing:-.05em;line-height:.95;color:var(--ink);font-variant-numeric:tabular-nums}
+.big-n small{font-size:.3em;font-weight:700;letter-spacing:-.02em;color:var(--acc);margin-left:10px}
+.num p{margin-top:20px;font-size:18px;line-height:1.6;color:var(--body);max-width:420px}
+.num .src{margin-top:22px;font-size:14px;color:var(--muted)}
+.nums:hover .src{color:var(--acc);text-decoration:underline;text-underline-offset:4px}
+.marks{display:flex;gap:22px;margin-top:16px;padding:0;list-style:none;font-size:14px;color:#565e85}
+.marks li{transition:color .3s}
+.marks li.on{color:var(--ink);font-weight:700}
+.m-num{display:none}
+
+/* 연구소 사이트 */
+.bleed{margin-top:56px}
+.ba{display:grid;grid-template-columns:1fr 1fr;margin-top:56px;border-top:1px solid var(--line)}
+.ba>div{padding:28px 40px 4px 0}
+.ba>div+div{padding-left:40px;border-left:1px solid var(--line)}
+.ba .now .big{color:var(--acc)}
+.ba p{margin-top:10px}
+.ba .big{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--ink);margin-top:18px}
+.ba .big small{font-size:.4em;font-weight:600;letter-spacing:0;margin-left:6px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px}
+.three p{margin-top:8px;font-size:16px}
+.perf{display:grid;grid-template-columns:4fr 7fr;gap:64px;align-items:center;margin-top:110px}
+.perf p{margin-top:16px;font-size:16px}
+.gauge{display:grid;gap:30px}
+.gauge .row{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.gauge .row:last-child{border-bottom:0;padding-bottom:0}
+.gauge .k{font-size:15px;color:var(--muted)}
+.gauge .was{font-size:15px;color:var(--muted);text-decoration:line-through;text-decoration-color:#565e85}
+.gauge .v{font-size:clamp(44px,5.6vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--acc);font-variant-numeric:tabular-nums}
+.gauge .v small{font-size:.36em;letter-spacing:0;font-weight:700;margin-left:4px}
+
+/* 수강 신청 */
+.apply{background:var(--paper)}
+.sim{margin-top:48px;border:1px solid var(--line);border-radius:var(--r);padding:34px}
+.sim-top{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.switch{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;user-select:none}
+.switch input{appearance:none;width:46px;height:27px;border-radius:99px;background:#3a4166;position:relative;cursor:pointer;transition:background .15s;flex:none}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:transform .2s var(--ease)}
+.switch input:checked{background:var(--slab)}
+.switch input:checked::after{transform:translateX(19px)}
+.board{display:grid;grid-template-columns:1fr 220px;gap:44px;margin-top:30px;align-items:start}
+.board>div{min-width:0}
+.seats-label{font-size:14px;color:var(--muted);margin-bottom:8px}
+.seats,.over{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:7px;align-items:start}
+.seat{aspect-ratio:1;border-radius:5px;background:#1d2446;transition:background .15s,transform .25s var(--ease)}
+.seat.on{background:var(--acc)}
+.slot{aspect-ratio:1;border-radius:5px;border:1px dashed #39416c}
+.slot.on{background:var(--red);border-color:transparent;animation:pop .3s var(--ease)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.count .big{font-size:72px;font-weight:800;line-height:1;letter-spacing:-.05em;color:var(--ink);font-variant-numeric:tabular-nums}
+.count .big.bad{color:var(--red)}
+.count .big.ok{color:var(--acc)}
+.count p{font-size:15px;color:var(--muted);margin-top:8px}
+.count p b{color:var(--ink)}
+.verdict{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);min-height:88px}
+.verdict b{color:var(--ink)}
+.note{margin-top:8px;font-size:14px;color:var(--muted)}
+.fixed{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px}
+.fixed .n{font-size:clamp(34px,4.2vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.fixed .n small{font-size:.4em;letter-spacing:0;font-weight:700;color:var(--acc);margin-left:5px}
+.fixed h3{margin-top:14px;font-size:17px}
+.fixed p{font-size:16px;margin-top:4px}
+
+/* 프로젝트: 줄 목록. 줄에 마우스를 올리면 오른쪽에 화면 한 장, 누르면 상세 페이지 */
+#projects h2{font-size:clamp(40px,6vw,84px)}
+.plist{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:56px;margin-top:48px;align-items:start}
+.prows{list-style:none;padding:0;border-top:2px solid var(--ink)}
+.prow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.prow .py{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:5px}
+.prow b{display:block;font-size:21px;line-height:1.4;letter-spacing:-.02em;color:var(--ink);transition:color .2s}
+.prow .res{display:block;margin-top:6px;font-size:16px;color:var(--body)}
+.prow .meta{display:block;margin-top:4px;font-size:14px}
+.prow:hover b,.prow:focus-visible b,.prow.on b{color:var(--acc)}
+.ppv{position:sticky;top:120px}
+.ppv .view{position:relative;aspect-ratio:16/10;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#05060c}
+.ppv .thumb{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.ppv .thumb.on,html:not(.js) .ppv .thumb:first-child{opacity:1}
+.ppv .contain img{object-fit:contain}
+.ppv p{margin-top:12px;font-size:14px;color:var(--muted)}
+.thumb{aspect-ratio:16/10;background:#05060c;display:grid;place-items:center;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.diagram{display:grid;justify-items:center;gap:8px;font-size:15px;color:var(--ink)}
+.diagram span{padding:9px 18px;border:1px solid #3a4270;border-radius:var(--r);font-weight:700}
+.diagram small{font-weight:400;color:var(--muted);margin-left:8px}
+.diagram .me{border-color:var(--acc);background:#1a2250}
+.diagram i{font-style:normal;color:var(--muted);line-height:1}
+
+/* 가르친 경험과 부족한 점 */
+.flow{background:var(--paper)}
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.honest>div{padding-top:24px;border-top:1px solid var(--line)}
+.honest p{margin-top:10px;font-size:16px}
+
+/* 이력 */
+.cv-h{font-size:clamp(28px,3vw,40px)}
+.cv{display:grid;grid-template-columns:1fr 1fr;gap:0 72px;margin-top:48px;align-items:start}
+.cv>div>div{margin-bottom:52px}
+.cv h3{font-size:17px;color:var(--acc);font-weight:700;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.cv ul{list-style:none;padding:0}
+.cv li{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:10px 0;font-size:17px;line-height:1.6;color:var(--ink)}
+.cv .k{font-size:15px;color:var(--body);font-variant-numeric:tabular-nums;padding-top:2px}
+.cv small{display:block;color:#a9afc6;font-size:15px}
+/* 수상: 마우스를 올리거나 누르면 설명 카드가 뜬다 */
+.cv li.aw{display:block;padding:0;position:relative}
+.aw-b{display:grid;grid-template-columns:140px 1fr auto;gap:16px;width:100%;padding:10px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.aw-b>span:nth-child(2){transition:color .2s}
+.aw-b i{font-style:normal;font-size:20px;line-height:1.4;color:var(--muted);transition:transform .25s var(--ease),color .2s}
+.aw-card{position:absolute;left:0;right:0;top:calc(100% - 2px);z-index:5;padding:16px 20px;background:var(--card);border:1px solid #3a4270;border-radius:var(--r);box-shadow:0 18px 40px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s,transform .25s var(--ease),visibility 0s .25s}
+.aw-card p{font-size:15.5px;line-height:1.65;color:var(--body)}
+.aw-card p:first-child{color:var(--ink);font-weight:700}
+.aw.open .aw-card,.aw:has(.aw-b:focus-visible) .aw-card{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .25s var(--ease)}
+.aw.open .aw-b>span:nth-child(2),.aw:has(.aw-b:focus-visible) .aw-b>span:nth-child(2){color:var(--acc)}
+.aw.open .aw-b i{transform:rotate(45deg);color:var(--acc)}
+@media (hover:hover){
+  .aw:hover .aw-card{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .25s var(--ease)}
+  .aw:hover .aw-b>span:nth-child(2){color:var(--acc)}
+  .aw:hover .aw-b i{transform:rotate(45deg);color:var(--acc)}
+}
+/* 기술: 공식 아이콘을 붙인 칩 */
+.sk-h{font-size:17px;color:var(--acc);font-weight:700;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.skills{margin-top:0}
+.skills>div{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.skills>div:last-child{border-bottom:0}
+.skills .k{font-size:15px;color:var(--body);padding-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:12px 26px;list-style:none;padding:0}
+.chips li{display:flex;align-items:center;gap:10px;padding:2px 0;font-size:15.5px;color:var(--ink);line-height:1.3}
+.chips img{width:26px;height:26px;padding:4px;border-radius:3px;background:#f5f6fa;flex:none}
+.chips .noicon{padding-left:0}
+.chips small{color:var(--muted);font-size:13px;margin-left:2px}
+
+.bye{padding:140px 0 150px;background:var(--slab);color:#eef1ff;clip-path:polygon(0 60px,100% 0,100% 100%,0 100%)}
+.bye h2{font-size:clamp(36px,5.6vw,76px);color:#fff}
+.bye p{margin-top:22px;font-size:18px}
+.bye .btn{margin-top:34px;background:#0a0c14;color:#fff}
+.bye .btn:hover{background:#1a2040}
+
+@media (max-width:940px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  header nav{display:none}
+  section{padding:76px 0}
+  .cover{align-items:start}
+  .cover::before{inset:0 0 auto 0;height:84px;clip-path:polygon(0 0,100% 0,100% 25%,0 100%)}
+  .cover .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding-top:92px;padding-bottom:24px}
+  .cover .wrap>div{grid-column:auto}
+  .info,.hint{display:none}
+  .cover .hi{font-size:16px}
+  h1{font-size:29px;margin-top:8px}
+  .who{margin-top:22px;gap:12px}
+  .who div{grid-template-columns:1fr;gap:0}
+  .who dt{font-size:14px}
+  .who dd{font-size:15.5px;line-height:1.6}
+  .cover .cta{margin-top:26px}
+  .ba,.three,.perf,.board,.fixed,.honest,.cv,.plist{grid-template-columns:minmax(0,1fr)}
+  .ba>div{padding:24px 0 4px}
+  .ba>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .honest{gap:32px}
+  .ppv{display:none}
+  .prow.on b{color:var(--ink)}
+  .prow{grid-template-columns:minmax(0,1fr);gap:2px;padding:18px 0}
+  .prow .py{padding-top:0}
+  .prow b{font-size:18px}
+  .way{padding-bottom:20px}
+  .way .wrap{grid-template-columns:minmax(0,1fr)}
+  .pile{display:none}
+  .step{min-height:0;padding:30px 0}
+  .m-num{display:block;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);text-decoration:none}
+  .m-num .big-n{font-size:72px}
+  .m-num p{margin-top:10px;font-size:16px;line-height:1.6;color:var(--body)}
+  .case dl{grid-template-columns:1fr;gap:2px}
+  .case dd{margin-bottom:8px}
+  .group{margin-top:44px}
+  .three,.fixed{gap:28px}
+  .perf{gap:36px;margin-top:72px}
+  .gauge .row{grid-template-columns:1fr}
+  .sim{padding:20px}
+  .count .big{font-size:56px}
+  .cv{grid-template-columns:minmax(0,1fr);gap:0}
+  .cv>div>div{margin-bottom:40px}
+  .cv li,.aw-b{grid-template-columns:1fr;gap:0}
+  .aw-b{grid-template-columns:1fr auto}
+  .aw-b .k{grid-column:1/-1}
+  .skills>div{grid-template-columns:minmax(0,1fr);gap:10px}
+  .skills .k{padding-top:0}
+  .bye{padding:110px 0 100px;clip-path:polygon(0 30px,100% 0,100% 100%,0 100%)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cover" id="cover">
+  <div class="wrap">
+    <div>
+      <p class="hi up" style="--i:0">안녕하세요, 박성주입니다.</p>
+      <h1 class="up" style="--i:0">현장의 필요를 듣고,<br>서비스로 만드는 개발자입니다.</h1>
+      <dl class="who">
+        <div class="up" style="--i:1"><dt>어떤 사람인가</dt><dd>만들기 전에 <b>왜 필요한지 먼저 묻고</b>, 만든 뒤에도 다시 점검합니다.</dd></div>
+        <div class="up" style="--i:2"><dt>지금 하는 일</dt><dd>폭스커넥트 AI 연구소에서 연구소 사이트와 외부 대학 의뢰 사이트를 <b>혼자 만들고 운영</b>합니다.</dd></div>
+        <div class="up" style="--i:3"><dt>앞으로 할 일</dt><dd>팀의 서비스에서 <b>사용자의 필요를 정확히 구현</b>하고, 코드 리뷰로 더 단단하게 다듬고 싶습니다.</dd></div>
+      </dl>
+      <dl class="info up" style="--i:4">
+        <div><dt>학력</dt><dd>우송대학교 컴퓨터정보보안전공</dd></div>
+        <div><dt>경력</dt><dd>1년 3개월, 재직 중</dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:shim.never60@gmail.com">shim.never60@gmail.com</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/sungJJoo" target="_blank" rel="noopener">github.com/sungJJoo</a></dd></div>
+      </dl>
+      <div class="cta up" style="--i:5">
+        <a class="btn fill" id="enter" href="#story">ABOUT ME <span aria-hidden="true">↓</span></a>
+        <a class="btn line" href="mailto:shim.never60@gmail.com">이메일 보내기</a>
+      </div>
+    </div>
+  </div>
+  <p class="hint" aria-hidden="true">스크롤해서 더 보기</p>
+</div>
+
+<header id="top" class="solid">
+  <div class="wrap">
+    <a id="home" href="./" title="표지로 돌아가기"><small>← 표지</small>박성주</a>
+    <nav>
+      <a href="#story">일하는 방식</a>
+      <a href="#fox">연구소 사이트</a>
+      <a href="#apply">수강 신청</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#cv">이력</a>
+    </nav>
+    <a class="btn fill" href="mailto:shim.never60@gmail.com">이메일 보내기</a>
+  </div>
+</header>
+
+<main>
+
+<section class="way" id="story">
+  <div class="wrap">
+    <div>
+      <div class="step rv" data-step="1">
+        <p class="tag">질문</p>
+        <h2>만들기 전에<br><span>왜 필요한지</span> 묻습니다.</h2>
+        <p class="lead">누가 쓰고, 무엇이 불편하고, 무엇이 필요한지부터 봅니다. 도메인을 이해하는 데 시간이 걸려도 최대한 완벽에 가깝게 파악하려 합니다.</p>
+        <div class="case">
+          <h3><a href="../projects/fox-ai-lab.html" target="_blank" rel="noopener">FOX AI 연구소 사이트와 CMS</a></h3>
+          <dl><dt>왜 만들었나</dt><dd>공지 한 줄을 고쳐도 제가 코드를 고치고 본사에 업로드를 요청해야 했고, 직원은 직접 고칠 방법이 없었습니다.</dd><dt>먼저 이해한 것</dt><dd>본사 서버는 관리할 사람이 없어 DB 서버를 둘 수 없었고, 진짜 불편은 고칠 때마다 업로드를 요청하는 일이었습니다.</dd></dl>
+        </div>
+        <a class="m-num" href="../projects/fox-ai-lab.html" target="_blank" rel="noopener"><div class="big-n">4<small>단계</small></div><p>공지 한 줄을 고칠 때 거치던 단계입니다. 직원 요청, 제 코드 수정, 본사 업로드 요청, 반영.</p></a>
+      </div>
+      <div class="step rv" data-step="2">
+        <p class="tag">설계</p>
+        <h2>기능명세로<br><span>구조부터</span> 세웁니다.</h2>
+        <p class="lead">무엇을 만들고 무엇을 뺄지 먼저 정한 뒤에 개발합니다.</p>
+        <div class="case">
+          <h3><a href="../projects/woosong-site.html" target="_blank" rel="noopener">우송대학교 강사 양성 누리집</a></h3>
+          <dl><dt>만든 것과 뺀 것</dt><dd>기능명세서에 화면, 데이터, 입력값 검사, 권한을 정리했습니다. 문자 발송이나 관리자 통합 로그인처럼 계약이나 협의가 필요한 기능은 이유를 적고 뺐습니다.</dd><dt>정한 규칙</dt><dd>가입 후 관리자가 승인해야 신청할 수 있고, 질의응답은 로그인한 사람만 쓰며 비공개 문의는 작성자와 관리자만 봅니다.</dd></dl>
+        </div>
+        <a class="m-num" href="../projects/woosong-site.html" target="_blank" rel="noopener"><div class="big-n">0<small>건</small></div><p>정원 30명인 과정에 50명이 동시에 신청해도, 정원을 넘겨 접수된 신청은 없었습니다.</p></a>
+      </div>
+      <div class="step rv" data-step="3">
+        <p class="tag">구현</p>
+        <h2>막히면 원인을 찾아<br><span>끝까지 돌아가게</span> 합니다.</h2>
+        <p class="lead">코드를 쓸 때는 AI의 도움도 받습니다. 그래도 설계는 제가 하고, 결과는 직접 확인합니다.</p>
+        <div class="case">
+          <h3><a href="../projects/smartvision.html" target="_blank" rel="noopener">SmartVision 시각장애인 보조 기기</a></h3>
+          <dl><dt>부딪힌 문제</dt><dd>보드가 10주차에야 도착했습니다. 그전까지 데스크톱에서 만든 인식과 음성 기능이 라즈베리파이에서는 패키지 충돌과 성능 한계로 돌지 않았습니다.</dd><dt>해결</dt><dd>인식 모델을 가장 가벼운 YOLOv8n으로 바꾸고, 필요한 패키지를 다시 골라 구성했습니다. 발열은 쿨러와 방열판으로 줄이고, 온도를 음성으로 확인하는 명령을 넣었습니다.</dd></dl>
+        </div>
+        <a class="m-num" href="../projects/smartvision.html" target="_blank" rel="noopener"><div class="big-n">12<small>종</small></div><p>보드에서 인식해 방향과 함께 음성으로 알려 주는 장애물입니다. 졸업 작품 2위.</p></a>
+      </div>
+      <div class="step rv" data-step="4">
+        <p class="tag">운영</p>
+        <h2>만든 뒤에도<br><span>직접 운영합니다.</span></h2>
+        <p class="lead">직원이 코드 없이 공지와 사진을 고치고, 저장하면 업로드 요청 없이 사이트에 반영됩니다.</p>
+        <div class="case">
+          <h3><a href="../projects/fox-ai-lab.html" target="_blank" rel="noopener">FOX 관리자 CMS</a></h3>
+          <dl><dt>받은 문의</dt><dd>하루짜리 팝업이 안 보인다는 문의에는 시작일 표시를 넣었습니다.</dd></dl>
+        </div>
+        <a class="m-num" href="../projects/fox-ai-lab.html" target="_blank" rel="noopener"><div class="big-n">12<small>건</small></div><p>CMS 도입 첫 주, 코드 수정과 본사 업로드 없이 반영된 내용 수정입니다.</p></a>
+      </div>
+    </div>
+    <div class="pile">
+      <a class="nums" id="win" href="../projects/fox-ai-lab.html" target="_blank" rel="noopener" aria-label="FOX AI 연구소 사이트 자세히 보기">
+        <div class="num" data-href="../projects/fox-ai-lab.html" data-name="FOX AI 연구소 사이트"><div class="big-n">4<small>단계</small></div><p>공지 한 줄을 고칠 때 거치던 단계입니다. 직원 요청, 제 코드 수정, 본사 업로드 요청, 반영.</p><span class="src">FOX AI 연구소 사이트</span></div>
+        <div class="num" data-href="../projects/woosong-site.html" data-name="우송대 강사 양성 누리집"><div class="big-n">0<small>건</small></div><p>정원 30명인 과정에 50명이 동시에 신청해도, 정원을 넘겨 접수된 신청은 없었습니다.</p><span class="src">우송대 강사 양성 누리집</span></div>
+        <div class="num" data-href="../projects/smartvision.html" data-name="SmartVision 보조 기기"><div class="big-n">12<small>종</small></div><p>보드에서 인식해 방향과 함께 음성으로 알려 주는 장애물입니다. 졸업 작품 2위.</p><span class="src">SmartVision 보조 기기</span></div>
+        <div class="num" data-href="../projects/fox-ai-lab.html" data-name="FOX 관리자 CMS"><div class="big-n">12<small>건</small></div><p>CMS 도입 첫 주, 코드 수정과 본사 업로드 없이 반영된 내용 수정입니다.</p><span class="src">FOX 관리자 CMS</span></div>
+      </a>
+      <ol class="marks" aria-hidden="true"><li class="on">질문</li><li>설계</li><li>구현</li><li>운영</li></ol>
+    </div>
+  </div>
+</section>
+
+<section id="fox">
+  <div class="wrap">
+    <h2 class="rv">공지 한 줄을 고치는 데<br>개발자와 본사가 필요했습니다.</h2>
+    <p class="lead rv" style="--i:1">그래서 직원이 직접 고치는 관리자 CMS를 만들었습니다. 기획, 디자인, 개발, 운영을 혼자 맡았고 2026년 6월부터 운영 중입니다.</p>
+
+    <figure class="bleed rv">
+      <video class="media inview" controls muted loop playsinline preload="none" poster="../assets/video/fox-cms.webp" width="1280" height="800" aria-label="관리자 CMS에 로그인해 예시 공지를 쓰고 저장하면, 반영 완료 표시가 뜨고 사이트 공지 목록에 새 글이 보이는 화면">
+        <source src="../assets/video/fox-cms.mp4" type="video/mp4">
+      </video>
+      <figcaption>직원이 공지를 쓰고 저장하면 사이트에 반영되는 과정 (예시 데이터)</figcaption>
+    </figure>
+
+    <div class="ba">
+      <div class="rv">
+        <h3>전에는</h3>
+        <p>직원이 요청하면 제가 코드를 고치고, 다시 본사에 서버 업로드를 요청해야 반영됐습니다.</p>
+        <div class="big" style="color:var(--muted)">4<small>단계</small></div>
+      </div>
+      <div class="now rv" style="--i:1">
+        <h3>지금은</h3>
+        <p>직원이 저장하면 1~2분 안에 반영됩니다. 도입 첫 주에 저를 거치지 않고 올라간 수정입니다.</p>
+        <div class="big"><span data-count data-from="0" data-to="12">12</span><small>건</small></div>
+      </div>
+    </div>
+
+    <div class="three">
+      <div class="rv">
+        <h3>서버 없이 만들었습니다</h3>
+        <p>본사 서버를 관리할 사람이 없었습니다. 바뀌는 내용만 JSON으로 빼서 GitHub Pages에 두고, 토큰은 Apps Script 안에 숨겼습니다.</p>
+      </div>
+      <div class="rv" style="--i:1">
+        <h3>서로 덮어쓰지 않습니다</h3>
+        <p>여러 직원이 동시에 고쳐도 먼저 저장된 내용이 사라지지 않도록, 저장 직전에 버전을 비교합니다.</p>
+      </div>
+      <div class="rv" style="--i:2">
+        <h3>쓰는 사람 말을 듣고 고쳤습니다</h3>
+        <p>도입 뒤 직원 요청을 받아 변경 이력과 되돌리기를 넣었습니다.</p>
+      </div>
+    </div>
+
+    <div class="perf">
+      <div class="rv">
+        <h3>휴대폰에서 무겁다는 말을 듣고</h3>
+        <p>사진을 WebP 세 크기로 만들어 화면에 맞는 것만 받게 하고, 글꼴에는 자주 쓰는 한글 2,350자만 남겼습니다. 배포 전 브라우저에서 직접 잰 숫자입니다.</p>
+        <p style="margin-top:22px"><a class="more" href="https://ai.foxconnect.kr" target="_blank" rel="noopener">운영 중인 사이트 열기</a><a class="more" href="https://github.com/sungJJoo/fox-ai-lab" target="_blank" rel="noopener">코드 보기</a><a class="more" href="../projects/fox-ai-lab.html" target="_blank" rel="noopener">프로젝트 자세히 보기</a></p>
+      </div>
+      <div class="gauge rv" style="--i:1">
+        <div class="row">
+          <div><div class="k">페이지 용량</div><div class="was">1,766KB</div></div>
+          <div class="v"><span data-count data-from="1766" data-to="578">578</span><small>KB</small></div>
+        </div>
+        <div class="row">
+          <div><div class="k">웹폰트</div><div class="was">1,211KB</div></div>
+          <div class="v"><span data-count data-from="1211" data-to="222">222</span><small>KB</small></div>
+        </div>
+        <div class="row">
+          <div><div class="k">모바일 이미지 전송량</div><div class="meta">줄어든 비율</div></div>
+          <div class="v"><span data-count data-from="0" data-to="87">87</span><small>%</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="wrap">
+    <h2 class="rv">정원 30명인 과정에<br>50명이 동시에 신청하면?</h2>
+    <p class="lead rv" style="--i:1">외부 대학의 수강 신청 사이트를 점검표를 모두 통과한 상태로 납품했습니다. 그런데 신청이 한꺼번에 몰리는 상황은 점검표에 없었습니다. 납품 뒤 부하 테스트로 다시 확인했습니다.</p>
+
+    <div class="sim rv">
+      <div class="sim-top">
+        <h3>직접 눌러 보세요</h3>
+        <div class="controls">
+          <label class="switch"><input type="checkbox" id="tx" role="switch"> 트랜잭션 <span id="txState">꺼짐</span></label>
+          <button class="btn fill" id="run">50명 동시 신청</button>
+        </div>
+      </div>
+      <div class="board">
+        <div>
+          <div class="seats-label">정원 30석</div>
+          <div class="seats" id="seats"></div>
+          <div class="seats-label" style="margin-top:18px">정원을 넘겨 접수된 신청</div>
+          <div class="over" id="over"></div>
+        </div>
+        <div class="count">
+          <div class="big" id="accepted">0</div>
+          <p>접수 (정원 30)</p>
+          <p style="margin-top:14px">초과 접수 <b id="overN">0</b>건<br>거부 <b id="rejected">0</b>건</p>
+        </div>
+      </div>
+      <div class="verdict" id="verdict" aria-live="polite">버튼을 누르면 신청 50건이 1초 안에 한꺼번에 들어옵니다. 먼저 그대로 눌러 보고, 트랜잭션을 켠 뒤 다시 눌러 보세요.</div>
+      <p class="note">실제 서버 코드가 아니라, 문제의 원리를 보여 주는 시뮬레이션입니다.</p>
+    </div>
+
+    <div class="fixed">
+      <div class="rv">
+        <div class="n">0<small>건</small></div>
+        <h3>정원 초과 접수</h3>
+        <p>인원 확인과 저장을 하나의 트랜잭션으로 묶었습니다.</p>
+      </div>
+      <div class="rv" style="--i:1">
+        <div class="n">12 → <span data-count data-from="12" data-to="85">85</span><small>건/초</small></div>
+        <h3>로그인 처리량</h3>
+        <p>비밀번호 검증을 비동기 방식으로 바꿨습니다.</p>
+      </div>
+      <div class="rv" style="--i:2">
+        <div class="n"><span data-count data-from="0" data-to="16">16</span><small>개</small></div>
+        <h3>자동 테스트</h3>
+        <p>Jest와 GitHub Actions로 코드가 바뀔 때마다 검증합니다.</p>
+      </div>
+    </div>
+    <p class="meta rv" style="margin-top:44px">Node.js, Express, SQLite, Next.js, TypeScript. 1인 개발, 공개 배포 전</p>
+      </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="rv">프로젝트</h2>
+    <p class="lead rv" style="--i:1">줄을 누르면 맡은 일, 구조, 문제 해결을 정리한 페이지가 새 탭으로 열립니다.</p>
+    <div class="plist rv">
+      <ol class="prows">
+        <li><a class="prow" href="../projects/fox-ai-lab.html" target="_blank" rel="noopener" data-i="0"><span class="py">2026</span><span><b>FOX AI 연구소 공식 사이트와 관리자 CMS</b><span class="res">첫 주 수정 12건이 코드 수정과 업로드 없이 반영</span><span class="meta">사내 개발, 1명, 기획부터 운영까지</span></span></a></li>
+        <li><a class="prow" href="../projects/woosong-site.html" target="_blank" rel="noopener" data-i="1"><span class="py">2026</span><span><b>우송대학교 RISE U-늘봄 강사 양성 누리집</b><span class="res">50명이 동시에 신청해도 정원 초과 0건</span><span class="meta">외부 의뢰, 1명, 설계와 개발과 문서</span></span></a></li>
+        <li><a class="prow" href="../projects/smartvision.html" target="_blank" rel="noopener" data-i="2"><span class="py">2025</span><span><b>SmartVision 시각장애인 보조 기기</b><span class="res">캡스톤디자인 졸업 작품 2위, 학점 A+</span><span class="meta">2명 팀의 팀장, 객체 인식과 음성 명령</span></span></a></li>
+        <li><a class="prow" href="../projects/scheduler.html" target="_blank" rel="noopener" data-i="3"><span class="py">2026</span><span><b>연구소 업무 스케줄러</b><span class="res">따로 관리하던 담당표와 근무일정을 한 화면으로, 팀원 3명이 사용</span><span class="meta">사내 도구, 1명</span></span></a></li>
+        <li><a class="prow" href="../projects/plantify.html" target="_blank" rel="noopener" data-i="4"><span class="py">2024</span><span><b>Plantify 스마트 화분</b><span class="res">우송대학교 반도체 경진대회 은상</span><span class="meta">3명 팀의 팀장, 센서 7종과 카메라 영상을 웹으로</span></span></a></li>
+        <li><a class="prow" href="../projects/face-removal.html" target="_blank" rel="noopener" data-i="5"><span class="py">2024</span><span><b>영상 속 특정 인물 제거 프로그램</b><span class="res">영상에서 고른 한 명만 지우고 배경을 채움</span><span class="meta">6명 팀, 얼굴 인식(InsightFace)과 YOLOv8 담당</span></span></a></li>
+        <li><a class="prow" href="../projects/bank-manager.html" target="_blank" rel="noopener" data-i="6"><span class="py">2024</span><span><b>C언어 은행 관리 프로그램</b><span class="res">첨단산업인재양성 경진대회 장려상</span><span class="meta">3명 팀의 팀장, 외부 라이브러리 없이 3주</span></span></a></li>
+      </ol>
+      <div class="ppv" aria-hidden="true">
+        <div class="view">
+          <div class="thumb"><img src="../assets/img/fox-site.webp" alt="" width="1200" height="605" loading="lazy"></div>
+          <div class="thumb"><div class="diagram"><span>프로토타입<small>Next.js</small></span><i>↓</i><span>퍼블리싱<small>HTML, CSS</small></span><i>↓</i><span class="me">서버<small>Express, SQLite</small></span></div></div>
+          <div class="thumb"><img src="../assets/img/smartvision-demo.webp" alt="" width="1144" height="521" loading="lazy"></div>
+          <div class="thumb"><img src="../assets/video/scheduler.webp" alt="" width="1280" height="800" loading="lazy"></div>
+          <div class="thumb contain"><img src="../assets/img/plantify-web.webp" alt="" width="564" height="498" loading="lazy"></div>
+          <div class="thumb"><div class="diagram"><span class="me">인물 구분<small>InsightFace</small></span><i>↓</i><span>분리, 추적<small>Detectron2</small></span><i>↓</i><span>배경 복원<small>인페인팅</small></span></div></div>
+          <div class="thumb"><img src="../assets/video/bank.webp" alt="" width="1280" height="664" loading="lazy"></div>
+        </div>
+        <p id="ppvName">FOX AI 연구소 공식 사이트와 관리자 CMS</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="wrap">
+    <div class="honest">
+      <div class="rv">
+        <h3>설명은 자신 있습니다</h3>
+        <p>같은 내용을 초등학생에게는 게임 속 활동으로, 대전교통공사 신입사원 40명에게는 업무 예시로 바꿔 가르쳤습니다. 직접 기획한 「마을을 지켜라!」(12주)는 대전광역시교육청 2025 늘봄 공식 프로그램으로 채택됐습니다.</p>
+      </div>
+      <div class="rv" style="--i:1">
+        <h3>아직 부족한 것도 있습니다</h3>
+        <p>혼자 맡아 왔기 때문에, 큰 팀의 규칙 안에서 코드 리뷰를 받으며 일한 경험은 부족합니다. 입사하면 팀의 코드와 배포 방식을 먼저 익히고, 리뷰로 제 습관을 다듬겠습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="wrap">
+    <h2 class="rv cv-h">이력</h2>
+    <div class="cv">
+      <div>
+      <div class="rv">
+        <h3>경력 1년 3개월</h3>
+        <ul>
+          <li><span class="k">2025.12 ~ 현재</span><span>폭스커넥트 AI 연구소 연구원<small>웹 개발, 업무 자동화, 교육 과정 기획과 출강</small></span></li>
+          <li><span class="k">2025.09 ~ 12</span><span>폭스에듀 AI 연구소 인턴<small>학교 연계 현장실습 뒤 정규직 전환</small></span></li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>교육</h3>
+        <ul>
+          <li><span class="k">2024.09 ~ 12</span><span>Codyssey C언어 PBL<small>이노베이션 아카데미, 약 13주</small></span></li>
+          <li><span class="k">2024.09 ~ 12</span><span>첨단산업인재양성 부트캠프 반도체 SW분야<small>우송대학교 특별학과, 중급 마이크로디그리</small></span></li>
+          <li><span class="k">2024.03 ~ 09</span><span>비트 Windows Developer 고급과정 39기<small>비트교육센터, 6개월</small></span></li>
+          <li><span class="k">2023.09 ~ 12</span><span>비트 단기 과정 (C, C++, Java)<small>비트교육센터</small></span></li>
+          <li><span class="k">2022.07 ~ 2025.06</span><span>바이오헬스 마이크로디그리<small>바이오헬스 혁신융합대학사업단, 8과목</small></span></li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>기타 경험</h3>
+        <ul>
+          <li><span class="k">2018.03 ~ 2020.01</span><span>Minecraft 서버 총관리자<small>동시 접속 50~80명 서버 운영, 컴퓨터 전공을 고른 계기</small></span></li>
+        </ul>
+      </div>
+      </div>
+      <div>
+      <div class="rv" style="--i:1">
+        <h3>학력</h3>
+        <ul>
+          <li><span class="k">2022.03 ~ 2026.02</span><span>우송대학교 컴퓨터정보보안전공<small>부전공 비즈니스창업융합, 졸업</small></span></li>
+        </ul>
+      </div>
+      <div class="rv" style="--i:1">
+        <h3>수상</h3>
+        <ul>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw1"><span class="k">2025</span><span>캡스톤디자인 졸업 작품 2위<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw1" role="region" aria-label="캡스톤디자인 졸업 작품 2위 설명"><p>SmartVision 시각장애인 보조 기기, 2명 팀의 팀장</p><p>장애물 12종을 방향과 함께 음성으로 안내하고 QR 메뉴판을 읽어 줍니다.</p><p>과목 학점 A+</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw2"><span class="k">2024</span><span>우송대학교 반도체 경진대회 은상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw2" role="region" aria-label="우송대학교 반도체 경진대회 은상 설명"><p>Plantify 스마트 화분, 3명 팀의 팀장</p><p>센서 7종 값과 카메라 영상을 웹 페이지로 보여 줍니다.</p><p>반도체 SW분야 부트캠프 마이크로프로세서 수업의 팀 프로젝트</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw3"><span class="k">2024</span><span>첨단산업인재양성 경진대회 장려상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw3" role="region" aria-label="첨단산업인재양성 경진대회 장려상 설명"><p>C언어 은행 관리 프로그램, 3명 팀의 팀장</p><p>외부 라이브러리 없이 회원가입부터 송금까지 구현했습니다.</p><p>Codyssey C언어 PBL 과정의 팀 프로젝트</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw4"><span class="k">2024</span><span>Codyssey 비교과 성과발표회 독행상<small>이노베이션 아카데미</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw4" role="region" aria-label="Codyssey 비교과 성과발표회 독행상 설명"><p>Codyssey C언어 PBL 과정, 약 13주</p><p>동료 학습과 평가 중심으로 진행한 팀 프로젝트와 성과 발표</p><p>C언어 은행 관리 프로그램으로 장려상도 함께 받았습니다.</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw5"><span class="k">2022</span><span>1인 앱 개발 대회 모범상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw5" role="region" aria-label="1인 앱 개발 대회 모범상 설명"><p>앱 인벤터로 계산기 등 여러 편의 기능을 담은 앱</p><p>상금 50만 원</p><p>대학 입학 전 개발에 자신감을 얻은 계기</p></div></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    <div class="rv">
+      <h3 class="sk-h">기술</h3>
+      <div class="skills">
+        <div><span class="k">실무에서 운영</span><ul class="chips"><li><img src="../assets/icons/javascript.svg" alt="" width="30" height="30" loading="lazy">JavaScript</li><li><img src="../assets/icons/html5.svg" alt="" width="30" height="30" loading="lazy">HTML</li><li><img src="../assets/icons/css3.svg" alt="" width="30" height="30" loading="lazy">CSS</li><li><img src="../assets/icons/google.svg" alt="" width="30" height="30" loading="lazy">Google Apps Script</li><li><img src="../assets/icons/github.svg" alt="" width="30" height="30" loading="lazy">GitHub API, Pages</li><li><img src="../assets/icons/git.svg" alt="" width="30" height="30" loading="lazy">Git</li></ul></div>
+        <div><span class="k">프로젝트에서 구현</span><ul class="chips"><li><img src="../assets/icons/typescript.svg" alt="" width="30" height="30" loading="lazy">TypeScript</li><li><img src="../assets/icons/nextjs.svg" alt="" width="30" height="30" loading="lazy">Next.js</li><li><img src="../assets/icons/react.svg" alt="" width="30" height="30" loading="lazy">React</li><li><img src="../assets/icons/nodejs.svg" alt="" width="30" height="30" loading="lazy">Node.js</li><li><img src="../assets/icons/express.svg" alt="" width="30" height="30" loading="lazy">Express</li><li><img src="../assets/icons/sqlite.svg" alt="" width="30" height="30" loading="lazy">SQLite</li><li><img src="../assets/icons/jest.svg" alt="" width="30" height="30" loading="lazy">Jest</li><li><img src="../assets/icons/githubactions.svg" alt="" width="30" height="30" loading="lazy">GitHub Actions</li></ul></div>
+        <div><span class="k">AI와 임베디드</span><ul class="chips"><li><img src="../assets/icons/python.svg" alt="" width="30" height="30" loading="lazy">Python</li><li><img src="../assets/icons/flask.svg" alt="" width="30" height="30" loading="lazy">Flask</li><li><img src="../assets/icons/opencv.svg" alt="" width="30" height="30" loading="lazy">OpenCV</li><li class="noicon">YOLOv8</li><li><img src="../assets/icons/raspberrypi.svg" alt="" width="30" height="30" loading="lazy">Raspberry Pi</li><li><img src="../assets/icons/arduino.svg" alt="" width="30" height="30" loading="lazy">Arduino</li><li><img src="../assets/icons/c.svg" alt="" width="30" height="30" loading="lazy">C</li><li><img src="../assets/icons/cplusplus.svg" alt="" width="30" height="30" loading="lazy">C++</li></ul></div>
+        <div><span class="k">배운 것, 배우는 것</span><ul class="chips"><li><img src="../assets/icons/java.svg" alt="" width="30" height="30" loading="lazy">Java</li><li><img src="../assets/icons/csharp.svg" alt="" width="30" height="30" loading="lazy">C#</li><li><img src="../assets/icons/dotnet.svg" alt="" width="30" height="30" loading="lazy">.NET</li><li><img src="../assets/icons/mysql.svg" alt="" width="30" height="30" loading="lazy">MySQL</li><li><img src="../assets/icons/spring.svg" alt="" width="30" height="30" loading="lazy">Spring <small>공부 중</small></li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bye">
+  <div class="wrap">
+    <h2 class="rv">왜 필요한지 먼저 묻고,<br>만든 뒤에도 책임지겠습니다.</h2>
+    <p class="rv" style="--i:1">끝까지 봐 주셔서 감사합니다. 서울, 경기, 대전에서 일할 수 있습니다.<br>shim.never60@gmail.com</p>
+    <a class="btn rv" style="--i:2" href="mailto:shim.never60@gmail.com">이메일 보내기</a>
+  </div>
+</section>
+
+</main>
+
+<script>
+// 시드 고정 난수 (같은 시드면 같은 결과)
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+// 신청 n건이 1초 안에 들어온다. 각 신청은 인원을 읽고, 조금 뒤에 저장한다.
+// tx=false: 읽을 때 본 인원으로 판단(경쟁 상태). tx=true: 저장 시점의 인원으로 판단(확인과 저장이 한 덩어리).
+function simulate(n,cap,tx,seed){
+  const r=rng(seed),ev=[];
+  for(let i=0;i<n;i++){const t=r()*900;ev.push({t,i,read:true},{t:t+80+r()*220,i});}
+  ev.sort((a,b)=>a.t-b.t);
+  let count=0;const seen=[],steps=[];
+  for(const e of ev){
+    if(e.read){seen[e.i]=count;continue;}
+    const ok=(tx?count:seen[e.i])<cap;
+    if(ok)count++;
+    steps.push({t:e.t,ok,count});
+  }
+  return {accepted:count,steps};
+}
+
+// 자체 검사: 트랜잭션을 켜면 항상 정원에서 멈추고, 끄면 정원을 넘는다
+for(let s=1;s<=50;s++){
+  console.assert(simulate(50,30,true,s).accepted===30,'트랜잭션 켬: 정원과 달라짐',s);
+  console.assert(simulate(50,30,false,s).accepted>30,'트랜잭션 끔: 초과가 재현되지 않음',s);
+}
+
+const CAP=30,N=50,$=id=>document.getElementById(id);
+const seats=$('seats'),over=$('over'),tx=$('tx'),run=$('run');
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+for(let i=0;i<CAP;i++)seats.appendChild(Object.assign(document.createElement('div'),{className:'seat'}));
+for(let i=0;i<N-CAP;i++)over.appendChild(Object.assign(document.createElement('div'),{className:'slot'}));
+tx.addEventListener('change',()=>{$('txState').textContent=tx.checked?'켜짐':'꺼짐'});
+
+function paint(count,rejected){
+  [...seats.children].forEach((el,i)=>el.classList.toggle('on',i<count));
+  const extra=Math.max(0,count-CAP);
+  [...over.children].forEach((el,i)=>el.classList.toggle('on',i<extra));
+  const a=$('accepted');a.textContent=count;
+  a.className='big'+(count>CAP?' bad':'');
+  $('overN').textContent=extra;$('rejected').textContent=rejected;
+}
+
+run.addEventListener('click',()=>{
+  const on=tx.checked,res=simulate(N,CAP,on,Date.now()%100000),slow=still?0:2;
+  run.disabled=tx.disabled=true;paint(0,0);
+  $('verdict').textContent='신청 50건을 처리하고 있습니다.';
+  let rejected=0;
+  res.steps.forEach(s=>setTimeout(()=>{if(!s.ok)rejected++;paint(s.count,rejected)},s.t*slow));
+  setTimeout(()=>{
+    run.disabled=tx.disabled=false;
+    if(on){
+      $('accepted').className='big ok';
+      $('verdict').innerHTML='<b>정확히 30명에서 멈췄고, 나머지 '+(N-CAP)+'건은 거부됐습니다.</b><br>인원 확인과 저장이 한 덩어리로 실행되어, 다른 신청이 그 사이에 끼어들 수 없습니다.';
+    }else{
+      $('verdict').innerHTML='<b>정원 30명인데 '+res.accepted+'명이 접수됐습니다. 초과 '+(res.accepted-CAP)+'건.</b><br>여러 신청이 저장되기 전의 같은 인원수를 읽고, 각자 자리가 있다고 판단했기 때문입니다. 이제 트랜잭션을 켜고 다시 눌러 보세요.';
+    }
+  },res.steps[res.steps.length-1].t*slow+80);
+});
+
+// 숫자가 화면에 들어오면 시작값에서 끝값까지 움직인다
+const fmt=n=>Math.round(n).toLocaleString('ko-KR');
+function countTo(el){
+  const from=+el.dataset.from,to=+el.dataset.to,t0=performance.now(),dur=1400;
+  (function tick(now){
+    const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,4);
+    el.textContent=fmt(from+(to-from)*e);
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+}
+const counters=document.querySelectorAll('[data-count]');
+if(!still)counters.forEach(el=>el.textContent=fmt(+el.dataset.from));
+
+// 화면에 들어올 때: 떠오르기, 숫자 시작, 영상 재생
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  if(!still)e.target.querySelectorAll('[data-count]').forEach(countTo);
+  io.unobserve(e.target);
+}),{threshold:.2});
+let started=false;
+function start(){if(started)return;started=true;document.querySelectorAll('.rv').forEach(el=>io.observe(el));}
+
+if(!still){
+  const vio=new IntersectionObserver(es=>es.forEach(e=>{
+    e.isIntersecting?e.target.play().catch(()=>{}):e.target.pause();
+  }),{threshold:.5});
+  document.querySelectorAll('video.inview').forEach(v=>vio.observe(v));
+}
+
+// 일하는 방식: 화면 가운데에 걸린 단계의 숫자를 오른쪽에 보여 준다
+const scrs=[...document.querySelectorAll('.num')],marks=[...document.querySelectorAll('.marks li')],win=$('win');
+function pile(n){
+  scrs.forEach((el,i)=>el.classList.toggle('on',i===n-1));
+  marks.forEach((el,i)=>el.classList.toggle('on',i===n-1));
+  const cur=scrs[n-1];win.href=cur.dataset.href;win.setAttribute('aria-label',cur.dataset.name+' 자세히 보기');
+}
+pile(1);
+const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)pile(+e.target.dataset.step);}),{rootMargin:'-45% 0px -45% 0px'});
+document.querySelectorAll('.step').forEach(el=>sio.observe(el));
+
+// 프로젝트: 마우스를 올리거나 키보드로 고른 줄의 화면을 오른쪽에 보여 준다
+const prows=[...document.querySelectorAll('.prow')],pviews=[...document.querySelectorAll('.ppv .thumb')];
+function preview(i){prows.forEach((r,k)=>r.classList.toggle('on',k===i));pviews.forEach((v,k)=>v.classList.toggle('on',k===i));$('ppvName').textContent=prows[i].querySelector('b').textContent;}
+prows.forEach((r,i)=>{r.addEventListener('mouseenter',()=>preview(i));r.addEventListener('focus',()=>preview(i));});
+preview(0);
+
+// 수상: 누르면 설명 카드를 열고 닫는다(휴대폰용). 바깥을 누르거나 Esc 를 누르면 닫는다
+const aws=[...document.querySelectorAll('.aw')];
+function closeAw(except){aws.forEach(li=>{if(li===except)return;li.classList.remove('open');li.querySelector('.aw-b').setAttribute('aria-expanded','false');});}
+aws.forEach(li=>{const b=li.querySelector('.aw-b');b.addEventListener('click',()=>{const on=!li.classList.contains('open');closeAw(li);li.classList.toggle('open',on);b.setAttribute('aria-expanded',on);});});
+document.addEventListener('click',e=>{if(!e.target.closest('.aw'))closeAw();});
+addEventListener('keydown',e=>{if(e.key==='Escape'){const o=document.querySelector('.aw.open');closeAw();if(o)o.querySelector('.aw-b').focus();}});
+
+// 표지와 본문 전환: 주소에 # 위치가 없으면 표지, 있으면 본문
+const root=document.documentElement,page=document.querySelector('main'),bar=$('top');
+function sync(){
+  const gate=location.hash.length<=1;
+  root.classList.toggle('gate',gate);
+  page.inert=bar.inert=gate;
+  if(gate)scrollTo(0,0);else start();
+}
+function enter(){if(!root.classList.contains('gate'))return;history.pushState(null,'','#story');scrollTo(0,0);sync();}
+$('enter').addEventListener('click',e=>{e.preventDefault();enter();});
+// 표지가 끝까지 내려와 있을 때 아래로 가려는 움직임(휠, 방향키, 위로 밀기)도 본문을 연다
+const cover=$('cover'),atEnd=()=>cover.scrollTop+cover.clientHeight>=cover.scrollHeight-2;
+cover.addEventListener('wheel',e=>{if(e.deltaY>20&&atEnd())enter();},{passive:true});
+addEventListener('keydown',e=>{if((e.key==='ArrowDown'||e.key==='PageDown')&&atEnd())enter();});
+let ty=null;
+cover.addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
+cover.addEventListener('touchend',e=>{if(ty!==null&&ty-e.changedTouches[0].clientY>60&&atEnd())enter();ty=null;},{passive:true});
+$('home').addEventListener('click',e=>{e.preventDefault();history.pushState(null,'',location.pathname);sync();});
+addEventListener('popstate',sync);
+addEventListener('hashchange',sync);
+sync();
+</script>
+</body>
+</html>
