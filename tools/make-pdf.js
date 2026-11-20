@@ -15,7 +15,12 @@ const OUT = path.resolve(process.argv[2] || '박성주_포트폴리오.pdf');
   const browser = await chromium.launch();
   // 움직임 줄이기 설정으로 열어 제목 타자 효과를 멈춘 채 고정 문장으로 찍음
   const page = await browser.newPage({ reducedMotion: 'reduce' });
-  await page.goto(pathToFileURL(path.join(ROOT, 'index.html')).href);
+  // # 위치를 붙여 열어야 표지를 건너뛰고 본문이 펼쳐진 상태가 된다
+  await page.goto(pathToFileURL(path.join(ROOT, 'index.html')).href + '#projects');
+  // 상세 페이지는 첫 페이지와 CSS가 달라서, 각자 Shadow DOM 칸 안에 style.css 를 넣어 서로 섞이지 않게 한다.
+  // 칸 안에서는 :root, html, body 가 맞지 않으므로 :host 로 바꿔 넣는다
+  const detailCss = fs.readFileSync(path.join(ROOT, 'assets', 'style.css'), 'utf8')
+    .replace(/(^|[\s,}])(?::root|html|body)(?=[\s,{.:])/g, '$1:host');
 
   const details = PROJECTS.map((name) => {
     const file = path.join(ROOT, 'projects', `${name}.html`);
@@ -23,7 +28,7 @@ const OUT = path.resolve(process.argv[2] || '박성주_포트폴리오.pdf');
   });
 
   // 상세 페이지의 본문을 메인 뒤에 붙인다. 프로젝트 링크는 PDF 안의 해당 쪽으로, 나머지 사이트 링크는 실제 주소로 바꾼다
-  await page.evaluate(({ details, LIVE, PROJECTS }) => {
+  await page.evaluate(({ details, LIVE, PROJECTS, detailCss }) => {
     const main = document.querySelector('main');
     const fixLink = (a, base) => {
       const raw = a.getAttribute('href');
@@ -43,26 +48,33 @@ const OUT = path.resolve(process.argv[2] || '박성주_포트폴리오.pdf');
       const wrap = document.createElement('div');
       wrap.className = 'pdf-project';
       wrap.id = `proj-${d.name}`;
-      wrap.append(...doc.querySelector('main').childNodes);
+      wrap.style.breakBefore = 'page';
+      const shadow = wrap.attachShadow({ mode: 'open' });
+      const style = document.createElement('style');
+      style.textContent = detailCss;
+      shadow.append(style, ...doc.querySelector('main').childNodes);
       main.append(wrap);
     }
+    const roots = [document, ...[...document.querySelectorAll('.pdf-project')].map((w) => w.shadowRoot)];
+    const all = (sel) => roots.flatMap((r) => [...r.querySelectorAll(sel)]);
     // PDF에서는 영상을 재생할 수 없으니 대표 이미지로 바꾼다
-    document.querySelectorAll('video.demo').forEach((v) => {
+    all('video[poster]').forEach((v) => {
       const img = document.createElement('img');
       img.src = new URL(v.getAttribute('poster'), location.href).href;
       img.alt = v.getAttribute('aria-label') || '';
       img.width = v.width; img.height = v.height;
       v.replaceWith(img);
     });
-    document.querySelectorAll('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
-  }, { details, LIVE, PROJECTS });
+    all('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+  }, { details, LIVE, PROJECTS, detailCss });
 
   await page.emulateMedia({ media: 'print' });
   const broken = await page.evaluate(async () => {
     const wait = (img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }));
-    await Promise.race([Promise.all([...document.images].map(wait)), new Promise((r) => setTimeout(r, 15000))]);
+    const imgs = [...document.images, ...[...document.querySelectorAll('.pdf-project')].flatMap((w) => [...w.shadowRoot.querySelectorAll('img')])];
+    await Promise.race([Promise.all(imgs.map(wait)), new Promise((r) => setTimeout(r, 15000))]);
     await document.fonts.ready;
-    return [...document.images].filter((img) => !img.naturalWidth).map((img) => img.getAttribute('src'));
+    return imgs.filter((img) => !img.naturalWidth).map((img) => img.getAttribute('src'));
   });
   if (broken.length) throw new Error(`불러오지 못한 이미지: ${broken.join(', ')}`);
 
