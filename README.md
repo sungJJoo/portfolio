@@ -6,7 +6,8 @@
 사이트: https://sungjjoo.github.io/portfolio/
 
 ## 구성
-- `index.html`: 메인 페이지 (세 줄 요약, 경력, 문제 해결 4건, 프로젝트 목록, 기술, 학력과 수상, 연락)
+- `index.html`: 메인 페이지 (v15 와 같은 내용. 표지, 프로젝트 목록, 일하는 방식, 연구소 사이트, 수강 신청 시뮬레이션, 이력)
+- `v2/`~`v15/`: 지난 시안
 - `projects/`: 프로젝트 상세 페이지 7개
 - `assets/img/`: 실제 화면 캡처 (WebP)
 - `assets/style.css`: 밝은 테마, 1024px과 768px 기준 반응형, A4 인쇄용 규칙

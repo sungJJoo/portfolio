@@ -195,6 +195,7 @@ h1{font-size:clamp(34px,4.1vw,58px);line-height:1.24;letter-spacing:-.04em;font-
 .aw-card{position:absolute;left:0;right:0;top:calc(100% - 2px);z-index:5;padding:16px 20px;background:var(--card);border:1px solid #3a4270;border-radius:var(--r);box-shadow:0 18px 40px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s,transform .25s var(--ease),visibility 0s .25s}
 .aw-card p{font-size:15.5px;line-height:1.65;color:var(--body)}
 .aw-card p:first-child{color:var(--ink);font-weight:700}
+.aw-card .role{display:inline-block;margin-left:10px;padding:1px 8px;font-size:13px;font-style:normal;font-weight:700;color:var(--acc);border:1px solid currentColor;border-radius:var(--r);vertical-align:1px;white-space:nowrap}
 .aw.open .aw-card,.aw:has(.aw-b:focus-visible) .aw-card{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .25s var(--ease)}
 .aw.open .aw-b>span:nth-child(2),.aw:has(.aw-b:focus-visible) .aw-b>span:nth-child(2){color:var(--acc)}
 .aw.open .aw-b i{transform:rotate(45deg);color:var(--acc)}
@@ -543,11 +544,11 @@ h1{font-size:clamp(34px,4.1vw,58px);line-height:1.24;letter-spacing:-.04em;font-
       <div class="rv" style="--i:1">
         <h3>수상</h3>
         <ul>
-          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw1"><span class="k">2025</span><span>캡스톤디자인 졸업 작품 2위<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw1" role="region" aria-label="캡스톤디자인 졸업 작품 2위 설명"><p>SmartVision 시각장애인 보조 기기, 2명 팀의 팀장</p><p>장애물 12종을 방향과 함께 음성으로 안내하고 QR 메뉴판을 읽어 줍니다.</p><p>과목 학점 A+</p></div></li>
-          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw2"><span class="k">2024</span><span>우송대학교 반도체 경진대회 은상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw2" role="region" aria-label="우송대학교 반도체 경진대회 은상 설명"><p>Plantify 스마트 화분, 3명 팀의 팀장</p><p>센서 7종 값과 카메라 영상을 웹 페이지로 보여 줍니다.</p><p>반도체 SW분야 부트캠프 마이크로프로세서 수업의 팀 프로젝트</p></div></li>
-          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw3"><span class="k">2024</span><span>첨단산업인재양성 경진대회 장려상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw3" role="region" aria-label="첨단산업인재양성 경진대회 장려상 설명"><p>C언어 은행 관리 프로그램, 3명 팀의 팀장</p><p>외부 라이브러리 없이 회원가입부터 송금까지 구현했습니다.</p><p>Codyssey C언어 PBL 과정의 팀 프로젝트</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw1"><span class="k">2025</span><span>캡스톤디자인 졸업 작품 2위<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw1" role="region" aria-label="캡스톤디자인 졸업 작품 2위 설명"><p>SmartVision 시각장애인 보조 기기<em class="role">팀장 · 2명</em></p><p>장애물 12종을 방향과 함께 음성으로 안내하고 QR 메뉴판을 읽어 줍니다.</p><p>과목 학점 A+</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw2"><span class="k">2024</span><span>우송대학교 반도체 경진대회 은상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw2" role="region" aria-label="우송대학교 반도체 경진대회 은상 설명"><p>Plantify 스마트 화분<em class="role">팀장 · 3명</em></p><p>센서 7종 값과 카메라 영상을 웹 페이지로 보여 줍니다.</p><p>반도체 SW분야 부트캠프 마이크로프로세서 수업의 팀 프로젝트</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw3"><span class="k">2024</span><span>첨단산업인재양성 경진대회 장려상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw3" role="region" aria-label="첨단산업인재양성 경진대회 장려상 설명"><p>C언어 은행 관리 프로그램<em class="role">팀장 · 3명</em></p><p>외부 라이브러리 없이 회원가입부터 송금까지 구현했습니다.</p><p>Codyssey C언어 PBL 과정의 팀 프로젝트</p></div></li>
           <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw4"><span class="k">2024</span><span>Codyssey 비교과 성과발표회 독행상<small>이노베이션 아카데미</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw4" role="region" aria-label="Codyssey 비교과 성과발표회 독행상 설명"><p>Codyssey C언어 PBL 과정, 약 13주</p><p>동료 학습과 평가 중심으로 진행한 팀 프로젝트와 성과 발표</p><p>C언어 은행 관리 프로그램으로 장려상도 함께 받았습니다.</p></div></li>
-          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw5"><span class="k">2022</span><span>1인 앱 개발 대회 모범상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw5" role="region" aria-label="1인 앱 개발 대회 모범상 설명"><p>앱 인벤터로 계산기 등 여러 편의 기능을 담은 앱</p><p>상금 50만 원</p><p>대학 입학 전 개발에 자신감을 얻은 계기</p></div></li>
+          <li class="aw"><button type="button" class="aw-b" aria-expanded="false" aria-controls="aw5"><span class="k">2022</span><span>1인 앱 개발 대회 모범상<small>우송대학교</small></span><i aria-hidden="true">+</i></button><div class="aw-card" id="aw5" role="region" aria-label="1인 앱 개발 대회 모범상 설명"><p>앱 인벤터로 계산기 등 여러 편의 기능을 담은 앱<em class="role">1인 개발</em></p><p>상금 50만 원</p><p>대학 입학 전 개발에 자신감을 얻은 계기</p></div></li>
         </ul>
       </div>
       </div>
@@ -697,6 +698,8 @@ $('home').addEventListener('click',e=>{e.preventDefault();history.pushState(null
 addEventListener('popstate',sync);
 addEventListener('hashchange',sync);
 sync();
+// 다른 페이지에서 #위치로 들어오면 브라우저가 위치를 못 잡는 경우가 있어, 다 읽은 뒤 한 번 더 맞춘다
+if(location.hash.length>1)addEventListener('load',()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'instant'}));
 </script>
 </body>
 </html>
