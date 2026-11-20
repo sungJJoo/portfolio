@@ -10,6 +10,8 @@
 - `v2/`~`v15/`: 지난 시안
 - `v16/`: v15 의 글자 크기와 간격을 토큰으로 정리한 판 (아래 디자인 규칙)
 - `v17/`: v16 과 같은 구성에 색 토큰만 밝은 값으로 바꾼 비교 시안
+- `v18/`: v16 구성에 중간 톤 청회색 바탕, 세로 그라데이션, 표지의 흐르는 색면을 더한 시안
+- `brief/`: 지원서 첨부용 A4 2쪽 요약본 (`tools/make-brief-pdf.js` 로 PDF 생성)
 - `projects/`: 프로젝트 상세 페이지 7개
 - `assets/img/`: 실제 화면 캡처 (WebP)
 - `assets/dark.css`: 상세 페이지를 첫 페이지와 같은 어두운 색으로 덮어쓰는 색 변수
@@ -36,6 +38,12 @@
 
 ```
 node tools/make-pdf.js 박성주_포트폴리오.pdf
+```
+
+지원서에는 2쪽 요약본을 쓴다.
+
+```
+node tools/make-brief-pdf.js 박성주_포트폴리오_요약.pdf
 ```
 
 처음 한 번은 `npm i playwright`와 `npx playwright install chromium`이 필요합니다.
