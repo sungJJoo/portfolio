@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- 박성주 포트폴리오 첫 페이지 (v21 과 같은 내용, 경로만 저장소 루트 기준. GitHub Pages, 빌드 없는 정적 HTML) -->
+<!-- 박성주 포트폴리오 첫 페이지 (v16 과 같은 내용, 경로만 저장소 루트 기준. GitHub Pages, 빌드 없는 정적 HTML) -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/fonts/pretendardvariable-dynamic-subset.css">
 <script>document.documentElement.className='js'+(location.hash.length>1?'':' gate')</script>
 <style>
-:root{--frame:#0e0f12;--edge:#3d4048;--seat:#2c2e35;--soft:#262c4a;--sub:#c6c8cf;--acc-2:#b3c1ff;--on-acc:#0c0d12;--bar:rgba(27,28,33,.9);--fs-xs:13px;--fs-sm:14px;--fs-md:15px;--fs-base:17px;--fs-lg:19px;--fs-xl:21px;--fs-2xl:30px;--fs-d1:clamp(40px,5.6vw,80px);--fs-d2:clamp(32px,4.2vw,56px);--fs-d3:clamp(28px,3vw,40px);--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-16:64px;--sp-20:80px;--sp-30:120px;--bg:#1b1c21;--paper:#202127;--card:#25262d;--line:#303239;--ink:#f4f4f5;--body:#d2d3d9;--muted:#a0a3ad;--acc:#8fa4ff;--slab:#4a64ea;--red:#ff6b5e;--r:4px;--ease:cubic-bezier(.16,1,.3,1)}
+:root{--frame:#05060c;--edge:#3a4270;--seat:#1d2446;--soft:#1a2250;--sub:#a9afc6;--acc-2:#b3c1ff;--on-acc:#0a0c14;--bar:rgba(10,12,20,.88);--fs-xs:13px;--fs-sm:14px;--fs-md:15px;--fs-base:17px;--fs-lg:19px;--fs-xl:21px;--fs-2xl:30px;--fs-d1:clamp(40px,5.6vw,80px);--fs-d2:clamp(32px,4.2vw,56px);--fs-d3:clamp(28px,3vw,40px);--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-16:64px;--sp-20:80px;--sp-30:120px;--bg:#0a0c14;--paper:#0e1220;--card:#141a33;--line:#232a4d;--ink:#f5f6fa;--body:#c9cddb;--muted:#8d93ab;--acc:#8fa4ff;--slab:#4a64ea;--red:#ff6b5e;--r:4px;--ease:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:var(--sp-20);background:var(--bg)}
 body{background:var(--bg);color:var(--body);font-family:"Pretendard Variable",Pretendard,-apple-system,"Malgun Gothic",sans-serif;font-size:var(--fs-base);line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -229,7 +229,6 @@ h1{font-size:var(--fs-d2);line-height:1.24;letter-spacing:-.04em;font-weight:800
   section{padding:var(--sp-20) 0}
   .cover{align-items:start}
   .cover::before{inset:0 0 auto 0;height:84px;clip-path:polygon(0 0,100% 0,100% 25%,0 100%)}
-  .cover .fx{inset:0 0 auto 0;height:84px;clip-path:polygon(0 0,100% 0,100% 25%,0 100%)}
   .cover .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding-top:var(--sp-20);padding-bottom:var(--sp-6)}
   .cover .wrap>div{grid-column:auto}
   .info,.hint{display:none}
@@ -284,23 +283,6 @@ h1{font-size:var(--fs-d2);line-height:1.24;letter-spacing:-.04em;font-weight:800
   .skills .k{padding-top:0}
   .bye{padding:var(--sp-30) 0 var(--sp-30);clip-path:polygon(0 30px,100% 0,100% 100%,0 100%)}
 }
-
-/* v21: 본문은 한 단계 밝은 숯색, 표지는 거의 검정에 파란 면 안 픽셀 디더(둥근 빛은 모두 뺌). 화면에서만. 바탕은 위에서 아래로 조금씩 밝아지고, 표지에는 느리게 흐르는 색면, 큰 숫자 구역에는 들어올 때 한 번 켜지는 빛 */
-@media screen{
-  html{background:#18191d}
-  body{background:linear-gradient(180deg,#18191d 0%,#1b1c21 45%,#1f2025 100%)}
-  .apply,.flow{background:rgba(255,255,255,.04)}
-  .cover::before{z-index:0;opacity:.9}
-  .cover .wrap{z-index:1}
-  .cover{background:#050506}
-  .fx{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .cover .fx{clip-path:polygon(0 0,24% 0,40% 100%,0 100%)}
-  .cover:has(.fx.on)::before{display:none}
-  .bye{position:relative}
-  .bye .wrap{position:relative;z-index:1}
-  .bye p{color:#fff}
-}
-
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important;animation:none!important}
@@ -313,7 +295,7 @@ h1{font-size:var(--fs-d2);line-height:1.24;letter-spacing:-.04em;font-weight:800
   :root{--bg:#ffffff;--paper:#f7f8fa;--card:#f2f4f8;--line:#e1e4ea;--ink:#0e1530;--body:#3a4256;--muted:#5d6580;--acc:#2a3fc4;--slab:#4a64ea;--red:#d0342c;--edge:#cbd0da;--seat:#e1e4ea;--soft:#e8ecff;--sub:#525a72;--acc-2:#2335a8;--on-acc:#ffffff;--bar:rgba(255,255,255,.92);--frame:#f2f4f8}
   html{scroll-padding-top:0}
   body{font-size:var(--fs-md)}
-  header,.hint,.ppv,#run,.switch,.bye .btn,.cover .cta,.cover::before,.fx{display:none!important}
+  header,.hint,.ppv,#run,.switch,.bye .btn,.cover .cta,.cover::before{display:none!important}
   .js .cover,.js:not(.gate) .cover{position:static;overflow:visible;transform:none;visibility:visible;min-height:0;display:block}
   .cover .wrap{display:block;padding:0 0 var(--sp-12)}
   .cover .up{animation:none!important;opacity:1!important}
@@ -328,7 +310,7 @@ h1{font-size:var(--fs-d2);line-height:1.24;letter-spacing:-.04em;font-weight:800
 </head>
 <body>
 
-<div class="cover" id="cover"><div class="fx" aria-hidden="true"></div>
+<div class="cover" id="cover">
   <div class="wrap">
     <div>
       <p class="hi up" style="--i:0">안녕하세요, 박성주입니다.</p>
@@ -601,7 +583,7 @@ h1{font-size:var(--fs-d2);line-height:1.24;letter-spacing:-.04em;font-weight:800
   </div>
 </section>
 
-<section class="bye"><div class="fx" aria-hidden="true"></div>
+<section class="bye">
   <div class="wrap">
     <h2 class="rv">왜 필요한지 먼저 묻고,<br>만든 뒤에도 책임지겠습니다.</h2>
     <p class="rv" style="--i:1">끝까지 봐 주셔서 감사합니다. 서울, 경기, 대전에서 일할 수 있습니다.<br>shim.never60@gmail.com</p>
@@ -736,12 +718,6 @@ addEventListener('hashchange',sync);
 sync();
 // 다른 페이지에서 #위치로 들어오면 브라우저가 위치를 못 잡는 경우가 있어, 다 읽은 뒤 한 번 더 맞춘다
 if(location.hash.length>1)addEventListener('load',()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'instant'}));
-</script>
-<script type="module">
-import { mountDither } from './assets/fx/dither.js';
-const [cover, bye] = document.querySelectorAll('.fx');
-mountDither(cover, { back: '#050506', front: '#4a64ea', shape: 2 });
-mountDither(bye, { back: '#4a64ea', front: '#3f58dc', shape: 4, speed: 0.4, frame: 40000 });
 </script>
 </body>
 </html>
