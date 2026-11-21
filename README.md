@@ -12,11 +12,14 @@
 - `v17/`: v16 과 같은 구성에 색 토큰만 밝은 값으로 바꾼 비교 시안
 - `v18/`: v16 구성에 중간 톤 청회색 바탕, 세로 그라데이션, 표지의 흐르는 색면을 더한 시안
 - `v19/`: v18 의 탁한 청회색을 맑은 남청색으로 바꾸고 표지 질감을 뺀 시안
+- `v20/`: v19 에서 둥근 빛을 빼고, 표지를 본문과 다른 검은 남색으로, 표지와 마지막 구역 파란 면에 픽셀 디더를 넣은 판
 - `brief/`: 지원서 첨부용 A4 2쪽 요약본 (`tools/make-brief-pdf.js` 로 PDF 생성)
 - `projects/`: 프로젝트 상세 페이지 7개
 - `assets/img/`: 실제 화면 캡처 (WebP)
 - `assets/dark.css`: 상세 페이지를 첫 페이지와 같은 어두운 색으로 덮어쓰는 색 변수
 - `assets/style.css`: 밝은 테마, 1024px과 768px 기준 반응형, A4 인쇄용 규칙
+- `assets/fx/dither.js`: 파란 면 안 픽셀 디더 (표지에 보일 때만 30fps, 움직임 줄이기면 정지, WebGL 없으면 단색 면)
+- `assets/vendor/paper-shaders-0.0.82/`: [Paper Shaders](https://github.com/paper-design/shaders) 중 ShaderMount, dithering, 색 변환 모듈 사본 (Apache-2.0, LICENSE와 NOTICE 포함)
 - `assets/fonts/`: Pretendard Variable 동적 서브셋 (SIL OFL 1.1)
 - `assets/icons/`: 기술 로고 Devicon, 화면 아이콘 Phosphor (둘 다 MIT)
 - `tools/make-pdf.js`: 메인과 상세 7개를 A4 PDF 한 개로 묶는 스크립트
