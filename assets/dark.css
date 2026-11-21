@@ -1,16 +1,16 @@
-/* 프로젝트 상세 페이지를 첫 페이지(어두운 남색)와 같은 색으로 맞추는 덮어쓰기. style.css 다음에 읽는다. 인쇄(PDF)는 style.css 의 밝은 색 그대로 */
+/* 프로젝트 상세 페이지를 첫 페이지(블랙: 숯색 바탕, 파랑은 강조에만)와 같은 색으로 맞추는 덮어쓰기. style.css 다음에 읽는다. 인쇄(PDF)는 style.css 의 밝은 색 그대로 */
 @media screen {
   :root {
-    --bg: #0a0c14;
-    --surface: #141a33;
-    --paper: #0e1220;
-    --ink: #f5f6fa;
-    --body: #c9cddb;
-    --sub: #a9afc6;
-    --muted: #8d93ab;
-    --line: #232a4d;
-    --line-strong: #39416c;
-    --box: #565e85;
+    --bg: #1b1c21;
+    --surface: #25262d;
+    --paper: #202127;
+    --ink: #f4f4f5;
+    --body: #d2d3d9;
+    --sub: #c6c8cf;
+    --muted: #a0a3ad;
+    --line: #303239;
+    --line-strong: #3d4048;
+    --box: #5a5d67;
     /* 층 색: 어두운 바탕에서는 기획 → 운영으로 갈수록 밝아짐 */
     --l-plan: #6b7fe0;
     --l-api: #8fa4ff;
@@ -18,7 +18,7 @@
     --l-ops: #dde3ff;
     --accent: #8fa4ff;
     --accent-ink: #b3c1ff;
-    --accent-soft: #1a2250;
+    --accent-soft: #262c4a;
     --r: 4px;
     color-scheme: dark;
   }
