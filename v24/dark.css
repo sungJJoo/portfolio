@@ -1,0 +1,29 @@
+/* v24 검수용: 상세 페이지를 블랙(숯색 바탕, 파랑은 강조에만)으로 덮어쓰는 색. 0264b0f 의 assets/dark.css 와 같고, 첫 페이지 교체 때 그 자리로 옮긴다. 인쇄(PDF)는 style.css 의 밝은 색 그대로 */
+@media screen {
+  :root {
+    --bg: #1b1c21;
+    --surface: #25262d;
+    --paper: #202127;
+    --ink: #f4f4f5;
+    --body: #d2d3d9;
+    --sub: #c6c8cf;
+    --muted: #a0a3ad;
+    --line: #303239;
+    --line-strong: #3d4048;
+    --box: #5a5d67;
+    /* 층 색: 어두운 바탕에서는 기획 → 운영으로 갈수록 밝아짐 */
+    --l-plan: #6b7fe0;
+    --l-api: #8fa4ff;
+    --l-ui: #b3c1ff;
+    --l-ops: #dde3ff;
+    --accent: #8fa4ff;
+    --accent-ink: #b3c1ff;
+    --accent-soft: #262c4a;
+    --r: 4px;
+    color-scheme: dark;
+  }
+
+  /* style.css 가 흰색을 직접 쓰던 곳: 밝아진 바탕 위 글자는 어두운 색으로 */
+  .btn-solid, .btn-solid:hover, .layer .tag, .layers .on, .layers .on.k-plan, .layers .on.k-api { color: var(--bg); }
+  .type { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--hl) 35%, transparent) 62%); }
+}
